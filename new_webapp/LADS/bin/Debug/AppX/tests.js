@@ -1,1 +1,0 @@
-﻿LADS.Util.makeNamespace("LADS.TESTS");
