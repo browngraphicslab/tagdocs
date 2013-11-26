@@ -1,0 +1,23 @@
+﻿img{
+	-moz-user-select: -moz-none;
+    	-khtml-user-select: none;
+    	-webkit-user-select: none;
+    	-o-user-select: none;
+    	user-select: none;
+}
+
+select:hover option {
+    background-color: #ff6a00;
+}
+
+@media screen and (-ms-view-state: fullscreen-landscape) {
+}
+
+@media screen and (-ms-view-state: filled) {
+}
+
+@media screen and (-ms-view-state: snapped) {
+}
+
+@media screen and (-ms-view-state: fullscreen-portrait) {
+}

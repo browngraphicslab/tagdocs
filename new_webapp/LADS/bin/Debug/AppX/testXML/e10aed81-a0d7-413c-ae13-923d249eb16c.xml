@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DoqData xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/WorkTopDB">
+  <CreatorID>3b32449f-ef58-4dfa-a200-de5608718ecf</CreatorID>
+  <Extension>.png</Extension>
+  <Identifier>e10aed81-a0d7-413c-ae13-923d249eb16c</Identifier>
+  <Metadata>
+    <Dicts xmlns:d3p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+      <d3p1:KeyValueOfguidMetadataDictionaryYwP_PEBe9>
+        <d3p1:Key>3b32449f-ef58-4dfa-a200-de5608718ecf</d3p1:Key>
+        <d3p1:Value>
+          <Dict>
+            <d3p1:KeyValueOfstringanyType>
+              <d3p1:Key>__Created</d3p1:Key>
+              <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">6/14/2012 4:34:18 PM</d3p1:Value>
+            </d3p1:KeyValueOfstringanyType>
+            <d3p1:KeyValueOfstringanyType>
+              <d3p1:Key>DeepZoom</d3p1:Key>
+              <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">http://cs.brown.edu/research/lads/LADS2.0Data/Documents/gari/garidz/dz.xml</d3p1:Value>
+            </d3p1:KeyValueOfstringanyType>
+            <d3p1:KeyValueOfstringanyType>
+              <d3p1:Key>Title</d3p1:Key>
+              <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">Snow Leopard</d3p1:Value>
+            </d3p1:KeyValueOfstringanyType>
+            <d3p1:KeyValueOfstringanyType>
+              <d3p1:Key>Type</d3p1:Key>
+              <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">Artwork</d3p1:Value>
+            </d3p1:KeyValueOfstringanyType>
+            <d3p1:KeyValueOfstringanyType>
+              <d3p1:Key>Artist</d3p1:Key>
+              <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">Apple</d3p1:Value>
+            </d3p1:KeyValueOfstringanyType>
+            <d3p1:KeyValueOfstringanyType>
+              <d3p1:Key>Year</d3p1:Key>
+              <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">2010</d3p1:Value>
+            </d3p1:KeyValueOfstringanyType>
+            <d3p1:KeyValueOfstringanyType>
+              <d3p1:Key>Description</d3p1:Key>
+              <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">This is snow leopard.</d3p1:Value>
+            </d3p1:KeyValueOfstringanyType>
+            <d3p1:KeyValueOfstringanyType>
+              <d3p1:Key>Location</d3p1:Key>
+              <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">Providence, RI</d3p1:Value>
+            </d3p1:KeyValueOfstringanyType>
+            <d3p1:KeyValueOfstringanyType>
+              <d3p1:Key>Medium</d3p1:Key>
+              <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">Electronic</d3p1:Value>
+            </d3p1:KeyValueOfstringanyType>
+            <d3p1:KeyValueOfstringanyType>
+              <d3p1:Key>Exhibition</d3p1:Key>
+              <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">1</d3p1:Value>
+            </d3p1:KeyValueOfstringanyType>
+          </Dict>
+        </d3p1:Value>
+      </d3p1:KeyValueOfguidMetadataDictionaryYwP_PEBe9>
+    </Dicts>
+  </Metadata>
+  <Name>my artworks</Name>
+  <PrototypeID>00000000-0000-0000-0000-000000000000</PrototypeID>
+  <Thumbnail i:nil="true" />
+  <Type>Image</Type>
+  <URL>http://icongal.com/gallery/image/31975/mac_laptop_macbook_pro_computer_snow_leopard.png</URL>
+</DoqData>

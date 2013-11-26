@@ -1,0 +1,90 @@
+
+/**
+ * Module dependencies.
+ */
+
+var express = require('express');
+
+var app = module.exports = express.createServer();
+
+// Configuration
+
+app.configure(function(){
+  app.set('views', __dirname + '/views');
+  app.set('view engine', 'jade');
+  app.use(express.cookieParser());
+  /*app.use(express.session({
+      secret: 'some_secret_key',
+      store: new express.session.MemoryStore({reapInterval: 1000 * 60}) // 10 minutes in milliseconds
+  }));*/
+  app.use(express.bodyParser());
+  app.use(express.methodOverride());
+  app.use(app.router);
+  app.use(express.static(__dirname + '/public'));
+});
+
+app.configure('development', function(){
+  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+});
+
+app.configure('production', function(){
+  app.use(express.errorHandler());
+});
+
+//app.get('/what-is-my-name', function(req, res){
+//  res.end('Hello, ' + req.session.name);
+//});
+//
+//app.get('/my-name-is', function(req, res){
+//    //this sets the "name" property of the session
+//    //to the name provided in the query paramters
+//    //e.g. http://localhost:3000/my-name-is?name=Kyle
+//    req.session.name = req.query.name;
+//    res.send('Name set.')
+//})
+
+// Routes
+
+app.get('/', function(req, res){
+  res.render('index', { title: 'Express' })
+});
+
+/* form
+app.get('/documents', function(req, res){
+  res.render('documents.jade', { title: 'Documents' })
+});
+*/
+
+app.post('/documents', function(req, res) {
+     //Read values from your form
+     var username = req.param('username');
+     var password = req.param('password');
+     var brit = req.param('brit');
+     
+     //Show the list of documents or an error,
+     //depending on whether they're British.
+     res.render("doc1.jade", {title: "Top Secret"});
+     if (brit) {
+         //console.log("********");
+         res.render("doc1.jade", {title: "Top Secret"});
+     }
+     else res.render("err.jade", {title: "Error occurred"}); 
+
+});
+
+
+// render docN.jade
+//app.get('/doc1', function(req,res) {
+//  res.render("doc1.jade", {title: "Second Secret"});
+//});
+
+//app.get('/doc2', function(req,res) {
+//  res.render("doc2.jade", {title: "Second Secret"});
+//});
+//app.get('/doc3', function(req,res) {
+//  res.render("doc3.jade", {title: "Third Secret"});
+//});
+
+app.listen(3000, function(){
+  console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+});

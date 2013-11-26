@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../web/lib/rin-core-1.0.js"></script>
+    <script src="./rin-lint.js"></script>
+</head>
+    <script>
+        // Replaces properties in 'toObject' with the ones in 'fromObject' but not add any extra.
+        // If fromObject has special property "doNotCopy:bool" it will be ignored.
+        // If toObject has a property called doNotCopy it will be summarily deleted!
+        function postProcess(mergedData) {
+            if (mergedData.doNotOverride !== undefined) {
+                delete mergedData.doNotOverride;
+            }
+            for (var prop in mergedData) {
+                if (mergedData[prop] && typeof mergedData[prop] === "object") {
+                    postProcess(mergedData[prop]);
+                }
+            }
+            return mergedData;
+        }
+
+        function overrideProperties(fromObject, toObject) {
+            if (toObject.doNotCopy) {
+                delete toObject.doNotCopy;
+            }
+            if (!toObject.doNotOverride && !fromObject.doNotCopy) {
+                for (var prop in fromObject) {
+                    if (toObject[prop] && typeof toObject[prop] === "object") {
+                        overrideProperties(fromObject[prop], toObject[prop]);
+                    }
+                    else {
+                        toObject[prop] = fromObject[prop];
+                    }
+                }
+            }
+            return toObject;
+        }
+
+        function getFile(file) {
+            var promise = new rin.internal.Promise();
+            var reader = new FileReader();
+            reader.onloadend = function () {
+                file.jsonData = rin.util.parseJSON(reader.result);
+                promise.markSuccess(file);
+            };
+            reader.onerror = function () {
+                promise.markFailed(file);
+            };
+            reader.readAsText(file);
+            return promise;
+        };
+
+        function mergeFiles() {
+            var debugElem = document.getElementById("debugConsole"),
+                fileElem = document.getElementById("rinJSONFiles"),
+                mergeButton = document.getElementById("mergeButton"),
+                fileCount = fileElem.files.length,
+                callCount = fileCount,
+                successCount = 0,
+                promise = new rin.internal.Promise(),
+                callComplete = function () {
+                    callCount -= 1;
+                    if (callCount === 0) {
+                        successCount > 0 ? promise.markSuccess() : promise.markFailed();
+                    }
+                },
+                files = {},
+                mergedData = {};
+
+            fileElem.disabled = true;
+            mergeButton.disabled = true;
+
+            debugElem.innerHTML += "";
+            debugElem.innerHTML += "Files Selected" + "<br/>";
+            for (var i = 0; i < fileCount; i++) {
+                var file = fileElem.files[i];
+                file.uniqueId = i;
+                getFile(file).then(function (data) {
+                    debugElem.innerHTML += data.name + " read successfully!!<br/>";
+                    files[data.uniqueId] = data.jsonData;
+                    successCount += 1;
+                    callComplete();
+                }, function (data) {
+                    debugElem.innerHTML += data.name + " read failed!!<br/>";
+                    callComplete();
+                });
+                debugElem.innerHTML += file.name + "<br/>";
+            }
+
+            promise.then(function () {
+                debugElem.innerHTML += "Merging Files" + "<br/>";
+
+                for (var fileId in files) {
+                    overrideProperties(files[fileId], mergedData);
+                }
+                debugElem.innerHTML += "Merging Files Complete" + "<br/>";
+
+                debugElem.innerHTML += "Post Processing" + "<br/>";
+                postProcess(mergedData);
+
+                debugElem.innerHTML += JSON.stringify(mergedData[0]) + "<br/>";
+                clipboardData.setData("Text", "[" + JSON.stringify(mergedData[0], null, 4) + "]");
+
+                fileElem.disabled = false;
+                mergeButton.disabled = false;
+
+            }, function () {
+                debugElem.innerHTML += "Merging Files Failed" + "<br/>";
+
+                fileElem.disabled = false;
+                mergeButton.disabled = false;
+            });
+        }
+    </script>
+<body>
+    <input type="file" id="rinJSONFiles" multiple="multiple" />
+    <button id="mergeButton" value="Merge All" onclick="mergeFiles()">Upload and Merge</button>
+    <div id="debugConsole"></div>
+</body>
+</html>

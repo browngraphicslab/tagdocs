@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfDoqData xmlns="http://schemas.datacontract.org/2004/07/WorkTopDB">
+  <DoqData xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+    <CreatorID>3b32449f-ef58-4dfa-a200-de5608718ecf</CreatorID>
+    <Extension>.dqg</Extension>
+    <Identifier>a3fc5012-55ce-42fc-afae-5f24a565fbd4</Identifier>
+    <Metadata>
+      <Dicts xmlns:d3p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+        <d3p1:KeyValueOfguidMetadataDictionaryYwP_PEBe9>
+          <d3p1:Key>3b32449f-ef58-4dfa-a200-de5608718ecf</d3p1:Key>
+          <d3p1:Value>
+            <Dict>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>__Created</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">6/15/2012 1:03:58 PM</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>__Filter</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string"></d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>__Primary</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">4a5aa2af-516b-466e-8e90-eea51120e99d</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>Type</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">Exhibit</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>Subheading1</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">First subheading of the first exhibition goes here</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>Subheading2</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">Second subheading of the first exhibition goes here</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>Description</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">Exhibition description goes here</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>BackgroundImage</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">http://www.thewallpapers.org/photo/21585/LIon-Resting.jpg</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>DescriptionImage1</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">http://3.bp.blogspot.com/_JnfwCALOmPk/TG1mu-MIS0I/AAAAAAAADlc/rHaJiTbgLhI/s640/nature-wallpaper.jpg</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>DescriptionImage2</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">http://1.bp.blogspot.com/-64EQEOIYx9k/ThgNyix_hVI/AAAAAAAALUQ/jH4mDfInCXc/s1600/summer+nature+beautiful+wallpapers+and+images.jpg</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+            </Dict>
+          </d3p1:Value>
+        </d3p1:KeyValueOfguidMetadataDictionaryYwP_PEBe9>
+      </Dicts>
+    </Metadata>
+    <Name>Exhibition  das dadsa 1</Name>
+    <PrototypeID>00000000-0000-0000-0000-000000000000</PrototypeID>
+    <Thumbnail></Thumbnail>
+    <Type>Folder</Type>
+    <URL></URL>
+  </DoqData>
+  <DoqData xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+    <CreatorID>3b32449f-ef58-4dfa-a200-de5608718ecf</CreatorID>
+    <Extension>.dqg</Extension>
+    <Identifier>afc5f54f-c0bd-4ac8-bb2d-74a7a6008b75</Identifier>
+    <Metadata>
+      <Dicts xmlns:d3p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+        <d3p1:KeyValueOfguidMetadataDictionaryYwP_PEBe9>
+          <d3p1:Key>3b32449f-ef58-4dfa-a200-de5608718ecf</d3p1:Key>
+          <d3p1:Value>
+            <Dict>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>__Created</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">6/15/2012 12:39:27 PM</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>__Filter</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string"></d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>__Primary</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">4a5aa2af-516b-466e-8e90-eea51120e99d</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>Type</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">Exhibit</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>Subheading1</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">First subheading of the second exhibition goes here</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>Subheading2</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">Second subheading of the second exhibition goes here</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>Description</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">Exhibition description goes here</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>BackgroundImage</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">http://upload.wikimedia.org/wikipedia/en/thumb/5/5f/TomandJerryTitleCardc.jpg/250px-TomandJerryTitleCardc.jpg</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>DescriptionImage1</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">http://s.ngm.com/2009/08/photo-contest/img/yamashita-nature-615.jpg</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>DescriptionImage2</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">http://www.psdgraphics.com/wp-content/uploads/2010/07/nature-background.jpg</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+            </Dict>
+          </d3p1:Value>
+        </d3p1:KeyValueOfguidMetadataDictionaryYwP_PEBe9>
+      </Dicts>
+    </Metadata>
+    <Name>Exhibition 2</Name>
+    <PrototypeID>00000000-0000-0000-0000-000000000000</PrototypeID>
+    <Thumbnail></Thumbnail>
+    <Type>Folder</Type>
+    <URL></URL>
+  </DoqData>
+</ArrayOfDoqData>

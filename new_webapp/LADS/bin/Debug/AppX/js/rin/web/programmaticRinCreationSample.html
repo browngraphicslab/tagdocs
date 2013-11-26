@@ -1,0 +1,24 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Rich Interactive Narratives - programmactially creating player controls</title>    
+    <script src="lib/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.1.0.js"></script>
+    <script src="lib/rin-core-1.0.js"  type="text/javascript"></script>
+    <script src="lib/rin-experiences-1.0.js"></script>
+    
+    <!-- Custom Experience Stream Scripts -->
+    <script type="text/javascript" src="lib/ImageES.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var player = rin.createPlayerControl(document.getElementById('myrin'), { autoplay:true, controls: true, loop: true });
+            player.load("narratives/sample/narrative.js");
+        });
+    </script>
+</head>
+<body >
+    <div id='myrin' style='height:100%;width:100%''/>
+</body>
+</html>

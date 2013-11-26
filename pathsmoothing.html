@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="jquery.js"></script>
+<script src="raphael-min.js"></script>
+<style type="text/css">
+#canvas {
+	width: 600px;
+	height: 400px;
+	border: 1px solid black;
+	position: absolute;
+}
+#sliderDiv {
+	width:400px;
+	margin-left: 620px;
+	height:200px;
+}
+#closeThreshDiv, #threshDiv {
+	display: inline-block;
+}
+</style>
+</head>
+<body>
+	<div id="canvas"></div>
+	<div id="sliderDiv">
+		This slider controls how far apart each point is drawn. In the current implementation, points are drawn as close together as possible and straight lines are drawn between them. Here, we're drawing the points farther apart and using SVG bezier curve commands to smooth the resulting path.
+		<br />
+		<input type="range" min="0" max="50" step="5" value="20" onchange="updateThresh(this.value)" />&nbsp;&nbsp;<div id="threshDiv">20</div>
+		<br /><br /><br />
+		This slider controls how close to the first point in a path you must be before the interface offers to close your path. This could be helpful if you want to draw a closed path around objects in an artwork.
+		<br />
+		<input type="range" min="0" max="20" step="1" value="10" onchange="updateCloseThresh(this.value)" />&nbsp;&nbsp;<div id="closeThreshDiv">10</div>
+	</div>
+</body>
+</html>

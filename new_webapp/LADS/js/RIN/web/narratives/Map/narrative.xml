@@ -1,0 +1,608 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--Copyright (c) 2010-2011 Microsoft Research. WARNING: The RIN XML format is under active development and subject to change.-->
+<Narrative
+  RinVersion="0.0">
+  <NarrativeHeader xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    Guid="b73292fd-8868-447f-8caf-1643d7e40e00"
+    Timestamp="0001-01-01T00:00:00"
+    StartSegment="defaultSegment" />
+  <AuxiliaryData>
+    <Item
+      Key="narrative-info">
+      <NarrativeData>
+        <Title>New Map Experience Stream Test</Title>
+        <Author>Eric Stollnitz</Author>
+        <Description>This is a test narrative for the map experience stream.</Description>
+        <AspectRatio>WideScreen</AspectRatio>
+      </NarrativeData>
+    </Item>
+  </AuxiliaryData>
+  <Segments>
+    <Segment
+      Id="defaultSegment">
+      <SegmentHeader
+        EstimatedDuration="43.1"
+        DefaultScreenplay="SCP1" />
+      <ResourceTable>
+        <Resource
+          Id="content.items">
+          <ResourceHeader
+            DefaultUriReference="$ROOT$/clientbin/DemoNarratives/MapDemo/MapItems.xml" />
+        </Resource>
+        <Resource
+          Id="thumbnail.msra">
+          <ResourceHeader
+            DefaultUriReference="$ROOT$/clientbin/DemoNarratives/MapDemo/ThumbnailImages/AsiaLab.jpg" />
+        </Resource>
+        <Resource
+          Id="thumbnail.msri">
+          <ResourceHeader
+            DefaultUriReference="$ROOT$/clientbin/DemoNarratives/MapDemo/ThumbnailImages/IndiaLab.jpg" />
+        </Resource>
+        <Resource
+          Id="thumbnail.msrc">
+          <ResourceHeader
+            DefaultUriReference="$ROOT$/clientbin/DemoNarratives/MapDemo/ThumbnailImages/CambridgeLab.jpg" />
+        </Resource>
+        <Resource
+          Id="thumbnail.msrne">
+          <ResourceHeader
+            DefaultUriReference="$ROOT$/clientbin/DemoNarratives/MapDemo/ThumbnailImages/NewEnglandLab.jpg" />
+        </Resource>
+        <Resource
+          Id="thumbnail.msrr">
+          <ResourceHeader
+            DefaultUriReference="$ROOT$/clientbin/DemoNarratives/MapDemo/ThumbnailImages/RedmondLab.jpg" />
+        </Resource>
+        <Resource
+          Id="thumbnail.msrsv">
+          <ResourceHeader
+            DefaultUriReference="$ROOT$/clientbin/DemoNarratives/MapDemo/ThumbnailImages/SiliconValleyLab.jpg" />
+        </Resource>
+        <Resource
+          Id="thumbnail.cmic">
+          <ResourceHeader
+            DefaultUriReference="$ROOT$/clientbin/DemoNarratives/MapDemo/ThumbnailImages/CMIC.jpg" />
+        </Resource>
+        <Resource
+          Id="thumbnail.emic">
+          <ResourceHeader
+            DefaultUriReference="$ROOT$/clientbin/DemoNarratives/MapDemo/ThumbnailImages/EMIC.jpg" />
+        </Resource>
+      </ResourceTable>
+      <ExperienceStreams>
+        <ExperienceStream
+          Id="ES1">
+          <ExperienceStreamHeader
+            DefaultKeyframeSequence="defaultSequence">
+            <Provider
+              Name="MicrosoftResearch.Rin.MapExperienceStream"
+              Version="0.0" />
+          </ExperienceStreamHeader>
+          <AuxiliaryData>
+            <Item
+              Key="default">
+              <Entities>
+                <RinItemCollection
+                  ResourceId="content.items"
+                  CollectionId="content.collection"
+                  GroupId="content.groups"
+                  ItemClickAction="ShowPopup" />
+                <Pushpin
+                  Id="MSRA"
+                  Location="39.975883,116.330688"
+                  Label="Beijing, China"
+                  ItemId="msra" />
+                <Pushpin
+                  Id="MSRI"
+                  Location="13.005457,77.580922"
+                  Label="Bangalore, India"
+                  ItemId="msri" />
+                <Pushpin
+                  Id="MSRC"
+                  Location="52.2111612986822,0.0935609851276793"
+                  Label="Cambridge, UK"
+                  ItemId="msrc" />
+                <Pushpin
+                  Id="MSRNE"
+                  Location="42.361011,-71.082876"
+                  Label="Cambridge, MA"
+                  ItemId="msrne" />
+                <Pushpin
+                  Id="MSRR"
+                  Location="47.642015,-122.141694"
+                  Label="Redmond, WA"
+                  ItemId="msrr" />
+                <Pushpin
+                  Id="MSRSV"
+                  Location="37.416041,-122.07569"
+                  Label="Mountain View, CA"
+                  ItemId="msrsv" />
+                <Pushpin
+                  Id="CMIC"
+                  Location="29.966739,31.241233"
+                  Label="Cairo, Egypt"
+                  ItemId="cmic" />
+                <Pushpin
+                  Id="EMIC"
+                  Location="50.791165,6.064469"
+                  Label="Aachen, Germany"
+                  ItemId="emic" />
+              </Entities>
+            </Item>
+          </AuxiliaryData>
+          <KeyframeSequences>
+            <KeyframeSequence
+              Id="defaultSequence">
+              <KeyframeSequenceHeader
+                Duration="43.1" />
+              <Keyframes>
+                <Keyframe>
+                  <KeyframeHeader
+                    Offset="0"
+                    HoldDuration="3" />
+                  <AuxiliaryData>
+                    <Item
+                      Key="default">
+                      <MapKeyframes>
+                        <MapBoundsKeyframe
+                          North="73.536867782934081"
+                          West="-145.69894790480592"
+                          South="-43.812973651020741"
+                          East="138.36355209519408" />
+                        <MapStyleKeyframe
+                          Style="Road" />
+                        <MapEntityKeyframe
+                          EntityId="MSRC"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="MSRA"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="MSRI"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="MSRNE"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="MSRR"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="MSRSV"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="CMIC"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="EMIC"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                      </MapKeyframes>
+                    </Item>
+                    <Item
+                      Key="TransitionTime">
+                      <TransitionTime>0</TransitionTime>
+                    </Item>
+                    <Item
+                      Key="PauseDuration">
+                      <PauseDuration>3</PauseDuration>
+                    </Item>
+                    <Item
+                      Key="keyframeThumbnail">
+                      <Thumbnail>18682a15-5623-47f6-a914-9aedde667b5f.bmp</Thumbnail>
+                    </Item>
+                  </AuxiliaryData>
+                </Keyframe>
+                <Keyframe>
+                  <KeyframeHeader
+                    Offset="5.9"
+                    HoldDuration="2" />
+                  <AuxiliaryData>
+                    <Item
+                      Key="default">
+                      <MapKeyframes>
+                        <MapBoundsKeyframe
+                          North="26.046455141283886"
+                          West="61.148368374363429"
+                          South="7.1984953426249945"
+                          East="96.304618374363429" />
+                        <MapStyleKeyframe
+                          Style="Road" />
+                        <MapEntityKeyframe
+                          EntityId="MSRC"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="MSRA"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="MSRI"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="MSRNE"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="MSRR"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="MSRSV"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="CMIC"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="EMIC"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                      </MapKeyframes>
+                    </Item>
+                    <Item
+                      Key="TransitionTime">
+                      <TransitionTime>2.9</TransitionTime>
+                    </Item>
+                    <Item
+                      Key="PauseDuration">
+                      <PauseDuration>2</PauseDuration>
+                    </Item>
+                    <Item
+                      Key="keyframeThumbnail">
+                      <Thumbnail>01d0b4a3-a627-4d19-95c2-7d626c7a3e45.bmp</Thumbnail>
+                    </Item>
+                  </AuxiliaryData>
+                </Keyframe>
+                <Keyframe>
+                  <KeyframeHeader
+                    Offset="11.4"
+                    HoldDuration="3.3499999999999996" />
+                  <AuxiliaryData>
+                    <Item
+                      Key="default">
+                      <MapKeyframes>
+                        <MapBoundsKeyframe
+                          North="13.006709050686595"
+                          West="77.578700465584745"
+                          South="13.004356985383296"
+                          East="77.582992000008574" />
+                        <MapStyleKeyframe
+                          Style="Road" />
+                        <MapEntityKeyframe
+                          EntityId="MSRC"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="MSRA"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="MSRI"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="MSRNE"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="MSRR"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="MSRSV"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="CMIC"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="EMIC"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                      </MapKeyframes>
+                    </Item>
+                    <Item
+                      Key="TransitionTime">
+                      <TransitionTime>3.5</TransitionTime>
+                    </Item>
+                    <Item
+                      Key="PauseDuration">
+                      <PauseDuration>3.3499999999999996</PauseDuration>
+                    </Item>
+                    <Item
+                      Key="keyframeThumbnail">
+                      <Thumbnail>48cba57d-89a7-49d3-892f-0a10c728a9eb.bmp</Thumbnail>
+                    </Item>
+                  </AuxiliaryData>
+                </Keyframe>
+                <Keyframe>
+                  <KeyframeHeader
+                    Offset="17.65"
+                    HoldDuration="1.5" />
+                  <AuxiliaryData>
+                    <Item
+                      Key="default">
+                      <MapKeyframes>
+                        <MapBoundsKeyframe
+                          North="52.812893104748113"
+                          West="-132.78178517538794"
+                          South="22.284273820330398"
+                          East="-62.469285175387959" />
+                        <MapStyleKeyframe
+                          Style="Road" />
+                        <MapEntityKeyframe
+                          EntityId="MSRC"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="MSRA"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="MSRI"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="MSRNE"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="MSRR"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="MSRSV"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="CMIC"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="EMIC"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                      </MapKeyframes>
+                    </Item>
+                    <Item
+                      Key="TransitionTime">
+                      <TransitionTime>2.9</TransitionTime>
+                    </Item>
+                    <Item
+                      Key="PauseDuration">
+                      <PauseDuration>1.5</PauseDuration>
+                    </Item>
+                    <Item
+                      Key="keyframeThumbnail">
+                      <Thumbnail>276786bb-7e9a-4270-a2c0-8ba45644d0b5.bmp</Thumbnail>
+                    </Item>
+                  </AuxiliaryData>
+                </Keyframe>
+                <Keyframe>
+                  <KeyframeHeader
+                    Offset="21.7"
+                    HoldDuration="3" />
+                  <AuxiliaryData>
+                    <Item
+                      Key="default">
+                      <MapKeyframes>
+                        <MapBoundsKeyframe
+                          North="47.643695305385705"
+                          West="-122.14598298652678"
+                          South="47.640442408113159"
+                          East="-122.13739991767912" />
+                        <MapStyleKeyframe
+                          Style="Road" />
+                        <MapEntityKeyframe
+                          EntityId="MSRC"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="MSRA"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="MSRI"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="MSRNE"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="MSRR"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="MSRSV"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="CMIC"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="EMIC"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                      </MapKeyframes>
+                    </Item>
+                    <Item
+                      Key="TransitionTime">
+                      <TransitionTime>2.55</TransitionTime>
+                    </Item>
+                    <Item
+                      Key="PauseDuration">
+                      <PauseDuration>3</PauseDuration>
+                    </Item>
+                    <Item
+                      Key="keyframeThumbnail">
+                      <Thumbnail>eb2d4e9f-b9bc-4099-91c3-35d7d097c31f.bmp</Thumbnail>
+                    </Item>
+                  </AuxiliaryData>
+                </Keyframe>
+                <Keyframe>
+                  <KeyframeHeader
+                    Offset="29.7"
+                    HoldDuration="3.9499999999999997" />
+                  <AuxiliaryData>
+                    <Item
+                      Key="default">
+                      <MapKeyframes>
+                        <MapBoundsKeyframe
+                          North="48.866344704238628"
+                          West="68.460941556344551"
+                          South="16.385768263532754"
+                          East="138.77344155634455" />
+                        <MapStyleKeyframe
+                          Style="Road" />
+                        <MapEntityKeyframe
+                          EntityId="MSRC"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="MSRA"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="MSRI"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="MSRNE"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="MSRR"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="MSRSV"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="CMIC"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="EMIC"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                      </MapKeyframes>
+                    </Item>
+                    <Item
+                      Key="TransitionTime">
+                      <TransitionTime>5</TransitionTime>
+                    </Item>
+                    <Item
+                      Key="PauseDuration">
+                      <PauseDuration>3.9499999999999997</PauseDuration>
+                    </Item>
+                    <Item
+                      Key="keyframeThumbnail">
+                      <Thumbnail>c4d95706-1681-4b53-9492-b864fbed1c68.bmp</Thumbnail>
+                    </Item>
+                  </AuxiliaryData>
+                </Keyframe>
+                <Keyframe>
+                  <KeyframeHeader
+                    Offset="38.65"
+                    HoldDuration="4.45" />
+                  <AuxiliaryData>
+                    <Item
+                      Key="default">
+                      <MapKeyframes>
+                        <MapBoundsKeyframe
+                          North="39.97772635749655"
+                          West="116.32647581983457"
+                          South="39.9740266068419"
+                          East="116.33505888868223" />
+                        <MapStyleKeyframe
+                          Style="Road" />
+                        <MapEntityKeyframe
+                          EntityId="MSRC"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="MSRA"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="MSRI"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="MSRNE"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="MSRR"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="MSRSV"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="CMIC"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="EMIC"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                      </MapKeyframes>
+                    </Item>
+                    <Item
+                      Key="TransitionTime">
+                      <TransitionTime>5</TransitionTime>
+                    </Item>
+                    <Item
+                      Key="PauseDuration">
+                      <PauseDuration>4.45</PauseDuration>
+                    </Item>
+                    <Item
+                      Key="keyframeThumbnail">
+                      <Thumbnail>73d2ad22-62c8-475f-9443-eb272f419b2f.bmp</Thumbnail>
+                    </Item>
+                  </AuxiliaryData>
+                </Keyframe>
+              </Keyframes>
+            </KeyframeSequence>
+          </KeyframeSequences>
+        </ExperienceStream>
+      </ExperienceStreams>
+      <Screenplays>
+        <Screenplay
+          Id="SCP1">
+          <ScreenplayHeader />
+          <AuxiliaryData>
+            <Item
+              Key="ExperienceStreams">
+              <ExperienceStreams>
+                <ExperienceStream
+                  Id="ES1"
+                  Begin="0"
+                  Dur="43.1"
+                  Layer="foreground"
+                  DominantMedia="visual"
+                  Volume="0.6" />
+              </ExperienceStreams>
+            </Item>
+          </AuxiliaryData>
+        </Screenplay>
+      </Screenplays>
+    </Segment>
+  </Segments>
+</Narrative>

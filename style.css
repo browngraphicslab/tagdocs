@@ -1,0 +1,196 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+a {
+  text-decoration: none;
+  color: #fff;
+}
+a.demo {
+  color: #aaf;
+}
+body {
+  background: url("./images/pattern1.png");
+  color: #fff;
+}
+#contentWrapper {
+  width: 1100px;
+  height: 100%;
+  margin: 0 auto;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(50,50,50,0.9)), to(rgba(30,30,30,0.9)));
+  background: linear-gradient(to bottom, rgba(50,50,50,0.9), rgba(30,30,30,0.9));
+  font-family: Verdana, sans-serif;
+  font-size: 16px;
+}
+#content {
+  width: 800px;
+  padding-left: 20px;
+  padding-top: 20px;
+  margin-left: 260px;
+  border-left: 2px solid #ff9614;
+}
+#leftbar {
+  position: absolute;
+  width: 240px;
+  padding-left: 20px;
+  padding-top: 15px;
+  border-right: 2px solid #ff9614;
+}
+span {
+  font-family: courier;
+  font-size: 15px;
+  color: #ddd;
+}
+#topbar {
+  width: 100%;
+  height: 110px;
+  padding-top: 20px;
+  border-bottom: 2px solid #ff9614;
+}
+#top-text {
+  padding-left: 20px;
+  font-size: 100px;
+  color: #1496ff;
+}
+#top-subtext {
+  padding-left: 30px;
+  font-size: 20px;
+  color: #fff;
+}
+h2.linklist {
+  color: #ee7514;
+}
+li.linklistitem {
+  padding-left: 10px;
+}
+h1.linkhead {
+  color: #ff9614;
+  text-decoration: underline;
+}
+ul {
+  list-style: none;
+}
+.page {
+  display: none;
+}
+.pageanch {
+  cursor: pointer;
+}
+ol {
+  margin-left: 40px;
+}
+ol.nostyle {
+  list-style: none;
+}
+pre.prettyprint,
+code.prettyprint {
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -o-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -khtml-border-radius: 8px;
+  border-radius: 8px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+}
+#widgetContainer {
+  text-align: center;
+}
+#widgetContainer textarea {
+  background: #222;
+  color: #fff;
+  width: 80%;
+  height: 400px;
+}
+#widgetContainer .button {
+  display: inline-block;
+  cursor: pointer;
+  color: #fff;
+  margin: 0px 40px 0px 40px;
+}
+.descContainer {
+  width: 80%;
+  margin-left: 10%;
+}
+.container {
+  width: 600px;
+  height: 400px;
+  background-color: #000;
+  border: 1px solid #000;
+  color: #fff;
+}
+#mainSeadragonContainer {
+  margin-left: 10%;
+}
+.hammertestBox {
+  background-color: #008000;
+  text-align: center;
+  color: #fff;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
+  width: 400px;
+  height: 100px;
+  margin: 40px;
+}
+#stormtrooper {
+  position: absolute;
+  margin-left: 400px;
+}
+#thumbnail {
+  margin-left: 400px;
+  margin-top: 280px;
+}
+#annotationContainer {
+  position: absolute;
+  width: 350px;
+}
+#annotationHeader {
+  position: absolute;
+  margin-top: 0px;
+}
+#annotations {
+  position: absolute;
+  margin-top: 20px;
+}
+#imageHeader {
+  position: absolute;
+  margin-top: 60px;
+}
+#images {
+  position: absolute;
+  margin-top: 80px;
+}
+#images img {
+  width: 200px;
+}
+#footnoteHeader {
+  position: absolute;
+  margin-top: 200px;
+}
+#footnotes {
+  position: absolute;
+  margin-top: 220px;
+}
+#footnoteAddHeader {
+  position: absolute;
+  margin-top: 260px;
+}
+#footnoteAdd {
+  position: absolute;
+  margin-top: 280px;
+}
+#pscanvas {
+  width: 800px;
+  height: 400px;
+  border: 1px solid #1496ff;
+position
+}
+#closeThreshDiv,
+#threshDiv {
+  display: inline-block;
+}

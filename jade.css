@@ -1,0 +1,10 @@
+pre.prettyprint, code.prettyprint {
+	padding-top: 5px;
+	padding-bottom: 5px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -o-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -khtml-border-radius: 8px;
+    border-radius: 8px;
+}

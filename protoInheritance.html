@@ -1,0 +1,82 @@
+<html>
+<head>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="./jquery.js"></script>
+    <script>
+        /**
+         * Ben LeVeque, 7/8/13
+         *
+         Objects inherit directly from other objects, not classes from classes
+         Every object has a prototype property whose value as an object containing properties which will be inherited
+         You can add properties to the prototype to augment the object and everything which inherits from it
+         P. 47
+         * 
+         */
+        var bug, Bug, team;
+        team=['Anqi', 'Ardra', 'Ben L', 'Bmost',
+              'Dan', 'Jake', 'Jess', 'Karishma',
+              'Libby', 'Pete', 'Ria', 'Ryan', 'Xiaoyi'];
+        
+        // helper functions
+        function pickUnluckyPerson () {
+            return team[Math.floor(Math.random()*team.length)];
+        }
+        function showBugShot () {
+            alert(bug.getShot());
+        }
+        function setBugShot () {
+            bug.setShot(true);
+        }
+        
+        // Bug constructor function 
+        function Bug (duration) {
+            this.duration = duration
+        }
+        
+        // create a new object using the Bug constructor
+        bug = new Bug('10 days');
+        Bug.prototype.getShot = function () {
+            return (this.shot && "PHEW, it's been shot!") || "AAAAAH still an issue. "+pickUnluckyPerson()+", why don't you handle this?";
+        }
+        Bug.prototype.setShot = function (shot) {
+            this.shot = shot;
+            if(shot)
+                $("#bugImage").attr("src","./demo_images/bird1.jpg");
+        }
+        bug.setShot(false);
+        Array.prototype.times = function (arr2) {
+            var i;
+            for(i=0;i<this.length;i++)
+                this[i]=this[i]*arr2[i];
+        }
+        function performTimes () {
+            var arr, arr2;
+            arr = [1,2,3];
+            arr2 = [4,5,6];
+            arr.times(arr2);
+            alert("[1,2,3].times([4,5,6]) = "+arr);
+        }
+        
+        function Grasshopper (duration) {
+            this.shot = false;
+            this.duration = duration;
+        }
+        Grasshopper.prototype = new Bug();
+        var grasshopper = new Grasshopper();
+        function getGrasshopperShot() {
+            alert(grasshopper.getShot());
+        }
+    </script>
+</head>
+<title>prototypal inheritance</title>
+<body>
+    <button onclick="showBugShot()">Has the bug been shot?</button>
+    <button onclick="setBugShot(true)">SHOOT THE BUG</button>
+    <br /><br />
+    <img id="bugImage" src="./demo_images/bug1.jpg" />
+    <br /><br />
+    <button onclick="getGrasshopperShot()">Grasshopper shot?</button>
+    <button onclick="performTimes()">Component-wise array multiplication</button>
+    <br /><br />
+</body>
+</html>

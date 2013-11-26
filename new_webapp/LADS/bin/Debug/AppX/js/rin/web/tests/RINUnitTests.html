@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>RIN Unit Tests</title>
+    <link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.10.0.css" type="text/css" />
+    <script src="http://code.jquery.com/qunit/qunit-1.10.0.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../lib/rin-core-1.0.js"></script>
+
+    <script>
+        rin.test = rin.test || {};
+        rin.test.configuration = {
+            location: "",
+            narrativeUrl: "../narratives/lite/narrative.js",
+            rootPath: ".."
+        };
+    </script>
+
+    <script type="text/javascript" charset="utf-8" src="core/BCL.Tests.js"></script>
+    <script type="text/javascript" charset="utf-8" src="core/Promise.Tests.js"></script>
+    <script type="text/javascript" charset="utf-8" src="core/DeferredLoader.Tests.js"></script>
+    <script type="text/javascript" charset="utf-8" src="core/DataProxy.Tests.js"></script>
+    <script type="text/javascript" charset="utf-8" src="core/TransitionService.Tests.js"></script>
+
+    <script type="text/javascript" charset="utf-8" src="embeddedArtifacts/EmbeddedArtifactsBase.Tests.js"></script>
+
+    <script type="text/javascript" charset="utf-8" src="storyboard/StoryboardBase.Tests.js"></script>
+    
+
+</head>
+<body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+</body>
+</html>

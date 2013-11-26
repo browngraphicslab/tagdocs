@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<!-- on corp net IE thinks it's looking at legacy corporate software so it runs in compat mode. -->
+<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+<script type="text/javascript">
+window.swfobject = swfobject; //Push it into global scope.
+</script>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+
+<!-- This is *only* used for this test page..-->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+<link rel=stylesheet href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css" type="text/css" media="screen"/>
+<link rel=stylesheet href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-darkness/jquery-ui.css" type="text/css" media="screen"/>
+<!-- Used for attribution Control -->
+<link rel=stylesheet href="./style.css" type="text/css"/>
+
+
+<!-- matrix & vector math library -->
+<script type="text/javascript" src="../../build/jsmath.js"></script>
+<script type="text/javascript" src="../../src/common/Config.js"></script>
+<script type="text/javascript" src="../../src/common/PolyScan.js"></script>
+<script type="text/javascript" src="../../src/common/FloodFill.js"></script>
+
+<!-- Render implementations only need math library  (Matrix4x4 and GraphicsHelper)-->
+<script type="text/javascript" src="../../src/renderer/Renderer.js"></script>
+<script type="text/javascript" src="../../src/renderer/RendererUtils.js"></script>
+<script type="text/javascript" src="../../src/common/Utils.js"></script>
+<script type="text/javascript" src="../../src/renderer/Quirks.js"></script>
+<script type="text/javascript" src="../../src/renderer/RendererCSS3D.js"></script>
+<script type="text/javascript" src="../../src/renderer/RendererWebGL.js"></script>
+<script type="text/javascript" src="../../src/renderer/RendererFlash.js"></script>
+
+<!-- Application Logic -->
+<script type="text/javascript" src="./RMLStore.js"></script>
+<script type="text/javascript" src="../../src/graphics/Viewport.js"></script>
+<script type="text/javascript" src="../../src/graphics/PerspectiveCamera.js"></script>
+<script type="text/javascript" src="../../src/common/ClassicSpring.js"></script>
+<script type="text/javascript" src="./GestureHelper.js"></script>
+<script type="text/javascript" src="./QueuedGestureHelper.js"></script>
+<script type="text/javascript" src="./RotationalFixedPositionCameraController.js"></script>
+<script type="text/javascript" src="./StreetsideCameraController.js"></script>
+<script type="text/javascript" src="./MapCameraController.js"></script>
+
+<!-- some networking code -->
+<script type="text/javascript" src="../../src/common/MemoryCache.js"></script>
+<script type="text/javascript" src="../../src/common/PriorityNetworkDownloader.js"></script>
+
+<!-- This is the media-specific poritions for rendering panoramas -->
+<script type="text/javascript" src="./TiledImagePyramid.js"></script>
+<script type="text/javascript" src="./TiledImagePyramidCoverageMap.js"></script>
+<script type="text/javascript" src="./TiledImagePyramidCuller.js"></script>
+<script type="text/javascript" src="./Panorama.js"></script>
+<script type="text/javascript" src="./Map.js"></script>
+<script type="text/javascript" src="./StreetsidePanorama.js"></script>
+
+<!-- this has helper code for creating RML from streetside and photosynth/partner cubes -->
+<script type="text/javascript" src="./StreetsideCubeFaceTileSource.js"></script>
+<script type="text/javascript" src="./StreetsideRml.js"></script>
+<script type="text/javascript" src="./PhotosynthRml.js"></script>
+<script type="text/javascript" src="./MapRml.js"></script>
+
+<!-- Attribution Control -->
+<script type="text/javascript" src="./AttributionControlNoJQuery.js"></script>
+
+<!-- This has the main run loop -->
+<script type="text/javascript" src="./RWWViewer.js"></script>
+
+
+<script type="text/javascript">
+    $(function () {
+
+        var makeTileSource = function (baseUrl) {
+            return function (x, y, lod) {
+                return baseUrl + lod + '/' + x + '_' + y + '.jpg';
+            };
+        };
+
+      var jet = function (x) {
+            var r = Math.min(4.0 * x - 1.5, -4.0 * x + 4.5);
+            var g = Math.min(4.0 * x - 0.5, -4.0 * x + 3.5);
+            var b = Math.min(4.0 * x + 0.5, -4.0 * x + 2.5);
+
+            r = MathHelper.clamp(r, 0.0, 1.0);
+            g = MathHelper.clamp(g, 0.0, 1.0);
+            b = MathHelper.clamp(b, 0.0, 1.0);
+
+            r *= 255.0;
+            g *= 255.0;
+            b *= 255.0;
+
+            return 'rgba(' + r.toFixed(0) + ',' + g.toFixed(0) + ',' + b.toFixed(0) + ',1.0)';
+        };
+
+        var makeTestTileSource = function(faceName,maxLOD) {
+            maxLOD = maxLOD || 13;
+            var showBorders = true;
+            return function(x, y, lod) {
+                var text = (faceName || '') + ' ' + lod + '(' + x + ',' + y + ')';
+                var r = 1.0 - lod / maxLOD ;
+                var backgroundColor = jet(r);
+                var buffer = document.createElement('canvas');
+                var width = 256, height = 256;
+                buffer.width = width;
+                buffer.height = height;
+                var context = buffer.getContext('2d');
+                context.clearRect(0, 0, width, height);
+                context.fillStyle = backgroundColor || 'gray';
+                context.fillRect(0, 0, width, height);
+                if(showBorders) {
+                    context.strokeStyle = 'black';
+                    context.strokeRect(2,2,width-2,height-2);
+                    context.strokeStyle = '';
+                }
+                context.fillStyle = 'black';
+                context.font = '12pt Segoe UI,sans-serif';
+                context.fillText(text, width*0.3, height*0.3);
+                var textureURL = buffer.toDataURL(); //We pass this into texture below.
+                return textureURL;
+            };
+        };
+
+
+        var createMapRML = function(useTestTileSource) {
+            mapRml = MapRml.create();
+            if(useTestTileSource) {
+                mapRml.source.tileSource = makeTestTileSource('', 27);
+            }
+            return mapRml;
+        };
+
+        var createLocalRML3 = function(useTestTileSource) {
+                    return {
+                        id: '1121251231231231321',
+                        type: 'panorama',
+                        source: {
+                            'dimension': 12032,
+                            'tileSize': 254,
+                            'tileOverlap': 1,
+                            'tileBorder': 1,
+                            'minimumLod': 8,
+                            'bounds': {
+                                'left': -3.141592653589793,
+                                'right': 3.141592653589793,
+                                'top': -1.5707963267948966,
+                                'bottom': 0.4466953450586389
+                            },
+                            'startingPitch': 0,
+                            'startingHeading': 0,
+                            'projectorAspectRatio': 1,
+                            'projectorFocalLength': 0.5,
+                            'frontFace': {
+                                'tileSource': (!useTestTileSource)? makeTileSource('data3/front/') : makeTestTileSource('front'),
+                                'clip': [0, 3200, 0, 8098, 12032, 8098, 12032, 3200],
+
+                            },
+                            'leftFace': {
+                                'tileSource': (!useTestTileSource)? makeTileSource('data3/left/') : makeTestTileSource('left'),
+                                'clip': [0, 3200, 0, 8098, 12032, 8098, 12032, 3200],
+
+                            },
+                            'rightFace': {
+                                'tileSource': (!useTestTileSource)? makeTileSource('data3/right/') : makeTestTileSource('right'),
+                                'clip': [0, 3200, 0, 8093, 12032, 8093, 12032, 3200],
+
+                            },
+                            'backFace': {
+                                'tileSource': (!useTestTileSource)? makeTileSource('data3/back/') : makeTestTileSource('back'),
+                                'clip': [0, 3200, 0, 8093, 12032, 8093, 12032, 3200],
+                            },
+                            'topFace':null,
+                            'bottomFace': null
+                        }
+                    };
+                };
+
+        var createLocalRML2 = function(useTestTileSource) {
+                    return {
+                        id: '1111231231231231321',
+                        type: 'panorama',
+                        source: {
+                            'dimension': 6592,
+                            'tileSize': 254,
+                            'tileOverlap': 1,
+                            'tileBorder': 1,
+                            'minimumLod': 8,
+                            'bounds': {
+                                'left': -3.141592653589793,
+                                'right': 3.141592653589793,
+                                'top': -1.5707963267948966,
+                                'bottom': 0.4466953450586389
+                            },
+                            'startingPitch': 0,
+                            'startingHeading': 0,
+                            'projectorAspectRatio': 1,
+                            'projectorFocalLength': 0.5,
+                            'frontFace': {
+                                'tileSource': (!useTestTileSource)? makeTileSource('data2/front/') : makeTestTileSource('front'),
+                                'clip': [0, 896, 0, 6262, 6592, 6262, 6592, 896],
+                            },
+                            'leftFace': {
+                                'tileSource': (!useTestTileSource)? makeTileSource('data2/left/') : makeTestTileSource('left'),
+                                'clip': [0, 1216, 0, 6262, 6592, 6262, 6592, 1216],
+                            },
+                            'rightFace': {
+                                'tileSource': (!useTestTileSource)? makeTileSource('data2/right/') : makeTestTileSource('right'),
+                                'clip': [0, 1024, 0, 6014, 6592, 6014, 6592, 1024],
+                            },
+                            'backFace': {
+                                'tileSource': (!useTestTileSource)? makeTileSource('data2/back/') : makeTestTileSource('back'),
+                                'clip':  [0, 1088, 0, 6041, 6592, 6041, 6592, 1088],
+
+                            },
+                            'topFace':null,
+                            'bottomFace': null
+                        }
+                    };
+                };
+
+
+
+        var createLocalRML = function(useTestTileSource) {
+                    return {
+                        id: '1231231231231231321',
+                        type: 'panorama',
+                        source: {
+                            'attribution': {
+                                'author': 'Peter',
+                                'attributionUrl' : 'http://petersibley.com',
+                                'licenseUrl': 'http://creativecommons.org/licenses/by-nc-nd/3.0/'
+                            },
+                            'dimension': 5568,
+                            'tileSize': 254,
+                            'tileOverlap': 1,
+                            'tileBorder': 1,
+                            'minimumLod': 8,
+                            'bounds': {
+                                'left': -3.141592653589793,
+                                'right': 3.141592653589793,
+                                'top': -1.5707963267948966,
+                                'bottom': 0.4466953450586389
+                            },
+                            'startingPitch': 0,
+                            'startingHeading': 0,
+                            'projectorAspectRatio': 1,
+                            'projectorFocalLength': 0.5,
+                            'frontFace': {
+                                'tileSource': (!useTestTileSource)? makeTileSource('data/front/') : makeTestTileSource('front'),
+                                'clip': [
+                                            0,
+                                            0,
+                                            0,
+                                            4426,
+                                            5568,
+                                            4426,
+                                            5568,
+                                            0
+                                         ]
+                            },
+                            'leftFace': {
+                                'tileSource': (!useTestTileSource)? makeTileSource('data/left/') : makeTestTileSource('left'),
+                                'clip': [
+                                            0,
+                                            0,
+                                            0,
+                                            4575,
+                                            5568,
+                                            4575,
+                                            5568,
+                                            0
+                                         ]
+                            },
+                            'rightFace': {
+                                'tileSource': (!useTestTileSource)? makeTileSource('data/right/') : makeTestTileSource('right'),
+                                'clip': [
+                                            0,
+                                            0,
+                                            0,
+                                            4577,
+                                            5568,
+                                            4577,
+                                            5568,
+                                            0
+                                         ]
+                            },
+                            'backFace': {
+                                'tileSource': (!useTestTileSource)? makeTileSource('data/back/') : makeTestTileSource('back'),
+                                'clip': [
+                                            0,
+                                            0,
+                                            0,
+                                            4577,
+                                            5568,
+                                            4577,
+                                            5568,
+                                            0
+                                         ]
+                            },
+                            'topFace': {
+                                'tileSource': (!useTestTileSource)? makeTileSource('data/top/') : makeTestTileSource('top'),
+                                'clip': [
+                                            0,
+                                            0,
+                                            0,
+                                            5568,
+                                            5568,
+                                            5568,
+                                            5568,
+                                            0
+                                         ]
+                            }, /*
+                                      'frontFace':null,
+                                      'topFace':null,
+                                      'backFace':null,
+                                      //'leftFace':null,
+                                      'rightFace':null,*/
+                            'bottomFace': {
+                                'tileSource': (!useTestTileSource)? makeTileSource('data/bottom/') : makeTestTileSource('bottom'),
+                                'clip': [
+                                            0,
+                                            0,
+                                            0,
+                                            5568,
+                                            5568,
+                                            5568,
+                                            5568,
+                                            0
+                                         ]
+                            }
+                        }
+                    };
+                };
+
+        var urlParams = {};
+        if(/\?/.test(window.location)) {
+            var params = window.location.toString().split('?')[1];
+            params = params.split('&');
+            for(var i = 0; i < params.length; ++i) {
+                var val = params[i].split('=');
+                var k,v;
+                if(val.length > 1) {
+                    k = val[0];
+                    v = val[1];
+                    urlParams[k] = v;
+                } else if(val.length === 1){
+                    urlParams[val[0]] = true;
+                }
+            }
+        }
+
+        var bubbleId = urlParams.bubbleId || '0000013223301310';
+        if (bubbleId.length !== 16) {
+            bubbleId = parseInt(bubbleId);
+            bubbleId = bubbleId.toString(4); //Convert to a quad key.
+            while (bubbleId.length !== 16) {
+                bubbleId = '0' + bubbleId;
+            }
+        }
+        //INT url
+        //var streetsideRml = StreetsideRml.create('http://t{subdomain}.m2.tiles.live-int.com/tiles/hs{quadkey}.jpg?g=753&n=z', bubbleId, MathHelper.degreesToRadians(0), MathHelper.degreesToRadians(0));
+
+        //PROD url
+        var streetsideRml = StreetsideRml.create('http://ecn.t{subdomain}.tiles.virtualearth.net/tiles/hs{quadkey}.jpg?g=753&n=z', bubbleId, MathHelper.degreesToRadians(0), MathHelper.degreesToRadians(0));
+
+        //everest
+        //var cid = 'a3b27d7a-0655-44fb-a42a-325cf1ae6adb';
+
+        //everest summit
+        //var cid = 'fbefdbc7-e58f-4340-8edf-08c517ff7f0a';
+
+        //malformed json uploaded by v1.0 iPhone client
+        //weird corners - investigate further
+
+		// mattu's Yosemite pano - very high resolution test case.
+        var cid = '5b72dd86-a990-4c48-8095-ab8ad2383455'; //'51DF09DD-B8AE-47A9-A7B2-0E1B9DD0BA48';
+
+        //giant's causeway in Ireland
+        //var jsonUri = 'http://cdn3.ps1.photosynth.net/pano/c01001300-ACoReTHzhyM/0.json';
+
+        //partner pano of Wild Ginger
+        //var jsonUri = "http://media.everyscape.com.edgesuite.net/V2/PANORAMA/AB/MV/1464028/AD4EA678.JSON";
+
+        //Japanese garden
+        //var jsonUri = "http://cdn2.ps1.photosynth.net/pano/c01001200-AHQH3HL8eCM/0.json";
+
+        //360cities pano
+        //var jsonUri = "https://s3.amazonaws.com/t1.360cities/metadata/2015-tst";
+
+        //var jsonUri = "https://s3.amazonaws.com/t1.360cities/metadata/40165-TAdemo";
+
+        //var jsonUri = "http://adammit1/360citiesPano1.json";
+
+        //More 360cities panos from 2/23/2012
+        //var jsonUri = 'http://t1.360cities.s3.amazonaws.com/metadata/beta/926515-france-paris-louvre';
+        var jsonUri = 'http://t1.360cities.s3.amazonaws.com/metadata/beta/373125-carving-workshop-shop';
+
+        var photosynthRml;
+        //PhotosynthRml.createFromCid(cid, function (rml) {
+        PhotosynthRml.createFromJsonUri(jsonUri, function (rml, error) {
+            if (rml == null) {
+                if (error instanceof JsonDownloadFailedException) {
+                    //Failed to download
+                    //TODO: Display some error message to the user; perhaps prompting them to check their network connection.
+                    //      Maybe also send back some analytics to your own servers.  If a given jsonUri fails to download consistently, then remove it from the list of panos.
+                }
+                else if (error instanceof JsonMalformedException) {
+                    //Failed to parse the response of the json request
+                    //TODO: Display some error message to the user and send back some analytics to your servers to indicate that it should be removed from the list of panos.
+                }
+                else {
+                    //Some other unknown error.
+                    //Display some error to the user.
+                }
+            }
+            else {
+                photosynthRml = rml;
+                createViewer();
+            }
+        });
+
+              //local url
+        //var streetsideRml = StreetsideRml.create('streetsidedata/hs{quadkey}.jpg', '0000031212102322');
+
+        var streetsideCameraParameters = StreetsideRml.createCameraParameters(MathHelper.degreesToRadians(0.07), MathHelper.degreesToRadians(-10.8), MathHelper.degreesToRadians(238.98999999999998));
+
+        //This will go away when we get wire up code from Scott.
+
+        var renderer = /webgl/.test(window.location) ?  'webgl' : (/ie10/.test(window.location) ? 'ie10' :  (/css/.test(window.location) ? 'css' : 'webgl'));
+        var rmlSource = /local/.test(window.location) ? 'local' : (/streetside/.test(window.location) ? 'streetside' : (/test/.test(window.location)? 'test':'photosynth'));
+        var viewer;
+
+        function createViewer() {
+            var viewState = null;
+            var oldType = null;
+            if (viewer) {
+                viewState = viewer.getViewState();
+                oldType = viewer.sourceType;
+                viewer.dispose();
+            }
+
+            var source,
+                sourceType = $('input[name=rmlSourceRadio]:checked').val();
+            switch(sourceType) {
+                case 'photosynth':
+                    source = photosynthRml;
+                    break;
+                case 'streetside':
+                    source = streetsideRml;
+                    break;
+				case 'map':
+					source = createMapRML(false);
+					break;
+                case 'local':
+                    source = createLocalRML(false);
+                    break;
+                case 'local2':
+                    source = createLocalRML2(false);
+                    break;
+                case 'local3':
+                    source = createLocalRML3(false);
+                    break;
+                case 'test':
+                    source = createMapRML(true);
+                    break;
+                default:
+                    source = createLocalRML(false);
+                    break;
+            }
+
+            var isStreetside = ($('input[name=rmlSourceRadio]:checked').val() == 'streetside');
+
+            if(isStreetside) {
+                viewState = viewState || streetsideCameraParameters;
+            }
+
+            //Finally reset the camera if we've changed media type.
+            if(oldType !== sourceType) {
+                viewState = (isStreetside)? streetsideCameraParameters : null;
+            }
+
+            viewer = new RwwViewer(document.getElementById('parentDiv'), {
+                rml: source,
+                renderer: $('input[name=rendererRadio]:checked').val(),
+                cameraParameters: viewState,
+                //hideAttribution:true,
+                //attributionChanged:function(attribution) {alert('Test!');}, optional
+                backgroundColor: (isStreetside) ? { r: 0.4, g: 0.4, b: 0.4, a: 1 }: null,
+                width: 1200,
+                height: 900
+            });
+
+            viewer.sourceType = sourceType;
+            window.viewer = viewer;
+
+            //viewer.downloadAll("panorama", [1.0], function (progressSuccessCount) {
+            //    //do something here
+            //},
+            //function (finalSucessCount, finalFailureCount) {
+            //    //do something here
+            //}, true);
+        }
+
+        $('#' + renderer).attr('checked', 'checked');
+        $('#' + rmlSource).attr('checked', 'checked');
+
+        if ($('input[name=rmlSourceRadio]:checked').val() !== 'photosynth') {
+            createViewer();
+        }
+
+        $('#rendererRadio').buttonset()
+                           .change(createViewer);
+        $('#rmlSourceRadio').buttonset()
+                           .change(createViewer);
+        $('#testTileRenderable').button()
+                                .change(createViewer);
+        (function () {
+            var debugCubePoiElem = null;
+
+            $('#testPoi').button()
+                        .change(function (e) {
+                            var controller = viewer.getActiveCameraController();
+                            if (debugCubePoiElem == null) {
+                                debugCubePoiElem = document.createElement('div');
+                                debugCubePoiElem.style = "position: absolute; width: 100%; height: 100%;";
+                                document.getElementById('parentDiv').appendChild(debugCubePoiElem);
+                            }
+
+                            if (!controller.setViewChangeCallback || !controller.tryPitchHeadingToPixel) {
+                                return;
+                            }
+
+                            if (this.checked) {
+                                function removePoi() {
+                                    while (debugCubePoiElem.childNodes.length > 0) {
+                                        debugCubePoiElem.removeChild(debugCubePoiElem.childNodes[0]);
+                                    }
+                                }
+
+                                function updatePoi() {
+                                    removePoi();
+
+                                    var size = viewer.getViewportSize();
+
+                                    for (var pitch = -90; pitch <= 90; pitch += 30) {
+                                        for (var heading = 0; heading < 360; heading += 30) {
+                                            var position = controller.tryPitchHeadingToPixel(MathHelper.degreesToRadians(pitch), MathHelper.degreesToRadians(heading));
+
+                                            if (position != null && position.x >= 0 && position.y >= 0 && position.x <= size.x && position.y <= size.y) {
+                                                var debugDiv = document.createElement('div');
+                                                debugDiv.innerHTML = heading + ',' + pitch;
+                                                debugDiv.style.position = "absolute";
+                                                debugDiv.style.left = position.x + 'px';
+                                                debugDiv.style.top = position.y + 'px';
+
+                                                var calculatedPitchHeading = controller.tryPixelToPitchHeading(position);
+                                                if (calculatedPitchHeading) {
+                                                    debugDiv.innerHTML += '<br>' + MathHelper.radiansToDegrees(calculatedPitchHeading.heading).toFixed(0) + ',' + MathHelper.radiansToDegrees(calculatedPitchHeading.pitch).toFixed(0);
+                                                }
+
+                                                debugCubePoiElem.appendChild(debugDiv);
+                                            }
+                                        }
+                                    }
+                                }
+
+                                controller.setViewChangeCallback(updatePoi);
+                                updatePoi();
+                            } else {
+                                controller.setViewChangeCallback(null);
+                                removePoi();
+                            }
+                        });
+        } ());
+    });
+</script>
+
+<style>
+
+    html {
+        overflow: hidden;
+        -ms-content-zooming: none; /* Disable pan/zoom */
+    }
+
+    body {
+        font-family: "Segoe UI",  "Helvetica",  "Arial", "Verdana", "sans-serif";
+        font-size: 12px;
+        background-color: black;
+        color: White;
+    }
+
+    .parent {
+        width: 1200px;
+        height: 900px;
+        position:absolute;
+        overflow: hidden;
+        -ms-content-zooming: none; /* Disable pan/zoom */
+    }
+
+    .debug {
+        position:absolute;
+        width: 700px;
+        height: 700px;
+        top:650px;
+        border-style: solid;
+        border-width: 1px;
+        border-color: gray;
+    }
+    .debugText {
+        width: 700px;
+        position: absolute;
+        height: 50px;
+        top:610px;
+        font-size: 12pt;
+        background-color:white;
+        border-style: solid;
+        border-width: 1px;
+        border-color: gray;
+        color:black;
+    }
+    .controls {
+        width: 100%;
+        height: 20px;
+    }
+
+    .errorMessage {
+        font-size: 18pt;
+        color: white;
+        width: 500px;
+        height:300px;
+        position:absolute;
+        top:300px;
+        left:300px;
+    }
+</style>
+</head>
+<body>
+<div class="parent" id="parentDiv">
+</div>
+<div id ="hiddenDiv" style="display:none;"> </div>
+<div class="controls"  id="controls">
+   <div id="rendererRadio" style="margin:5px" height="auto" >
+       <input type="radio" value="webgl" id="webgl" name="rendererRadio"/><label for="webgl">Canvas3D</label>
+       <input type="radio" value="css"   id="css"   name="rendererRadio"/><label for="css">CSS3-3D</label>
+       <input type="radio" value="flash" id="flash" name="rendererRadio"/><label for="flash">Flash</label>
+       <input type="radio" value=""      id="default" name="rendererRadio"/><label for="default">Default</label>
+   </div>
+   <div id="rmlSourceRadio" style="margin:5px" height="auto" >
+       <input type="radio" value="local3"     id="local3"    name="rmlSourceRadio"/><label for="local3">Salar de Uyuni</label>
+       <input type="radio" value="local2"     id="local2"    name="rmlSourceRadio"/><label for="local2">Mountain</label>
+       <input type="radio" value="local"      id="local"      name="rmlSourceRadio"/><label for="local">Bld99</label>
+       <input type="radio" value="streetside" id="streetside" name="rmlSourceRadio"/><label for="streetside">Streetside</label>
+       <input type="radio" value="photosynth" id="photosynth" name="rmlSourceRadio"/><label for="photosynth">Photosynth</label>
+       <input type="radio" value="map" id="map" name="rmlSourceRadio"/><label for="map">Map</label>
+       <input type="radio" value="test" id="test" name="rmlSourceRadio"/><label for="test">test tiles</label>
+   </div>
+   <div style="margin:5px">
+       <input type="checkbox" name="" value="unchecked" name="testPoi" id="testPoi"/> <label for="testPoi">Test Poi</label>
+   </div>
+</div>
+<div id="debugContainer" style="display:none">
+</div>
+<div id="debugText" class="debugText">
+</div>
+<div id="errorMessage" class="errorMessage" style="display:none"></div>
+</body>
+</html>

@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfDoqData xmlns="http://schemas.datacontract.org/2004/07/WorkTopDB">
+  <DoqData xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+    <CreatorID>3b32449f-ef58-4dfa-a200-de5608718ecf</CreatorID>
+    <Extension>.png</Extension>
+    <Identifier>e10aed81-a0d7-413c-ae13-923d249eb16c</Identifier>
+    <Metadata>
+      <Dicts xmlns:d3p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+        <d3p1:KeyValueOfguidMetadataDictionaryYwP_PEBe9>
+          <d3p1:Key>3b32449f-ef58-4dfa-a200-de5608718ecf</d3p1:Key>
+          <d3p1:Value>
+            <Dict>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>Exhibition</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">1</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>__Created</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">6/14/2012 4:34:18 PM</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>DeepZoom</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">http://cs.brown.edu/research/lads/LADS2.0Data/Documents/gari/garidz/dz.xml</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>Title</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">Snow Leopard</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>Type</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">Artwork</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>Artist</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">Apple</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>Year</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">2010</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>Description</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">This is snow leopard.</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>Location</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">[{ "resource": { "__type": "Location:http://schemas.microsoft.com/search/local/ws/rest/v1", "bbox": [45.272090911865234, -92.37870788574219, 45.296871185302734, -92.35718536376953], "name": "Amery Municipal Airport, WI", "point": { "type": "Point", "coordinates": [45.284481048583984, -92.36795043945312] }, "address": { "adminDistrict": "WI", "adminDistrict2": "Polk Co.", "countryRegion": "United States", "formattedAddress": "Amery Municipal Airport, WI", "landmark": "Amery Municipal Airport" }, "confidence": "High", "entityType": "Airport", "geocodePoints": [{ "type": "Point", "coordinates": [45.284481048583984, -92.36795043945312], "calculationMethod": "Rooftop", "usageTypes": ["Display"] }], "matchCodes": ["Good"] }, "address": "Amery Municipal Airport, WI", "hasDate": false }, { "resource": { "__type": "Location:http://schemas.microsoft.com/search/local/ws/rest/v1", "bbox": [20.051799774169922, -98.77999114990234, 20.059789657592773, -98.7667007446289], "name": "F, Mexico", "point": { "type": "Point", "coordinates": [20.055795669555664, -98.77334594726562] }, "address": { "adminDistrict": "HGO", "adminDistrict2": "Pachuca de Soto", "countryRegion": "Mexico", "formattedAddress": "F, Mexico", "locality": "F" }, "confidence": "High", "entityType": "Neighborhood", "geocodePoints": [{ "type": "Point", "coordinates": [20.055795669555664, -98.77334594726562], "calculationMethod": "Rooftop", "usageTypes": ["Display"] }], "matchCodes": ["Good"] }, "address": "F, Mexico", "hasDate": false }]</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>Medium</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">Electronic</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>Thumbnail</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">http://icongal.com/gallery/image/31975/mac_laptop_macbook_pro_computer_snow_leopard.png</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+            </Dict>
+          </d3p1:Value>
+        </d3p1:KeyValueOfguidMetadataDictionaryYwP_PEBe9>
+      </Dicts>
+    </Metadata>
+    <Name>Artwork 1</Name>
+    <PrototypeID>00000000-0000-0000-0000-000000000000</PrototypeID>
+    <Thumbnail>==</Thumbnail>
+    <Type>Image</Type>
+    <URL>http://icongal.com/gallery/image/31975/mac_laptop_macbook_pro_computer_snow_leopard.png</URL>
+  </DoqData>
+  <DoqData xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+    <CreatorID>3b32449f-ef58-4dfa-a200-de5608718ecf</CreatorID>
+    <Extension>.png</Extension>
+    <Identifier>479eed53-e31d-4fb9-a802-bf590a42a3a9</Identifier>
+    <Metadata>
+      <Dicts xmlns:d3p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+        <d3p1:KeyValueOfguidMetadataDictionaryYwP_PEBe9>
+          <d3p1:Key>3b32449f-ef58-4dfa-a200-de5608718ecf</d3p1:Key>
+          <d3p1:Value>
+            <Dict>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>__Created</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">6/15/2012 3:32:40 PM</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>Type</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">Artwork</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>Title</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">Sunflower</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>Artist</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">Wanderer</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>Year</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">2012</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>Description</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">This is a sunflower garden.</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>Location</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">Boston, MA</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>Medium</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">Photograph</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>Exhibition</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">1</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>DeepZoom</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">http://cs.brown.edu/research/lads/LADS2.0Data/Documents/gari/garidz/dz.xml</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>Thumbnail</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">http://demo.studiopress.com/pixelhappy/files/2010/02/nature_3.png</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+            </Dict>
+          </d3p1:Value>
+        </d3p1:KeyValueOfguidMetadataDictionaryYwP_PEBe9>
+      </Dicts>
+    </Metadata>
+    <Name>Sunflower</Name>
+    <PrototypeID>00000000-0000-0000-0000-000000000000</PrototypeID>
+    <Thumbnail>C</Thumbnail>
+    <Type>Image</Type>
+    <URL>http://demo.studiopress.com/pixelhappy/files/2010/02/nature_3.png</URL>
+  </DoqData>
+  <DoqData xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+    <CreatorID>3b32449f-ef58-4dfa-a200-de5608718ecf</CreatorID>
+    <Extension>.jpg</Extension>
+    <Identifier>da943563-3cc2-47f1-b0d5-cb5f2e0cce69</Identifier>
+    <Metadata>
+      <Dicts xmlns:d3p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+        <d3p1:KeyValueOfguidMetadataDictionaryYwP_PEBe9>
+          <d3p1:Key>3b32449f-ef58-4dfa-a200-de5608718ecf</d3p1:Key>
+          <d3p1:Value>
+            <Dict>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>__Created</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">6/19/2012 11:10:39 AM</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>Type</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">Artwork</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>Title</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">THE Mohsan Elahi</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>Artist</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">Dhruv Rawat</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>Year</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">2012</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>Location</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">Providence, RI</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>Description</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">God save the queen!</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>Medium</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">Photograph</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>Exhibition</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">1</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>DeepZoom</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">http://cs.brown.edu/research/lads/LADS2.0Data/Documents/gari/garidz/dz.xml</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+              <d3p1:KeyValueOfstringanyType>
+                <d3p1:Key>Thumbnail</d3p1:Key>
+                <d3p1:Value xmlns:d8p1="http://www.w3.org/2001/XMLSchema" i:type="d8p1:string">http://oneyoungworld-com.win33.glodns.net/userfiles/images/delegate_pics/1325380321twitter.jpg</d3p1:Value>
+              </d3p1:KeyValueOfstringanyType>
+            </Dict>
+          </d3p1:Value>
+        </d3p1:KeyValueOfguidMetadataDictionaryYwP_PEBe9>
+      </Dicts>
+    </Metadata>
+    <Name>Mohsan Elahi</Name>
+    <PrototypeID>00000000-0000-0000-0000-000000000000</PrototypeID>
+    <Thumbnail>I=</Thumbnail>
+    <Type>Image</Type>
+    <URL>http://oneyoungworld-com.win33.glodns.net/userfiles/images/delegate_pics/1325380321twitter.jpg</URL>
+  </DoqData>
+</ArrayOfDoqData>

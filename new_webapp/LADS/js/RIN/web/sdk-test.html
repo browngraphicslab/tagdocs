@@ -1,0 +1,25 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <title>Rich Interactive Narratives</title>
+
+    <!-- rin player -->
+    <script type="text/javascript" src="lib/rin-core-1.0.js"></script>
+
+    <!-- Optional Libraries -->
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.1.0.js"></script>
+
+    <!-- Custom Experience Stream Scripts -->
+    <script type="text/javascript" src="lib/ImageES.js"></script>
+
+    <!-- Page Specific Javascripts -->
+    <script type="text/javascript">
+    </script>
+</head>
+<body onload="rin.processAll()">
+    <p>First RIN Experiment</p>
+    <div id="myrin" style="width: 500px; height: 500px" class="rinPlayer" data-src="narratives/sample/narrative.js" data-options="autoplay=true&loop=true"></div>
+</body>
+</html>

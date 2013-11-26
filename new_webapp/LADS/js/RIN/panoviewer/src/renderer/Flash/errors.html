@@ -1,0 +1,172 @@
+<html>
+	<head>
+		<title>Actionscript/Javascript Test</title>
+		<script src="./swfobject.js" type="text/javascript"></script>
+		<script src="./jsmath.js" type="text/javascript"></script>
+		<style type="text/css">
+			#form1{float:left; padding:10px;}
+			#formTxt{float:left; padding:10px;}
+			#form2{float:left; padding:10px;}
+		    #flash{position:relative;}
+		</style>
+		<script>
+
+			function getFlashMovie(movieName) {
+				var isIE = navigator.appName.indexOf("Microsoft") != -1;
+				return (isIE) ? window[movieName] : document[movieName];
+			}
+
+
+            var text;
+            function start(){
+                var f = getFlashMovie(flash);
+                text = f.createTexture("./data/lobby/data/right/10/0_1.jpg",true);
+                swap();
+                update();
+                errors();
+            }
+
+            function errors(){
+                var f = getFlashMovie(flash);
+                var rend = f.createTexturedGridRenderable(1,3,5,5,["a",1,3,2],"rgbtexture.png",true);
+
+                f.removeRenderable(rend);
+                f.addRenderable(rend);
+                f.deleteRenderable(rend);
+                f.animateRenderable(rend,null,null,1,"noe");
+
+                rend = f.createRenderable("geom","rgbtexture.png","tran",0);
+                f.addRenderable(rend);
+
+                f.loadTexture("not real");
+                f.unloadTexture("text");
+                f.isTextureFetched("text");
+                f.deleteTexture("text");
+                f.createTransform([2,4,2,1]);
+                f.deleteTransform(null);
+                f.setViewProjectionMatrix([1,3,2]);
+                f.setRenderingOptions(null);
+                f.clear(0xff0000);
+
+
+
+
+            }
+
+            function update(){
+                var f = getFlashMovie(flash);
+                f.render();
+                setTimeout("update()", 20);
+            }
+            var small=new Array();
+            var flash = "SFRAPI";
+            var smallActive = false;
+            function swap(){
+                loadSmall();
+            }
+
+            function animate(){
+                var f = getFlashMovie(flash);
+
+                var startProperties = new Object;
+                var endProperties = new Object;
+                var start =parseFloat(document.getElementById("animationText").tran1Start.value);
+                var end = parseFloat(document.getElementById("animationText").tran1End.value);
+                var property = document.getElementById("animationText").tran1Name.value;
+                startProperties[property]=start;
+                endProperties[property]=end;
+                start =parseFloat(document.getElementById("animationText").tran2Start.value);
+                end = parseFloat(document.getElementById("animationText").tran2End.value);
+                property = document.getElementById("animationText").tran2Name.value;
+                startProperties[property]=start;
+                endProperties[property]=end;
+
+                for(var i=0;i<cubes.length;i++){
+                   f.animateRenderable(cubes[i],startProperties,endProperties,3,"ease");
+                }
+
+            }
+            var cubes= new Array();
+            function loadSmall(){
+                var f = getFlashMovie(flash);
+
+                var tex = f.createTexture("./data/lobby/data/right/10/2_1.jpg",true);
+				var width= .07;
+				var height= .07;
+				var depth= 0.07;
+                var rend;
+				var geom = f.createGeometry([0,0,0, width,0,0, width,height,0, 0,height,0,     0,0,depth, width,0,depth, width,height,depth, 0,width,depth,/*these are bugs*/ 4,3],[0,1, 1,1, 0,0, 1,0, 0,1, 1,1, 0,0, 1,0,    1],[0,2,1, 0,3,2, 1,2,6, 6,5,1, 4,5,6, 6,7,4, 2,3,6, 6,3,7, 0,7,3, 0,4,7, 0,1,5, 0,5,4,    2,3],0);
+                for(var i= 0;i<343;i++){
+                    var tran = f.createTransform(new Array(1,0,0,Math.random()*2-1, 0,1,0,Math.random()*2-1, 0,0,1,1, 0,0,0,1));
+
+                    rend = f.createRenderable(geom,tex,tran,0);
+                    f.addRenderable(rend);
+
+                    cubes.push(rend);
+                }
+
+                alert("added rend"+rend);
+            }
+
+            var face=true;
+            var or=false;
+            function backfaceCulling(){
+                var f = getFlashMovie(flash);
+                face=!face;
+                f.setRenderingOptions({backface_culling:face});
+            }
+
+
+		</script>
+
+	</head>
+
+	<body>
+		<div id="flash">
+			Flash content goes here.
+		</div>
+		<script>
+			var so = new SWFObject('main.swf', 'SFRAPI', '600', '600', '9.0', '#FFFFFF');
+			so.write("flash");
+		</script>
+
+
+		<form action="javascript:swap()" id="form2">
+		    <input type="submit" value="add more" />
+		</form>
+		<form action="javascript:start()" id="form3">
+		    <input type="submit" value="start" />
+		</form>
+		<form action="javascript:animate()" id="form4">
+		    <input type="submit" value="animate" />
+		</form>
+		<form action="javascript:backfaceCulling()" id="form5">
+		    <input type="submit" value="set backface culling" />
+		</form>
+		<form action="javascript:order()" id="form6">
+		    <input type="submit" value="set order" />
+		</form>
+        <br/>
+        <form id="animationText">
+            name
+            <input type="text" name="tran1Name"/>
+            start
+            <input type="text" name="tran1Start"/>
+            end
+            <input type="text" name="tran1End"/>
+            <br/>
+            name
+            <input type="text" name="tran2Name"/>
+            start
+            <input type="text" name="tran2Start"/>
+            end
+            <input type="text" name="tran2End"/>
+        </form>
+        <br/>
+		<p id="formTxt">
+        Click start to load 342 cubes and start the rendering.  animate animates the cubes.  Clicking add more will add an additional 342 cubes to the scene.
+        </p>
+
+
+	</body>
+</html>

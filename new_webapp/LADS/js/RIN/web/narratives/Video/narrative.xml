@@ -1,0 +1,1342 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--Copyright (c) 2010-2011 Microsoft Research. WARNING: The RIN XML format is under active development and subject to change.-->
+<Narrative
+  RinVersion="0.0">
+  <NarrativeHeader xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    Guid="6aa09d19-cf2b-4c8e-8b57-7ea8701794f7"
+    Timestamp="2011-07-29T00:48:12.8847651Z"
+    StartSegment="defaultSegment" />
+  <AuxiliaryData>
+    <Item
+      Key="narrative-info">
+      <NarrativeData>
+        <Title>DigNarrative_072811v4</Title>
+        <Author>jergru</Author>
+        <Description>Description</Description>
+        <Branding></Branding>
+        <AspectRatio>WideScreen</AspectRatio>
+      </NarrativeData>
+    </Item>
+  </AuxiliaryData>
+  <Segments>
+    <Segment
+      Id="defaultSegment">
+      <SegmentHeader
+        EstimatedDuration="328.464"
+        DefaultScreenplay="SCP1" />
+      <ResourceTable>
+        <Resource
+          Id="R-1">
+          <ResourceHeader
+            DefaultUriReference="DigNarrative_072811v4_Media/dzc_output.xml" />
+        </Resource>
+        <Resource
+          Id="R-7">
+          <ResourceHeader
+            DefaultUriReference="http://photosynth.net/view.aspx?cid=5007e5dd-898c-4daa-90f7-4c228273a51e" />
+        </Resource>
+        <Resource
+          Id="R-9">
+          <ResourceHeader
+            DefaultUriReference="http://photosynth.net/view.aspx?cid=9ecb2489-2684-425f-a4da-6e1571fab29a" />
+        </Resource>
+        <Resource
+          Id="R-17">
+          <ResourceHeader
+            DefaultUriReference="DigNarrative_072811v4_Media/dzc_output-wsu.xml" />
+        </Resource>
+        <Resource
+          Id="R-26">
+          <ResourceHeader
+            DefaultUriReference="DigNarrative_072811v4_Media/1_Grain%201080P_v3.mp4" />
+        </Resource>
+        <Resource
+          Id="R-27">
+          <ResourceHeader
+            DefaultUriReference="DigNarrative_072811v4_Media/2_Grain%201080P_v3.mp4" />
+        </Resource>
+        <Resource
+          Id="R-28">
+          <ResourceHeader
+            DefaultUriReference="DigNarrative_072811v4_Media/3_Grain%201080P_v3.mp4" />
+        </Resource>
+        <Resource
+          Id="R-29">
+          <ResourceHeader
+            DefaultUriReference="DigNarrative_072811v4_Media/4_Grain%201080P_v3.mp4" />
+        </Resource>
+        <Resource
+          Id="R-30">
+          <ResourceHeader
+            DefaultUriReference="DigNarrative_072811v4_Media/5_Grain%201080P_v3.mp4" />
+        </Resource>
+        <Resource
+          Id="R-31">
+          <ResourceHeader
+            DefaultUriReference="DigNarrative_072811v4_Media/6_Grain%201080P_v3.mp4" />
+        </Resource>
+        <Resource
+          Id="R-32">
+          <ResourceHeader
+            DefaultUriReference="DigNarrative_072811v4_Media/7_Grain%201080P_v3.mp4" />
+        </Resource>
+        <Resource
+          Id="R-33">
+          <ResourceHeader
+            DefaultUriReference="DigNarrative_072811v4_Media/DigNarrative_BGMusic.mp3" />
+        </Resource>
+      </ResourceTable>
+      <ExperienceStreams>
+        <ExperienceStream
+          Id="VideoExperienceStream-22">
+          <ExperienceStreamHeader
+            DefaultKeyframeSequence="defaultSequence">
+            <Provider
+              Name="MicrosoftResearch.Rin.VideoExperienceStream"
+              Version="0.0" />
+          </ExperienceStreamHeader>
+          <AuxiliaryData>
+            <Item
+              Key="transition">
+              <Info
+                TransitionProvider="MicrosoftResearch.Rin.SLPlayer.FadeInOutTransitionService"
+                TransitionInDuration="2"
+                TransitionOutDuration="2" />
+            </Item>
+            <Item
+              Key="Markers">
+              <Markers
+                beginAt="0"
+                endAt="32.615949199999996" />
+            </Item>
+          </AuxiliaryData>
+          <RequiredResourcesOnLoad>
+            <ResourceReference
+              Ref="R-26" />
+          </RequiredResourcesOnLoad>
+          <KeyframeSequences>
+            <KeyframeSequence
+              Id="defaultSequence">
+              <KeyframeSequenceHeader
+                Duration="32.616" />
+            </KeyframeSequence>
+          </KeyframeSequences>
+        </ExperienceStream>
+        <ExperienceStream
+          Id="MapExperienceStream-1">
+          <ExperienceStreamHeader
+            DefaultKeyframeSequence="defaultSequence">
+            <Provider
+              Name="MicrosoftResearch.Rin.MapExperienceStream"
+              Version="0.0" />
+          </ExperienceStreamHeader>
+          <AuxiliaryData>
+            <Item
+              Key="transition">
+              <Info
+                TransitionProvider="MicrosoftResearch.Rin.SLPlayer.FadeInOutTransitionService"
+                TransitionInDuration="2"
+                TransitionOutDuration="2" />
+            </Item>
+          </AuxiliaryData>
+          <KeyframeSequences>
+            <KeyframeSequence
+              Id="defaultSequence">
+              <KeyframeSequenceHeader
+                Duration="11.2" />
+              <AuxiliaryData>
+                <Item
+                  Key="ContentType">
+                  <Map />
+                </Item>
+              </AuxiliaryData>
+              <Keyframes>
+                <Keyframe>
+                  <KeyframeHeader
+                    Offset="0"
+                    HoldDuration="0.5" />
+                  <AuxiliaryData>
+                    <Item
+                      Key="default">
+                      <MapKeyframes>
+                        <MapBoundsKeyframe
+                          North="47.680274964232453"
+                          West="-122.2123269861589"
+                          South="47.676937659456669"
+                          East="-122.20351861175399" />
+                        <MapStyleKeyframe
+                          Style="AerialWithLabels" />
+                        <MapEntityKeyframe
+                          EntityId="Kirkland, WA"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                      </MapKeyframes>
+                    </Item>
+                    <Item
+                      Key="TransitionTime">
+                      <TransitionTime>0</TransitionTime>
+                    </Item>
+                    <Item
+                      Key="PauseDuration">
+                      <PauseDuration>0.5</PauseDuration>
+                    </Item>
+                    <Item
+                      Key="keyframeThumbnail">
+                      <Thumbnail>4a979432-93ee-418d-a7b0-2dc1b3169737_keyframe_ac732c6f-86f2-46bd-b4f2-bd18d4c4eb67.bmp</Thumbnail>
+                    </Item>
+                  </AuxiliaryData>
+                </Keyframe>
+                <Keyframe>
+                  <KeyframeHeader
+                    Offset="11.2"
+                    HoldDuration="0" />
+                  <AuxiliaryData>
+                    <Item
+                      Key="default">
+                      <MapKeyframes>
+                        <MapBoundsKeyframe
+                          North="47.504210869314292"
+                          West="-117.62203350663185"
+                          South="47.477416478892096"
+                          East="-117.55156651139259" />
+                        <MapStyleKeyframe
+                          Style="AerialWithLabels" />
+                        <MapEntityKeyframe
+                          EntityId="Kirkland, WA"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="Pasco, WA"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                        <MapEntityKeyframe
+                          EntityId="Eastern Washington University, WA"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                      </MapKeyframes>
+                    </Item>
+                    <Item
+                      Key="TransitionTime">
+                      <TransitionTime>10.7</TransitionTime>
+                    </Item>
+                    <Item
+                      Key="PauseDuration">
+                      <PauseDuration>0</PauseDuration>
+                    </Item>
+                    <Item
+                      Key="keyframeThumbnail">
+                      <Thumbnail>4a979432-93ee-418d-a7b0-2dc1b3169737_keyframe_f35e8ccd-6526-43b5-9d09-717df249934d.bmp</Thumbnail>
+                    </Item>
+                  </AuxiliaryData>
+                </Keyframe>
+              </Keyframes>
+            </KeyframeSequence>
+          </KeyframeSequences>
+        </ExperienceStream>
+        <ExperienceStream
+          Id="VideoExperienceStream-23">
+          <ExperienceStreamHeader
+            DefaultKeyframeSequence="defaultSequence">
+            <Provider
+              Name="MicrosoftResearch.Rin.VideoExperienceStream"
+              Version="0.0" />
+          </ExperienceStreamHeader>
+          <AuxiliaryData>
+            <Item
+              Key="transition">
+              <Info
+                TransitionProvider="MicrosoftResearch.Rin.SLPlayer.FadeInOutTransitionService"
+                TransitionInDuration="2"
+                TransitionOutDuration="2" />
+            </Item>
+            <Item
+              Key="Markers">
+              <Markers
+                beginAt="0"
+                endAt="16.8918918" />
+            </Item>
+          </AuxiliaryData>
+          <RequiredResourcesOnLoad>
+            <ResourceReference
+              Ref="R-27" />
+          </RequiredResourcesOnLoad>
+          <KeyframeSequences>
+            <KeyframeSequence
+              Id="defaultSequence">
+              <KeyframeSequenceHeader
+                Duration="16.892" />
+            </KeyframeSequence>
+          </KeyframeSequences>
+        </ExperienceStream>
+        <ExperienceStream
+          Id="ZoomableMediaExperienceStream-2">
+          <ExperienceStreamHeader
+            DefaultKeyframeSequence="defaultSequence">
+            <Provider
+              Name="MicrosoftResearch.Rin.ZoomableMediaExperienceStream"
+              Version="0.0" />
+          </ExperienceStreamHeader>
+          <AuxiliaryData>
+            <Item
+              Key="transition">
+              <Info
+                TransitionProvider="MicrosoftResearch.Rin.SLPlayer.FadeInOutTransitionService"
+                TransitionInDuration="2"
+                TransitionOutDuration="2" />
+            </Item>
+          </AuxiliaryData>
+          <RequiredResourcesOnLoad>
+            <ResourceReference
+              Ref="R-1" />
+          </RequiredResourcesOnLoad>
+          <KeyframeSequences>
+            <KeyframeSequence
+              Id="defaultSequence">
+              <KeyframeSequenceHeader
+                Duration="12.899999999999999" />
+              <AuxiliaryData>
+                <Item
+                  Key="ContentType">
+                  <SingleDeepZoomImage />
+                </Item>
+              </AuxiliaryData>
+              <Keyframes>
+                <Keyframe>
+                  <KeyframeHeader
+                    Offset="0"
+                    HoldDuration="0.5" />
+                  <AuxiliaryData>
+                    <Item
+                      Key="default">
+                      <ZoomableMediaKeyframe
+                        Media_Type="SingleDeepZoomImage"
+                        Media_Source="R-1"
+                        Viewport_X="0.5923811970600481"
+                        Viewport_Y="0.29659771339558905"
+                        Viewport_Width="0.00025961484292674151"
+                        Viewport_Height="0.00014609263999044406"
+                        Highlight_Visible="false"
+                        Highlight_X="0"
+                        Highlight_Y="0"
+                        Highlight_Width="0"
+                        Highlight_Height="0"
+                        Highlight_Render_Style="NoHighlight"
+                        Highlight_Render_Attribs=""
+                        Media_AspRatio="0.53243931310913006" />
+                    </Item>
+                    <Item
+                      Key="TransitionTime">
+                      <TransitionTime>0</TransitionTime>
+                    </Item>
+                    <Item
+                      Key="PauseDuration">
+                      <PauseDuration>0.5</PauseDuration>
+                    </Item>
+                    <Item
+                      Key="keyframeThumbnail">
+                      <Thumbnail>11a6ab9c-7cce-4c45-b4c4-bb45b6c44cdd_keyframe_cdd2ecd5-6e5f-45a7-b549-46d6bc835636.bmp</Thumbnail>
+                    </Item>
+                  </AuxiliaryData>
+                </Keyframe>
+                <Keyframe>
+                  <KeyframeHeader
+                    Offset="9.25"
+                    HoldDuration="0" />
+                  <AuxiliaryData>
+                    <Item
+                      Key="default">
+                      <ZoomableMediaKeyframe
+                        Media_Type="SingleDeepZoomImage"
+                        Media_Source="R-1"
+                        Viewport_X="0.39608882833680603"
+                        Viewport_Y="0.18008906525097232"
+                        Viewport_Width="0.40629150524062591"
+                        Viewport_Height="0.22863176056171641"
+                        Highlight_Visible="false"
+                        Highlight_X="0"
+                        Highlight_Y="0"
+                        Highlight_Width="0"
+                        Highlight_Height="0"
+                        Highlight_Render_Style="NoHighlight"
+                        Highlight_Render_Attribs=""
+                        Media_AspRatio="0.53243931310913006" />
+                    </Item>
+                    <Item
+                      Key="TransitionTime">
+                      <TransitionTime>8.75</TransitionTime>
+                    </Item>
+                    <Item
+                      Key="PauseDuration">
+                      <PauseDuration>0</PauseDuration>
+                    </Item>
+                    <Item
+                      Key="keyframeThumbnail">
+                      <Thumbnail>11a6ab9c-7cce-4c45-b4c4-bb45b6c44cdd_keyframe_08da70cf-827a-42c3-a5de-d0e5deead3ed.bmp</Thumbnail>
+                    </Item>
+                  </AuxiliaryData>
+                </Keyframe>
+                <Keyframe>
+                  <KeyframeHeader
+                    Offset="12.9"
+                    HoldDuration="0" />
+                  <AuxiliaryData>
+                    <Item
+                      Key="default">
+                      <ZoomableMediaKeyframe
+                        Media_Type="SingleDeepZoomImage"
+                        Media_Source="R-1"
+                        Viewport_X="0.010699581373896733"
+                        Viewport_Y="0.1466652050468033"
+                        Viewport_Width="0.32768"
+                        Viewport_Height="0.18439483556638245"
+                        Highlight_Visible="false"
+                        Highlight_X="0"
+                        Highlight_Y="0"
+                        Highlight_Width="0"
+                        Highlight_Height="0"
+                        Highlight_Render_Style="NoHighlight"
+                        Highlight_Render_Attribs=""
+                        Media_AspRatio="0.53243931310913006" />
+                    </Item>
+                    <Item
+                      Key="TransitionTime">
+                      <TransitionTime>3.65</TransitionTime>
+                    </Item>
+                    <Item
+                      Key="PauseDuration">
+                      <PauseDuration>0</PauseDuration>
+                    </Item>
+                    <Item
+                      Key="keyframeThumbnail">
+                      <Thumbnail>11a6ab9c-7cce-4c45-b4c4-bb45b6c44cdd_keyframe_e315fb66-dfa5-4f34-b484-fcba3c0ca08e.bmp</Thumbnail>
+                    </Item>
+                  </AuxiliaryData>
+                </Keyframe>
+              </Keyframes>
+            </KeyframeSequence>
+          </KeyframeSequences>
+        </ExperienceStream>
+        <ExperienceStream
+          Id="VideoExperienceStream-24">
+          <ExperienceStreamHeader
+            DefaultKeyframeSequence="defaultSequence">
+            <Provider
+              Name="MicrosoftResearch.Rin.VideoExperienceStream"
+              Version="0.0" />
+          </ExperienceStreamHeader>
+          <AuxiliaryData>
+            <Item
+              Key="transition">
+              <Info
+                TransitionProvider="MicrosoftResearch.Rin.SLPlayer.FadeInOutTransitionService"
+                TransitionInDuration="2"
+                TransitionOutDuration="2" />
+            </Item>
+            <Item
+              Key="Markers">
+              <Markers
+                beginAt="0"
+                endAt="16.975308599999998" />
+            </Item>
+          </AuxiliaryData>
+          <RequiredResourcesOnLoad>
+            <ResourceReference
+              Ref="R-28" />
+          </RequiredResourcesOnLoad>
+          <KeyframeSequences>
+            <KeyframeSequence
+              Id="defaultSequence">
+              <KeyframeSequenceHeader
+                Duration="16.974999999999998" />
+            </KeyframeSequence>
+          </KeyframeSequences>
+        </ExperienceStream>
+        <ExperienceStream
+          Id="MapExperienceStream-2">
+          <ExperienceStreamHeader
+            DefaultKeyframeSequence="defaultSequence">
+            <Provider
+              Name="MicrosoftResearch.Rin.MapExperienceStream"
+              Version="0.0" />
+          </ExperienceStreamHeader>
+          <AuxiliaryData>
+            <Item
+              Key="transition">
+              <Info
+                TransitionProvider="MicrosoftResearch.Rin.SLPlayer.FadeInOutTransitionService"
+                TransitionInDuration="2"
+                TransitionOutDuration="2" />
+            </Item>
+          </AuxiliaryData>
+          <KeyframeSequences>
+            <KeyframeSequence
+              Id="defaultSequence">
+              <KeyframeSequenceHeader
+                Duration="13.5" />
+              <AuxiliaryData>
+                <Item
+                  Key="ContentType">
+                  <Map />
+                </Item>
+              </AuxiliaryData>
+              <Keyframes>
+                <Keyframe>
+                  <KeyframeHeader
+                    Offset="0"
+                    HoldDuration="0.5" />
+                  <AuxiliaryData>
+                    <Item
+                      Key="default">
+                      <MapKeyframes>
+                        <MapBoundsKeyframe
+                          North="47.492870390294023"
+                          West="-117.5903161988573"
+                          South="47.489521115756212"
+                          East="-117.58150782445239" />
+                        <MapStyleKeyframe
+                          Style="AerialWithLabels" />
+                        <MapEntityKeyframe
+                          EntityId="Eastern Washington University, WA"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                      </MapKeyframes>
+                    </Item>
+                    <Item
+                      Key="TransitionTime">
+                      <TransitionTime>0</TransitionTime>
+                    </Item>
+                    <Item
+                      Key="PauseDuration">
+                      <PauseDuration>0.5</PauseDuration>
+                    </Item>
+                    <Item
+                      Key="keyframeThumbnail">
+                      <Thumbnail>4a979432-93ee-418d-a7b0-2dc1b3169737_keyframe_b72423c6-f8e6-4ff8-a167-b0bf6b80b44b.bmp</Thumbnail>
+                    </Item>
+                  </AuxiliaryData>
+                </Keyframe>
+                <Keyframe>
+                  <KeyframeHeader
+                    Offset="13.5"
+                    HoldDuration="0" />
+                  <AuxiliaryData>
+                    <Item
+                      Key="default">
+                      <MapKeyframes>
+                        <MapBoundsKeyframe
+                          North="47.006249613375132"
+                          West="-120.54391510622142"
+                          South="47.002869425417"
+                          East="-120.53510673181651" />
+                        <MapStyleKeyframe
+                          Style="AerialWithLabels" />
+                        <MapEntityKeyframe
+                          EntityId="Central Washington University, WA"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                      </MapKeyframes>
+                    </Item>
+                    <Item
+                      Key="TransitionTime">
+                      <TransitionTime>13</TransitionTime>
+                    </Item>
+                    <Item
+                      Key="PauseDuration">
+                      <PauseDuration>0</PauseDuration>
+                    </Item>
+                    <Item
+                      Key="keyframeThumbnail">
+                      <Thumbnail>4a979432-93ee-418d-a7b0-2dc1b3169737_keyframe_19d84fc5-4439-4306-83eb-7037c18607f1.bmp</Thumbnail>
+                    </Item>
+                  </AuxiliaryData>
+                </Keyframe>
+              </Keyframes>
+            </KeyframeSequence>
+          </KeyframeSequences>
+        </ExperienceStream>
+        <ExperienceStream
+          Id="VideoExperienceStream-25">
+          <ExperienceStreamHeader
+            DefaultKeyframeSequence="defaultSequence">
+            <Provider
+              Name="MicrosoftResearch.Rin.VideoExperienceStream"
+              Version="0.0" />
+          </ExperienceStreamHeader>
+          <AuxiliaryData>
+            <Item
+              Key="transition">
+              <Info
+                TransitionProvider="MicrosoftResearch.Rin.SLPlayer.FadeInOutTransitionService"
+                TransitionInDuration="2"
+                TransitionOutDuration="2" />
+            </Item>
+            <Item
+              Key="Markers">
+              <Markers
+                beginAt="0"
+                endAt="27.6109442" />
+            </Item>
+          </AuxiliaryData>
+          <RequiredResourcesOnLoad>
+            <ResourceReference
+              Ref="R-29" />
+          </RequiredResourcesOnLoad>
+          <KeyframeSequences>
+            <KeyframeSequence
+              Id="defaultSequence">
+              <KeyframeSequenceHeader
+                Duration="27.610999999999997" />
+            </KeyframeSequence>
+          </KeyframeSequences>
+        </ExperienceStream>
+        <ExperienceStream
+          Id="PhotosynthES-1">
+          <ExperienceStreamHeader
+            DefaultKeyframeSequence="defaultSequence">
+            <Provider
+              Name="MicrosoftResearch.Rin.PhotosynthES"
+              Version="0.0" />
+          </ExperienceStreamHeader>
+          <AuxiliaryData>
+            <Item
+              Key="transition">
+              <Info
+                TransitionProvider="MicrosoftResearch.Rin.SLPlayer.FadeInOutTransitionService"
+                TransitionInDuration="2"
+                TransitionOutDuration="2" />
+            </Item>
+          </AuxiliaryData>
+          <RequiredResourcesOnLoad>
+            <ResourceReference
+              Ref="R-7" />
+          </RequiredResourcesOnLoad>
+          <KeyframeSequences>
+            <KeyframeSequence
+              Id="defaultSequence">
+              <KeyframeSequenceHeader
+                Duration="10.15" />
+              <AuxiliaryData>
+                <Item
+                  Key="ContentType">
+                  <Photosynth />
+                </Item>
+              </AuxiliaryData>
+              <Keyframes>
+                <Keyframe>
+                  <KeyframeHeader
+                    Offset="0"
+                    HoldDuration="0.5" />
+                  <AuxiliaryData>
+                    <Item
+                      Key="default">
+                      <PSKeyframe>
+                        <X>0</X>
+                        <Y>0</Y>
+                        <Z>0</Z>
+                        <ThetaX>-1.01317208669706</ThetaX>
+                        <ThetaY>-0.851574479709634</ThetaY>
+                        <ThetaZ>-1.20591867288462</ThetaZ>
+                        <Zoom>960</Zoom>
+                        <PanX>0</PanX>
+                        <PanY>0</PanY>
+                        <View>Image</View>
+                        <Projector>0:0:0</Projector>
+                      </PSKeyframe>
+                    </Item>
+                    <Item
+                      Key="TransitionTime">
+                      <TransitionTime>0</TransitionTime>
+                    </Item>
+                    <Item
+                      Key="PauseDuration">
+                      <PauseDuration>0.5</PauseDuration>
+                    </Item>
+                    <Item
+                      Key="keyframeThumbnail">
+                      <Thumbnail>01903ada-93d4-4412-a71f-33d418758acf_keyframe_f21bce7e-1b73-4c99-a2c4-2b3f6714b587.bmp</Thumbnail>
+                    </Item>
+                  </AuxiliaryData>
+                </Keyframe>
+                <Keyframe>
+                  <KeyframeHeader
+                    Offset="10.15"
+                    HoldDuration="0" />
+                  <AuxiliaryData>
+                    <Item
+                      Key="default">
+                      <PSKeyframe>
+                        <X>0</X>
+                        <Y>0</Y>
+                        <Z>0</Z>
+                        <ThetaX>-0.753014863363821</ThetaX>
+                        <ThetaY>-1.43581613385532</ThetaY>
+                        <ThetaZ>-1.77356609261266</ThetaZ>
+                        <Zoom>640</Zoom>
+                        <PanX>0</PanX>
+                        <PanY>0</PanY>
+                        <View>Image</View>
+                        <Projector>0:0:0</Projector>
+                      </PSKeyframe>
+                    </Item>
+                    <Item
+                      Key="TransitionTime">
+                      <TransitionTime>9.65</TransitionTime>
+                    </Item>
+                    <Item
+                      Key="PauseDuration">
+                      <PauseDuration>0</PauseDuration>
+                    </Item>
+                    <Item
+                      Key="keyframeThumbnail">
+                      <Thumbnail>01903ada-93d4-4412-a71f-33d418758acf_keyframe_807a7405-c898-401c-9393-6ee932a3e720.bmp</Thumbnail>
+                    </Item>
+                  </AuxiliaryData>
+                </Keyframe>
+              </Keyframes>
+            </KeyframeSequence>
+          </KeyframeSequences>
+        </ExperienceStream>
+        <ExperienceStream
+          Id="VideoExperienceStream-26">
+          <ExperienceStreamHeader
+            DefaultKeyframeSequence="defaultSequence">
+            <Provider
+              Name="MicrosoftResearch.Rin.VideoExperienceStream"
+              Version="0.0" />
+          </ExperienceStreamHeader>
+          <AuxiliaryData>
+            <Item
+              Key="transition">
+              <Info
+                TransitionProvider="MicrosoftResearch.Rin.SLPlayer.FadeInOutTransitionService"
+                TransitionInDuration="2"
+                TransitionOutDuration="2" />
+            </Item>
+            <Item
+              Key="Markers">
+              <Markers
+                beginAt="0"
+                endAt="24.0657323" />
+            </Item>
+          </AuxiliaryData>
+          <RequiredResourcesOnLoad>
+            <ResourceReference
+              Ref="R-30" />
+          </RequiredResourcesOnLoad>
+          <KeyframeSequences>
+            <KeyframeSequence
+              Id="defaultSequence">
+              <KeyframeSequenceHeader
+                Duration="24.066" />
+            </KeyframeSequence>
+          </KeyframeSequences>
+        </ExperienceStream>
+        <ExperienceStream
+          Id="MapExperienceStream-3">
+          <ExperienceStreamHeader
+            DefaultKeyframeSequence="defaultSequence">
+            <Provider
+              Name="MicrosoftResearch.Rin.MapExperienceStream"
+              Version="0.0" />
+          </ExperienceStreamHeader>
+          <AuxiliaryData>
+            <Item
+              Key="transition">
+              <Info
+                TransitionProvider="MicrosoftResearch.Rin.SLPlayer.FadeInOutTransitionService"
+                TransitionInDuration="2"
+                TransitionOutDuration="2" />
+            </Item>
+          </AuxiliaryData>
+          <KeyframeSequences>
+            <KeyframeSequence
+              Id="defaultSequence">
+              <KeyframeSequenceHeader
+                Duration="11.15" />
+              <AuxiliaryData>
+                <Item
+                  Key="ContentType">
+                  <Map />
+                </Item>
+              </AuxiliaryData>
+              <Keyframes>
+                <Keyframe>
+                  <KeyframeHeader
+                    Offset="0"
+                    HoldDuration="0.5" />
+                  <AuxiliaryData>
+                    <Item
+                      Key="default">
+                      <MapKeyframes>
+                        <MapBoundsKeyframe
+                          North="47.008673201159809"
+                          West="-120.54993479204589"
+                          South="47.001912918083235"
+                          East="-120.53231804323607" />
+                        <MapStyleKeyframe
+                          Style="AerialWithLabels" />
+                        <MapEntityKeyframe
+                          EntityId="Central Washington University, WA"
+                          IsVisible="true"
+                          IsHighlighted="false" />
+                      </MapKeyframes>
+                    </Item>
+                    <Item
+                      Key="TransitionTime">
+                      <TransitionTime>0</TransitionTime>
+                    </Item>
+                    <Item
+                      Key="PauseDuration">
+                      <PauseDuration>0.5</PauseDuration>
+                    </Item>
+                    <Item
+                      Key="keyframeThumbnail">
+                      <Thumbnail>93999c8d-e354-4de4-8957-cc233b32e74c_keyframe_e23cbdc5-ea05-4f04-9b4d-b93c68027151.bmp</Thumbnail>
+                    </Item>
+                  </AuxiliaryData>
+                </Keyframe>
+                <Keyframe>
+                  <KeyframeHeader
+                    Offset="11.15"
+                    HoldDuration="0" />
+                  <AuxiliaryData>
+                    <Item
+                      Key="default">
+                      <MapKeyframes>
+                        <MapBoundsKeyframe
+                          North="46.732693048831386"
+                          West="-117.16353471247081"
+                          South="46.730994345992663"
+                          East="-117.15913052526835" />
+                        <MapStyleKeyframe
+                          Style="AerialWithLabels" />
+                      </MapKeyframes>
+                    </Item>
+                    <Item
+                      Key="TransitionTime">
+                      <TransitionTime>10.65</TransitionTime>
+                    </Item>
+                    <Item
+                      Key="PauseDuration">
+                      <PauseDuration>0</PauseDuration>
+                    </Item>
+                    <Item
+                      Key="keyframeThumbnail">
+                      <Thumbnail>keyframe_b16e388d-2fde-40b8-9128-4f907c04645b.bmp</Thumbnail>
+                    </Item>
+                  </AuxiliaryData>
+                </Keyframe>
+              </Keyframes>
+            </KeyframeSequence>
+          </KeyframeSequences>
+        </ExperienceStream>
+        <ExperienceStream
+          Id="VideoExperienceStream-27">
+          <ExperienceStreamHeader
+            DefaultKeyframeSequence="defaultSequence">
+            <Provider
+              Name="MicrosoftResearch.Rin.VideoExperienceStream"
+              Version="0.0" />
+          </ExperienceStreamHeader>
+          <AuxiliaryData>
+            <Item
+              Key="transition">
+              <Info
+                TransitionProvider="MicrosoftResearch.Rin.SLPlayer.FadeInOutTransitionService"
+                TransitionInDuration="2"
+                TransitionOutDuration="2" />
+            </Item>
+            <Item
+              Key="Markers">
+              <Markers
+                beginAt="0"
+                endAt="7.5909242" />
+            </Item>
+          </AuxiliaryData>
+          <RequiredResourcesOnLoad>
+            <ResourceReference
+              Ref="R-31" />
+          </RequiredResourcesOnLoad>
+          <KeyframeSequences>
+            <KeyframeSequence
+              Id="defaultSequence">
+              <KeyframeSequenceHeader
+                Duration="7.5909999999999993" />
+            </KeyframeSequence>
+          </KeyframeSequences>
+        </ExperienceStream>
+        <ExperienceStream
+          Id="PhotosynthES-2">
+          <ExperienceStreamHeader
+            DefaultKeyframeSequence="defaultSequence">
+            <Provider
+              Name="MicrosoftResearch.Rin.PhotosynthES"
+              Version="0.0" />
+          </ExperienceStreamHeader>
+          <AuxiliaryData>
+            <Item
+              Key="transition">
+              <Info
+                TransitionProvider="MicrosoftResearch.Rin.SLPlayer.FadeInOutTransitionService"
+                TransitionInDuration="2"
+                TransitionOutDuration="2" />
+            </Item>
+          </AuxiliaryData>
+          <RequiredResourcesOnLoad>
+            <ResourceReference
+              Ref="R-9" />
+          </RequiredResourcesOnLoad>
+          <KeyframeSequences>
+            <KeyframeSequence
+              Id="defaultSequence">
+              <KeyframeSequenceHeader
+                Duration="12.049999999999999" />
+              <AuxiliaryData>
+                <Item
+                  Key="ContentType">
+                  <Photosynth />
+                </Item>
+              </AuxiliaryData>
+              <Keyframes>
+                <Keyframe>
+                  <KeyframeHeader
+                    Offset="0"
+                    HoldDuration="0.5" />
+                  <AuxiliaryData>
+                    <Item
+                      Key="default">
+                      <PSKeyframe>
+                        <X>0</X>
+                        <Y>0</Y>
+                        <Z>0</Z>
+                        <ThetaX>-1.47622898922065</ThetaX>
+                        <ThetaY>-1.27387849295236</ThetaY>
+                        <ThetaZ>-0.979665379120639</ThetaZ>
+                        <Zoom>1056</Zoom>
+                        <PanX>0</PanX>
+                        <PanY>0</PanY>
+                        <View>Image</View>
+                        <Projector>0:0:0</Projector>
+                      </PSKeyframe>
+                    </Item>
+                    <Item
+                      Key="TransitionTime">
+                      <TransitionTime>0</TransitionTime>
+                    </Item>
+                    <Item
+                      Key="PauseDuration">
+                      <PauseDuration>0.5</PauseDuration>
+                    </Item>
+                    <Item
+                      Key="keyframeThumbnail">
+                      <Thumbnail>9a77ef12-f82c-4d30-952d-de30691ed830_keyframe_ec359206-4bdf-43a6-97a4-f2a4f2466a56.bmp</Thumbnail>
+                    </Item>
+                  </AuxiliaryData>
+                </Keyframe>
+                <Keyframe>
+                  <KeyframeHeader
+                    Offset="7.05"
+                    HoldDuration="0" />
+                  <AuxiliaryData>
+                    <Item
+                      Key="default">
+                      <PSKeyframe>
+                        <X>0</X>
+                        <Y>0</Y>
+                        <Z>0</Z>
+                        <ThetaX>-1.38575060398161</ThetaX>
+                        <ThetaY>-0.557789560162752</ThetaY>
+                        <ThetaZ>-0.62127253455627</ThetaZ>
+                        <Zoom>640</Zoom>
+                        <PanX>0</PanX>
+                        <PanY>0</PanY>
+                        <View>Image</View>
+                        <Projector>0:0:0</Projector>
+                      </PSKeyframe>
+                    </Item>
+                    <Item
+                      Key="TransitionTime">
+                      <TransitionTime>6.55</TransitionTime>
+                    </Item>
+                    <Item
+                      Key="PauseDuration">
+                      <PauseDuration>0</PauseDuration>
+                    </Item>
+                    <Item
+                      Key="keyframeThumbnail">
+                      <Thumbnail>9a77ef12-f82c-4d30-952d-de30691ed830_keyframe_0ea6150d-759f-4712-9c86-2bed99279265.bmp</Thumbnail>
+                    </Item>
+                  </AuxiliaryData>
+                </Keyframe>
+                <Keyframe>
+                  <KeyframeHeader
+                    Offset="12.05"
+                    HoldDuration="0" />
+                  <AuxiliaryData>
+                    <Item
+                      Key="default">
+                      <PSKeyframe>
+                        <X>0</X>
+                        <Y>0</Y>
+                        <Z>0</Z>
+                        <ThetaX>-1.17380247565897</ThetaX>
+                        <ThetaY>-0.491195076610742</ThetaY>
+                        <ThetaZ>-0.683036918812934</ThetaZ>
+                        <Zoom>1056</Zoom>
+                        <PanX>0</PanX>
+                        <PanY>0</PanY>
+                        <View>Image</View>
+                        <Projector>0:0:0</Projector>
+                      </PSKeyframe>
+                    </Item>
+                    <Item
+                      Key="TransitionTime">
+                      <TransitionTime>5</TransitionTime>
+                    </Item>
+                    <Item
+                      Key="PauseDuration">
+                      <PauseDuration>0</PauseDuration>
+                    </Item>
+                    <Item
+                      Key="keyframeThumbnail">
+                      <Thumbnail>9a77ef12-f82c-4d30-952d-de30691ed830_keyframe_a27edd78-a041-4397-8bee-b14b02c201d0.bmp</Thumbnail>
+                    </Item>
+                  </AuxiliaryData>
+                </Keyframe>
+              </Keyframes>
+            </KeyframeSequence>
+          </KeyframeSequences>
+        </ExperienceStream>
+        <ExperienceStream
+          Id="ZoomableMediaExperienceStream-3">
+          <ExperienceStreamHeader
+            DefaultKeyframeSequence="defaultSequence">
+            <Provider
+              Name="MicrosoftResearch.Rin.ZoomableMediaExperienceStream"
+              Version="0.0" />
+          </ExperienceStreamHeader>
+          <AuxiliaryData>
+            <Item
+              Key="transition">
+              <Info
+                TransitionProvider="MicrosoftResearch.Rin.SLPlayer.FadeInOutTransitionService"
+                TransitionInDuration="2"
+                TransitionOutDuration="2" />
+            </Item>
+          </AuxiliaryData>
+          <RequiredResourcesOnLoad>
+            <ResourceReference
+              Ref="R-17" />
+          </RequiredResourcesOnLoad>
+          <KeyframeSequences>
+            <KeyframeSequence
+              Id="defaultSequence">
+              <KeyframeSequenceHeader
+                Duration="14.799999999999999" />
+              <AuxiliaryData>
+                <Item
+                  Key="ContentType">
+                  <SingleDeepZoomImage />
+                </Item>
+              </AuxiliaryData>
+              <Keyframes>
+                <Keyframe>
+                  <KeyframeHeader
+                    Offset="0"
+                    HoldDuration="0.5" />
+                  <AuxiliaryData>
+                    <Item
+                      Key="default">
+                      <ZoomableMediaKeyframe
+                        Media_Type="SingleDeepZoomImage"
+                        Media_Source="R-17"
+                        Viewport_X="0.2059674376509722"
+                        Viewport_Y="0.3061605625389604"
+                        Viewport_Width="6.9940073211584552E-05"
+                        Viewport_Height="3.9357264097140149E-05"
+                        Highlight_Visible="false"
+                        Highlight_X="0"
+                        Highlight_Y="0"
+                        Highlight_Width="0"
+                        Highlight_Height="0"
+                        Highlight_Render_Style="NoHighlight"
+                        Highlight_Render_Attribs=""
+                        Media_AspRatio="0.57830302012511348" />
+                    </Item>
+                    <Item
+                      Key="TransitionTime">
+                      <TransitionTime>0</TransitionTime>
+                    </Item>
+                    <Item
+                      Key="PauseDuration">
+                      <PauseDuration>0.5</PauseDuration>
+                    </Item>
+                    <Item
+                      Key="keyframeThumbnail">
+                      <Thumbnail>8175d852-2cf9-47e9-a4ea-cb55b8280cef_keyframe_ec146c6b-825c-4627-a059-90c1ad11886c.bmp</Thumbnail>
+                    </Item>
+                  </AuxiliaryData>
+                </Keyframe>
+                <Keyframe>
+                  <KeyframeHeader
+                    Offset="10.7"
+                    HoldDuration="0" />
+                  <AuxiliaryData>
+                    <Item
+                      Key="default">
+                      <ZoomableMediaKeyframe
+                        Media_Type="SingleDeepZoomImage"
+                        Media_Source="R-17"
+                        Viewport_X="0.038269497088495363"
+                        Viewport_Y="0.069852080565769664"
+                        Viewport_Width="0.82214160956325755"
+                        Viewport_Height="0.46264241610015228"
+                        Highlight_Visible="false"
+                        Highlight_X="0"
+                        Highlight_Y="0"
+                        Highlight_Width="0"
+                        Highlight_Height="0"
+                        Highlight_Render_Style="NoHighlight"
+                        Highlight_Render_Attribs=""
+                        Media_AspRatio="0.57830302012511348" />
+                    </Item>
+                    <Item
+                      Key="TransitionTime">
+                      <TransitionTime>10.2</TransitionTime>
+                    </Item>
+                    <Item
+                      Key="PauseDuration">
+                      <PauseDuration>0</PauseDuration>
+                    </Item>
+                    <Item
+                      Key="keyframeThumbnail">
+                      <Thumbnail>8175d852-2cf9-47e9-a4ea-cb55b8280cef_keyframe_b9d3e2f3-e3fc-4241-ac13-4176a2f0b914.bmp</Thumbnail>
+                    </Item>
+                  </AuxiliaryData>
+                </Keyframe>
+                <Keyframe>
+                  <KeyframeHeader
+                    Offset="14.799999999999999"
+                    HoldDuration="0" />
+                  <AuxiliaryData>
+                    <Item
+                      Key="default">
+                      <ZoomableMediaKeyframe
+                        Media_Type="SingleDeepZoomImage"
+                        Media_Source="R-17"
+                        Viewport_X="0.10437828754170628"
+                        Viewport_Y="0.24024323931537975"
+                        Viewport_Width="0.26642659156798426"
+                        Viewport_Height="0.14992580426846375"
+                        Highlight_Visible="false"
+                        Highlight_X="0"
+                        Highlight_Y="0"
+                        Highlight_Width="0"
+                        Highlight_Height="0"
+                        Highlight_Render_Style="NoHighlight"
+                        Highlight_Render_Attribs=""
+                        Media_AspRatio="0.57830302012511348" />
+                    </Item>
+                    <Item
+                      Key="TransitionTime">
+                      <TransitionTime>4.1</TransitionTime>
+                    </Item>
+                    <Item
+                      Key="PauseDuration">
+                      <PauseDuration>0</PauseDuration>
+                    </Item>
+                    <Item
+                      Key="keyframeThumbnail">
+                      <Thumbnail>8175d852-2cf9-47e9-a4ea-cb55b8280cef_keyframe_20d77987-a4c4-481f-9cb7-b63d39da823a.bmp</Thumbnail>
+                    </Item>
+                  </AuxiliaryData>
+                </Keyframe>
+              </Keyframes>
+            </KeyframeSequence>
+          </KeyframeSequences>
+        </ExperienceStream>
+        <ExperienceStream
+          Id="VideoExperienceStream-28">
+          <ExperienceStreamHeader
+            DefaultKeyframeSequence="defaultSequence">
+            <Provider
+              Name="MicrosoftResearch.Rin.VideoExperienceStream"
+              Version="0.0" />
+          </ExperienceStreamHeader>
+          <AuxiliaryData>
+            <Item
+              Key="transition">
+              <Info
+                TransitionProvider="MicrosoftResearch.Rin.SLPlayer.FadeInOutTransitionService"
+                TransitionInDuration="2"
+                TransitionOutDuration="2" />
+            </Item>
+            <Item
+              Key="Markers">
+              <Markers
+                beginAt="0"
+                endAt="24.3993993" />
+            </Item>
+          </AuxiliaryData>
+          <RequiredResourcesOnLoad>
+            <ResourceReference
+              Ref="R-32" />
+          </RequiredResourcesOnLoad>
+          <KeyframeSequences>
+            <KeyframeSequence
+              Id="defaultSequence">
+              <KeyframeSequenceHeader
+                Duration="24.398999999999997" />
+            </KeyframeSequence>
+          </KeyframeSequences>
+        </ExperienceStream>
+        <ExperienceStream
+          Id="AudioExperienceStream-7">
+          <ExperienceStreamHeader
+            DefaultKeyframeSequence="defaultSequence">
+            <Provider
+              Name="MicrosoftResearch.Rin.AudioExperienceStream"
+              Version="0.0" />
+          </ExperienceStreamHeader>
+          <AuxiliaryData>
+            <Item
+              Key="Markers">
+              <Markers
+                beginAt="0"
+                endAt="328.464" />
+            </Item>
+          </AuxiliaryData>
+          <RequiredResourcesOnLoad>
+            <ResourceReference
+              Ref="R-33" />
+          </RequiredResourcesOnLoad>
+          <KeyframeSequences>
+            <KeyframeSequence
+              Id="defaultSequence">
+              <KeyframeSequenceHeader
+                Duration="328.464" />
+            </KeyframeSequence>
+          </KeyframeSequences>
+        </ExperienceStream>
+      </ExperienceStreams>
+      <Screenplays>
+        <Screenplay
+          Id="SCP1">
+          <ScreenplayHeader />
+          <AuxiliaryData>
+            <Item
+              Key="ExperienceStreams">
+              <ExperienceStreams>
+                <ExperienceStream
+                  Id="VideoExperienceStream-22"
+                  Begin="0"
+                  Dur="32.616"
+                  Layer="foreground"
+                  DominantMedia="visual"
+                  Volume="1" />
+                <ExperienceStream
+                  Id="MapExperienceStream-1"
+                  Begin="32.616"
+                  Dur="11.2"
+                  Layer="foreground"
+                  DominantMedia="visual"
+                  Volume="1" />
+                <ExperienceStream
+                  Id="VideoExperienceStream-23"
+                  Begin="43.816"
+                  Dur="16.892"
+                  Layer="foreground"
+                  DominantMedia="visual"
+                  Volume="1" />
+                <ExperienceStream
+                  Id="ZoomableMediaExperienceStream-2"
+                  Begin="60.708"
+                  Dur="12.899999999999999"
+                  Layer="foreground"
+                  DominantMedia="visual"
+                  Volume="1" />
+                <ExperienceStream
+                  Id="VideoExperienceStream-24"
+                  Begin="73.608"
+                  Dur="16.974999999999998"
+                  Layer="foreground"
+                  DominantMedia="visual"
+                  Volume="1" />
+                <ExperienceStream
+                  Id="MapExperienceStream-2"
+                  Begin="90.583"
+                  Dur="13.5"
+                  Layer="foreground"
+                  DominantMedia="visual"
+                  Volume="1" />
+                <ExperienceStream
+                  Id="VideoExperienceStream-25"
+                  Begin="104.083"
+                  Dur="27.610999999999997"
+                  Layer="foreground"
+                  DominantMedia="visual"
+                  Volume="1" />
+                <ExperienceStream
+                  Id="PhotosynthES-1"
+                  Begin="131.694"
+                  Dur="10.15"
+                  Layer="foreground"
+                  DominantMedia="visual"
+                  Volume="1" />
+                <ExperienceStream
+                  Id="VideoExperienceStream-26"
+                  Begin="141.844"
+                  Dur="24.066"
+                  Layer="foreground"
+                  DominantMedia="visual"
+                  Volume="1" />
+                <ExperienceStream
+                  Id="MapExperienceStream-3"
+                  Begin="165.91"
+                  Dur="11.15"
+                  Layer="foreground"
+                  DominantMedia="visual"
+                  Volume="1" />
+                <ExperienceStream
+                  Id="VideoExperienceStream-27"
+                  Begin="177.06"
+                  Dur="7.5909999999999993"
+                  Layer="foreground"
+                  DominantMedia="visual"
+                  Volume="1" />
+                <ExperienceStream
+                  Id="PhotosynthES-2"
+                  Begin="184.651"
+                  Dur="12.049999999999999"
+                  Layer="foreground"
+                  DominantMedia="visual"
+                  Volume="1" />
+                <ExperienceStream
+                  Id="ZoomableMediaExperienceStream-3"
+                  Begin="196.70100000000002"
+                  Dur="14.799999999999999"
+                  Layer="foreground"
+                  DominantMedia="visual"
+                  Volume="1" />
+                <ExperienceStream
+                  Id="VideoExperienceStream-28"
+                  Begin="211.50100000000003"
+                  Dur="24.398999999999997"
+                  Layer="foreground"
+                  DominantMedia="visual"
+                  Volume="1" />
+                <ExperienceStream
+                  Id="AudioExperienceStream-7"
+                  Begin="0"
+                  Dur="328.464"
+                  Layer="background"
+                  DominantMedia="audio"
+                  Volume="1" />
+              </ExperienceStreams>
+            </Item>
+          </AuxiliaryData>
+        </Screenplay>
+      </Screenplays>
+    </Segment>
+  </Segments>
+</Narrative>

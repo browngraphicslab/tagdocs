@@ -1,0 +1,17 @@
+Installing Grunt
+
+1.	Install NodeJS from http://nodejs.org/
+2.	Open a command prompt and navigate to the project's root directory (where you cloned the repository)
+3.	Run the command "npm install" to install grunt and its plugins
+4.	Run the command "npm install -g grunt-cli" to install grunt command line globally
+
+Basic Build (debug)
+•	Run "grunt" from the project's root directory.
+
+Other Tasks
+•	Run "grunt watch" and Grunt will watch for any file changes and automatically rebuild. Really nice during development.
+•	Run "grunt test" to run all the QUnit tests for RIN
+•	Run "grunt ship" to build the ship-ready version of the site (minifies JS and CSS and runs QUnit tests)
+
+JSHint
+Grunt has a task which can run JSHint during every build. For now, its set to only validate the grunt config file (gruntfile.js), but eventually it would be nice to fix all the syntax issues in the RIN library so we are JSHint clean. If anyone has some extra time to chip away at these, just uncomment the entries in the jshint section of gruntfile.js and run the standard build to see errors.

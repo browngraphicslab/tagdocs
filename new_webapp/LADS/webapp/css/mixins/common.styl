@@ -1,0 +1,32 @@
+width-height(n)
+    width n
+    height n
+
+left-top(n)
+    left n
+    top n
+
+noMargPadding()
+    margin 0px
+    padding 0px
+
+.basicFullSize
+    width-height(100%)
+    noMargPadding()
+    left 0px
+    top 0px
+
+textOverflowEllipsis()
+    overflow hidden
+    text-overflow ellipsis
+    whitespace nowrap
+
+createLinGrad(startcolor, endcolor)
+    background -webkit-gradient(linear, left top, left bottom, from(startcolor), to(endcolor))
+    background linear-gradient(to bottom, startcolor, endcolor)
+
+transBlack(alpha)
+    if mixin
+        background-color rgba(0, 0, 0, alpha)
+    else
+        rgba(0, 0, 0, alpha)

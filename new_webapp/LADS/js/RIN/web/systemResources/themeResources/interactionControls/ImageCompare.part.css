@@ -1,0 +1,34 @@
+.rin-ic, .rin-ic-center {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.rin-ic-right, .rin-ic-left {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+
+.rin-ic-slider {
+    position: absolute;
+    width: 70px;
+    height: 100%;
+    top: 0;
+    cursor: pointer;
+}
+
+.rin-ic-sliderbar {
+    position: absolute;
+    width: 10px;
+    height: 100%;
+    top: 0;
+    left: 30px;
+    background-color: #ccc;
+}

@@ -1,0 +1,256 @@
+<html>
+<head>
+    <link rel="stylesheet" href="./demo_style.css" type="text/css" />
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="./jquery.js"></script>
+    <script>
+        /**
+         * Ben LeVeque, 7/9/13
+         * 
+         * 
+         */
+         var jade = require('jade');
+         
+    </script>
+</head>
+<title>js dev workshop</title>
+<body>
+    <div id="back">
+        <div id="contentWrapper">
+            <div id="leftbar">
+                <h2>Demos</h2>
+                <ul>
+                    <li><a href="http://jsfiddle.net/bleveque/EXuu5/" target="_blank">Scope</a></li>
+                    <li><a href="http://jsfiddle.net/bleveque/5TAJg/" target="_blank">Scope and Closures</a></li>
+                    <li><a href="http://jsfiddle.net/bleveque/QSv2J/">Pseudoclassical Inheritance</a></li>
+                </ul>
+                <br />
+                
+                <h2>Tools</h2>
+                <ul>
+                    <li><a href="http://jsfiddle.net/" target="_blank">JSFiddle</a></li>
+                    <li><a href="http://www.jslint.com/" target="_blank">JSLint</a></li>
+                    <li><a href="http://www.dirtymarkup.com/" target="_blank">Dirty Markup</a></li>
+                    <li><a href="http://jsperf.com/" target="_blank">JSPerf</a></li>
+                    <li><a href="http://tagissuetracker.cs.brown.edu:3000/" target="_blank">TAG issue tracker</a></li>
+                </ul>
+                <br />
+                
+                <h2>Stuff.js</h2>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/window.requestAnimationFrame" target="_blank">Request Anim Frame</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/document.createDocumentFragment" target="_blank">Document fragments</a></li>
+                    <li><a href="http://api.jquery.com/jQuery.ajax/" target="_blank">JQuery.ajax()</a></li>
+                </ul>
+                <br />
+                
+                <h2>Web app resources</h2>
+                <ul>
+                    <li><a href="http://jade-lang.com/api/" target="_blank">Jade home and API guide</a></li>
+                    <li><a href="http://naltatis.github.io/jade-syntax-docs/#basics" target="_blank">Jade documentation</a></li>
+                    <li><a href="http://cssdeck.com/labs/learning-the-jade-templating-engine-syntax" target="_blank">Jade tutorial 1</a></li>
+                </ul>
+            </div>
+            <div id="content">
+                <h2>Javascript coding practices workshop</h2>
+                Adapted from Javascript: The Good Parts by Douglas Crockford
+                <br /><br />
+                <ul>
+                    <li><h3>Functions (p.26)</h3>
+                        <div class="full-text">
+                            <ol style="margin-left:20px">
+                                <li>
+                                   Functions have two additional parameters besides those explicitly passed: <span>this</span>
+                                   and <span>arguments</span>. The value of <span>this</span> depends on the way the function is
+                                   invoked. The value of <span>arguments</span> is an array-like object containing the full list
+                                   of arguments passed to the function (array-like because it is an object with integer property
+                                   names, but it doesn't inherit from Array.prototype). This is helpful because Javascript doesn't
+                                   enforce anything about numbers of arguments passed to functions; you can pass as many or as few
+                                   as you want, and <span>arguments</span> keeps track of them all.
+                                   <br /><br />
+                                </li>
+                                <li>
+                                    Ways of invoking functions:
+                                    <ol style="margin-left:20px">
+                                        <li>As properties of objects. In this case, <span>this</span> is bound to the object.</li>
+                                        <li>Normal function invocation. In this case, <span>this</span> is bound to the global object,
+                                            regardless of whether our function is an inner function (in which case we would expect
+                                            <span>this</span> to be bound to the <span>this</span> of the outer function). To get around
+                                            this, create a variable like <span>that=this</span> before entering
+                                            the inner function, since <span>that</span> will be visible as a normal variable.</li>
+                                        <li>As a constructor (i.e. with <span>new</span>). In this case, a new object will be
+                                            constructed, and <span>this</span> will be bound to the object. REMEMBER if you use
+                                            constructors at all, they must be called with the <span>new</span> operator, since otherwise,
+                                            <span>this</span> will be bound to the global object and you could end up overwriting
+                                            global information!</li>
+                                        <li>The last way we can choose the value of <span>this</span> is by invoking the function with
+                                            <span>Function.prototype.apply</span>, which takes <span>this</span> to bind as its
+                                            first argument.</li>
+                                    </ol>
+                                    <br /><br />
+                                </li>
+                            </ol>
+                        </div>
+                    </li>
+                    <li><h3>Function scope (p.36)</h3>
+                        <div class="full-text">
+                            <ol style="margin-left:20px">
+                                <li>
+                                    In Javascript, variables are in scope throughout the entire function in which they are declared. This
+                                    can be confusing if, for example, you expect a variable just to be in scope in a loop. For
+                                    this reason, it is safest to declare all variables at the top of each function. This will make it
+                                    easier to spot scope-related bugs. Note that inner functions have access to the variables of their
+                                    outer functions, but not vice versa.
+                                </li>
+                                <li>
+                                    It is often nice for inner functions to have access to variables from their outer functions, but it can
+                                    cause some weirdness. Consider
+                                    a list of buttons (e.g. the buttons for showing hotspots on an artwork). In creating the click
+                                    handlers for these buttons, the first inclination might be to do something like
+                                    <br /><br />
+                                    <span>
+                                        for(i=0; i&lt;buttons.length; i+=1) { <br />
+                                        &nbsp;&nbsp;$(buttons[i]).on('click', function() { <br />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;open hotspot[i];<br />
+                                        &nbsp;&nbsp;});<br />
+                                        }<br />
+                                    </span>
+                                    <br />
+                                    However, the variable <span>i</span> used in the click handlers is the same reference as that used
+                                    outside, not a snapshot copy. This means that by the time our click handlers are actually called,
+                                    <span>i</span> will most likely be <span>buttons.length</span>, and this is not what we want.
+                                    <br />
+                                    A safer way to do this is to call a helper function which takes the index <span>i</span> and returns
+                                    a function that opens hotspot <span>i</span>. Since the helper function is not declared within
+                                    the scope of the for loop and we pass in <span>i</span> by value (as a Number), it will not see
+                                    changes to <span>i</span>.
+                                    <a class="demo" href="http://jsfiddle.net/bleveque/EXuu5/" target="_blank">Demo</a>. We can
+                                    achieve the same effect by using closure:
+                                    <a class="demo" href="http://jsfiddle.net/bleveque/5TAJg/" target="_blank">Demo</a>. Note that JSHint
+                                    complains in this case, though...
+                                </li>
+                            </ol>
+                            <br />
+                        </div>
+                    </li>
+                    <br />
+                    <li><h3>Closure</h3>
+                        <div class="full-text">
+                            <ol style="margin-left:20px">
+                                <li>
+                                    Closure is the property that inner functions have access to the current context at the time
+                                    of their creation, so inner functions can outlive the functions they are contained within. (p.37).
+                                </li>
+                            </ol>
+                        </div>
+                    </li>
+                    <br />
+                    <li><h3>Asynchronous patterns</h3>
+                        <div class="full-text">
+                            <ol style="margin-left:20px">
+                                <li>
+                                    Queues: can push to-be-executed asynchronous calls into a queue. They will be executed in the
+                                    order they were pushed.
+                                </li>
+                                <li>
+                                    JQuery promises: keep track of whether an asynchronous call has completed
+                                    (<a href="http://api.jquery.com/promise/" target="_blank">http://api.jquery.com/promise/</a>).
+                                    Allows for intuitive chaining of function calls.
+                                </li>
+                            </ol>
+                        </div>
+                    </li>
+                    <br />
+                    <li><h3>Inheritance</h3>
+                        <div class="full-text">
+                            <ol style="margin-left:20px">
+                                <li>
+                                    The book mentions a few methods to go about inheritance. One is a technique that more closely
+                                    resembles class-based inheritance, where constructor functions are defined and objects are
+                                    new-ed (p.47): <a class="demo" href="http://jsfiddle.net/bleveque/QSv2J/" target="_blank">Demo</a>.
+                                    In this case, we just add properties to <span>this</span> within the constructor (recall that
+                                    <span>this</span> is bound to the new object when we use <span>new</span>).
+                                    The problem with this method is that there is no way to create private variables. Everything created
+                                    is just an object which is completely readable/writable. There's a way to set these properties, using
+                                    Javascript's 
+                                    <a class="demo" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty" target="_blank">defineProperties</a>
+                                    method, but this is a bit roundabout.
+                                </li>
+                                <li>Another way to create 'classes,' which we have been using in a lot of the tour authoring code,
+                                    is by using the 'functional' method. The basic idea is to define a function which
+                                    will create and build up an object and then return it. We can pass in parameters which give context,
+                                    (i.e. <span>spec</span>, which contains everything necessary to build up the object,
+                                    and <span>my</span>, which holds important private information for inheritance).
+                                </li>
+                                <li>
+                                    
+                                </li>
+                            </ol>
+                        </div>
+                    </li>
+                    <br />
+                    <li><h3>Miscellaneous recommendations/tidbits</h3>
+                        <div class="full-text">
+                            <ol style="margin-left:20px">
+                                <li>Declare variables at the top of functions (you might as well,
+                                    and it helps makes errors more obvious)</li>
+                                <li>Always use blocks/curly braces when possible (avoids a lot of hard-to-spot errors)</li>
+                                <li>Always use semicolons (otherwise, javascript tries to 'figure it out' and can fail)</li>
+                                <li>Use JSLint</li>
+                                <li>Don't add extra commas at the end of array or object literals</li>
+                                <li>Be careful with for..in loops</li>
+                                <li>Keep in mind that arrays are 'special' objects; they can have methods/non-integer properties...</li>
+                                <li>In Javascript, there aren't <span>int</span> or <span>float</span> types, just Numbers, which are stored
+                                    as floating point values (meaning, for example, that integer division is a non-issue).
+                                    The return types of <span>parseInt</span> and <span>parseFloat</span> are then the same.</li>
+                                <li>Use the <span>isNaN(number)</span> function to check if a value is <span>NaN</span>. The comparison
+                                    <span>NaN === NaN</span> returns false...</li>
+                                
+                            </ol>
+                        </div>
+                    </li>
+                    <br />
+                    <li><h3>Falsy values (all other values are truthy)</h3>
+                        <div class="full-text">
+                            <ol style="margin-left:20px; list-style:none;">
+                                <li><span>false</span></li>
+                                <li><span>null</span></li>
+                                <li><span>undefined</span></li>
+                                <li><span>''</span> (the empty string)</li>
+                                <li><span>0</span></li>
+                                <li><span>NaN</span></li>
+                            </ol>
+                        </div>
+                    </li>
+                    <br />
+                    <li><h3>Reserved words</h3>
+                        <div class="full-text">
+                            <ol style="margin-left:20px; list-style:none;">
+                                <li><span>
+                                    abstract<br />
+                                    boolean break byte<br />
+                                    case catch char class const continue<br />
+                                    debugger default delete do double<br />
+                                    else enum export extends<br />
+                                    false final finally float for function<br />
+                                    goto<br />
+                                    if implements import in instanceof int interface<br />
+                                    long<br />
+                                    native new null<br />
+                                    package private protected public<br />
+                                    return<br />
+                                    short static super switch synchronized<br />
+                                    this throw throws transient true try typeof<br />
+                                    var volatile void<br />
+                                    while with
+                                </span></li>
+                            </ol>
+                        </div>
+                    </li>
+                    <br />
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

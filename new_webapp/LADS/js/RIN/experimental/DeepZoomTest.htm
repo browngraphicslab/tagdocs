@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+	
+	<!-- TODO (joel): add build script for test pages? -->
+    <script src="../src/core/Common.js" type="text/javascript"></script>
+    <script src="../src/experiences/DeepZoomES.js" type="text/javascript"></script>
+    <script src="../web/lib/seadragon-0.8.9.js" type="text/javascript"></script>
+    
+    <script type="text/javascript">
+        function onload() {
+            var viewer = new Seadragon.Viewer(document.getElementById('host'));
+            viewer.openDzi("http://rin-red-1/rin/ClientBin/DemoNarratives/6aa09d19-cf2b-4c8e-8b57-7ea8701794f7/DigNarrative_072811v4_Media/dzc_output.xml",
+                '<?xml version="1.0" encoding="UTF-8"?><Image TileSize="254" Overlap="1" Format="jpg" xmlns="http://schemas.microsoft.com/deepzoom/2008"><Size Width="2048" Height="1536"/></Image>');
+        }
+    </script>
+</head>
+<body onload="onload()">
+<div id='host' style='height:500px;width:625px;overflow:auto'>This is deepzoom test element<br/></div>
+</body>
+</html>

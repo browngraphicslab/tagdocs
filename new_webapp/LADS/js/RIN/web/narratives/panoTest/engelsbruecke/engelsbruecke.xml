@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<krpano version="1.0.8">
+  <view fovmax="120" maxpixelzoom="1.5" fov="s" fovtype="MFOV" vlookat="0" hlookat="0"/>
+  <preview url="http://krpano.com/panos/rom/engelsbruecke/engelsbruecke.tiles/preview.jpg"/>
+  <image>
+    <left url="http://krpano.com/panos/rom/engelsbruecke/engelsbruecke.tiles/pano_l.jpg"/>
+    <front url="http://krpano.com/panos/rom/engelsbruecke/engelsbruecke.tiles/pano_f.jpg"/>
+    <right url="http://krpano.com/panos/rom/engelsbruecke/engelsbruecke.tiles/pano_r.jpg"/>
+    <back url="http://krpano.com/panos/rom/engelsbruecke/engelsbruecke.tiles/pano_b.jpg"/>
+    <up url="http://krpano.com/panos/rom/engelsbruecke/engelsbruecke.tiles/pano_u.jpg"/>
+    <down url="http://krpano.com/panos/rom/engelsbruecke/engelsbruecke.tiles/pano_d.jpg"/>
+    <mobile>
+      <left url="http://krpano.com/panos/rom/engelsbruecke/engelsbruecke.tiles/mobile_l.jpg"/>
+      <front url="http://krpano.com/panos/rom/engelsbruecke/engelsbruecke.tiles/mobile_f.jpg"/>
+      <right url="http://krpano.com/panos/rom/engelsbruecke/engelsbruecke.tiles/mobile_r.jpg"/>
+      <back url="http://krpano.com/panos/rom/engelsbruecke/engelsbruecke.tiles/mobile_b.jpg"/>
+      <up url="http://krpano.com/panos/rom/engelsbruecke/engelsbruecke.tiles/mobile_u.jpg"/>
+      <down url="http://krpano.com/panos/rom/engelsbruecke/engelsbruecke.tiles/mobile_d.jpg"/>
+    </mobile>
+    <tablet>
+      <left url="http://krpano.com/panos/rom/engelsbruecke/engelsbruecke.tiles/tablet_l.jpg"/>
+      <front url="http://krpano.com/panos/rom/engelsbruecke/engelsbruecke.tiles/tablet_f.jpg"/>
+      <right url="http://krpano.com/panos/rom/engelsbruecke/engelsbruecke.tiles/tablet_r.jpg"/>
+      <back url="http://krpano.com/panos/rom/engelsbruecke/engelsbruecke.tiles/tablet_b.jpg"/>
+      <up url="http://krpano.com/panos/rom/engelsbruecke/engelsbruecke.tiles/tablet_u.jpg"/>
+      <down url="http://krpano.com/panos/rom/engelsbruecke/engelsbruecke.tiles/tablet_d.jpg"/>
+    </tablet>
+  </image>
+</krpano>

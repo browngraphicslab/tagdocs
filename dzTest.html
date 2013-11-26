@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+ <html>
+    <head>
+       
+        <script src="http://seadragon.com/ajax/0.8/seadragon-min.js"></script>
+        <script type="text/javascript">
+            var viewers = [], i, viewer1, viewer2, viewer3;
+            var files = ['dz_1'];//, 'dz2', 'dz3'];
+            var cont;
+            function init() {
+                viewer1 = new Seadragon.Viewer("container1");
+                viewer1.openDzi('dz_1/dzc_output.xml');
+                
+                viewer2 = new Seadragon.Viewer("container2");
+                viewer2.openDzi('dz_2/dzc_output.xml');
+                
+                viewer3 = new Seadragon.Viewer("container3");
+                viewer3.openDzi('dz_3/dzc_output.xml');
+            }
+           
+            Seadragon.Utils.addEvent(window, "load", init);
+        </script>
+       
+        <style type="text/css">
+            .container
+            {
+                width: 500px;
+                height: 400px;
+                background-color: black;
+                border: 1px solid black;
+                color: white;   /* for error messages, etc. */
+            }
+        </style>
+       
+    </head>
+    <body>
+        <div id="container1" class="container"></div>
+        <br />
+        <div id="container2" class="container"></div>
+        <br />
+        <div id="container3" class="container"></div>
+    </body>
+ </html>

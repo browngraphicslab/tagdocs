@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="rin-lint.js"></script>
+    <script src="../web/lib/rin-core-1.0.js"></script>
+    <script src="../web/lib/jquery-1.9.1.min.js"></script>
+    <script>
+
+        function getFile(file) {
+            var promise = new rin.internal.Promise();
+            var reader = new FileReader();
+            reader.onloadend = function () {
+                file.jsonData = rin.util.parseJSON(reader.result);
+                promise.markSuccess(file);
+            };
+            reader.onerror = function () {
+                promise.markFailed(file);
+            };
+            reader.readAsText(file);
+            return promise;
+        };
+
+        function lintRIN() {
+            var debugElem = document.getElementById("debugConsole"),
+               fileElem = document.getElementById("rinMetadataFile"),
+               lintButton = document.getElementById("lintButton"),
+               urlPrefix = document.getElementById("urlPrefix");
+
+            fileElem.disabled = true;
+            lintButton.disabled = true;
+
+            debugElem.innerHTML = "";
+
+            getFile(fileElem.files[0]).then(function () {
+                var jsonSources = {};
+                var inputFiles = fileElem.files[0].jsonData[0].files;
+                for (var i in inputFiles) {
+                    if (!rin.util.isAbsoluteUrl(inputFiles[i]))
+                        jsonSources[i] = rin.util.combinePathElements(urlPrefix.value, inputFiles[i]);
+                    else
+                        jsonSources[i] = inputFiles[i];
+                }
+                var dataActual = rin.experimental.validator.fetchAllJSONData(jsonSources);
+                var combinations = fileElem.files[0].jsonData[0].panoData;
+                var output = new rin.experimental.validator.LintOutputCollection();
+                for (var i in combinations) {
+                    var combination = combinations[i];
+                    var xxyyDataExpected = rin.experimental.validator.genXXtoYYIds(combination.xx, combination.yy);
+                    output.addMany(rin.experimental.validator.validateXXtoYYData(xxyyDataExpected, dataActual, combination.xxIsPrimary, combination.yyIsPrimary, urlPrefix.value));
+                }
+                var success;
+                var sortedKeys = Object.keys(output.source).sort();
+                for (var key in sortedKeys) {
+                    var validation = output.source[sortedKeys[key]];
+                    if (validation.type === rin.experimental.validator.lintOutputType.ERROR) {
+                        debugElem.innerHTML += validation.message + "<br/>";
+                        success = false;
+                    }
+                }
+
+                if (success) {
+                    debugElem.innerHTML += "All checks passed!!<br/>";
+                }
+                else if (success === undefined) {
+                    debugElem.innerHTML += "No checks executed!!<br/>";
+                }
+                else {
+                    debugElem.innerHTML += "Some checks failed!!<br/>";
+                }
+
+                fileElem.disabled = false;
+                lintButton.disabled = false;
+            });
+        }
+
+        function onload() {
+            urlPrefix.value = rin.util.combinePathElements(document.location.protocol,document.location.host) + "/";
+        };
+
+    </script>
+</head>
+<body onload="onload()">
+    URL Prefix for the input files: <input type="text" id="urlPrefix" value="http://localhost/HtmlPlayer/web/narratives/everest3m/" style="width:600px;" />
+    <br />
+    <input type="file" id="rinMetadataFile"/>
+    <button id="lintButton" value="LINK" onclick="lintRIN()">RIN LINT</button>
+    <br />
+    <div id="debugConsole"></div>
+</body>
+</html>

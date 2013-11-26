@@ -1,0 +1,3 @@
+{
+	artname: frank
+}

@@ -1,0 +1,29 @@
+!!!5
+html
+head
+	link(rel="stylesheet", href="./style.css")
+	title.
+		My Site
+
+mixin genLinks(title, info)
+	h2.linklist #{title}
+	ul
+		for pair in info
+			li.linklistitem: a(href=pair.href, target="_blank") #{pair.name}
+	br
+
+body
+	div(id="back")
+		div(id="contentWrapper")
+			div(id="leftbar")
+				h1.linkhead Links!
+				<img src=winterfell.jpg id = "winterfellPic" alt="Winterfell">
+				+genLinks("Winterfell", [
+					{href: "http://awoiaf.westeros.org/index.php/Eddard_Stark", name:"Ned Stark"},
+					{href: "http://awoiaf.westeros.org/index.php/Bran_Stark", name:"Bran Stark"}])
+				<img src= casterlyrock.png id = "casterlyRockPic" alt="CasterlyRock">
+				+genLinks("Casterly Rock", [
+					{href: "http://awoiaf.westeros.org/index.php/Tywin_Lannister", name:"Tywin Lannister"},
+					{href: "http://awoiaf.westeros.org/index.php/Cersei_Lannister", name:"Cersei Lannister"}])
+footer
+	p Running on node with Jade and Stylus

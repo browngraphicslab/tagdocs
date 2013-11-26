@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+<!-- on corp net IE thinks it's looking at legacy corporate software so it runs in compat mode. -->
+<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+<title>Sample pano viewer</title>
+<script src="jspanoviewer.js"></script>
+
+<link rel=stylesheet href="./style.css" type="text/css"/>
+<style>
+    html, body
+    {
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+        overflow: hidden;
+        -ms-content-zooming: none;
+    }
+    #viewerDiv
+    {
+        height: 100%;
+        width: 100%;
+    }
+    #panoSelector
+    {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        background-color: white;
+        border: solid grey 1px;
+        padding: 3px;
+    }
+</style>
+
+</head>
+
+<body>
+
+<div id="viewerDiv"></div>
+
+<div id="panoSelector">
+<label for="preloadCheckbox"><input type="checkbox" id="preloadCheckbox"></input>Preload Tiles</label>
+
+<span id="preloadMessage"></span>
+
+<br />
+
+<select id="panoList">
+    <option value="">Example panos</option>
+    <option value="http://cdn1.ps1.photosynth.net/pano/c01001100-ABoV+H8pQSQ/0.json">Some other one in Las Vegas</option>
+    <option value="http://cdn1.ps1.photosynth.net/pano/c01001100-ALYQZMMehyM/0.json">Wynn Hotel, Las Vegas</option>
+    <option value="https://s3.amazonaws.com/t1.360cities/metadata/40165-TAdemo">360cities - Bellagio Hotel Lobby, Las Vegas</option>
+    <option value="https://s3.amazonaws.com/t1.360cities/metadata/156534-TAdemo">360cities - Las Vegas From 500 feet</option>
+    <option value="https://s3.amazonaws.com/t1.360cities/metadata/13027-TAdemo">360cities - Las Vegas, Caesar's Palace garden</option>
+    <option value="https://s3.amazonaws.com/t1.360cities/metadata/68744-TAdemo">360cities - Machu Piccu 1</option>
+    <option value="https://s3.amazonaws.com/t1.360cities/metadata/159277-TAdemo">360cities - Machu Piccu 2</option>
+    <option value="https://s3.amazonaws.com/t1.360cities/metadata/120379-TAdemo">360cities - Machu Piccu 3</option>
+    <option value="12994a0e-ec33-40f8-9fd9-9eaab4b4071e">Zermat</option>
+    <option value="ff10c163-300b-4ccc-8879-988462c7ba05">Orlando</option>
+    <option value="e3981142-5ccd-4e30-9ac5-d0e4d50a5a9a">New York</option>
+    <option value="8b370eaa-a212-4ef3-a129-e0d71f1e7bdc">Rome</option>
+    <option value="f13028d4-47f6-405b-bc0a-65f78db953a9">Rio de Janeiro</option>
+    <option value="3079f144-16d2-4d9f-b0d0-4cce56123ec9">Machu Picchu</option>
+    <option value="9705c8de-fcc6-493f-a638-aa6a6f0d95de">Dublin</option>
+    <option value="8854a42a-8a29-49ff-8752-27fd706b2a87">Kauai</option>
+    <option value="29ddfcd9-eda4-476a-85a5-3d4a87928ed9">Vail</option>
+    <option value="cd8fda49-fbd7-4999-a52c-1b4ac0cbccfa">Tulum</option>
+    <option value="75a0754a-8d0b-4b73-8362-98e8a6015515">Las Vegas</option>
+    <option value="67c94757-97f5-4c9e-9c3c-87766f10c76c">London</option>
+    <option value="ff8e9e07-e5a8-448d-8dfa-be15c960c4f7">Barcelona</option>
+    <option value="e8cc36e6-dc71-415c-90a4-f0db45932d4b">Beijing</option>
+    <option value="b8e7d08a-5518-4397-a0b9-d17328bedba1">Amsterdam</option>
+    <option value="3346e139-7676-4d9d-af09-89f359cc821e">Buenos Aires</option>
+    <option value="86e789c0-77b6-4937-b79d-0782404d362a">Big Sur</option>
+    <option value="6180e2b4-f091-4b48-b9a0-4cb7d688f8b7">Palm Springs</option>
+    <option value="0cea2ae0-8be9-470e-915e-b0cb5ae131f5">Kyoto</option>
+
+<!--    <option value="a3b27d7a-0655-44fb-a42a-325cf1ae6adb">PS CID - Everest</option>
+    <option value="fbefdbc7-e58f-4340-8edf-08c517ff7f0a">PS CID - Everest Summit</option>
+    <option value="http://cdn3.ps1.photosynth.net/pano/c01001300-ACoReTHzhyM/0.json">Mobile Pano Json - Giant's Causeway, Ireland</option>
+    <option value="http://media.everyscape.com.edgesuite.net/V2/PANORAMA/AB/MV/1464028/AD4EA678.JSON">Partner Pano Json - Wild Ginger</option>
+    <option value="http://cdn2.ps1.photosynth.net/pano/c01001200-AHQH3HL8eCM/0.json">Mobile Pano Json - Japanese Garden</option>-->
+</select>
+
+<br />
+
+CID or Json URI:
+
+<input type="text" id="panoTextbox" />
+<input type="button" id="panoButton" value="Go" />
+
+<div id='debugText'></div>
+
+</div>
+
+<script>
+
+    function createViewerFromCidOrJsonUri(panoId) {
+        if (panoId == "") {
+            //do nothing
+        }
+        else if (panoId.indexOf('http') == 0) {
+            //pano is specified by the uri of the json.
+            PhotosynthRml.createFromJsonUri(panoId, rmlCallback);
+        }
+        else {
+            //pano is specified by the photosynth collection id (cid).
+            PhotosynthRml.createFromCid(panoId, rmlCallback);
+        }
+    }
+
+    function rmlCallback(rml, error) {
+        if (rml == null) {
+            if (error instanceof JsonDownloadFailedException) {
+                //Failed to download
+                alert('json failed to download');
+            }
+            else if (error instanceof JsonMalformedException) {
+                //Failed to parse the response of the json request
+                alert('json was malformed');
+            }
+            else {
+                //Some other unknown error.
+                alert('unknown error when attempting to download json');
+            }
+        }
+        else {
+            createViewer(rml);
+        }
+    }
+
+    var shownAlertAboutTiles = false;
+
+    var viewer = null;
+
+    function createViewer(rml) {
+        if (viewer) {
+            viewer.dispose();
+        }
+
+        viewer = new RwwViewer(document.getElementById('viewerDiv'), {
+            rml: rml,
+            tileDownloadFailed: function (failCount, succeedCount) {
+                var total = failCount + succeedCount;
+
+                if (total > 4 && failCount > succeedCount && !shownAlertAboutTiles) {
+                    //Tile download failures are high
+                    alert('tile download failures are high');
+                    shownAlertAboutTiles = true;
+                }
+            },
+            renderer: 'css'  //OPTIONAL param.  Defaults to 'webgl' if available on the current browser, else 'css'.  At the moment, it needs to be 'css', because the imagery won't show in 'webgl' until we make some changes to the HTTP response headers.
+            //backgroundColor: { r: 0.4, g: 0.4, b: 0.4, a: 1}, //OPTIONAL param.  Defaults to black with full opacity.
+            //width: 500,
+            //height: 500
+        });
+
+        if (document.getElementById("preloadCheckbox").checked) {
+            viewer.downloadAll("panorama", [1.0], function (progressSuccessCount) {
+                document.getElementById("preloadMessage").innerHTML = progressSuccessCount;
+            },
+            function (finalSucessCount, finalFailureCount) {
+                document.getElementById("preloadMessage").innerHTML = "finished: " + finalSucessCount + "/" + (finalSucessCount + finalFailureCount);
+            }, true);
+        }
+    }
+
+    function setOnresize(elem, callback) {
+        window.addEventListener('resize', callback, false);
+    }
+
+    var viewerDiv = document.getElementById('viewerDiv');
+    setOnresize(viewerDiv, function () {
+        if (viewer != null && viewer.setViewportSize != null) {
+            viewer.setViewportSize(viewerDiv.offsetWidth, viewerDiv.offsetHeight);
+        }
+    });
+
+    document.getElementById('panoList').onchange = function () {
+        createViewerFromCidOrJsonUri(document.getElementById('panoList').value);
+    };
+
+    document.getElementById('panoButton').onclick = function () {
+        createViewerFromCidOrJsonUri(document.getElementById('panoTextbox').value);
+    };
+
+</script>
+
+</body>
+</html>

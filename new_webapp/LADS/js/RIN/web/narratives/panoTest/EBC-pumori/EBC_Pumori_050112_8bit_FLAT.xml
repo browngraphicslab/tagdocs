@@ -1,0 +1,25 @@
+﻿<krpano version="1.0.8.12">
+  <network retrycount="2" cachesize="7" caching="true" decodequeues="auto" downloadqueues="auto"/>
+  <preview details="12" url="https://s3.amazonaws.com/Gigapans/EBC_Pumori_050112_8bit_FLAT/EBC_Pumori_050112_8bit_FLAT.tiles/preview.jpg" type="sphere"/>
+  <image type="SPHERE" multiresthreshold="0.025" tilesize="750" progressive="true" multires="true" >
+    <level tiledimageheight="995" tiledimagewidth="3750">
+      <sphere url="https://s3.amazonaws.com/Gigapans/EBC_Pumori_050112_8bit_FLAT/EBC_Pumori_050112_8bit_FLAT.tiles/l1_%0v_%0h.jpg"/>
+    </level>
+    <level tiledimageheight="1990" tiledimagewidth="7500">
+      <sphere url="https://s3.amazonaws.com/Gigapans/EBC_Pumori_050112_8bit_FLAT/EBC_Pumori_050112_8bit_FLAT.tiles/l2_%0v_%0h.jpg"/>
+    </level>
+    <level tiledimageheight="3980" tiledimagewidth="15000">
+      <sphere url="https://s3.amazonaws.com/Gigapans/EBC_Pumori_050112_8bit_FLAT/EBC_Pumori_050112_8bit_FLAT.tiles/l3_%0v_%0h.jpg"/>
+    </level>
+    <level tiledimageheight="7960" tiledimagewidth="30000">
+      <sphere url="https://s3.amazonaws.com/Gigapans/EBC_Pumori_050112_8bit_FLAT/EBC_Pumori_050112_8bit_FLAT.tiles/l4_%0v_%0h.jpg"/>
+    </level>
+    <level tiledimageheight="15920" tiledimagewidth="60000">
+      <sphere url="https://s3.amazonaws.com/Gigapans/EBC_Pumori_050112_8bit_FLAT/EBC_Pumori_050112_8bit_FLAT.tiles/l5_%0v_%0h.jpg"/>
+    </level>
+    <level tiledimageheight="31840" tiledimagewidth="120000">
+      <sphere url="https://s3.amazonaws.com/Gigapans/EBC_Pumori_050112_8bit_FLAT/EBC_Pumori_050112_8bit_FLAT.tiles/l6_%0v_%0h.jpg"/>
+    </level>
+  </image>
+  <view fov="47.760000" fovtype="VFOV" vlookat="0.000000" hlookat="-15.739123"/>
+</krpano>

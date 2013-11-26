@@ -1,0 +1,59 @@
+<html>
+<head>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="./jquery.js"></script>
+    <script>
+        /**
+         * Ben LeVeque, 7/4/13
+         *
+         * Don't create functions like handlers within loops. You might want them to use e.g.
+         * array[i], but inner functions have access to the increment var i, so by the time the
+         * function is used, i is usually not what you want (this could manifest itself as code
+         * only seeming to work for the last element in an array).
+         *
+         * Instead, create a helper function into which you can send i; this helper won't have
+         * access to i, so you get the right behavior.
+         *
+         * See p. 39 of JS The Good Parts.
+         *
+         * In the example below, buttonX should produce a pop-up displaying X when clicked.
+         */
+        window.onload = load;
+
+        function load() {
+            var buttons, i, correct;
+            buttons = $('button');
+            correct = false;
+            var myArr = [];
+            if (!correct) {
+                // doesn't work; inner function has access to variable i, so will always give 1000
+                for (i = 0; i < buttons.length; i++) {
+                    $(buttons[i]).on('click', function() {
+                        alert(i);
+                    });
+                }
+            } else {
+                // works; buttonClicker doesn't have access to i
+                for (i = 0; i < buttons.length; i++) {
+                    $(buttons[i]).on('click', buttonClicker(i, myArr));
+                }
+            }
+            myArr.push(1);
+            i = 1000;
+        }
+
+        function buttonClicker(i, arr) {
+            return function() {
+                alert("i = "+i+", arr.length = "+arr.length); //need fix for objects, too, since they are passed by reference
+            }
+        }
+    </script>
+</head>
+<title>no functions in loop!</title>
+<body>
+    <button>Button 0</button>
+    <button>Button 1</button>
+    <br /><br />
+    <!-- pre-formatted -->
+</body>
+</html>

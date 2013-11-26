@@ -1,0 +1,23 @@
+﻿To run automated tests:
+
+- Install grunt using steps described in "how-to-build.txt"
+- Run "grunt test"
+
+Alternative to run automated tests:
+- If using Visual studio, set web\tests\RINUnitTests.html as startup file. Press F5 to run tests in UI.
+- If not using visual studio, map the rin root folder to web server and open web\tests\RINUnitTests.html in web browser from web server location.
+
+To run Manual Tests:
+- If using Visual studio, set web\tests\RINManualTests.html as startup file. Press F5 to run the page. Follow instructions in that page.
+- If not using visual studio, map the rin root folder to web server and open web\tests\RINManualTests.html in web browser from web server location. Follow instructions in that page.
+- To run a test in self-test mode, press Shift+T, click 2nd dot at top and enter time span for random self-test events.
+
+To add a new Automated Test:
+- Add your test file under web\tests folder. Create a new folder as appropriate. Use qUnit syntax for creating a test. Follow example from web\tests\core\coreTests.js.
+- Add your new test to web\tests\rin.AllTests.js.
+
+To add a new Manual Test:
+- Create a new narrative to test your scenario. Create a folder under web\narratives for your narrative, and place your narrative.js file there.
+- Create a file named "testDescription.html" in your narrative folder and describe manually expected behavior
+- Add a link to your test under web\tests\RINManualTest.html page.
+ 

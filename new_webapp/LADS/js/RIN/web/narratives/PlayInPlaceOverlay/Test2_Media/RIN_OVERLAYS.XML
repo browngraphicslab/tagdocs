@@ -1,0 +1,214 @@
+﻿<ContentBrowser xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ContentCollection Id="3c89f6f0-7df0-4368-96b3-bd92ceb7ea5a">
+    <RinMedia Id="6b482e5e-0616-499e-8405-50b954d6bd70">
+      <Facet>
+        <Name>Layout_X</Name>
+        <Value>0.0</Value>
+        <MediaType>Double</MediaType>
+      </Facet>
+      <Facet>
+        <Name>Layout_Y</Name>
+        <Value>0.0</Value>
+        <MediaType>Double</MediaType>
+      </Facet>
+      <Facet>
+        <Name>Layout_HEIGHT</Name>
+        <Value>0.0</Value>
+        <MediaType>Double</MediaType>
+      </Facet>
+      <Facet>
+        <Name>Layout_WIDTH</Name>
+        <Value>0.0</Value>
+        <MediaType>Double</MediaType>
+      </Facet>
+      <Facet>
+        <Name>EmbeddingType</Name>
+        <Value>Global</Value>
+        <MediaType>String</MediaType>
+      </Facet>
+      <Facet>
+        <Name>ContentType</Name>
+        <Value>TextOverlays</Value>
+        <MediaType>String</MediaType>
+      </Facet>
+      <Facet>
+        <Name>ArtifactTypeId</Name>
+        <Value>TextOverlayVisual</Value>
+        <MediaType>String</MediaType>
+      </Facet>
+      <Facet>
+        <Name>ArtifactRenderStyle</Name>
+        <Value>TextTitles</Value>
+        <MediaType>String</MediaType>
+      </Facet>
+      <Facet>
+        <Name>FontColor</Name>
+        <Value>#FF1BA1E2</Value>
+        <MediaType>String</MediaType>
+      </Facet>
+      <Facet isLocalizable="true">
+        <Name>Title</Name>
+        <Value>First Title Overlay</Value>
+        <MediaType>String</MediaType>
+      </Facet>
+    </RinMedia>
+    <RinMedia Id="c2ba3417-147e-43fe-82ad-c66fce03e161">
+      <Facet>
+        <Name>Layout_X</Name>
+        <Value>0.0</Value>
+        <MediaType>Double</MediaType>
+      </Facet>
+      <Facet>
+        <Name>Layout_Y</Name>
+        <Value>0.0</Value>
+        <MediaType>Double</MediaType>
+      </Facet>
+      <Facet>
+        <Name>Layout_HEIGHT</Name>
+        <Value>0.0</Value>
+        <MediaType>Double</MediaType>
+      </Facet>
+      <Facet>
+        <Name>Layout_WIDTH</Name>
+        <Value>0.0</Value>
+        <MediaType>Double</MediaType>
+      </Facet>
+      <Facet>
+        <Name>EmbeddingType</Name>
+        <Value>Global</Value>
+        <MediaType>String</MediaType>
+      </Facet>
+      <Facet>
+        <Name>ContentType</Name>
+        <Value>TextOverlays</Value>
+        <MediaType>String</MediaType>
+      </Facet>
+      <Facet>
+        <Name>ArtifactTypeId</Name>
+        <Value>TextOverlayVisual</Value>
+        <MediaType>String</MediaType>
+      </Facet>
+      <Facet>
+        <Name>ArtifactRenderStyle</Name>
+        <Value>TextTitles</Value>
+        <MediaType>String</MediaType>
+      </Facet>
+      <Facet>
+        <Name>FontColor</Name>
+        <Value>#FFFFFFFF</Value>
+        <MediaType>String</MediaType>
+      </Facet>
+      <Facet isLocalizable="true">
+        <Name>Title</Name>
+        <Value>Some new title</Value>
+        <MediaType>String</MediaType>
+      </Facet>
+    </RinMedia>
+    <RinMedia Id="f797094b-7e89-4a85-842c-73e87dfa3426">
+      <Facet>
+        <Name>Layout_X</Name>
+        <Value>0.0</Value>
+        <MediaType>Double</MediaType>
+      </Facet>
+      <Facet>
+        <Name>Layout_Y</Name>
+        <Value>0.0</Value>
+        <MediaType>Double</MediaType>
+      </Facet>
+      <Facet>
+        <Name>Layout_HEIGHT</Name>
+        <Value>0.0</Value>
+        <MediaType>Double</MediaType>
+      </Facet>
+      <Facet>
+        <Name>Layout_WIDTH</Name>
+        <Value>0.0</Value>
+        <MediaType>Double</MediaType>
+      </Facet>
+      <Facet>
+        <Name>EmbeddingType</Name>
+        <Value>Global</Value>
+        <MediaType>String</MediaType>
+      </Facet>
+      <Facet isLocalizable="true">
+        <Name>Src</Name>
+        <Value>http://az17600.vo.msecnd.net/rincontent/Published/19d7fc7c-fe29-4d3a-b833-a373f40a77d3/LadakhRIN_01_Media/damagedhouses.wmv</Value>
+        <MediaType>Video</MediaType>
+      </Facet>
+      <Facet>
+        <Name>DefaultExpandedModeBehavior</Name>
+        <Value>MicrosoftResearch.Rin.Behaviors.Popup</Value>
+        <MediaType>String</MediaType>
+      </Facet>
+      <Facet>
+        <Name>ArtifactTypeId</Name>
+        <Value>MediaOverlayVisual</Value>
+        <MediaType>String</MediaType>
+      </Facet>
+      <Facet>
+        <Name>SmallMediaStartOffset</Name>
+        <Value>0</Value>
+        <MediaType>Double</MediaType>
+      </Facet>
+      <Facet>
+        <Name>SmallMediaDuration</Name>
+        <Value>14.967</Value>
+        <MediaType>Double</MediaType>
+      </Facet>
+      <Facet>
+        <Name>LargeMediaStartOffset</Name>
+        <Value>0</Value>
+        <MediaType>Double</MediaType>
+      </Facet>
+      <Facet>
+        <Name>LargeMediaDuration</Name>
+        <Value>30</Value>
+        <MediaType>Double</MediaType>
+      </Facet>
+      <Facet>
+        <Name>PlayInPlace</Name>
+        <Value>True</Value>
+        <MediaType>bool</MediaType>
+      </Facet>
+      <Facet isLocalizable="true">
+        <Name>SmallMedia</Name>
+        <Value>video.png</Value>
+        <MediaType>Image</MediaType>
+      </Facet>
+      <Facet>
+        <Name>HorizontalAlignment</Name>
+        <Value>Left</Value>
+        <MediaType>String</MediaType>
+      </Facet>
+      <Facet>
+        <Name>VerticalAlignment</Name>
+        <Value>Bottom</Value>
+        <MediaType>String</MediaType>
+      </Facet>
+      <Facet>
+        <Name>Margin</Name>
+        <Value>15,0,0,100</Value>
+        <MediaType>String</MediaType>
+      </Facet>
+      <Facet isLocalizable="true">
+        <Name>Title</Name>
+        <Value>New video title</Value>
+        <MediaType>String</MediaType>
+      </Facet>
+      <Facet isLocalizable="true">
+        <Name>Description</Name>
+        <Value>&lt;div&gt;&lt;p&gt;New video description&lt;/p&gt;&lt;/div&gt;</Value>
+        <MediaType>String</MediaType>
+      </Facet>
+      <Facet isLocalizable="true">
+        <Name>Copyright</Name>
+        <Value>new copyright</Value>
+        <MediaType>String</MediaType>
+      </Facet>
+    </RinMedia>
+  </ContentCollection>
+  <ContentUI>
+    <Groups Id="b67ec4ec-dafe-48c4-a154-138a70037935" />
+    <Categories />
+  </ContentUI>
+</ContentBrowser>

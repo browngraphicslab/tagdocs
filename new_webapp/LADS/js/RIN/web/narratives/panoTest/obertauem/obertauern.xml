@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<krpano version="1.0.8">
+
+
+<view fovmax="120" maxpixelzoom="1.0" fov="90" fovtype="MFOV" vlookat="0" hlookat="-10"/>
+<preview url="http://krpano.com/panos/obertauern/obertauern.tiles/preview.jpg"/>
+<image>
+  <left url="http://krpano.com/panos/obertauern/obertauern.tiles/pano_l.jpg"/>
+  <front url="http://krpano.com/panos/obertauern/obertauern.tiles/pano_f.jpg"/>
+  <right url="http://krpano.com/panos/obertauern/obertauern.tiles/pano_r.jpg"/>
+  <back url="http://krpano.com/panos/obertauern/obertauern.tiles/pano_b.jpg"/>
+  <up url="http://krpano.com/panos/obertauern/obertauern.tiles/pano_u.jpg"/>
+  <down url="http://krpano.com/panos/obertauern/obertauern.tiles/pano_d.jpg"/>
+  <mobile>
+    <left url="http://krpano.com/panos/obertauern/obertauern.tiles/mobile_l.jpg"/>
+    <front url="http://krpano.com/panos/obertauern/obertauern.tiles/mobile_f.jpg"/>
+    <right url="http://krpano.com/panos/obertauern/obertauern.tiles/mobile_r.jpg"/>
+    <back url="http://krpano.com/panos/obertauern/obertauern.tiles/mobile_b.jpg"/>
+    <up url="http://krpano.com/panos/obertauern/obertauern.tiles/mobile_u.jpg"/>
+    <down url="http://krpano.com/panos/obertauern/obertauern.tiles/mobile_d.jpg"/>
+  </mobile>
+  <tablet>
+    <left url="http://krpano.com/panos/obertauern/obertauern.tiles/tablet_l.jpg"/>
+    <front url="http://krpano.com/panos/obertauern/obertauern.tiles/tablet_f.jpg"/>
+    <right url="http://krpano.com/panos/obertauern/obertauern.tiles/tablet_r.jpg"/>
+    <back url="http://krpano.com/panos/obertauern/obertauern.tiles/tablet_b.jpg"/>
+    <up url="http://krpano.com/panos/obertauern/obertauern.tiles/tablet_u.jpg"/>
+    <down url="http://krpano.com/panos/obertauern/obertauern.tiles/tablet_d.jpg"/>
+  </tablet>
+</image>
+</krpano>

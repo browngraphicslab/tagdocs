@@ -1,0 +1,61 @@
+﻿<?xml version="1.0"?>
+<krpano version="1.0.8">
+<plugin url="xrezlogo.png" onclick="openurl(http://www.xrez.com,_blank)" onhover="showtext(visit www.xrez.com)" y="10" x="10" align="leftbottom" name="xrezlogo"/><display details="22"/><control zoomoutcursor="false" zoomtocursor="true"/><network decodequeues="2" downloadqueues="6"/>
+  <view vlookat="0" hlookat="0"/><preview url="http://www.krpano.com/panos/divingboard/divingboard.tiles/preview.jpg" type="CUBESTRIP"/><image type="CUBE" progressive="false" tilesize="1000" multires="true">
+    <level tiledimageheight="16000" tiledimagewidth="16000">
+      <left url="http://www.krpano.com/panos/divingboard/divingboard.tiles/l5_l_%0v_%0h.jpg"/>
+      <front url="http://www.krpano.com/panos/divingboard/divingboard.tiles/l5_f_%0v_%0h.jpg"/>
+      <right url="http://www.krpano.com/panos/divingboard/divingboard.tiles/l5_r_%0v_%0h.jpg"/>
+      <back url="http://www.krpano.com/panos/divingboard/divingboard.tiles/l5_b_%0v_%0h.jpg"/>
+      <up url="http://www.krpano.com/panos/divingboard/divingboard.tiles/l5_u_%0v_%0h.jpg"/>
+      <down url="http://www.krpano.com/panos/divingboard/divingboard.tiles/l5_d_%0v_%0h.jpg"/>
+    </level>
+    <level tiledimageheight="8000" tiledimagewidth="8000">
+        <left url="http://www.krpano.com/panos/divingboard/divingboard.tiles/l4_l_%0v_%0h.jpg"/>
+        <front url="http://www.krpano.com/panos/divingboard/divingboard.tiles/l4_f_%0v_%0h.jpg"/>
+        <right url="http://www.krpano.com/panos/divingboard/divingboard.tiles/l4_r_%0v_%0h.jpg"/>
+        <back url="http://www.krpano.com/panos/divingboard/divingboard.tiles/l4_b_%0v_%0h.jpg"/>
+        <up url="http://www.krpano.com/panos/divingboard/divingboard.tiles/l4_u_%0v_%0h.jpg"/>
+        <down url="http://www.krpano.com/panos/divingboard/divingboard.tiles/l4_d_%0v_%0h.jpg"/>
+      </level><level tiledimageheight="4000" tiledimagewidth="4000">
+        <left url="http://www.krpano.com/panos/divingboard/divingboard.tiles/l3_l_%0v_%0h.jpg"/>
+        <front url="http://www.krpano.com/panos/divingboard/divingboard.tiles/l3_f_%0v_%0h.jpg"/>
+        <right url="http://www.krpano.com/panos/divingboard/divingboard.tiles/l3_r_%0v_%0h.jpg"/>
+        <back url="http://www.krpano.com/panos/divingboard/divingboard.tiles/l3_b_%0v_%0h.jpg"/>
+        <up url="http://www.krpano.com/panos/divingboard/divingboard.tiles/l3_u_%0v_%0h.jpg"/>
+        <down url="http://www.krpano.com/panos/divingboard/divingboard.tiles/l3_d_%0v_%0h.jpg"/>
+      </level><level tiledimageheight="2000" tiledimagewidth="2000">
+        <left url="http://www.krpano.com/panos/divingboard/divingboard.tiles/l2_l_%0v_%0h.jpg"/>
+        <front url="http://www.krpano.com/panos/divingboard/divingboard.tiles/l2_f_%0v_%0h.jpg"/>
+        <right url="http://www.krpano.com/panos/divingboard/divingboard.tiles/l2_r_%0v_%0h.jpg"/>
+        <back url="http://www.krpano.com/panos/divingboard/divingboard.tiles/l2_b_%0v_%0h.jpg"/>
+        <up url="http://www.krpano.com/panos/divingboard/divingboard.tiles/l2_u_%0v_%0h.jpg"/>
+        <down url="http://www.krpano.com/panos/divingboard/divingboard.tiles/l2_d_%0v_%0h.jpg"/>
+      </level><level tiledimageheight="1000" tiledimagewidth="1000">
+        <left url="http://www.krpano.com/panos/divingboard/divingboard.tiles/l1_l_%0v_%0h.jpg"/>
+        <front url="http://www.krpano.com/panos/divingboard/divingboard.tiles/l1_f_%0v_%0h.jpg"/>
+        <right url="http://www.krpano.com/panos/divingboard/divingboard.tiles/l1_r_%0v_%0h.jpg"/>
+        <back url="http://www.krpano.com/panos/divingboard/divingboard.tiles/l1_b_%0v_%0h.jpg"/>
+        <up url="http://www.krpano.com/panos/divingboard/divingboard.tiles/l1_u_%0v_%0h.jpg"/>
+        <down url="http://www.krpano.com/panos/divingboard/divingboard.tiles/l1_d_%0v_%0h.jpg"/>
+      </level>
+      <!-- mobile phone / iphone images -->
+      <mobile devices="iphone|ipad">
+        <left url="http://www.krpano.com/panos/divingboard/divingboard.tiles/mobile_l.jpg"/>
+        <front url="http://www.krpano.com/panos/divingboard/divingboard.tiles/mobile_f.jpg"/>
+        <right url="http://www.krpano.com/panos/divingboard/divingboard.tiles/mobile_r.jpg"/>
+        <back url="http://www.krpano.com/panos/divingboard/divingboard.tiles/mobile_b.jpg"/>
+        <up url="http://www.krpano.com/panos/divingboard/divingboard.tiles/mobile_u.jpg"/>
+        <down url="http://www.krpano.com/panos/divingboard/divingboard.tiles/mobile_d.jpg"/>
+      </mobile>
+      <!-- tablet pc / ipad images -->
+      <tablet devices="iphone|ipad">
+        <left url="http://www.krpano.com/panos/divingboard/divingboard.tiles/tablet_l.jpg"/>
+        <front url="http://www.krpano.com/panos/divingboard/divingboard.tiles/tablet_f.jpg"/>
+        <right url="http://www.krpano.com/panos/divingboard/divingboard.tiles/tablet_r.jpg"/>
+        <back url="http://www.krpano.com/panos/divingboard/divingboard.tiles/tablet_b.jpg"/>
+        <up url="http://www.krpano.com/panos/divingboard/divingboard.tiles/tablet_u.jpg"/>
+        <down url="http://www.krpano.com/panos/divingboard/divingboard.tiles/tablet_d.jpg"/>
+      </tablet>
+  </image>
+</krpano>

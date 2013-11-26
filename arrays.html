@@ -1,0 +1,74 @@
+<html>
+<head>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="./jquery.js"></script>
+    <script>
+        /**
+         * Ben LeVeque, 7/8/13
+         * 
+         * The length property of an array object only looks at non-negative integer properties,
+         * but arrays are just objects at heart, so they can have other properties, too.
+         */
+         var arr;
+         function executeCode () {
+             arr = [1,2,3];
+             arr[-1] = 5;
+             arr[100] = 2;
+             alert("arr[-1] = "+arr[-1]+", arr.length = "+arr.length+", arr = "+arr);
+             arr.length=0;
+             alert("arr[-1] = "+arr[-1]+", arr.length = "+arr.length);
+         }
+         
+         function checkType () {
+             alert("calling typeof [1,2,3]: "+ (typeof [1,2,3]));
+             alert("calling Array.prototype.toString: "+ Array.prototype.toString.apply([1,2,3])); // knows how to handle arrays
+             alert("calling Object.prototype.toString: "+Object.prototype.toString.apply([1,2,3])); // doesn't
+         }
+         
+         Array.prototype.dim = function (n, initial) {
+             var arr = [], i;
+             for (i = 0; i < n; i++) {
+                 arr[i] = initial;
+             }
+             return arr;
+         }
+         
+         function testDim () {
+             var arr = Array.prototype.dim(3, []);
+             arr[0][1] = 5;
+             alert(arr);
+         }
+         
+    </script>
+</head>
+<title>arrays</title>
+<body>
+    <pre><code>
+var arr;
+arr = [1,2,3];
+arr[-1] = 5;
+arr[100] = 2;
+alert("arr[-1] = "+arr[-1]+", arr.length = "+arr.length+", arr = "+arr);
+arr.length=0;
+alert("arr[-1] = "+arr[-1]+", arr.length = "+arr.length);
+    </code></pre>
+    <button onclick="executeCode()">execute code</button>
+    <button onclick="checkType()">what does typeof return for arrays?</button>
+    <pre><code>
+Array.prototype.dim = function (n, initial) {
+     var arr = [], i;
+     for (i = 0; i < n; i++) {
+         arr[i] = initial;
+     }
+     return arr;
+ }
+ 
+function testDim () {
+     var arr = Array.prototype.dim(3, []);
+     arr[0][1] = 5;
+     alert(arr);
+ }
+        </code></pre>
+        <button onclick="testDim()">call testDim</button>
+</body>
+</html>

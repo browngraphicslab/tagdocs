@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+<!-- on corp net IE thinks it's looking at legacy corporate software so it runs in compat mode. -->
+<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+<title>Sample Poi viewer</title>
+<script src="jspanoviewer.js"></script>
+<script src="CubePoi.js"></script>
+<script src="CubePoiArranger.js"></script>
+
+<link rel=stylesheet href="./style.css" type="text/css"/>
+<style>
+    html, body
+    {
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+        overflow: hidden;
+        -ms-content-zooming: none;
+    }
+    #viewerDiv
+    {
+        height: 100%;
+        width: 100%;
+    }
+    #panoSelector
+    {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        background-color: white;
+        border: solid grey 1px;
+        padding: 3px;
+    }
+</style>
+
+</head>
+
+<body>
+
+<div id="viewerDiv"></div>
+
+<div id="panoSelector">
+
+<input type="button" id="addPoiButton" value="Add Poi" />
+<span id="addPoiText"></span>
+
+<br />
+
+<input type="button" id="saveCamera" value="Save Camera Position" />
+<span id="saveCameraText"></span>
+
+<br />
+<input type="button" id="restoreCamera" value="Restore Camera Position" />
+<label for="animateRestore"><input type="checkbox" id="animateRestore" />Use crude animation?</label>
+
+</div>
+
+<script>
+
+    function createViewerFromCidOrJsonUri(panoId) {
+        if (panoId == "") {
+            //do nothing
+        }
+        else if (panoId.indexOf('http') == 0) {
+            //pano is specified by the uri of the json.
+            PhotosynthRml.createFromJsonUri(panoId, rmlCallback);
+        }
+        else {
+            //pano is specified by the photosynth collection id (cid).
+            PhotosynthRml.createFromCid(panoId, rmlCallback);
+        }
+    }
+
+    function rmlCallback(rml, error) {
+        if (rml == null) {
+            if (error instanceof JsonDownloadFailedException) {
+                //Failed to download
+                alert('json failed to download');
+            }
+            else if (error instanceof JsonMalformedException) {
+                //Failed to parse the response of the json request
+                alert('json was malformed');
+            }
+            else {
+                //Some other unknown error.
+                alert('unknown error when attempting to download json');
+            }
+        }
+        else {
+            createViewer(rml);
+        }
+    }
+
+    var shownAlertAboutTiles = false;
+
+    var viewer = null;
+
+    function createViewer(rml) {
+        if (viewer) {
+            viewer.dispose();
+        }
+
+        viewer = new RwwViewer(document.getElementById('viewerDiv'), {
+            rml: rml,
+            tileDownloadFailed: function (failCount, succeedCount) {
+                var total = failCount + succeedCount;
+
+                if (total > 4 && failCount > succeedCount && !shownAlertAboutTiles) {
+                    //Tile download failures are high
+                    alert('tile download failures are high');
+                    shownAlertAboutTiles = true;
+                }
+            },
+            renderer: 'css'  //OPTIONAL param.  Defaults to 'webgl' if available on the current browser, else 'css'.  At the moment, it needs to be 'css', because the imagery won't show in 'webgl' until we make some changes to the HTTP response headers.
+        });
+
+        cameraController = viewer.getActiveCameraController();
+        cubePoiArranger = new CubePoiArranger(viewerDiv, cameraController);
+
+        cameraController.viewChangeCallback = function () {
+            cubePoiArranger.update();
+        };
+    }
+
+    var viewerDiv = document.getElementById('viewerDiv');
+    viewerDiv.onresize = function () {
+        if (viewer != null && viewer.setViewportSize != null) {
+            viewer.setViewportSize(viewerDiv.offsetWidth, viewerDiv.offsetHeight);
+        }
+    };
+
+    createViewerFromCidOrJsonUri('https://s3.amazonaws.com/t1.360cities/metadata/68744-TAdemo');
+
+    document.getElementById('addPoiButton').onclick = function () {
+        viewerDiv.addEventListener('click', addPoiEventHandler, false);
+        document.getElementById('addPoiText').innerHTML = "click in the viewer to add a poi";
+    };
+
+    var cameraPitchHeading, cameraVerticalFov;
+
+    document.getElementById('saveCamera').onclick = function () {
+        cameraPitchHeading = cameraController.getPitchAndHeading();
+        cameraVerticalFov = cameraController.getVerticalFov();
+
+        document.getElementById('saveCameraText').innerHTML = "pitch,heading,verticalFov: " + cameraPitchHeading[0].toFixed(6) + ", " + cameraPitchHeading[1].toFixed(6) + ", " + cameraVerticalFov.toFixed(6);
+    };
+
+    document.getElementById('restoreCamera').onclick = function () {
+        var animate = document.getElementById('animateRestore').checked;
+
+        cameraController.setPitchAndHeading(cameraPitchHeading[0], cameraPitchHeading[1], animate);
+        cameraController.setVerticalFov(cameraVerticalFov, animate);
+    };
+
+    var cameraController;
+    var cubePoiArranger;
+
+    function addPoiEventHandler(e) {
+        //Passing in e because it contains x and y properties, which is what the method is expecting.
+        var pitchHeading = cameraController.tryPixelToPitchHeading(e);
+
+        if (pitchHeading != null) {
+            var elem = document.createElement('div');
+            elem.style.position = 'absolute';
+            elem.style.width = '20px';
+            elem.style.height = '20px';
+            elem.style.background = 'blue';
+            elem.style.border = '2px solid red';
+
+            document.getElementById('addPoiText').innerHTML = "Added poi at pitch/heading of: " + pitchHeading.pitch.toFixed(6) + ", " + pitchHeading.heading.toFixed(6);
+
+            //setting 0,0 here causes it to anchor to the top left of the elem
+            var poi = new CubePoi(pitchHeading.heading, pitchHeading.pitch, elem, {x: 0, y: 0});
+            cubePoiArranger.addPoi(poi);
+
+            //position it now
+            cubePoiArranger.updatePoi(poi);
+        }
+
+        viewerDiv.removeEventListener('click', addPoiEventHandler, false);
+    }
+
+</script>
+
+</body>
+</html>

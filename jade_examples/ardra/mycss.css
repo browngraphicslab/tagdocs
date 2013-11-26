@@ -1,0 +1,49 @@
+#topmenu{
+  padding-left: 20px;
+  padding-top: 10px;
+  font-family: courier;
+  font-size: 30px;
+  background-color: #4A4741;
+  color: #FF3800;
+  height: 150px;
+  top: 0px;
+}
+
+
+#recipes {
+  background-color: #FFBF00;
+  font-family: "Times New Roman", Times, serif;
+  padding-left: 20px;
+  padding-top: 10px;
+  /*text-align: center;*/
+}
+
+#heading{
+  font-weight: 500;
+  height: 15px;
+  text-decoration: underline;
+
+}
+
+#ingredients{
+  font-family: monospace, "Courier New", serif !important;
+  font-weight: 200;
+  font-size: 80%;
+  width: 450px;
+}
+#steps{
+  font-size: 90%;
+  font-family: monospace, "Courier New", serif !important;
+  font-weight: 200;
+  width: 450px;
+}
+#description{
+  font-size: 120%;
+  font-weight: 400;
+  width: 450px;
+}
+#wholepage{/*
+  background-color: #FF7E00;*/
+  height: 10000px;
+  background-color: #FFBF00;
+}

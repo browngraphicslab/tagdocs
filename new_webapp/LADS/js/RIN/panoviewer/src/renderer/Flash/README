@@ -1,0 +1,51 @@
+
+To Compile:
+Open main.fla or demo.fla in Adobe Flash CS5 (other versions will most likely work
+but this is the only version I have to test)
+choose file->publish to create a .swf file named main.swf or demo.swf
+
+To Run:
+index.html: compile demo.swf and then open in a browser.  click start to load the
+textures and start the demo running.  Arrow keys will rotate the camera, and
+you can toggle options on and off as well as applying animation.
+
+memoryCheck.html: compile demo.swf then it
+will load and delete the hih and low quality boxes
+on an endless loop once you click start.  Right click to view
+how much memory it's taking up.
+
+fading.html: compile demo.swf
+tests the fading of opacity.  It fades between the high and low
+quality boxes on an endless loop after clicking start
+
+triTest.html: compile main.swf
+tests how many triangles can be drawn.  When you click start
+342 cubes are added to the screen (each with 12 triangles), you can
+animate these cubes like with index.html.  Clicking add more adds another
+342 cubes.
+
+
+Notes:
+main.fla and demo.fla both compile the same code the only difference is demo.fla
+also compiles code to load in the text files lobby.txt and lobby-hi.txt which are
+used in memoryCheck.html, fading.html, and index.html.  triTest does not use these
+files and so just requires main.swf to run.
+
+Testing locally is currently somewhat tricky because of security in
+flash and javascript.  To allow the flash to communicate with js (which
+can access the web) and also to load images of your local harddrive
+you need to give it (main.swf) and also the webpage (index.html) permission
+to do so.
+
+Flash CS5 has a nasty habit of adding control M's to my code where it sees
+newlines.  Depending on what was used to open the file last some of these
+may be in the .as files i remove these in VIM using the command...
+:%s/carrotM/\r/g
+carrotM is typed using control-v and then control-m
+
+Comments:
+DEMO is used to show what to comment out in Main.as to have something like
+the index.html demo run in pure action script.
+
+FP11 is used in renderable to show which code should be changed to run
+with hardware acceleration in flash player 11

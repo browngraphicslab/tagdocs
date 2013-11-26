@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>RIN Manual Tests</title>
+</head>
+<body>
+      <div><strong>RIN Manual Tests</strong></div>
+    <p>
+        This page lists the manual tests to be run for verifying various components. It also lists manual test to be run before checkin. Please run automated unit tests at this <a href="RINUnitTests.html" target="_blank">link</a></p>
+    <p>
+        <strong>Checkin Tests:</strong></p>
+        <ol>
+            <li>First make sure automated test are run by clicking <a href="RINUnitTests.html" target="_blank">here</a> or by running "grunt test" in command line.</li>
+            <li>Simplest RIN that runs an ES interpolating numbers. Using DiscreteESBase: <a target="_blank" href="../test.html?narratives/lite/narrative.js">Run Here</a> Using InterpolatedESBase: <a target="_blank" href="../test.html?narratives/lite/narrativeInterpolated.js">Run Here</a></li>
+            <li>Basic test that runs common experiences such as deepzoom, video, pano, overlay etc. <a target="_blank" href="../test.html?narratives/basictest1/narrative.js">Run Here</a></li>
+            <li>Browsers: Make sure above tests are run in latest IE, Chrome and Firefox.</li>
+
+        </ol>
+
+
+            <strong>Scenario Specific Tests</strong>
+
+        <p>SDK: To verify SDK features and SDK samples are not broken.
+            <ol>
+                <li>Images ES sample. <a target="_blank" href="../test.html?narratives/sample/narrative.js">Run Here</a></li>
+            </ol>
+    </p>
+
+        <p>TAG: To verify TAG scenarios are not broken.
+            <ol>
+                <li>TAG basic test. <a target="_blank" href="../test.html?narratives/TAGTest/narrative.js">Run Here</a></li>
+                <li>Ink ES test. <a target="_blank" href="../test.html?narratives/InkESTest/narrative.js">Run Here</a></li>
+            </ol>
+    </p>
+
+<p>Specific ES Tests
+            <ol>
+                <li>Video ES: Narrative with many videos. <a target="_blank" href="../test.html?narratives/video/narrative.js">Run Here</a></li>
+                <li>KR Pano: <a target="_blank" href="../test.html?narratives/krPanoTest/narrative.js">Run Here</a></li>
+                <li>CB: <a target="_blank" href="../test.html?narratives/krPanoTest/narrative.js">Run Here</a></li>
+            </ol>
+    </p>
+
+    <p>Additional Tests: Tests that are complex or verify niche functionalities. Run for thoroughness.
+            <ol>
+                <li>DeepState: Getting and setting deep-state URLs. <a href="core/DeepStateTests.html" target="_blank">Run Here</a></li>
+                <li>Ladakh. <a target="_blank" href="../test.html?narratives/ladakh/narrative.js">Run Here</a></li>
+            </ol>
+    </p>
+
+</body>
+</html>

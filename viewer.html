@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<head>
+<script src="../jquery.js" charset="utf-8"></script>
+<script src="seadragon-min.js"></script>
+<link rel="stylesheet" href="../style.css">
+<script>
+function init() {
+    viewer4 = new Seadragon.Viewer("container4");
+    viewer4.openDzi('../../bleveque/dz_4/dzc_output.xml');
+}
+
+Seadragon.Utils.addEvent(window, "load", init);
+</script>
+</head>
+<body>
+  <div id="seadragonTest">
+    <div id="mainSeadragonContainer">
+      <br /><br /><br />
+      <div id="container4" class="container"></div>
+      &nbsp;&nbsp;
+      <i>An Old Man in Military Costume&nbsp;</i>(Rembrandt, 1630-1), from&nbsp;
+      <a href="http://search.getty.edu/gateway/search?q=&amp;cat=highlight&amp;f=%22Open+Content+Images%22&amp;rows=10&amp;srt=a&amp;dir=s&amp;pg=1" target="_blank" class="demo">here</a>.
+      <br><br>
+    </div>
+  </div>
+</div>
+</body>
+</html>

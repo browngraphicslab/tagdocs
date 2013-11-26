@@ -1,0 +1,14 @@
+h1= title
+p Welcome to #{title}
+
+form(method='post', action='/documents')
+| Username:
+input(name="username", type="text")
+br
+| Password:
+input(name="password", type="password")
+br
+| Are you British?
+input(name="brit", type="checkbox")
+br
+input(value="Submit", type="submit")

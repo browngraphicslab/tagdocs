@@ -1,0 +1,65 @@
+!!! 5
+
+html
+    include header
+        link(rel="stylesheet", href="../css/artworkViewer.css")
+    title Artwork Viewer -- #{artname}
+    body
+        .artmode.root#artmodeRoot
+        .sideBar
+            .toggler
+                img.togglerImage(src="../images/icons/Left.png")
+            .backButtonContainer
+            .sideBarSections
+                .sideBarInfo
+                    .row1
+                        .info
+                            #infoTitle
+                            #infoArtist
+                            #infoYear
+                    .midSectionContainer
+                        .midSection
+                            .locationHistoryContainer
+                                img.locationHistoryIcon(src="../images/icons/Location.svg")
+                                .locationHistory Location History
+                            #splitscreenContainer
+                                img.splitscreen-icon(src="../images/icons/SplitW.svg")
+                                .splitscreen-text Split Screen
+                            .feedbackContainer
+                                img.feedback-icon(src="../images/icons/FeedbackIcon.svg")
+                                .feedback-text Send Feedback
+                            .divider
+                    .topfadeout
+                    .bottomfadeout
+                    #assetContainer
+                        .drawer
+                            .drawerHeader
+                                .label Hotspots
+                                .toggleContainer
+                                    img.plusToggle(src="../images/icons/plus.png")
+                            .drawerContents
+                        .drawer
+                            .drawerHeader
+                                .label Assets
+                                .toggleContainer
+                                    img.plusToggle(src="../images/icons/plus.png")
+                        .drawer
+                            .drawerHeader
+                                .label Tours
+                                .toggleContainer
+                                    img.plusToggle(src="../images/icons/plus.png")
+                #minimapContainer
+                    .minimaprect
+                    img.minimap
+        .locationHistoryDiv
+            .locationHistoryPanel
+                .lpContents
+                    .mapOverlay
+                        label#mapOverlayLabel Map has no location history to display
+                    #lpTitle
+                    .lpMapDiv
+                    .lpTextInfoDiv
+                        .lpTextDiv
+                        .lpInfoDiv
+            .locationHistoryToggle
+                img.locationHistoryToggleIcon(src="../images/icons/Left.png")

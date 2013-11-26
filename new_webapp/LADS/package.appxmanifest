@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
+  <Identity Name="7098BrownGraphicsGroup.TAGTouchArtGallery" Version="1.2.5.0" Publisher="CN=96A4347E-F2AF-4B20-AE3B-B28736F67849" />
+  <Properties>
+    <DisplayName>TAG: Touch Art Gallery</DisplayName>
+    <Description>LADS</Description>
+    <PublisherDisplayName>Brown Graphics Group</PublisherDisplayName>
+    <Logo>images\storelogoresize.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.2</OSMinVersion>
+    <OSMaxVersionTested>6.2</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" StartPage="default.html">
+      <VisualElements DisplayName="TAG" Logo="images\logo.png" SmallLogo="images\smalllogo.png" Description="Touch Art Gallery" ForegroundText="light" BackgroundColor="#000000">
+        <DefaultTile ShowName="allLogos" WideLogo="images\WideLogo.png" />
+        <SplashScreen Image="images\splash.jpg" />
+        <InitialRotationPreference>
+          <Rotation Preference="landscape" />
+          <Rotation Preference="landscapeFlipped" />
+        </InitialRotationPreference>
+      </VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="picturesLibrary" />
+    <Capability Name="internetClient" />
+  </Capabilities>
+</Package>

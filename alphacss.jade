@@ -1,0 +1,26 @@
+!!! 5
+head
+    link(rel="stylesheet", href="alphacss.css")
+    script(src="jquery.js")
+    script(src="alphacss.js")
+body
+    #content
+        #widgetContainer
+            textarea#textarea(placeholder=" enter css here...")
+            br
+            button(onclick="alphabetize()") alphabetize!
+            button(onclick="alphabetizeProperties()") alphabetize properties!
+            button(onclick="alphabetizeAll()") alphabetize all!
+        br
+        br
+        #descContainer
+            h2 How to use
+            ol
+                li
+                    | Make sure that each set of rules in your code is separated by a
+                    | blank line and that selectors aren't preceded by spaces or tabs.
+                li Copy-paste your css or stylus code into the box above
+                li
+                    | Click 'alphabetize' to alphabetize by selector. Click 'alphabetize properties'
+                    | to alphabetize the list of properties in each set of rules. Click 'alphabetize
+                    | all' to do both.

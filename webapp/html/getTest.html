@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+        <script>
+            window.onload = load;
+            
+            function load() {
+                $.ajax({
+                    url: "test.html",
+                    success: function(data) {
+                        alert($(data)[0]);
+                        $("#data").html(data);
+                    },
+                    error: function() {
+                        alert("fail");
+                    },
+                    dataType: 'html'
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <div id="data"></div>
+    </body>
+</html>

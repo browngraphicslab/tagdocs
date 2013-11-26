@@ -1,0 +1,85 @@
+﻿<!doctype html>
+<html>
+<head>
+    <script src="../src/core/Common.js"></script>
+<script>
+
+    var a;
+    var b;
+    function init() {
+        a = document.getElementById("a");
+        b = document.getElementById('b');
+
+        a.style.position = "absolute";
+        a.style.width = 300;
+        a.style.height = 300;
+        a.style.zIndex = 1;
+
+        //a.removeChild 
+
+        b.style.position = "absolute";
+        b.style.width = 300;
+        b.style.height = 300;
+        b.style.zIndex = 2;
+
+        //a.style.display = 
+
+        fadein();
+        keyframeAnimationTest();
+    };
+    function onAnimateA(opacityValue) {
+        rin.util.setElementOpacity(a, opacityValue);
+    };
+
+    function onAnimateB(opacityValue) {
+        rin.util.setElementOpacity(b, opacityValue);
+    };
+
+    function fadein(dur) {
+        dur = dur || 3;
+        var dani = new rin.internal.DoubleAnimation(dur, 0, 1);
+        var ani = new rin.internal.Storyboard(dani, onAnimateA, fadeout);
+        ani.begin();
+
+        var dani2 = new rin.internal.DoubleAnimation(dur, 1, 0);
+        var ani2 = new rin.internal.Storyboard(dani2, onAnimateB);
+        ani2.begin();
+    };
+
+    function fadeout(dur) {
+        dur = dur || 3;
+        var dani = new rin.internal.DoubleAnimation(dur, 1, 0);
+        var ani = new rin.internal.Storyboard(dani, onAnimateA, fadein);
+        ani.begin();
+
+        var dani2 = new rin.internal.DoubleAnimation(dur, 0, 1);
+        var ani2 = new rin.internal.Storyboard(dani2, onAnimateB);
+        ani2.begin();
+    };
+
+    function keyframeAnimationTest() {
+        var kfAni = new rin.internal.DoubleAnimation(6, { x: 0, y: -100 }, { x: 100, y: 0 });
+        var debugElem = document.getElementById("debugOut");
+        var token = setInterval(function () { var o = kfAni.getCurrentValue(); debugElem.innerHTML = "x={0},y={1}<br/>".rinFormat(o.x, o.y) + debugElem.innerHTML; if (!kfAni.isRunning()) clearInterval(token); }, 500);
+        kfAni.begin();
+
+        setTimeout(function () { kfAni.stop(); }, 3000);
+    };
+</script>
+</head>
+
+<body style="background-color:Red" onload="init()">
+<!--<div id="a" style="position:absolute;top:0;left:0;opacity:0.5;filter:alpha(opacity=40)"> <img src="Jellyfish.jpg" /></div>-->
+<div id="b" > <img width="300" height="300" style="" src="Penguins.jpg" /></div>
+<div id="a" > <video width="300" height="300" autoplay="true" controls="true" volume="0">
+   <source src="3_Grain 1080P_v3.mp4" type="video/mp4" />
+<!--   <source src="Wildlife.webm" type="video/webm" />-->
+ Your browser does not support the video tag.
+ </video>
+
+</div>
+
+    <div style="position:absolute;top:400px" id="debugOut"></div>
+</body>
+
+</html>

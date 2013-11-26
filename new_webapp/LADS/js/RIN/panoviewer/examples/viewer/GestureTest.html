@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<!-- on corp net IE thinks it's looking at legacy corporate software so it runs in compat mode. --><meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+<title>Sample pano viewer</title>
+<script src="GestureHelper.js"></script>
+<script src="QueuedGestureHelper.js"></script>
+
+<style>
+    html, body
+    {
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+        overflow: hidden;
+        -ms-content-zooming: none;
+    }
+    #container
+    {
+        height: 800px;
+        width: 800px;
+        border: solid black 1px;
+    }
+    #imageDiv
+    {
+        background-color: blue;
+        width: 50px;
+        height: 50px;
+        position: absolute;
+    }
+</style>
+
+</head>
+
+<body>
+
+<div id="container">
+
+<div id="imageDiv"></div>
+
+</div>
+
+<script>
+
+    var container = document.getElementById('container');
+    var box = document.getElementById('imageDiv');
+
+    var prevScale = 1;
+    var prevTranslation = { x: 0, y: 0 };
+
+    //var gestureHelper = new GestureHelper(container, {
+    //    gestureStart: function (e) {
+    //        prevScale = 1;
+    //        prevTranslation = { x: 0, y: 0 };
+    //    },
+    //
+    //    gestureChange: function (e) {
+    //        var x = box.offsetLeft + (e.translationX - prevTranslation.x);
+    //        var y = box.offsetTop + (e.translationY - prevTranslation.y);
+    //        var size = box.offsetWidth * (e.scale / prevScale);
+    //
+    //        box.style.left = x + 'px';
+    //        box.style.top = y + 'px';
+    //        box.style.width = size + 'px';
+    //        box.style.height = size + 'px';
+    //
+    //        prevScale = e.scale;
+    //        prevTranslation = { x: e.translationX, y: e.translationY };
+    //    },
+    //
+    //    gestureEnd: function (e) {
+    //    },
+    //
+    //    discreteZoom: function (e) {
+    //        var size = box.offsetWidth;
+    //        if (e.direction > 0) {
+    //            size = size * 2;
+    //        }
+    //        else {
+    //            size = size / 2;
+    //        }
+    //        box.style.width = size + 'px';
+    //        box.style.height = size + 'px';
+    //    }
+    //});
+
+    var gestureHelper = new QueuedGestureHelper(container);
+    window.setInterval(function () {
+        var events = gestureHelper.getQueuedEvents();
+
+        for (var i = 0; i < events.length; i++) {
+            var e = events[i];
+
+            switch (e.type) {
+                case 'gestureStart':
+                    prevScale = 1;
+                    prevTranslation = { x: 0, y: 0 };
+                    break;
+
+                case 'gestureChange':
+                    var x = box.offsetLeft + (e.translationX - prevTranslation.x);
+                    var y = box.offsetTop + (e.translationY - prevTranslation.y);
+                    var size = box.offsetWidth * (e.scale / prevScale);
+
+                    box.style.left = x + 'px';
+                    box.style.top = y + 'px';
+                    box.style.width = size + 'px';
+                    box.style.height = size + 'px';
+
+                    prevScale = e.scale;
+                    prevTranslation = { x: e.translationX, y: e.translationY };
+                    break;
+
+                case 'gestureEnd':
+                    break;
+
+                case 'discreteZoom':
+                    var size = box.offsetWidth;
+                    if (e.direction > 0) {
+                        size = size * 2;
+                    }
+                    else {
+                        size = size / 2;
+                    }
+                    box.style.width = size + 'px';
+                    box.style.height = size + 'px';
+                    break;
+            }
+        }
+    }, 15);
+
+    gestureHelper.enable();
+
+</script>
+
+</body>
+
+</html>

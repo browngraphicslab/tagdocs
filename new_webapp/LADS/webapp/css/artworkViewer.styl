@@ -1,0 +1,396 @@
+@import "mixins/common"
+
+stdAlpha = 0.85
+
+#artmodeRoot
+    width-height 100%
+    position relative
+
+// holders for the artwork (let these be created dynamically for now)
+#holder1
+    width-height 100%
+    position absolute
+    z-index 0
+
+#holder2
+    @extend .basicFullSize
+    border #000000 // used currentColor in win8, but might not be supported by webkit
+    position relative
+    text-align left
+
+#holder3
+    @extend .basicFullSize
+    border #000000 // currentColor
+    position absolute
+    text-align left
+    overflow hidden
+
+.sideBar
+    left 0px
+    top 0px
+    position absolute
+    display block
+    background-color transBlack(stdAlpha)
+    height 100% // width is set programatically
+    z-index 100
+
+.toggler
+    position absolute
+    top 45%
+    width-height 12%
+    background-color transBlack(stdAlpha)
+    z-index 100
+
+.togglerImage
+    position absolute
+    top 35%
+    left 20%
+    width auto
+    height 30%
+
+.backButtonContainer
+    width-height 50px
+    margin 10px
+
+.backbutton
+    width-height 100%
+
+.sideBarSections
+    width 89%
+    height 90%
+    left 5%
+    position relative
+
+.sideBarInfo
+    width 100%
+    height 78%
+    margin-bottom 2%
+
+.row1
+    width 100%
+    height 20%
+    margin-bottom 3%
+
+.info
+    font-size 22px
+    color white
+    width 100%
+    height 160%
+    float left
+    overflow hidden
+    white-space nowrap
+    padding-right 7%
+
+#infoTitle
+    font-size 30px
+    clear both
+    textOverflowEllipsis()
+
+#infoArtist
+    font-size 22px
+    textOverflowEllipsis()
+
+#infoYear
+    @extend #infoArtist
+
+.midSectionContainer
+    position relative
+    height 20%
+    min-height 115px
+    width 100%
+    float left
+    overflow-y auto
+    padding-right 7%
+    margin-top 5%
+
+.midSection
+    position relative
+    width 100%
+    top 0%
+    overflow-y hidden
+
+.topfadeout
+    position absolute
+    display none
+    top 25%
+    left 0px
+    width 100%
+    height 5%
+    background -ms-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 52%, rgba(0,0,0,0) 100%)
+
+.bottomfadeout
+    position absolute
+    bottom 20%
+    left 0px
+    width 100%
+    height 5%
+    background -ms-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 52%, rgba(0,0,0,1) 100%)
+
+.divider
+    position relative
+    height 6px
+    clear both
+
+#assetContainer
+    overflow auto
+    height 45%
+
+.locationHistoryIcon
+    width 9.5%
+    height auto
+    position relative
+    display inline
+    vertical-align middle
+
+.locationHistoryContainer
+    position relative
+    width 100%
+    margin-bottom 0.5%
+    float left
+
+.locationHistory
+    position relative
+    font-size 25px
+    left 5%
+    display inline
+    vertical-align middle
+
+.locationHistoryDiv
+    display none
+    // determine width in js
+    top 10%
+    height 80%
+    z-index 99
+    position absolute
+    overflow-x hidden
+
+.locationHistoryPanel
+    width 87.5%
+    height 100%
+    z-index 99
+    background-color transBlack(stdAlpha)
+
+.mapOverlay
+    width-height 100%
+    position absolute
+    z-index 10000
+    background-color transBlack(0.5)
+    left auto
+    top auto
+
+.mapOverlayLabel
+    position relative
+    float right
+    margin-right 21%
+    top 35%
+    font-size 22pt // pt rather than px?
+
+.lpContents
+    position relative
+    left-top 2.5%
+    width-height 95%
+
+#lpTitle
+    font-size 25px
+    margin-bottom 20px
+
+.lpMapDiv
+    position relative
+    height 50%
+    border 1px solid white
+    text-align center
+    background0color rgb(94, 94, 94)
+    margin-bottom 20px
+
+.lpTextInfoDiv
+    height 40%
+    width 100%
+    float left
+
+.lpTextDiv
+    height 100%
+    width 40%
+    overflow auto
+    float left
+    font-size 20px
+
+.lpInfoDiv
+    float left
+    right 0
+    top 0
+    padding-left 2%
+    height 100%
+    width 58%
+    overflow auto
+    font-size 20px
+
+.locationHistoryToggle
+    position absolute
+    background-color transBlack(stdAlpha)
+    top 45%
+    width 45px
+    height 15%
+
+.locationHistoryToggleIcon
+    position absolute
+    top 35%
+    left 20%
+    width auto
+    height 30%
+
+.locations
+    display none
+    width 96%
+    height 12%
+    padding 2% 2% 4% 2%
+    font-size 100%
+    color white
+    transBlack(0.01)
+    textOverflowEllipsis()
+
+#minimapContainer
+    width 100%
+    height 20%
+    background-color transBlack(0.9)
+    bottom 0%
+    left 0%
+    position absolute
+    vertical-align middle
+    border 1px solid white
+
+.minimaprect
+    position absolute
+    border solid white 3px
+    z-index 50
+
+.drawerHeader
+    width 100%
+    float left
+
+.label
+    font-size 25%
+    width 50%
+    float left
+
+.toggleContainer
+    width 45px
+    position relative
+    padding-top 8px
+    float right
+
+.plusToggle
+    width-height 23px
+
+.drawerContents
+    display none
+    clear both
+    font-size 16px
+
+.exhibitionPicker
+    width-height 40%
+    position absolute
+    top 20%
+    left 30%
+    background-color black
+    z-index 10000
+    border 3px double white
+    padding 1.5%
+    display block
+
+.infoLabel
+    width 100%
+    color white
+    font-size 200%
+    margin-bottom 2%
+
+.exhibitionsList
+    width 100%
+    height 60%
+    overflow auto
+    margin-bottom 2%
+
+.cancelButton
+    width 10%
+    left 85%
+    top 89%
+    color white
+    font-size 140%
+    border-color white
+    position absolute
+
+.exhibitionLabel
+    width 80%
+    color white
+    font-size 180%
+
+.exhibitions-list-cell
+    width 100%
+    height 18%
+    position relative
+    border solid transparent
+    border-width 5px 0px 5px 0px
+    display inline-block
+    overflow hidden
+    vertical-align text-top
+    margin-bottom 2%
+
+.textbox
+    width 70%
+    height 100%
+    font-size 180%
+    display inline-block
+    word-wrap ''
+    overflow hidden
+
+.imgLoader
+    width 7.5%
+    height 100%
+    float left
+    margin-right 2.5%
+    margin-left 6%
+    top 5%
+    border 1px solid black
+    display inline-block
+
+.feedbackContainer
+    width 100%
+    top 2.3%
+    position relative
+    float left
+
+.feedback-text
+    font-size 25px
+    height 10%
+    position relative
+    display inline
+    vertical-align middle
+    left 5%
+
+.feedback-icon
+    width 10%
+    height auto
+    position relative
+    display inline
+    vertical-align middle
+
+#splitscreenContainer
+    font-size 25px
+    width 100%
+    position relative
+    float left
+    margin-bottom 0.5%
+
+.splitscreen-text
+    font-size 25px
+    height 10%
+    position relative
+    display inline
+    vertical-align middle
+    left 5%
+
+.splitscreen-icon
+    width 10%
+    height auto
+    vertical-align middle
+    display inline
+    position relative

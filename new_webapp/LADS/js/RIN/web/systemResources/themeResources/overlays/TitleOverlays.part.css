@@ -1,0 +1,31 @@
+﻿.rin_titleoverlay
+{
+    color: #fcfcfc;
+    background: transparent;
+    overflow: hidden;
+    font-family: "Segoe UI" , Tahoma, Geneva, Verdana, sans-serif;
+    max-height: 100px;
+    top: 50px;
+    left: 15px;
+    width: 60%;
+    position: absolute;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.rin_titleoverlay h1
+{
+    font-size: 300%;
+    font-weight: lighter;
+    white-space: nowrap;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.4);
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    margin-top: 0px;
+}

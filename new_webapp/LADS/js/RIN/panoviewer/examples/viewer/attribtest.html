@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="../../src/common/Utils.js"></script>
+<!--<script type="text/javascript" src="./AttributionControl.js"></script> -->
+<script type="text/javascript" src="./AttributionControlNoJQuery.js"></script>
+<style type="text/css">
+    .panoramaAttributionControl .panoramaAttributionControlText {
+        font:11pt Arial,Helvetica,sans-serif;
+        vertical-align:top;
+        color:black;
+        text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+    }
+    /* You can use this to position it
+    .panoramaAttributionControlContainer  {position:absolute; bottom:10px; left:10px}*/
+    .panoramaAttributionControl a:hover   {text-decoration:none; color:black}
+    .panoramaAttributionControl a:visited {text-decoration:none; color:black}
+    .panoramaAttributionControl a         {text-decoration:none; color:black}
+    .panoramaAttributionControl a         {display:inline}
+    .panoramaAttributionControl span      {display:inline}
+    .panoramaAttributionControl .panoramaAttributionControlIcon {margin:2px; width:15px;height:15px;display:inline-block;}
+    .panoramaAttributionControl #pd_icon  {
+        background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9oJHhEZKp/4fr0AAAJmSURBVCjPbZNBSJNhHId/29fAGag7xIrkE2JM7SAdBCdsBwd5cEX3DmogCIvJ2EFilxRcO6Uup4aEJepJRCEFkQxEyK5ddBgIDibTw8ccwx0Uny4OVHrhf3ue0+95bYDuPLekN5JCkh5KKkj6KemLpL+3SODmfczn8ySTSfx+Px6Ph9bWVgYHBzk4OACYAlwV/qaYXl5exul00tjYSDQaJZ1OE4/HaWtrQxKJRAIgBTy4Kb9fWVnBbrczMjLC1dUVwBjwFkgAv5eWlnA4HAwPDwNMVOSas7Mz3G43sVgMIA2EgC7gEfAceAWkFhYWMAyD/f19gGYB3XNzc7hcLkqlEpZlsba2xvr6OsfHx2xubrK6ukqhUAD41d7eTiQSAfgkYC0UCtHT0wPwbX5+no6ODmKxGIFAgEAgQDgcJhgMAmxNT0/j8/kAdu2SHudyOTU1NUlSxjAMnZ6eKpvNyjRNeb1ejY2NKZfLqVgsBt1ut8rlsiQ570nKmqb5bG9vT5KeXlxcqKGhQalUSvl8Xr29verr65PX61VNTc33k5OTl9XV1ZJ0LuD14uIitbW1FItFLMvi8PAQ4EW5XGZnZ4etrS3Oz88Bdn0+HwMDAwApAfdLpRL19fWEw2GASaD5esIqwA8EganZ2VkcDgeZTAagqbJzfHt7G5vNRiQS4fLyEuAz8O567z8zMzNIYnR0tBLKrcImNzY2qKurwzRN+vv7SSaTRKNRWlpaMAyDiYmJSqJVd2UBHyzLYnx8nM7OTjweD36/n6GhIY6OjiplGRXe9p9f5ZLULalL0hNJeUk/JH2VlL0J/gNOugoclA6nKAAAAABJRU5ErkJggg==');
+    }
+
+    .panoramaAttributionControl #by_icon  {
+        background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9oJHhEYN+XlIyUAAAI3SURBVCjPfZNBSNsHFIe/JPWQgzUDi4NB6EAFdd5cSCF49LAchB4LE3qxtJISFFQqMgOiJ5nZkkxkUCvxJEEKAxFG8WSpoIeCytxBLAgWgmlOuQjfLvuXKKUP3uHB7/fg8fteSOVWdQCPgTTwLfAJeAP8Cfx7Q6k299Ll5aWLi4umUik7OzsdGBhwcnLS09NT1ZIaC/TNxkKlUjEajdrd3e3ExITlctlcLmcikRBwYWFBNa/eazb/srW1ZTgcdn5+XvWfarXq7OysR0dHqu82NzdtaWkxl8up/h6Y79brdTs6OhwfH1ctqA/29vYEzOfzqs/VfLlcNhKJeHJyotqD+vP6+rqxWMx6va7aWavVnJqaMpFIODo66tnZmep99W0ymTSTyaj+hvpXOp12ZGRE9ZX64/7+vsDnrlQqqg/VZ8Vi0WQyqfo2DHx3cXFBT08PwAlfr2p7ezuNRgMgGgY+xONxjo+PAXqDeXBwEIC+vj56e3sBjoH2arVKNBoFaKA+2tjYsK2tzVqtpvqD+mRlZUXAbDar+uv/qdy4OQy8Hh4eprW1lZmZGYCnwJ3r6+vPEAEhoLS2tpY8ODhgbGwM4I8g5xe7u7uGQqFg6/nh4aHZbNadnR3V96urqwIuLS0FoNwgrLi9vW0sFjMej5vJZCyVSk5PT9vf328kErFQKASIRm+bUReurq5cXl52aGjIrq4uU6mUc3Nznp+fB2SFA33oC1/1DTAC/AR8D3wE/gZeAh+ahf8BMhXM0Nmu8O0AAAAASUVORK5CYII=');
+    }
+
+    .panoramaAttributionControl #sa_icon  {
+        background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9oJHhEZNov5IvIAAAJXSURBVCjPbZM9SFsBFIVPHg7Ns/5hUZQGlAgmg6RSAi/iEOeasbgUaXFUH4KQQVM3oZJoUBJdamtxsJNoCk6toAWLgsEtGVI7ZBHSiH+14ODXpa9E6YWzXM433HvudQG6V48kvZT0TNJjST8lfZH0XtL3O06gUvFSqUQ8HiccDtPR0YFlWUxOTlIoFAAWAdPxV4KpjY0Nqqur8Xq9jIyMkEwmiUajBINBJJFIJABSQEMl/DqTyWAYBlNTU9ze3gK8BY6AT8DB2toahmEwPT0NsODANRcXF7S0tDA6OgqQKhaLDA0NEQgE6O/vZ3d3FyC1srJCVVUV+XwewCfgxerqKnV1dZyfnwMcBINBTNPEtm26urowDINsNgvwzbIsbNsGmBeQiUQiDA4OAnzY3NxEEtFoFGD+5OQEt9vNwMAAwMd0Ok0oFALYMyR5isWi/H6/JOV6eno0MTEh27YlKdnc3HzU2dmpw8NDSXra1NSk6+trSTINSUWPx6NcLidJ/pubG5mmqXK5LEnPy+Xyk0KhIJ/PJ0n5Uqkkt9stSb//zVxfX8/V1RVnZ2c0NjbS3t7O0tISfX19SGJnZwdgLxQKOYtdEPDw8vKS1tZWp5ne39+nt7cX0zQJBAKsr68DLDrbzuVyAH4n59j29jYul4uxsTEn56/Ar79ZZ5eXl5HEzMzMnZwdpbe2tqitraWtrY3h4WESiQTj4+N0d3cjibm5OedEa+7DAt6cnp4yOztLOBzG6/ViWRaxWIzj42MHfOD4Xf/5qgZJryRFJHkklSR9lvRO0o9K4x/XW+4ToETFqwAAAABJRU5ErkJggg==');
+    }
+
+    .panoramaAttributionControl #nc_icon  {
+        background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9oJHhEZGSAoH6sAAAJZSURBVCjPbZNPSNoBGIbf/FOwXxi0g0MIpMOghDJiIHYooUsjwmMbSIiX/ahbwZIgCY2CDstceRm1CTlCSMausXZwrFsjFunFgwvy1CyqQwTPLjlc7IMXvsP7HD6+920C9GCeSIpIei7JJem3pC+S3kkq/uMEGvXm7OyMRCKB3+/H7XbT19fH9PQ0JycnABvA47q/EUzmcjlaWlro7u5mZmaGTCbDwsICAwMDSCIejwOsAs5GOLa7u4vdbmd5eRngGFg5ODjg8vISoJDP52lubiYWiwGk6rDj4uICp9NJMBgEOASWSqUSPT09rK+vU6vVAFaz2SxWq5Xj42MAj4CX29vbSMIwDLxeL9FolLa2NoaGhujs7CSfzwMEgW9+v5/JyUmAtwI+j46OEolEKJfLTExMYLfbkcT8/DzlchlgE3gGvEqn0/h8PoDvAg69Xm/91tfA+2q1SjKZxDAMWltbCYfDFItFgI87Ozv09vYC/BDwaWxsjFAoBJABHl1fX3N6esrNzQ2BQABJWCwWxsfHMU2TwcFBgK8CXmSzWRwOB+fn5wChTCaDxWLB5/NhGAZzc3Ps7+8zPDyMJGZnZwGWBBhXV1d0dHRgmibAxt3dHUdHR/T395PL5QBWgI2trS1sNhulUgngaf3P0UKhgM1mwzRNbm9vATYrlUp9/5lKpZBEMpkEWHuYsLW9vT3a29txuVyEw2EWFxeZmprC4/FgtVpJp9P1iNofwgIStVqNVCrFyMgIXV1dBAIB4vE4lUrlb7LqavpPq9okhe5b5ZZUvW/VB0m/Go1/AChOHDv5YeF7AAAAAElFTkSuQmCC');
+    }
+
+    .panoramaAttributionControl #nd_icon  {
+        background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9oJHhEZI+YkxhkAAAJLSURBVCjPbZM/SFtRFId/iU+ppv7DBhqbiBAptXRoLOKLU/aStVOxLWQxqFgHC5q6CQkxD6rGpdhYHFwlg0NoHS0UzeIQB2MhAZcXVBQsKPJ16StReuFw4fJ9wzm/e1yA7pwHkt5KeinJL6km6buknKTyLRKor7Rt26TTaSKRCH19fZimyezsLIeHhwArQIvD14vLm5ubeDwegsEgY2NjWJbF9PQ0g4ODSGJhYQFgCeislz/m83ncbjdzc3Pc3Nw40HsgBfzc2NigoaGB+fl5gEVHbj0/P8fn8zE+Pg6wDDwEAoD/7+0DltbW1jAMg4ODA4AnAl6vr6/T3t7O6ekpwECtVqNSqVCtVqlUKhwfHwO8AX6YpsnExATAJwH5aDTKyMgIwFfgcywWo6uri56eHnw+H0NDQ1xdXQHEs9ks4XAYYMeQFKhWqxoeHpakkqTCzMxMbHR0VG63W4CamppkGIYk2V6vV5eXl5LUYkiqBgKB56VSSZL6JT2yLEv5fF4ej0fX19fy+/0qFApqbGz02rat5uZmSfr9r+eOjg7Ozs4AnpbLZXZ3dykWi+zt7bG/vw/wCtgJh8POYBcF3L+4uKC7u9t5zAKPgRdACBgAngEruVwOwzAolUoA/U7Oie3tbVwuF5OTk07OWeADkAGKq6urSCKVSt3K2ans1tYWbW1t9Pb2Eo/HSSaTTE1NEQqFkIRlWc4Xbb0rC0ienJyQyWSIRCIEg0FM0ySRSHB0dOSI9xze9Z+t6pT0TlJUUkCSLembpC+SftWDfwB74wIGLC10FAAAAABJRU5ErkJggg==');
+    }
+
+    .panoramaAttributionControl #copyright_icon  {
+        background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9oJHhEZEFn0pw8AAAJdSURBVCjPbZO9S5tRFId/ia9QvxUabLQBaVQSNwflzRbnEvwHirRr1OAgLm8qDhGaJob6EXGxsSiIm2RwkFZwsdChm8RBLSKKkBJiFKOgPl36FpUeOHC4PM9wz+9eB6An9VzSW0mvJb2U9FvSN0kZSQePSOBhJ/L5PIlEgmAwSHt7O6ZpYlkW+/v7APNAtc0/FOfW19epqanB6/UyNDREKpVibGyMnp4eJJFMJgFmgaaH8vtsNovT6WR8fJy7uzsbmgbiwI/V1VUqKiqYnJwEmLHlulKphNvtZnh4GGAO+Li9vU0kEmFhYYHz83OA2aWlJQzDYG9vD8An4M3y8jINDQ0Ui0WAGcuyqK2tJRwO09HRQVdXF+VyGeC7aZpEIhGAaQHZUCjEwMAAwJeTkxMMw2BlZQUgfXp6SiwW4+zsDCCcTqcJBAIAO05JnuPjY/n9fknKHRwc6Pb2Vr29vZL0ye12t1iWFW1ubn4hKe9yuXR1dSVJ1U5Jxx6PR7lcTpL8VVVVkqRCoSBJr66vr083Nzdjl5eXZ5Jc+Xxef5nyvzs3NjZSKpUAcj6fj/7+forFIhMTE1RWVnJ0dASwEwgE7MXOCKi9uLigpaXFPkzv7u7S19dHa2srnZ2drK2tAcxnMhkMwyCXywH47ZyjW1tbOBwORkZGuL+/B9i6ubmx55+Li4tIIh6PP8rZ7vTGxgb19fW0tbUxODhIMplkdHSU7u5uJJFKpewnWvdUFvChUCgwNTVFMBjE6/VimibRaJTDw0NbfGbzjv/8qiZJ7ySFJHkk5SV9lfRZ0q+H4B+Qn/w3/XvAawAAAABJRU5ErkJggg==');
+    }
+
+</style>
+
+<script type="text/javascript">
+$(function() {
+    //TODO new up control
+    //Test with setting various attribution types
+
+    var control1 = new AttributionControl(document.getElementById('container1'));
+    control1.setAttribution({
+        author: 'Peter',
+        attributionUrl:'http://petersibley.com',
+        licenseUrl:'http://creativecommons.org/licenses/publicdomain/',
+        publisher:''
+    });
+
+    var control2 = new AttributionControl(document.getElementById('container2'));
+    control2.setAttribution({
+        author: 'Peter',
+        attributionUrl:'http://petersibley.com',
+        licenseUrl:'http://creativecommons.org/licenses/by/3.0/',
+        publisher:''
+    });
+
+    var control3 = new AttributionControl(document.getElementById('container3'));
+    control3.setAttribution({
+        author: 'Peter',
+        attributionUrl:'http://petersibley.com',
+        licenseUrl:'http://creativecommons.org/licenses/by-sa/3.0/',
+        publisher:''
+    });
+
+    var control4 = new AttributionControl(document.getElementById('container4'));
+    control4.setAttribution({
+        author: 'Peter',
+        attributionUrl:'http://petersibley.com',
+        licenseUrl:'http://creativecommons.org/licenses/by-nd/3.0/',
+        publisher:''
+    });
+
+    var control5 = new AttributionControl(document.getElementById('container5'));
+    control5.setAttribution({
+        author: 'Peter',
+        attributionUrl:'http://petersibley.com',
+        licenseUrl:'http://creativecommons.org/licenses/by-nc/3.0/',
+        publisher:''
+    });
+
+    var control6 = new AttributionControl(document.getElementById('container6'));
+    control6.setAttribution({
+        author: 'Peter',
+        attributionUrl:'http://petersibley.com',
+        licenseUrl:'http://creativecommons.org/licenses/by-nc-sa/3.0/',
+        publisher:''
+    });
+
+    var control7 = new AttributionControl(document.getElementById('container7'));
+    control7.setAttribution({
+        author: 'Peter',
+        attributionUrl:'http://petersibley.com',
+        licenseUrl:'http://creativecommons.org/licenses/by-nc-nd/3.0/',
+        publisher:''
+    });
+
+    var control8 = new AttributionControl(document.getElementById('container8'));
+    control8.setAttribution({
+        author: 'Peter',
+        attributionUrl:'http://petersibley.com',
+        licenseUrl:'',
+        publisher:''
+    });
+
+    var control9 = new AttributionControl(document.getElementById('container9'));
+    control9.setAttribution({
+        author: '',
+        attributionUrl:'http://360cities.com',
+        licenseUrl:'',
+        publisher:'360 cities'
+    });
+
+var control10 = new AttributionControl(document.getElementById('container10'));
+    control10.setAttribution({
+        author: '',
+        attributionUrl:'',
+        licenseUrl:'',
+        publisher:'360 cities'
+    });
+
+var control11 = new AttributionControl(document.getElementById('container11'));
+    control11.setAttribution({
+        author: 'Peter',
+        attributionUrl:'',
+        licenseUrl:'',
+        publisher:null,
+    });
+
+
+
+
+
+    //To test background colors, make container ... colored
+    for(var i = 0; i < 9; ++i) {
+        if(i%2===0) {
+            $('#container' + i).width(200).height(50).css('background-color','black');
+        }
+
+        if(i%3===0) {
+            $('#container' + i).width(200).height(50).css('background-color','rgba(255,255,255,0.4)');
+        }
+    }
+
+});
+</script>
+
+</head>
+<body>
+<div id="container1"></div><br/>
+<div id="container2"></div><br/>
+<div id="container3"></div><br/>
+<div id="container4"></div><br/>
+<div id="container5"></div><br/>
+<div id="container6"></div><br/>
+<div id="container7"></div><br/>
+<div id="container8"></div><br/>
+<div id="container9"></div><br/>
+<div id="container10"></div><br/>
+<div id="container11"></div><br/>
+</body>
+</html>
