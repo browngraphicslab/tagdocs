@@ -51,6 +51,7 @@ body
                 h1.linkhead Pages
                 ul
                     +genPageTab("Home", "welcome")
+                    +genPageTab("Git and GitLab", "gitlab")
                     +genPageTab("Ink Path Smoothing","pathsmoothing")
                     +genPageTab("Popcorn Test", "popcorn")
                     +genPageTab("Redmine Overview", "redmine")
@@ -120,6 +121,117 @@ body
                     br
                     br
 
+                /////////////////////
+                // GITLAB TUTORIAL //
+                /////////////////////
+
+                #gitlab.page
+                    h2 Git and GitLab tutorial
+                    | A quick look at version control with Git for our web app workflow.
+                    br
+                    br
+                    h3 Why Git and GitLab?
+                    | Git is a more reliable version control system than svn, for the most part, and it is widely adopted, making it a
+                    | helpful thing to know. GitLab allows us to create free, private, shared repositories. Otherwise, it is essentially
+                    | the same as GitHub or Bitbucket for our purposes (though it does have a slightly slower web UI).
+                    br
+                    br
+                    h3 Set up a GitLab account
+                    ol
+                        li Go to <a class="demo" target="_blank" href="http://gitlab.com/">gitlab.com</a>.
+                        li Click "Sign In," then "Sign up" to create an account
+                        li.
+                            You now have an account, but you still need to be added to the TAG project by an admin. Email the
+                            current team lead to be added.
+                    br
+                    br
+                    h3 Clone the repository
+                    | The next step is to get a local version of the TAG webapp code, so you can develop on your machine. Win8 not necessary!
+                    ol
+                        li Install Git on your machine. If you have any trouble with this, let the current TAG lead know.
+                        li Run&nbsp;
+                            span $ git help
+                            | &nbsp; to make sure Git is working (it should come up with a list of possible Git commands)
+                        li If Git is working properly, run&nbsp;
+                            span $ git clone https://gitlab.com/browntag/tag.git
+                            | &nbsp; to get your local copy. By default, it will clone into a directory called 'tag,' but you can change this
+                            | by adding an argument to the command above, e.g.,&nbsp;
+                            span $ git clone https://gitlab.com/browntag/tag.git awesome_directory_name
+                    br
+                    br
+                    h3 Make and commit some local changes
+                    | Now that you have a local clone, you can start developing. Change directory into the cloned repository and make some
+                    | changes to a file (preferably something useful!).
+                    ol
+                        li Now, if you type&nbsp;
+                            span $ git status
+                            | &nbsp; this will show you a list of modified files (that is, modified since the last time you committed code)
+                            | as well as some other useful information about the state of your local copy versus the state of the last commit.
+                        li To commit code to your local clone, type&nbsp;
+                            span $ git commit -am "your_commit_message_here"
+                            | &nbsp; Here, we have combined a few actions in a convenient shorthand. To break it down a bit, 'git commit' on its
+                            | own will commit any changes that have been added to the list of files ready for commit, and it will bring up a
+                            | prompt asking for a commit message. Adding the flag '-a' adds all modified/deleted files to the list before
+                            | committing, and adding the '-m' flag allows you to type your commit message on the same line, which is handy.
+                    br
+                    br
+                    h3 Pull in other people's changes        
+                    | Now your code has been committed to your local clone. Before making your changes accessible to the rest of the group,
+                    | you will need to pull in changes made by other people.
+                    ol
+                        li This can be done by running&nbsp;
+                            span $ git pull
+                            | &nbsp; This will bring in the latest changes and try to merge them with the code in your working directory. This can
+                            | sometimes cause merge conflicts, which will appear in the output in the terminal (usually as "CONFLICT" in all caps
+                            | along with the name of the file in which the conflict occurred).
+                        li To fix a merge conflict, enter the relevant file
+                            | and locate any lines delimited by ">>>>>>>>" and "<<<<<<<<". In between these will be a line "========"
+                            | separating two sections in the code. These are the sections that Git was unsuccessful in merging; you will need to
+                            | decide which of the two you would like to keep and which you would like to delete. After you have cleared all
+                            | conflicts by deleting the unnecessary sections (as well as the lines beginning with ">>>", "<<<", and "==="), you
+                            | can re-commit your code.
+                    br
+                    br
+                    h3 Push your changes
+                    | After pulling and cleaning merge conflicts, you can push your code up to GitLab (so other people can pull it down)
+                    | by running&nbsp;
+                    ol
+                        li This can be done by running&nbsp;
+                            span $ git push
+                        li You can double-check that your push was succesful by looking at the list of commits in gitlab. 
+                    br
+                    br
+                    h3 Summary
+                    ol
+                        li Create a new local clone with&nbsp;
+                            span $ git clone https://gitlab.com/browntag/tag.git
+                        li Make some local changes
+                        li Commit these changes with&nbsp;
+                            span $ git commit -am "brief_commit_message"
+                        li Pull in other people's changes with&nbsp;
+                            span $ git pull
+                            | . This is a good thing to do frequently as you work to make sure your local copy isn't too far out of sync with
+                            | the project on gitlab.
+                        li Push your changes with&nbsp;
+                            span $ git push.
+                    br
+                    br
+                    h3 Notes
+                    ol
+                        li As mentioned above, PULL OFTEN to ensure that your code is in sync
+                        li If you don't want to create a new commit each time you pull, you can instead "stash" your changes. Stashing means that
+                            | you are cleaning your current working directory by sequstering all changes since the last commit. To do this, you
+                            | can run&nbsp;
+                            span $ git stash
+                            | &nbsp;Then when you pull, Git only has to merge against your last commit. 
+                            | To re-apply your changes (which might cause merge conflicts the will need to be resolved), run&nbsp;
+                            span $ git stash apply.
+                        li For the moment, we will be working mostly on different files (as we factor css/html). Later, it may be helpful to create
+                            | separate branches for development of different features; if multiple people are working on the same feature, they
+                            | can create a branch of the the main repository dedicated to that feature. Any commits and pushes will affect
+                            | only that branch until it is merged back into the main branch.
+                    br
+                    br
                 ////////////////////
                 // PATH SMOOTHING //
                 ////////////////////
