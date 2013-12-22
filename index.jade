@@ -51,6 +51,7 @@ body
                 h1.linkhead Pages
                 ul
                     +genPageTab("Home", "welcome")
+                    +genPageTab("Webapp Workflow", "webapp")
                     +genPageTab("Git and GitLab", "gitlab")
                     +genPageTab("Ink Path Smoothing","pathsmoothing")
                     +genPageTab("Popcorn Test", "popcorn")
@@ -100,14 +101,14 @@ body
             // PAGE CONTENT //
             //////////////////
             
-            div(id="content")
-            
+            #content
+
                 //////////////////
                 // WELCOME PAGE //
                 //////////////////
-                
+ 
                 #welcome.page
-                    h2 Welcome! 
+                    h2 Welcome!
                     br
                     | Welcome to the TAG Docs, a list of TAG-related material and references. Take a look at the resources on the left.
                     br
@@ -120,6 +121,39 @@ body
                     img(src="./images/quiltTour.jpg")
                     br
                     br
+
+                /////////////////////////////
+                // GENERAL WEBAPP WORKFLOW //
+                /////////////////////////////
+
+                #webapp.page
+                    h2 Webapp workflow
+                    | A general overview of the webapp workflow
+                    br
+                    br
+                    h3 Git and GitLab
+                    | We're using GitLab to host our Git repo. For a rundown on using Git and GitLab,
+                    | please take a look at the
+                    a(href="index.html/#gitlab") Git and GitLab tutorial
+                    | .
+                    br
+                    br
+                    h3 Grunt
+                    | Once you have a local clone and you have changes to a .jade or .styl file that
+                    | you'd like to see, normally you would have to run&nbsp;
+                    span $ jade example.jade
+                    | &nbsp; or &nbsp;
+                    span $ stylus example.styl
+                    | &nbsp; to compile these into the corresponding html and css files, but this
+                    | can be done automatically by using Grunt. There's a Gruntfile in the root
+                    | directory of the repository. By running&nbsp;
+                    span $ grunt watch
+                    | &nbsp;, Grunt will watch for any saved changes in jade or stylus files and
+                    | compile them automatically, which takes an annoying step out of the process.
+                    | If Grunt doesn't seem to recognize changes to your file, it could be because
+                    | the file hasn't been added to the Gruntfile as something Grunt should watch
+                    | for. Go ahead and add it (using what's already there as a guide). If that
+                    | still doesn't work, we'll try to figure it out.
 
                 /////////////////////
                 // GITLAB TUTORIAL //
