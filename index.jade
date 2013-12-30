@@ -51,6 +51,7 @@ body
                 h1.linkhead Pages
                 ul
                     +genPageTab("Home", "welcome")
+                    +genPageTab("Jade/Stylus Factoring", "factoring")
                     +genPageTab("Webapp Workflow", "webapp")
                     +genPageTab("Git and GitLab", "gitlab")
                     +genPageTab("Ink Path Smoothing","pathsmoothing")
@@ -121,6 +122,82 @@ body
                     img(src="./images/quiltTour.jpg")
                     br
                     br
+
+                ///////////////////////////
+                // JADE/STYLUS FACTORING //
+                ///////////////////////////
+
+                #factoring.page
+                    h2 Factoring JS files into Jade and Stylus
+                    | A few notes on factoring
+                    br
+                    br
+                    h3 Create the files
+                    | You'll just need to create one .jade and one .styl file. The .jade file will go in
+                    | the LADS/html directory, and the .styl file will go in the LADS/css directory. For
+                    | example, if you are factoring LADS.Layout.StartPage.js, you might consider creating
+                    | LADS/html/StartPage.jade and LADS/css/StartPage.css.
+                    br
+                    br
+                    h3 Update the Gruntfile
+                    | To make sure grunt knows how to compile your files (see the webapp workflow page for
+                    | more information on grunt), go ahead and add the two files you just created to
+                    | Gruntfile.js (following the example of files already included in the Gruntfile). You'll
+                    | notice that the next time you run 'grunt', more files are being automatically compiled.
+                    br
+                    br
+                    h3 Update stylesheets
+                    | In default.html, you'll need to add a link tag for your new stylesheet (e.g.,
+                    | css/StartPage.css).
+                    br
+                    br
+                    h3 Factor philosophy
+                    | Unless it really makes sense for a particular html element to be created dynamically,
+                    | it should go into your .jade file. For example, the img tag containing the Brown logo
+                    | on the splash screen should be in the .jade file, but if you have a button whose click
+                    | handler creates a popup, it's probably okay if that popup is created on the fly. So for
+                    | each call to document.createElement, you'll have to decide whether that element could
+                    | have been 'created' in the .jade file rather than via javascript.
+                    | In terms of styling, the initial styling rules for every element in the page
+                    | should go in your .styl file (even if this element is created dynamically! it still has
+                    | a class or an id). If you see someJqueryObject.css({...}), slash it and put those
+                    | rules in your stylesheet. The exception is if the call to .css is in some sort of handler
+                    | that changes the existing style rules for the element...
+                    br
+                    br
+                    h3 The root
+                    | Since we're no longer creating the root of a page by calling document.createElement, we
+                    | need to load in the root element of our html file instead. You can do this using the
+                    | LADS.Util.getHtmlAjax function, which takes in the name of the html file to load. You can
+                    | then access any children of the root (e.g., an element with id 'tagunicorn') by calling
+                    | root.find('#tagunicorn').
+                    br
+                    br
+                    h3 Conflicting CSS
+                    | Since we're creating link tags for each stylsheet, there are bound to be some overlapping
+                    | ids and classes that will screw with our styling. There's probably a good way to
+                    | dynamically change the source of a link tag, but until then, we can avoid conflicts by
+                    | starting each stylus rule with the id of the root of that page. This forces CSS to look
+                    | at all children of the root for the given id or class, so it'll never match an #overlay
+                    | on the collections page to an #overlay style rule on the splash screen.
+                    br
+                    br
+                    h3 CONVENTIONS
+                    | Let's try to create a sane codebase. Our current codebase is insane, and this is our
+                    | chance to fix it. So let's adopt some simple conventions:
+                    ol
+                        li Alphabetize your stylus rules.
+                        li
+                            | Put common mixins and variables in common.styl.
+                            | Add the line "@import 'common'" to
+                            | the top of your .styl file to import these common rules.
+                        li
+                            | Mark code that should be completed or cleaned later with a big
+                            | 'TODO' in a comment
+                            | so it's easy to search for later.
+                        li
+                            | Mark style rules with dubious cross-browser compatibility with 'CBC?'
+                            | so they are easy to search for.
 
                 /////////////////////////////
                 // GENERAL WEBAPP WORKFLOW //
