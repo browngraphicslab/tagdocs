@@ -23,69 +23,75 @@
       <!--///////////-->
       <!-- TOP BAR //-->
       <!--///////////-->
-      <div id="topbar"><span id="top-text">TAG Docs</span><span id="top-subtext">A compendium of TAG-related materials</span></div>
+      <div id="topbar"><span id="top-text"><a href="">TAG Docs</a></span><span id="top-subtext">A compendium of TAG-related materials</span></div>
       <!--/////////////-->
       <!-- LEFT MENU //-->
       <!--/////////////-->
       <div id="leftbar">
-        <h1 class="linkhead">Pages</h1>
+        <h1 class="linkhead">Get set up</h1>
         <ul>
-          <li><a id="li-welcome" onclick="openPage('welcome')" class="pageanch page-tab">Home</a></li>
-          <li><a id="li-factoring" onclick="openPage('factoring')" class="pageanch page-tab">Jade/Stylus Factoring</a></li>
-          <li><a id="li-webapp" onclick="openPage('webapp')" class="pageanch page-tab">Webapp Workflow</a></li>
+          <li><a id="li-dev" onclick="openPage('dev')" class="pageanch page-tab">Developer Guide</a></li>
           <li><a id="li-gitlab" onclick="openPage('gitlab')" class="pageanch page-tab">Git and GitLab</a></li>
+          <li><a id="li-webapp" onclick="openPage('webapp')" class="pageanch page-tab">Web App Workflow</a></li><br>
+          <li><a id="li-jade-workshop" onclick="openPage('jade-workshop')" class="pageanch page-tab">Jade Workshop</a></li>
+          <li><a id="li-stylus-workshop" onclick="openPage('stylus-workshop')" class="pageanch page-tab">Stylus Workshop</a></li>
+          <li><a id="li-grunt" onclick="openPage('grunt')" class="pageanch page-tab">Grunt Notes</a></li>
+          <li><a id="li-jshint-practices" onclick="openPage('jshint-practices')" class="pageanch page-tab">JS Hint: Good Practices</a></li>
+          <li><a id="li-javascript-workshop" onclick="openPage('javascript-workshop')" class="pageanch page-tab">JavaScript Workshop</a></li>
+        </ul><br>
+        <h1 class="linkhead">Misc</h1>
+        <ul>
+          <li><a id="li-factoring" onclick="openPage('factoring')" class="pageanch page-tab">Jade/Stylus Factoring</a></li>
           <li><a id="li-pathsmoothing" onclick="openPage('pathsmoothing')" class="pageanch page-tab">Ink Path Smoothing</a></li>
           <li><a id="li-popcorn" onclick="openPage('popcorn')" class="pageanch page-tab">Popcorn Test</a></li>
           <li><a id="li-redmine" onclick="openPage('redmine')" class="pageanch page-tab">Redmine Overview</a></li>
           <li><a id="li-alphacss" onclick="openPage('alphacss')" class="pageanch page-tab">CSS Alphabetizer</a></li>
           <li><a id="li-seadragonTest" onclick="openPage('seadragonTest')" class="pageanch page-tab">Seadragon Viewers</a></li>
-          <li><a id="li-jade-workshop" onclick="openPage('jade-workshop')" class="pageanch page-tab">Jade Workshop</a></li>
-          <li><a id="li-stylus-workshop" onclick="openPage('stylus-workshop')" class="pageanch page-tab">Stylus Workshop</a></li>
-          <li><a id="li-jshint-practices" onclick="openPage('jshint-practices')" class="pageanch page-tab">JS Hint: Good Practices</a></li>
-          <li><a id="li-javascript-workshop" onclick="openPage('javascript-workshop')" class="pageanch page-tab">JavaScript Workshop</a></li>
-        </ul><br><br>
+        </ul><br>
         <h1 class="linkhead">Links</h1>
-        <h2 class="linklist">JS Demos</h2>
+        <h2 class="linklist">JS Fiddle Demos</h2>
         <ul>
-          <li class="linklistitem"><a href="http://jsfiddle.net/bleveque/EXuu5/" target="_blank">Scope</a></li>
-          <li class="linklistitem"><a href="http://jsfiddle.net/bleveque/5TAJg/" target="_blank">Scope and Closures</a></li>
-          <li class="linklistitem"><a href="http://jsfiddle.net/bleveque/QSv2J/" target="_blank">Pseudoclassical Inheritance</a></li>
+          <li class="linklistitem"><a href="http://jsfiddle.net/bleveque/EXuu5/" target="_blank" class="link">Scope</a></li>
+          <li class="linklistitem"><a href="http://jsfiddle.net/bleveque/5TAJg/" target="_blank" class="link">Scope and Closures</a></li>
+          <li class="linklistitem"><a href="http://jsfiddle.net/bleveque/QSv2J/" target="_blank" class="link">Pseudoclassical Inheritance</a></li>
         </ul><br>
         <h2 class="linklist">Tools</h2>
         <ul>
-          <li class="linklistitem"><a href="http://jsfiddle.net/" target="_blank">JSFiddle</a></li>
-          <li class="linklistitem"><a href="http://www.jslint.com/" target="_blank">JSLint</a></li>
-          <li class="linklistitem"><a href="http://www.dirtymarkup.com/" target="_blank">Dirty Markup</a></li>
-          <li class="linklistitem"><a href="http://jsperf.com/" target="_blank">JSPerf</a></li>
-          <li class="linklistitem"><a href="http://tagissuetracker.cs.brown.edu:3000/" target="_blank">TAG issue tracker</a></li>
+          <li class="linklistitem"><a href="http://jsfiddle.net/" target="_blank" class="link">JSFiddle</a></li>
+          <li class="linklistitem"><a href="http://www.jslint.com/" target="_blank" class="link">JSLint</a></li>
+          <li class="linklistitem"><a href="http://www.dirtymarkup.com/" target="_blank" class="link">Dirty Markup</a></li>
+          <li class="linklistitem"><a href="http://jsperf.com/" target="_blank" class="link">JSPerf</a></li>
+          <li class="linklistitem"><a href="http://tagissuetracker.cs.brown.edu:3000/" target="_blank" class="link">TAG issue tracker</a></li>
+          <li class="linklistitem"><a href="http://www.oldversion.com/" target="_blank" class="link">Old browser versions</a></li>
+          <li class="linklistitem"><a href="http://modern.ie/en-us" target="_blank" class="link">Old IE versions</a></li>
         </ul><br>
         <h2 class="linklist">Stuff.js</h2>
         <ul>
-          <li class="linklistitem"><a href="https://developer.mozilla.org/en-US/docs/Web/API/window.requestAnimationFrame" target="_blank">Request Anim Frame</a></li>
-          <li class="linklistitem"><a href="https://developer.mozilla.org/en-US/docs/Web/API/document.createDocumentFragment" target="_blank">Document fragments</a></li>
-          <li class="linklistitem"><a href="http://api.jquery.com/jQuery.ajax/" target="_blank">JQuery.ajax()</a></li>
+          <li class="linklistitem"><a href="https://developer.mozilla.org/en-US/docs/Web/API/window.requestAnimationFrame" target="_blank" class="link">Request Anim Frame</a></li>
+          <li class="linklistitem"><a href="https://developer.mozilla.org/en-US/docs/Web/API/document.createDocumentFragment" target="_blank" class="link">Document fragments</a></li>
+          <li class="linklistitem"><a href="http://api.jquery.com/jQuery.ajax/" target="_blank" class="link">JQuery.ajax()</a></li>
         </ul><br>
         <h2 class="linklist">CSS tips</h2>
         <ul>
-          <li class="linklistitem"><a href="http://www.w3schools.com/cssref/tryit.asp?filename=trycss3_text-overflow_hover" target="_blank">Text overflow</a></li>
-          <li class="linklistitem"><a href="http://css-tricks.com/box-sizing/" target="_blank">Box sizing</a></li>
-          <li class="linklistitem"><a href="http://vaughnroyko.com/the-real-scoop-on-jquery-find-performance/" target="_blank">Selectors and .find</a></li>
+          <li class="linklistitem"><a href="http://www.w3schools.com/cssref/tryit.asp?filename=trycss3_text-overflow_hover" target="_blank" class="link">Text overflow</a></li>
+          <li class="linklistitem"><a href="http://css-tricks.com/box-sizing/" target="_blank" class="link">Box sizing</a></li>
+          <li class="linklistitem"><a href="http://vaughnroyko.com/the-real-scoop-on-jquery-find-performance/" target="_blank" class="link">Selectors and .find</a></li>
         </ul><br>
         <h2 class="linklist">Web app links</h2>
         <ul>
-          <li class="linklistitem"><a href="http://learnboost.github.io/stylus/" target="_blank">Stylus Docs</a></li>
-          <li class="linklistitem"><a href="http://jade-lang.com/api/" target="_blank">Jade home and API guide</a></li>
-          <li class="linklistitem"><a href="http://naltatis.github.io/jade-syntax-docs/#basics" target="_blank">Jade documentation</a></li>
-          <li class="linklistitem"><a href="http://cssdeck.com/labs/learning-the-jade-templating-engine-syntax" target="_blank">Jade tutorial</a></li>
-          <li class="linklistitem"><a href="http://html5test.com/compare/feature/index.html" target="_blank">HTML5 browser support</a></li>
-          <li class="linklistitem"><a href="http://necolas.github.io/normalize.css/" target="_blank">normalize.css</a></li>
-          <li class="linklistitem"><a href="https://github.com/bower/bower" target="_blank">Bower pkg management</a></li>
-          <li class="linklistitem"><a href="http://gruntjs.com/" target="_blank">Grunt</a></li>
+          <li class="linklistitem"><a href="http://learnboost.github.io/stylus/" target="_blank" class="link">Stylus Docs</a></li>
+          <li class="linklistitem"><a href="http://jade-lang.com/api/" target="_blank" class="link">Jade home and API guide</a></li>
+          <li class="linklistitem"><a href="http://naltatis.github.io/jade-syntax-docs/#basics" target="_blank" class="link">Jade documentation</a></li>
+          <li class="linklistitem"><a href="http://cssdeck.com/labs/learning-the-jade-templating-engine-syntax" target="_blank" class="link">Jade tutorial</a></li>
+          <li class="linklistitem"><a href="http://html5test.com/compare/feature/index.html" target="_blank" class="link">HTML5 browser support</a></li>
+          <li class="linklistitem"><a href="http://necolas.github.io/normalize.css/" target="_blank" class="link">normalize.css</a></li>
+          <li class="linklistitem"><a href="https://github.com/bower/bower" target="_blank" class="link">Bower pkg management</a></li>
+          <li class="linklistitem"><a href="http://gruntjs.com/" target="_blank" class="link">Grunt</a></li>
         </ul><br>
         <h2 class="linklist">Jade examples</h2>
         <ul>
-          <li class="linklistitem"><a href="./jade_examples/ardra/myweb.html" target="_blank">Ex. 1</a></li>
-          <li class="linklistitem"><a href="./jade_examples/libby/index.html" target="_blank">Ex. 2</a></li>
+          <li class="linklistitem"><a href="./jade_examples/ardra/myweb.html" target="_blank" class="link">Ex. 1</a></li>
+          <li class="linklistitem"><a href="./jade_examples/libby/index.html" target="_blank" class="link">Ex. 2</a></li>
         </ul><br>
       </div>
       <!--////////////////-->
@@ -96,7 +102,32 @@
         <!-- WELCOME PAGE //-->
         <!--////////////////-->
         <div id="welcome" class="page">
-          <h2>Welcome!</h2><br>Welcome to the TAG Docs, a list of TAG-related material and references. Take a look at the resources on the left.<br><br><br><img src="./images/splashScreen.jpg"><br><br><br><img src="./images/quiltTour.jpg"><br><br>
+          <h2>Welcome!</h2><br>Welcome to the Touch Art Gallery Docs, a list of TAG-related material and references.<br><br>If you are a developer getting ready to start working on TAG, take a look at the
+          "Get set up" pages to the left.<br><br><br><img src="./images/splashScreen.jpg"><br><br><br><img src="./images/quiltTour.jpg"><br><br>
+        </div>
+        <!--////////////////-->
+        <!-- INTRODUCTION //-->
+        <!--////////////////-->
+        <div id="dev" class="page">
+          <h2>Developer guide</h2><br>This page will cover how to get started developing for
+          the web app, the Windows 8 app, and the server.<br><br>
+          <h3>Web app</h3>In the web app, we're using&nbsp;<a href="http://en.wikipedia.org/wiki/Git_(software)">Git</a>&nbsp;for version control, and our code is hosted on GitLab, so
+          the first step for web app development is to get set up with Git.
+          Check out the&nbsp;<a href="http://cs.brown.edu/research/ptc/tag/tagdocs/#gitlab">Git and GitLab</a>&nbsp;page to the left.<br><br>Now that Git is set up, you'll need to install some Node.js modules, which
+          requires first installing&nbsp;<a href="http://nodejs.org/">Node.js</a>. As mentioned on its website, Node is a platform that provides lots of
+          utilities that facilitate web app creation. We're using a small subset of Node's
+          functionality. In particular, we use&nbsp;<a href="http://jade-lang.com/">Jade</a>&nbsp;(for writing cleaner and more flexible
+          html),&nbsp;<a href="http://learnboost.github.io/stylus/">Stylus</a>&nbsp;(analogous to Jade, but for css), and&nbsp;<a href="http://gruntjs.com/">Grunt</a>&nbsp;(for automating a lot of tedious things like compiling Jade and Stylus files).<br><br>If you are not already
+          familiar with Jade and Stylus, you can take a look at the workshops to the left or
+          at other online documentation and tutorials (under the 'Web app links' heading to the left).<br><br>To install Jade, Stylus, Grunt, and any other Node modules we happen to be using,
+          navigate to the directory containing your clone of the TAG repository. You will first
+          want to install the grunt command line interface using&nbsp;<span>$ npm install -g grunt-cli</span>. This lets you run the grunt command from your terminal. If it complains about permissions,
+          you may need to run the install command as administrator on Windows or using sudo on Macs.
+          After grunt-cli is installed, you can run &nbsp;<span>$ npm install</span>. There is a file called package.json in the top-level TAG directory that tells npm which
+          modules to install, so you should now have everything you need. Again, you might need to
+          run this as admin/root.<br><br>To get accustomed to the structure of and normal workflow for the web app, take a look at the&nbsp;<a href="http://cs.brown.edu/research/ptc/tag/tagdocs/#webapp">relevant page</a>&nbsp;to the left.<br><br>
+          <h3>Windows 8 app</h3>Stay tuned! Let the team lead know if you need this information now...<br><br>
+          <h3>Server development</h3>Stay tuned! Let the team lead know if you need this information now...<br><br>
         </div>
         <!--/////////////////////////-->
         <!-- JADE/STYLUS FACTORING //-->
@@ -134,16 +165,30 @@
           dynamically change the source of a link tag, but until then, we can avoid conflicts by
           starting each stylus rule with the id of the root of that page. This forces CSS to look
           at all children of the root for the given id or class, so it'll never match an #overlay
-          on the collections page to an #overlay style rule on the splash screen.<br><br>
+          on the collections page to an #overlay style rule on the splash screen.
+        </div>
+        <!--///////////////////////////-->
+        <!-- GENERAL WEBAPP WORKFLOW //-->
+        <!--///////////////////////////-->
+        <div id="webapp" class="page">
+          <h2>Web app structure and workflow</h2>A general overview of working with the web app. Also, some coding conventions.<br><br>
+          <h3>Structure of the web app</h3>Take a look at the top-level directory of your TAG clone. There's a directory called
+          LADS, which has basically all of our code, and there are a couple files called
+          package.json and Gruntfile.js. As mentioned in the&nbsp;<a href="http://cs.brown.edu/research/ptc/tag/tagdocs/#dev">developer guide</a>, package.json contains a list of TAG's Node.js dependencies, so running&nbsp;<span>$ npm install</span>&nbsp;in the top-level directory will install the appropriate Node modules. The Gruntfile
+          contains instructions for 'building' the web app, in some sense. Take a look&nbsp;<a href="http://cs.brown.edu/research/ptc/tag/tagdocs/#grunt">here</a>&nbsp;for more information.<br><br>In the LADS directory, the main attractions are the html, css, and js subdirectories.
+          The first two are pretty self-explanatory, but to find relevant javascript files is
+          slightly more difficult. Most javascript files related to kiosk mode (the TAG interface
+          that a museum visitor would see) are in js/LADS/layout. For example, the collections view
+          page's js file is js/LADS/layout/LADS.Layout.NewCatalog.js. Another important file is
+          js/LADS/util/LADS.Util.js, which has a lot of general utility funtions (used by multiple
+          other files).<br><br><br>
+          <h3>Workflow</h3>The basic workflow is to first pull down the latest changes from GitLab (<span>git pull</span>&nbsp;-- if you have local changes, though, you will need to run&nbsp;<span>git commit -am "commit message"</span>&nbsp; or&nbsp;<span>git stash</span>&nbsp; before pulling; see the&nbsp;<a href="http://cs.brown.edu/research/ptc/tag/tagdocs/#gitlab">GitLab page</a>&nbsp; for more information). Then you can set&nbsp;<span>grunt watch</span>&nbsp;running to watch for any changes. You can then edit away. Commit and pull often
+          to make sure your code is well-synced with what is in GitLab.<br><br><br>
           <h3>CONVENTIONS</h3>Let's try to create a sane codebase. Our current codebase is insane, and this is our
           chance to fix it. So let's adopt some simple conventions:
           <ol>
             <li>Alphabetize your stylus rules.</li>
-            <li>
-              Put common mixins and variables in common.styl.
-              Add the line "@import 'common'" to
-              the top of your .styl file to import these common rules.
-            </li>
+            <li>Put common mixins and variables in common.styl.</li>
             <li>
               Mark code that should be completed or cleaned later with a big
               'TODO' in a comment
@@ -155,38 +200,48 @@
             </li>
           </ol>
         </div>
-        <!--///////////////////////////-->
-        <!-- GENERAL WEBAPP WORKFLOW //-->
-        <!--///////////////////////////-->
-        <div id="webapp" class="page">
-          <h2>Webapp workflow</h2>A general overview of the webapp workflow<br><br>
-          <h3>Git and GitLab</h3>We're using GitLab to host our Git repo. For a rundown on using Git and GitLab,
-          please take a look at the Git and GitLab tutorial.<br><br>
-          <h3>Grunt</h3>Once you have a local clone and you have changes to a .jade or .styl file that
-          you'd like to see, normally you would have to run&nbsp;<span>$ jade example.jade</span>&nbsp; or &nbsp;<span>$ stylus example.styl</span>&nbsp; to compile these into the corresponding html and css files, but this
-          can be done automatically by using Grunt. There's a Gruntfile in the root
-          directory of the repository. By running&nbsp;<span>$ grunt watch</span>&nbsp;, Grunt will watch for any saved changes in jade or stylus files and
-          compile them automatically, which takes an annoying step out of the process.
-          If Grunt doesn't seem to recognize changes to your file, it could be because
-          the file hasn't been added to the Gruntfile as something Grunt should watch
-          for. Go ahead and add it, using what's already there as a guide. If that
-          still doesn't work, we'll try to figure it out.<br><br>
-          <h3>Installing the necessaries</h3>Navigate to the directory containing your clone of TAG.
-          To get everything up and running you will first want to install the grunt command
-          line interface using &nbsp;<span>$ npm install -g grunt-cli</span>. If it complains about permissions, you may need to run as administrator on
-          Windows or using sudo on Macs. You can then run &nbsp;<span>$ npm install</span>&nbsp; and the package.json file should take care of installing the right modules.
+        <!--///////////////-->
+        <!-- GRUNT NOTES //-->
+        <!--///////////////-->
+        <div id="grunt" class="page">
+          <h2>Grunt notes</h2><br>
+          <h3>Uses of Grunt</h3><a href="http://gruntjs.com/">Grunt</a>&nbsp; is useful for automating the compilation of Jade and Stylus files (into
+          html and css files), but it is also useful for concatenating and minifying
+          javascript files. We are currently using Grunt to perform the following tasks
+          (accordingly, always run the grunt command after editing code):<br><br>
+          <ol>
+            <li>Compiling all jade files in the LADS/html directory into corresponding html files</li>
+            <li>Compiling stylus files in LADS/css into LADS/css/TAG.css (nice to have only one css file to include)</li>
+            <li>Concatenating javascript files into LADS/TAG.js (so users only need to include one js file)</li>
+            <li>When we ship, we'll run &nbsp;<span>$ grunt uglify</span>&nbsp;, which minifies TAG.js into TAG-min.js. Minificaiton is done by replacing variable names
+              with mostly one-letter names and removing most whitespace. The resulting file is much
+              smaller, which is better for performance.
+            </li>
+          </ol><br><br>
+          <h3>Running Grunt</h3>There are three basic ways of using Grunt:<br><br>
+          <ol>
+            <li>Running&nbsp;<span>$ grunt</span>&nbsp;runs the default Grunt tasks (as listed in the Gruntfile -- see below) once.</li>
+            <li>Running &nbsp;<span>$ grunt watch</span>&nbsp;creates a job that watches for any saves in the files listed in the Gruntfile. For
+              example, if you run&nbsp;<span>grunt watch</span>&nbsp;and then save a Jade file, grunt will be run once, and the
+              Jade file (along with everything else) will be compiled.
+            </li>
+            <li>Running &nbsp;<span>$ grunt &lt;module name&gt;</span>&nbsp;will run the Grunt task for just that module. For example, running&nbsp;<span>grunt stylus</span>&nbsp;will only compile stylus files.</li>
+          </ol><br><br>
+          <h3>Gruntfile.js</h3>The Gruntfile.js file in the top-level directory of TAG controls the tasks that Grunt performs.
+          By default, only the 'default' tasks are run. The list of these tasks can be found in the line&nbsp;<span>grunt.registerTask('default', ['jade', 'stylus', 'concat']);</span><br><br>If you want to add a new Jade or Stylus file to TAG, make sure to add it to the corresponding parts of
+          the Gruntfile to ensure that it is compiled.
         </div>
         <!--///////////////////-->
         <!-- GITLAB TUTORIAL //-->
         <!--///////////////////-->
         <div id="gitlab" class="page">
           <h2>Git and GitLab tutorial</h2>A quick look at version control with Git for our web app workflow.<br><br>
-          <h3>Why Git and GitLab?</h3>Git is a more reliable version control system than svn, for the most part, and it is widely adopted, making it a
+          <h3>Why Git and GitLab?</h3>Git is a fast and reliable version control system, and it is widely used, making it a
           helpful thing to know. GitLab allows us to create free, private, shared repositories. Otherwise, it is essentially
-          the same as GitHub or Bitbucket for our purposes (though it does have a slightly slower web UI).<br><br>
+          the same as GitHub or Bitbucket for our purposes, though it does have a slightly slower web UI.<br><br>
           <h3>Set up a GitLab account</h3>
           <ol>
-            <li>Go to <a class="demo" target="_blank" href="http://gitlab.com/">gitlab.com</a>.</li>
+            <li>Go to <a target="_blank" href="http://gitlab.com/">gitlab.com</a>.</li>
             <li>Click "Sign In," then "Sign up" to create an account</li>
             <li>
               You now have an account, but you still need to be added to the TAG project by an admin. Email the
@@ -273,7 +328,7 @@
             This slider controls how far apart each point is drawn. In the current implementation, points are drawn as
             close together as possible and straight lines are drawn between them. Here, we're drawing the points farther
             apart and using SVG bezier curve commands to smooth the resulting path.<br>
-            <input type="range" min="0" max="50" step="5" value="20" onchange="updateThresh(this.value)">
+            <input type="range" min="0" max="50" step="5" value="20" onchange="updateThresh(this.value)">&nbsp;&nbsp;
             <div id="threshDiv">20</div><br><br><br>This slider controls how close to the first point in a path you must be before the interface offers to close
             your path. This could be helpful if you want to draw a closed path around objects in an artwork.<br>
             <input type="range" min="0" max="20" step="1" value="10" onchange="updateCloseThresh(this.value)">&nbsp;&nbsp;
@@ -314,7 +369,7 @@
           <h2>Redmine Issue Tracker</h2>Getting started and best practices<br><br>
           <h3>Set up an account</h3>
           <ol>
-            <li>Go to <a class="demo" target="_blank" href="http://tagissuetracker.cs.brown.edu:3000">tagissuetracker.cs.brown.edu:3000</a>.</li>
+            <li>Go to <a target="_blank" href="http://tagissuetracker.cs.brown.edu:3000">tagissuetracker.cs.brown.edu:3000</a>.</li>
             <li>Click "Register" to create an account</li>
             <li>
               You now have an account, but you still need to be added to the TAG project by an admin. You can do this
@@ -405,13 +460,13 @@
         <div id="seadragonTest" class="page">
           <h2>Some embedded Seadragon viewers</h2><br>
           <div id="mainSeadragonContainer">
-            <div id="container4" class="container"></div>&nbsp;&nbsp;<i>An Old Man in Military Costume&nbsp;</i>(Rembrandt, 1630-1), from&nbsp;<a href="http://search.getty.edu/gateway/search?q=&amp;cat=highlight&amp;f=%22Open+Content+Images%22&amp;rows=10&amp;srt=a&amp;dir=s&amp;pg=1" target="_blank" class="demo">here</a>.<br><br>
+            <div id="container4" class="container"></div>&nbsp;&nbsp;<i>An Old Man in Military Costume&nbsp;</i>(Rembrandt, 1630-1), from&nbsp;<a href="http://search.getty.edu/gateway/search?q=&amp;cat=highlight&amp;f=%22Open+Content+Images%22&amp;rows=10&amp;srt=a&amp;dir=s&amp;pg=1" target="_blank">here</a>.<br><br>
             <div id="container1" class="container"></div><br>
             <div id="container2" class="container"></div><br>
             <div id="container3" class="container"></div><br><br>
           </div>
-          <div class="descContainer">These examples were created using images from&nbsp;<a href="http://www.flickr.com/photos/culturevis/sets/72157624959121129/" class="demo">here</a>. The images were first run through&nbsp;<a href="http://www.microsoft.com/en-us/download/details.aspx?id=24819" class="demo">Deep Zoom Composer</a>&nbsp; (exported into Seadragon Ajax format). The resulting dzc_output.xml files can be
-            used as arguments to the <span>openDzi(...)</span> method in&nbsp;<a href="http://msdn.microsoft.com/en-us/expression/gg413362" class="demo">this html template</a>.<br><br><br>
+          <div class="descContainer">These examples were created using images from&nbsp;<a href="http://www.flickr.com/photos/culturevis/sets/72157624959121129/">here</a>. The images were first run through&nbsp;<a href="http://www.microsoft.com/en-us/download/details.aspx?id=24819">Deep Zoom Composer</a>&nbsp; (exported into Seadragon Ajax format). The resulting dzc_output.xml files can be
+            used as arguments to the <span>openDzi(...)</span> method in&nbsp;<a href="http://msdn.microsoft.com/en-us/expression/gg413362">this html template</a>.<br><br><br>
           </div>
         </div>
         <!--/////////////////////////-->
@@ -482,7 +537,7 @@
             span= '$ jshint LADS.TourAuthoring.Viewer.js'
         li Clean up code
         li Repeat</pre><br>
-          <h3>Documentation</h3>Jade has pretty good documentation. The language reference can be found&nbsp;<a href="http://jade-lang.com/" target="_blank" class="demo">here</a>&nbsp;and the Jade github page with further documentation can be found&nbsp;<a href="https://github.com/visionmedia/jade" target="_blank" class="demo">here.</a><br><br>
+          <h3>Documentation</h3>Jade has pretty good documentation. The language reference can be found&nbsp;<a href="http://jade-lang.com/" target="_blank">here</a>&nbsp;and the Jade github page with further documentation can be found&nbsp;<a href="https://github.com/visionmedia/jade" target="_blank">here.</a><br><br>
         </div>
         <!--///////////////////-->
         <!-- STYLUS WORKSHOP //-->
@@ -552,7 +607,7 @@ pre.prettyprint, code.prettyprint // ooooh meta
           <!-- this ^ is just text; start with a pipe--><br><br>
           <h3>Installing JS Hint</h3>
           <ol>
-            <li>Open up the node.js command prompt (if not available,&nbsp;<a href="http://nodejs.org/" target="_blank" class="demo">install node.js</a>&nbsp;first)</li>
+            <li>Open up the node.js command prompt (if not available,&nbsp;<a href="http://nodejs.org/" target="_blank">install node.js</a>&nbsp;first)</li>
             <li>Run<br><span>$ npm install jshint --global</span><br>This will install JS Hint globally.</li>
           </ol><br>
           <h3>Using JS Hint on a file</h3>
@@ -650,9 +705,9 @@ pre.prettyprint, code.prettyprint // ooooh meta
                     a function that opens hotspot <span>i</span>. Since the helper function is not declared within
                     the scope of the for loop and we pass in <span>i</span> by value (as a Number), it will not see
                     changes to <span>i</span>.
-                    <a class="demo" href="http://jsfiddle.net/bleveque/EXuu5/" target="_blank">Demo</a>. We can
+                    <a href="http://jsfiddle.net/bleveque/EXuu5/" target="_blank">Demo</a>. We can
                     achieve the same effect by using closure:
-                    <a class="demo" href="http://jsfiddle.net/bleveque/5TAJg/" target="_blank">Demo</a>. Note that JSHint
+                    <a href="http://jsfiddle.net/bleveque/5TAJg/" target="_blank">Demo</a>. Note that JSHint
                     complains in this case, though...
                   </li>
                 </ol><br>
@@ -692,13 +747,13 @@ pre.prettyprint, code.prettyprint // ooooh meta
                   <li>
                     The book mentions a few methods to go about inheritance. One is a technique that more closely
                     resembles class-based inheritance, where constructor functions are defined and objects are
-                    new-ed (p.47): <a class="demo" href="http://jsfiddle.net/bleveque/QSv2J/" target="_blank">Demo</a>.
+                    new-ed (p.47): <a href="http://jsfiddle.net/bleveque/QSv2J/" target="_blank">Demo</a>.
                     In this case, we just add properties to <span>this</span> within the constructor (recall that
                     <span>this</span> is bound to the new object when we use <span>new</span>).
                     The problem with this method is that there is no way to create private variables. Everything created
                     is just an object which is completely readable/writable. There's a way to set these properties, using
                     Javascript's 
-                    <a class="demo" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty" target="_blank">defineProperties</a>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty" target="_blank">defineProperties</a>
                     method, but this is a bit roundabout.
                   </li>
                   <li>

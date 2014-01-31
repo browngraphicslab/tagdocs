@@ -8,12 +8,25 @@ function load() {
 	openPage(pagestring);
 }
 
+function randColor() {
+	var i, ret = '#';
+	for(i=0;i<6;i++) {
+		ret += randHex();
+	}
+	return ret;
+}
+
+function randHex() {
+	return (Math.floor(Math.random()*16)%16).toString(16);
+}
+
 function openPage(id) {
 	$("#contentWrapper").css("height","auto");
 	$(".page").css("display", "none");
 	$("#"+id).css("display", "block");
 	$(".page-tab").css("color", "white");
-	$("#li-"+id).css("color", "red");
+	var hex = randColor();
+	$("#li-"+id).css("color", hex);
 	correctHeights();
 }
 

@@ -16,13 +16,17 @@ head
         TAG Docs
       
 mixin genPageTab(title, id)
+    - var r = Math.floor((Math.random()*50)) + 205;
+    - var g = Math.floor((Math.random()*50)) + 205;
+    - var b = Math.floor((Math.random()*50));
+    - var hex = '#' + r.toString(16) + g.toString(16) + b.toString(16);
     li: a.pageanch(id="li-"+id, class="page-tab", onclick="openPage('"+id+"')") #{title}
   
 mixin genList(title, info)
     h2.linklist #{title}
     ul
         for pair in info
-            li.linklistitem: a(href=pair.href, target="_blank") #{pair.name}
+            li.linklistitem: a.link(href=pair.href, target="_blank") #{pair.name}
     br
 
 mixin genPageHeading(heading, id)
@@ -39,7 +43,7 @@ body
             
             div#topbar
                 span#top-text
-                    | TAG Docs
+                    a(href='') TAG Docs
                 span#top-subtext
                     | A compendium of TAG-related materials
                     
@@ -48,25 +52,30 @@ body
             ///////////////
             
             div(id="leftbar")
-                h1.linkhead Pages
+                h1.linkhead Get set up
                 ul
-                    +genPageTab("Home", "welcome")
-                    +genPageTab("Jade/Stylus Factoring", "factoring")
-                    +genPageTab("Webapp Workflow", "webapp")
+                    +genPageTab("Developer Guide", "dev")
                     +genPageTab("Git and GitLab", "gitlab")
+                    +genPageTab("Web App Workflow", "webapp")
+                    br
+                    +genPageTab("Jade Workshop", "jade-workshop")
+                    +genPageTab("Stylus Workshop", "stylus-workshop")
+                    +genPageTab("Grunt Notes", "grunt")
+                    +genPageTab("JS Hint: Good Practices", "jshint-practices")
+                    +genPageTab("JavaScript Workshop", "javascript-workshop")
+                br
+                h1.linkhead Misc
+                ul
+                    +genPageTab("Jade/Stylus Factoring", "factoring")
                     +genPageTab("Ink Path Smoothing","pathsmoothing")
                     +genPageTab("Popcorn Test", "popcorn")
                     +genPageTab("Redmine Overview", "redmine")
                     +genPageTab("CSS Alphabetizer", "alphacss")
                     +genPageTab("Seadragon Viewers", "seadragonTest")
-                    +genPageTab("Jade Workshop", "jade-workshop")
-                    +genPageTab("Stylus Workshop", "stylus-workshop")
-                    +genPageTab("JS Hint: Good Practices", "jshint-practices")
-                    +genPageTab("JavaScript Workshop", "javascript-workshop")
-                br
+                    
                 br
                 h1.linkhead Links
-                +genList("JS Demos", [
+                +genList("JS Fiddle Demos", [
                     {href: "http://jsfiddle.net/bleveque/EXuu5/", name: "Scope"},
                     {href: "http://jsfiddle.net/bleveque/5TAJg/", name: "Scope and Closures"},
                     {href: "http://jsfiddle.net/bleveque/QSv2J/", name: "Pseudoclassical Inheritance"}])
@@ -75,7 +84,9 @@ body
                     {href: "http://www.jslint.com/", name: "JSLint"},
                     {href: "http://www.dirtymarkup.com/", name: "Dirty Markup"},
                     {href: "http://jsperf.com/", name: "JSPerf"},
-                    {href: "http://tagissuetracker.cs.brown.edu:3000/", name: "TAG issue tracker"}])
+                    {href: "http://tagissuetracker.cs.brown.edu:3000/", name: "TAG issue tracker"},
+                    {href: "http://www.oldversion.com/", name: "Old browser versions"},
+                    {href: "http://modern.ie/en-us", name: "Old IE versions"}])
                 +genList("Stuff.js", [
                     {href: "https://developer.mozilla.org/en-US/docs/Web/API/window.requestAnimationFrame", name: "Request Anim Frame"},
                     {href: "https://developer.mozilla.org/en-US/docs/Web/API/document.createDocumentFragment", name: "Document fragments"},
@@ -111,7 +122,11 @@ body
                 #welcome.page
                     h2 Welcome!
                     br
-                    | Welcome to the TAG Docs, a list of TAG-related material and references. Take a look at the resources on the left.
+                    | Welcome to the Touch Art Gallery Docs, a list of TAG-related material and references.
+                    br
+                    br
+                    | If you are a developer getting ready to start working on TAG, take a look at the
+                    | "Get set up" pages to the left.
                     br
                     br
                     br
@@ -120,6 +135,74 @@ body
                     br
                     br
                     img(src="./images/quiltTour.jpg")
+                    br
+                    br
+
+                //////////////////
+                // INTRODUCTION //
+                //////////////////
+
+                #dev.page
+                    h2 Developer guide
+                    br
+                    | This page will cover how to get started developing for
+                    | the web app, the Windows 8 app, and the server.
+                    br
+                    br
+                    h3 Web app
+                    | In the web app, we're using&nbsp;
+                    a(href='http://en.wikipedia.org/wiki/Git_(software)') Git
+                    | &nbsp;for version control, and our code is hosted on GitLab, so
+                    | the first step for web app development is to get set up with Git.
+                    | Check out the&nbsp;
+                    a(href='http://cs.brown.edu/research/ptc/tag/tagdocs/#gitlab') Git and GitLab
+                    | &nbsp;page to the left.
+                    br
+                    br
+                    | Now that Git is set up, you'll need to install some Node.js modules, which
+                    | requires first installing&nbsp;
+                    a(href='http://nodejs.org/') Node.js
+                    | . As mentioned on its website, Node is a platform that provides lots of
+                    | utilities that facilitate web app creation. We're using a small subset of Node's
+                    | functionality. In particular, we use&nbsp;
+                    a(href='http://jade-lang.com/') Jade
+                    | &nbsp;(for writing cleaner and more flexible
+                    | html),&nbsp;
+                    a(href='http://learnboost.github.io/stylus/') Stylus
+                    | &nbsp;(analogous to Jade, but for css), and&nbsp;
+                    a(href='http://gruntjs.com/') Grunt
+                    | &nbsp;(for automating a lot of tedious things like compiling Jade and Stylus files).
+                    br
+                    br
+                    | If you are not already
+                    | familiar with Jade and Stylus, you can take a look at the workshops to the left or
+                    | at other online documentation and tutorials (under the 'Web app links' heading to the left).
+                    br
+                    br
+                    | To install Jade, Stylus, Grunt, and any other Node modules we happen to be using,
+                    | navigate to the directory containing your clone of the TAG repository. You will first
+                    | want to install the grunt command line interface using&nbsp;
+                    span $ npm install -g grunt-cli
+                    | . This lets you run the grunt command from your terminal. If it complains about permissions,
+                    | you may need to run the install command as administrator on Windows or using sudo on Macs.
+                    | After grunt-cli is installed, you can run &nbsp;
+                    span $ npm install
+                    | . There is a file called package.json in the top-level TAG directory that tells npm which
+                    | modules to install, so you should now have everything you need. Again, you might need to
+                    | run this as admin/root.
+                    br
+                    br
+                    | To get accustomed to the structure of and normal workflow for the web app, take a look at the&nbsp;
+                    a(href='http://cs.brown.edu/research/ptc/tag/tagdocs/#webapp') relevant page
+                    | &nbsp;to the left.
+                    br
+                    br
+                    h3 Windows 8 app
+                    | Stay tuned! Let the team lead know if you need this information now...
+                    br
+                    br
+                    h3 Server development
+                    | Stay tuned! Let the team lead know if you need this information now...
                     br
                     br
 
@@ -180,6 +263,53 @@ body
                     | starting each stylus rule with the id of the root of that page. This forces CSS to look
                     | at all children of the root for the given id or class, so it'll never match an #overlay
                     | on the collections page to an #overlay style rule on the splash screen.
+
+                /////////////////////////////
+                // GENERAL WEBAPP WORKFLOW //
+                /////////////////////////////
+
+                #webapp.page
+                    h2 Web app structure and workflow
+                    | A general overview of working with the web app. Also, some coding conventions.
+                    br
+                    br
+                    h3 Structure of the web app
+                    | Take a look at the top-level directory of your TAG clone. There's a directory called
+                    | LADS, which has basically all of our code, and there are a couple files called
+                    | package.json and Gruntfile.js. As mentioned in the&nbsp;
+                    a(href='http://cs.brown.edu/research/ptc/tag/tagdocs/#dev') developer guide
+                    | , package.json contains a list of TAG's Node.js dependencies, so running&nbsp;
+                    span $ npm install
+                    | &nbsp;in the top-level directory will install the appropriate Node modules. The Gruntfile
+                    | contains instructions for 'building' the web app, in some sense. Take a look&nbsp;
+                    a(href='http://cs.brown.edu/research/ptc/tag/tagdocs/#grunt') here
+                    | &nbsp;for more information.
+                    br
+                    br
+                    | In the LADS directory, the main attractions are the html, css, and js subdirectories.
+                    | The first two are pretty self-explanatory, but to find relevant javascript files is
+                    | slightly more difficult. Most javascript files related to kiosk mode (the TAG interface
+                    | that a museum visitor would see) are in js/LADS/layout. For example, the collections view
+                    | page's js file is js/LADS/layout/LADS.Layout.NewCatalog.js. Another important file is
+                    | js/LADS/util/LADS.Util.js, which has a lot of general utility funtions (used by multiple
+                    | other files).
+                    br
+                    br
+                    br
+                    h3 Workflow
+                    | The basic workflow is to first pull down the latest changes from GitLab (
+                    span git pull
+                    | &nbsp;-- if you have local changes, though, you will need to run&nbsp;
+                    span git commit -am "commit message"
+                    | &nbsp; or&nbsp;
+                    span git stash
+                    | &nbsp; before pulling; see the&nbsp;
+                    a(href="http://cs.brown.edu/research/ptc/tag/tagdocs/#gitlab") GitLab page
+                    | &nbsp; for more information). Then you can set&nbsp;
+                    span grunt watch
+                    | &nbsp;running to watch for any changes. You can then edit away. Commit and pull often
+                    | to make sure your code is well-synced with what is in GitLab.
+                    br
                     br
                     br
                     h3 CONVENTIONS
@@ -187,10 +317,7 @@ body
                     | chance to fix it. So let's adopt some simple conventions:
                     ol
                         li Alphabetize your stylus rules.
-                        li
-                            | Put common mixins and variables in common.styl.
-                            | Add the line "@import 'common'" to
-                            | the top of your .styl file to import these common rules.
+                        li Put common mixins and variables in common.styl.
                         li
                             | Mark code that should be completed or cleaned later with a big
                             | 'TODO' in a comment
@@ -199,47 +326,63 @@ body
                             | Mark style rules with dubious cross-browser compatibility with 'CBC?'
                             | so they are easy to search for.
 
-                /////////////////////////////
-                // GENERAL WEBAPP WORKFLOW //
-                /////////////////////////////
+                /////////////////
+                // GRUNT NOTES //
+                /////////////////
 
-                #webapp.page
-                    h2 Webapp workflow
-                    | A general overview of the webapp workflow
+                #grunt.page
+                    h2 Grunt notes
+                    br
+                    h3 Uses of Grunt
+                    a(href='http://gruntjs.com/') Grunt
+                    | &nbsp; is useful for automating the compilation of Jade and Stylus files (into
+                    | html and css files), but it is also useful for concatenating and minifying
+                    | javascript files. We are currently using Grunt to perform the following tasks
+                    | (accordingly, always run the grunt command after editing code):
                     br
                     br
-                    h3 Git and GitLab
-                    | We're using GitLab to host our Git repo. For a rundown on using Git and GitLab,
-                    | please take a look at the Git and GitLab tutorial.
+                    ol
+                        li Compiling all jade files in the LADS/html directory into corresponding html files
+                        li Compiling stylus files in LADS/css into LADS/css/TAG.css (nice to have only one css file to include)
+                        li Concatenating javascript files into LADS/TAG.js (so users only need to include one js file)
+                        li
+                            | When we ship, we'll run &nbsp;
+                            span $ grunt uglify
+                            | &nbsp;, which minifies TAG.js into TAG-min.js. Minificaiton is done by replacing variable names
+                            | with mostly one-letter names and removing most whitespace. The resulting file is much
+                            | smaller, which is better for performance.
                     br
                     br
-                    h3 Grunt
-                    | Once you have a local clone and you have changes to a .jade or .styl file that
-                    | you'd like to see, normally you would have to run&nbsp;
-                    span $ jade example.jade
-                    | &nbsp; or &nbsp;
-                    span $ stylus example.styl
-                    | &nbsp; to compile these into the corresponding html and css files, but this
-                    | can be done automatically by using Grunt. There's a Gruntfile in the root
-                    | directory of the repository. By running&nbsp;
-                    span $ grunt watch
-                    | &nbsp;, Grunt will watch for any saved changes in jade or stylus files and
-                    | compile them automatically, which takes an annoying step out of the process.
-                    | If Grunt doesn't seem to recognize changes to your file, it could be because
-                    | the file hasn't been added to the Gruntfile as something Grunt should watch
-                    | for. Go ahead and add it, using what's already there as a guide. If that
-                    | still doesn't work, we'll try to figure it out.
+                    h3 Running Grunt
+                    | There are three basic ways of using Grunt:
                     br
                     br
-                    h3 Installing the necessaries
-                    | Navigate to the directory containing your clone of TAG.
-                    | To get everything up and running you will first want to install the grunt command
-                    | line interface using &nbsp;
-                    span $ npm install -g grunt-cli
-                    | . If it complains about permissions, you may need to run as administrator on
-                    | Windows or using sudo on Macs. You can then run &nbsp;
-                    span $ npm install
-                    | &nbsp; and the package.json file should take care of installing the right modules.
+                    ol
+                        li Running&nbsp;
+                            span $ grunt
+                            | &nbsp;runs the default Grunt tasks (as listed in the Gruntfile -- see below) once.
+                        li Running &nbsp;
+                            span $ grunt watch
+                            | &nbsp;creates a job that watches for any saves in the files listed in the Gruntfile. For
+                            | example, if you run&nbsp;
+                            span grunt watch
+                            | &nbsp;and then save a Jade file, grunt will be run once, and the
+                            | Jade file (along with everything else) will be compiled.
+                        li Running &nbsp;
+                            span $ grunt &lt;module name&gt;
+                            | &nbsp;will run the Grunt task for just that module. For example, running&nbsp;
+                            span grunt stylus
+                            | &nbsp;will only compile stylus files.
+                    br
+                    br
+                    h3 Gruntfile.js
+                    | The Gruntfile.js file in the top-level directory of TAG controls the tasks that Grunt performs.
+                    | By default, only the 'default' tasks are run. The list of these tasks can be found in the line&nbsp;
+                    span grunt.registerTask('default', ['jade', 'stylus', 'concat']);
+                    br
+                    br
+                    | If you want to add a new Jade or Stylus file to TAG, make sure to add it to the corresponding parts of
+                    | the Gruntfile to ensure that it is compiled.
 
                 /////////////////////
                 // GITLAB TUTORIAL //
@@ -251,14 +394,14 @@ body
                     br
                     br
                     h3 Why Git and GitLab?
-                    | Git is a more reliable version control system than svn, for the most part, and it is widely adopted, making it a
+                    | Git is a fast and reliable version control system, and it is widely used, making it a
                     | helpful thing to know. GitLab allows us to create free, private, shared repositories. Otherwise, it is essentially
-                    | the same as GitHub or Bitbucket for our purposes (though it does have a slightly slower web UI).
+                    | the same as GitHub or Bitbucket for our purposes, though it does have a slightly slower web UI.
                     br
                     br
                     h3 Set up a GitLab account
                     ol
-                        li Go to <a class="demo" target="_blank" href="http://gitlab.com/">gitlab.com</a>.
+                        li Go to <a target="_blank" href="http://gitlab.com/">gitlab.com</a>.
                         li Click "Sign In," then "Sign up" to create an account
                         li.
                             You now have an account, but you still need to be added to the TAG project by an admin. Email the
@@ -374,7 +517,7 @@ body
                         | apart and using SVG bezier curve commands to smooth the resulting path.
                         br
                         input(type="range", min="0", max="50", step="5", value="20", onchange="updateThresh(this.value)")
-                            | &nbsp;&nbsp;
+                        | &nbsp;&nbsp;
                         #threshDiv 20
                         br
                         br
@@ -435,7 +578,7 @@ body
                     br
                     h3 Set up an account
                     ol
-                        li Go to <a class="demo" target="_blank" href="http://tagissuetracker.cs.brown.edu:3000">tagissuetracker.cs.brown.edu:3000</a>.
+                        li Go to <a target="_blank" href="http://tagissuetracker.cs.brown.edu:3000">tagissuetracker.cs.brown.edu:3000</a>.
                         li Click "Register" to create an account
                         li.
                             You now have an account, but you still need to be added to the TAG project by an admin. You can do this
@@ -526,7 +669,7 @@ body
                         | &nbsp;&nbsp;
                         i An Old Man in Military Costume&nbsp;
                         | (Rembrandt, 1630-1), from&nbsp;
-                        a.demo(href="http://search.getty.edu/gateway/search?q=&cat=highlight&f=%22Open+Content+Images%22&rows=10&srt=a&dir=s&pg=1", target="_blank") here
+                        a(href="http://search.getty.edu/gateway/search?q=&cat=highlight&f=%22Open+Content+Images%22&rows=10&srt=a&dir=s&pg=1", target="_blank") here
                         | .
                         br
                         br
@@ -539,12 +682,12 @@ body
                         br
                     .descContainer
                         | These examples were created using images from&nbsp;
-                        a(class="demo", href="http://www.flickr.com/photos/culturevis/sets/72157624959121129/") here
+                        a(href="http://www.flickr.com/photos/culturevis/sets/72157624959121129/") here
                         | . The images were first run through&nbsp;
-                        a(class="demo", href="http://www.microsoft.com/en-us/download/details.aspx?id=24819") Deep Zoom Composer
+                        a(href="http://www.microsoft.com/en-us/download/details.aspx?id=24819") Deep Zoom Composer
                         | &nbsp; (exported into Seadragon Ajax format). The resulting dzc_output.xml files can be
                         | used as arguments to the <span>openDzi(...)</span> method in&nbsp;
-                        a(class="demo", href="http://msdn.microsoft.com/en-us/expression/gg413362") this html template
+                        a(href="http://msdn.microsoft.com/en-us/expression/gg413362") this html template
                         | .
                         br
                         br
@@ -627,9 +770,9 @@ body
                     br
                     h3 Documentation
                     | Jade has pretty good documentation. The language reference can be found&nbsp;
-                    a(class="demo", href="http://jade-lang.com/", target="_blank") here
+                    a(href="http://jade-lang.com/", target="_blank") here
                     | &nbsp;and the Jade github page with further documentation can be found&nbsp;
-                    a(class="demo", href="https://github.com/visionmedia/jade", target="_blank") here.
+                    a(href="https://github.com/visionmedia/jade", target="_blank") here.
                     br
                     br
                     
@@ -736,7 +879,7 @@ body
                     h3 Installing JS Hint
                     ol
                         li Open up the node.js command prompt (if not available,&nbsp;
-                            a(class="demo", href="http://nodejs.org/", target="_blank") install node.js
+                            a(href="http://nodejs.org/", target="_blank") install node.js
                             | &nbsp;first)
                         li Run
                             br
@@ -854,9 +997,9 @@ body
                                         | a function that opens hotspot <span>i</span>. Since the helper function is not declared within
                                         | the scope of the for loop and we pass in <span>i</span> by value (as a Number), it will not see
                                         | changes to <span>i</span>.
-                                        | <a class="demo" href="http://jsfiddle.net/bleveque/EXuu5/" target="_blank">Demo</a>. We can
+                                        | <a href="http://jsfiddle.net/bleveque/EXuu5/" target="_blank">Demo</a>. We can
                                         | achieve the same effect by using closure:
-                                        | <a class="demo" href="http://jsfiddle.net/bleveque/5TAJg/" target="_blank">Demo</a>. Note that JSHint
+                                        | <a href="http://jsfiddle.net/bleveque/5TAJg/" target="_blank">Demo</a>. Note that JSHint
                                         | complains in this case, though...
                                 br
                         br
@@ -887,13 +1030,13 @@ body
                                     li.
                                         The book mentions a few methods to go about inheritance. One is a technique that more closely
                                         resembles class-based inheritance, where constructor functions are defined and objects are
-                                        new-ed (p.47): <a class="demo" href="http://jsfiddle.net/bleveque/QSv2J/" target="_blank">Demo</a>.
+                                        new-ed (p.47): <a href="http://jsfiddle.net/bleveque/QSv2J/" target="_blank">Demo</a>.
                                         In this case, we just add properties to <span>this</span> within the constructor (recall that
                                         <span>this</span> is bound to the new object when we use <span>new</span>).
                                         The problem with this method is that there is no way to create private variables. Everything created
                                         is just an object which is completely readable/writable. There's a way to set these properties, using
                                         Javascript's 
-                                        <a class="demo" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty" target="_blank">defineProperties</a>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty" target="_blank">defineProperties</a>
                                         method, but this is a bit roundabout.
                                     li.
                                         Another way to create 'classes,' which we have been using in a lot of the tour authoring code,
@@ -934,14 +1077,19 @@ body
                             h3 Falsy values (all other values are truthy)
                             div.full-text
                                 ol.nostyle
-                                    li: span false
-                                    li: span null
-                                    li: span undefined
+                                    li
+                                        span false
+                                    li
+                                        span null
+                                    li
+                                        span undefined
                                     li
                                         span '' 
                                         | (the empty string)
-                                    li: span 0
-                                    li: span NaN
+                                    li
+                                        span 0
+                                    li
+                                        span NaN
                         br
                         li
                             h3 Reserved words
