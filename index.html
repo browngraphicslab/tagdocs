@@ -12,6 +12,12 @@
   <script src="poptest.js"></script>
   <script src="pathsmoothing.js"></script>
   <script src="tagdocs.js"></script>
+  <script>
+    window.onload = load;
+    function load() {
+        TAG('tagContainer', 'browntagserver.com')
+    }
+  </script>
   <title>
     TAG Docs
     
@@ -103,7 +109,8 @@
         <!--////////////////-->
         <div id="welcome" class="page">
           <h2>Welcome!</h2><br>Welcome to the Touch Art Gallery Docs, a list of TAG-related material and references.<br><br>If you are a developer getting ready to start working on TAG, take a look at the
-          "Get set up" pages to the left.<br><br><br><img src="./images/splashScreen.jpg"><br><br><br><img src="./images/quiltTour.jpg"><br><br>
+          "Get set up" pages to the left.<br><br><br>
+          <div id="tagContainer" style="position:relative;width:960px;height:540px;"></div><br><br><img src="./images/splashScreen.jpg"><br><br><br><img src="./images/quiltTour.jpg"><br><br>
         </div>
         <!--////////////////-->
         <!-- INTRODUCTION //-->

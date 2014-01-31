@@ -11,7 +11,13 @@ head
     script(src="alphacss.js")
     script(src="poptest.js")
     script(src="pathsmoothing.js")
+    script(src="../tag/LADS/TAG.js")
     script(src="tagdocs.js")
+    script.
+        window.onload = load;
+        function load() {
+            TAG('tagContainer', 'browntagserver.com')
+        }
     title.
         TAG Docs
       
@@ -128,6 +134,9 @@ body
                     | If you are a developer getting ready to start working on TAG, take a look at the
                     | "Get set up" pages to the left.
                     br
+                    br
+                    br
+                    #tagContainer(style="position:relative;width:960px;height:540px;")
                     br
                     br
                     img(src="./images/splashScreen.jpg")
