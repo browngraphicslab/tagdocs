@@ -9,6 +9,9 @@ a {
 a.link {
   color: #fff;
 }
+a.plink {
+  cursor: pointer;
+}
 #annotationContainer {
   position: absolute;
   width: 350px;

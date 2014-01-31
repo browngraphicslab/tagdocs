@@ -113,7 +113,7 @@
           the web app, the Windows 8 app, and the server.<br><br>
           <h3>Web app</h3>In the web app, we're using&nbsp;<a href="http://en.wikipedia.org/wiki/Git_(software)">Git</a>&nbsp;for version control, and our code is hosted on GitLab, so
           the first step for web app development is to get set up with Git.
-          Check out the&nbsp;<a href="http://cs.brown.edu/research/ptc/tag/tagdocs/#gitlab">Git and GitLab</a>&nbsp;page to the left.<br><br>Now that Git is set up, you'll need to install some Node.js modules, which
+          Check out the&nbsp;<a id="plink-gitlab" class="plink">Git and GitLab</a>&nbsp;page to the left.<br><br>Now that Git is set up, you'll need to install some Node.js modules, which
           requires first installing&nbsp;<a href="http://nodejs.org/">Node.js</a>. As mentioned on its website, Node is a platform that provides lots of
           utilities that facilitate web app creation. We're using a small subset of Node's
           functionality. In particular, we use&nbsp;<a href="http://jade-lang.com/">Jade</a>&nbsp;(for writing cleaner and more flexible
@@ -125,7 +125,7 @@
           you may need to run the install command as administrator on Windows or using sudo on Macs.
           After grunt-cli is installed, you can run &nbsp;<span>$ npm install</span>. There is a file called package.json in the top-level TAG directory that tells npm which
           modules to install, so you should now have everything you need. Again, you might need to
-          run this as admin/root.<br><br>To get accustomed to the structure of and normal workflow for the web app, take a look at the&nbsp;<a href="http://cs.brown.edu/research/ptc/tag/tagdocs/#webapp">relevant page</a>&nbsp;to the left.<br><br>
+          run this as admin/root.<br><br>To get accustomed to the structure of and normal workflow for the web app, take a look at the&nbsp;<a id="plink-webapp" class="plink">relevant page</a>&nbsp;to the left.<br><br>
           <h3>Windows 8 app</h3>Stay tuned! Let the team lead know if you need this information now...<br><br>
           <h3>Server development</h3>Stay tuned! Let the team lead know if you need this information now...<br><br>
         </div>
@@ -174,15 +174,15 @@
           <h2>Web app structure and workflow</h2>A general overview of working with the web app. Also, some coding conventions.<br><br>
           <h3>Structure of the web app</h3>Take a look at the top-level directory of your TAG clone. There's a directory called
           LADS, which has basically all of our code, and there are a couple files called
-          package.json and Gruntfile.js. As mentioned in the&nbsp;<a href="http://cs.brown.edu/research/ptc/tag/tagdocs/#dev">developer guide</a>, package.json contains a list of TAG's Node.js dependencies, so running&nbsp;<span>$ npm install</span>&nbsp;in the top-level directory will install the appropriate Node modules. The Gruntfile
-          contains instructions for 'building' the web app, in some sense. Take a look&nbsp;<a href="http://cs.brown.edu/research/ptc/tag/tagdocs/#grunt">here</a>&nbsp;for more information.<br><br>In the LADS directory, the main attractions are the html, css, and js subdirectories.
+          package.json and Gruntfile.js. As mentioned in the&nbsp;<a id="plink-dev" class="plink">developer guide</a>, package.json contains a list of TAG's Node.js dependencies, so running&nbsp;<span>$ npm install</span>&nbsp;in the top-level directory will install the appropriate Node modules. The Gruntfile
+          contains instructions for 'building' the web app, in some sense. Take a look&nbsp;<a id="plink-grunt" class="plink">here</a>&nbsp;for more information.<br><br>In the LADS directory, the main attractions are the html, css, and js subdirectories.
           The first two are pretty self-explanatory, but to find relevant javascript files is
           slightly more difficult. Most javascript files related to kiosk mode (the TAG interface
           that a museum visitor would see) are in js/LADS/layout. For example, the collections view
           page's js file is js/LADS/layout/LADS.Layout.NewCatalog.js. Another important file is
           js/LADS/util/LADS.Util.js, which has a lot of general utility funtions (used by multiple
           other files).<br><br><br>
-          <h3>Workflow</h3>The basic workflow is to first pull down the latest changes from GitLab (<span>git pull</span>&nbsp;-- if you have local changes, though, you will need to run&nbsp;<span>git commit -am "commit message"</span>&nbsp; or&nbsp;<span>git stash</span>&nbsp; before pulling; see the&nbsp;<a href="http://cs.brown.edu/research/ptc/tag/tagdocs/#gitlab">GitLab page</a>&nbsp; for more information). Then you can set&nbsp;<span>grunt watch</span>&nbsp;running to watch for any changes. You can then edit away. Commit and pull often
+          <h3>Workflow</h3>The basic workflow is to first pull down the latest changes from GitLab (<span>git pull</span>&nbsp;-- if you have local changes, though, you will need to run&nbsp;<span>git commit -am "commit message"</span>&nbsp; or&nbsp;<span>git stash</span>&nbsp; before pulling; see the&nbsp;<a id="plink-gitlab" class="plink">GitLab page</a>&nbsp; for more information). Then you can set&nbsp;<span>grunt watch</span>&nbsp;running to watch for any changes. You can then edit away. Commit and pull often
           to make sure your code is well-synced with what is in GitLab.<br><br><br>
           <h3>CONVENTIONS</h3>Let's try to create a sane codebase. Our current codebase is insane, and this is our
           chance to fix it. So let's adopt some simple conventions:

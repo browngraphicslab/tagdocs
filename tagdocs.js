@@ -1,11 +1,21 @@
 window.onload = load;
 function load() {
 	var pagestring;
+	initHandlers();
 	correctHeights();
 	makePopcorn();
 	pathSmoothingSetup();
 	pagestring = document.URL.split("#")[1] || "welcome";
 	openPage(pagestring);
+}
+
+function initHandlers() {
+	$('.plink').on('click', function() {
+		openPage(this.id.split('-')[1]);
+		$('body').animate({
+			scrollTop: 0
+		}, 700);
+	});
 }
 
 function randColor() {
