@@ -229,7 +229,19 @@
           also take a look at the lecture slides from&nbsp;<a href="http://cs.brown.edu/courses/cs132/lectures.html" target="_blank">cs132</a>&nbsp;(hopefully you're reading this at a time of year when notes exist on that page). You don't
           need to be a wizard with these languages by the end of your project, but you should be able
           to jump into the TAG codebase and feel relatively at-home. And always feel free to ask questions!
-          It might be helpful to take a look at the page on&nbsp;<a id="plink-debugging" class="plink">debugging</a>.<br><br>
+          It might be helpful to take a look at the page on&nbsp;<a id="plink-debugging" class="plink">debugging</a>.<br><br><br>
+          <h3>Getting set up with Jade and Stylus for a starter project</h3>The first thing you'll want to do is&nbsp;<a href="http://nodejs.org/" target="_blank">install node.js</a>. Jade and Stylus both fall under the node.js platform, so there are nice node utilities
+          for working with them. Next, you can run&nbsp;<span>$ npm install -g grunt-cli</span>&nbsp; from the command prompt or terminal (it may ask for administrative permissions, so
+          you might need to use an administrator command prompt on Windows or run using sudo on Macs).
+          This will let you run a handy tool called&nbsp;<a id="plink-grunt" class="plink">Grunt</a>&nbsp;from the command line, which will take care of compiling jade and stylus for you.<br><br>There's a basic starter project template&nbsp;<a href="starter.zip">here</a>. Go ahead and download and unzip it. Navigate to the directory. You'll see that it contains
+          a .jade file, a .styl file, a package.json file, and a Gruntfile.js file. The package.json 
+          file tells node which node packages should be installed for this project (in this case, jade,
+          stylus, and a couple utilities). Running&nbsp;<span>$ npm install</span>&nbsp;should give you all the necessary packages. Again, you might need admin permissions.
+          The Gruntfile has instructions for how to compile your jade
+          and stylus files. Running&nbsp;<span>$ grunt</span>&nbsp;should now compile .html and .css files from your .jade and .styl files. It is the html
+          and css files that the browser will use to render your page, so every time you make changes to
+          your jade and styl sources, you should recompile. Fortunately, there is a grunt tool for making
+          this less tedious. If you run&nbsp;<span>$ grunt watch</span>, grunt will wait for any changes in your files and compile when necessary.<br><br>
           <h3>Project options</h3>Email the team lead for the current menu of starter project options.<br><br><br>
         </div>
         <!--/////////////-->
@@ -674,7 +686,7 @@ pre.prettyprint, code.prettyprint // ooooh meta
           <!-- this ^ is just text; start with a pipe--><br><br>
           <h3>Installing JS Hint</h3>
           <ol>
-            <li>Open up the node.js command prompt (if not available,&nbsp;<a href="http://nodejs.org/" target="_blank">install node.js</a>&nbsp;first)</li>
+            <li>Open up the terminal or node.js command prompt (if not available,&nbsp;<a href="http://nodejs.org/" target="_blank">install node.js</a>&nbsp;first)</li>
             <li>Run<br><span>$ npm install jshint --global</span><br>This will install JS Hint globally.</li>
           </ol><br>
           <h3>Using JS Hint on a file</h3>
