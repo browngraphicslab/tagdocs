@@ -107,6 +107,11 @@ h2.linklist {
 #images img {
   width: 200px;
 }
+.innerTableContainer {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
 #leftbar {
   border-right: 2px solid #ff9614;
   padding-left: 20px;
@@ -131,6 +136,12 @@ ol.nostyle {
 }
 .pageanch {
   cursor: pointer;
+}
+.pageImg {
+  border: 2px solid rgba(20,150,255,0.5);
+  margin-left: 20px;
+  padding: 5px;
+  width: 700px;
 }
 pre.prettyprint,
 code.prettyprint {
@@ -162,6 +173,14 @@ span {
 #thumbnail {
   margin-left: 400px;
   margin-top: 280px;
+}
+.thumbnailContainer {
+  display: table;
+}
+.thumbnailImg {
+  display: inline-block;
+  margin-left: 20px;
+  width: 110px;
 }
 #topbar {
   border-bottom: 2px solid #ff9614;

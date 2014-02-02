@@ -33,6 +33,15 @@ mixin genPageHeading(heading, id)
     div(id=id, class="page")
         h2 #{heading}
 
+mixin genPageImg(src)
+    a(href=src, target="_blank")
+        img(class="pageImg", src=src, alt="Sorry, image failed to load!")
+
+mixin genThumbnailImg(input)
+    .innerTableContainer
+        a(href=input.href, target="_blank")
+            img(class="thumbnailImg", src=input.src, alt="Sorry!")
+
 body
     div(id="back")
         div(id="contentWrapper")
@@ -58,6 +67,8 @@ body
                     +genPageTab("Git and GitLab", "gitlab")
                     +genPageTab("Web App Workflow", "webapp")
                     br
+                    +genPageTab("Starter Projects", "starter")
+                    +genPageTab("Debugging", "debugging")
                     +genPageTab("Jade Workshop", "jade-workshop")
                     +genPageTab("Stylus Workshop", "stylus-workshop")
                     +genPageTab("Grunt Notes", "grunt")
@@ -96,6 +107,10 @@ body
                     {href: "http://css-tricks.com/box-sizing/", name: "Box sizing"},
                     {href: "http://vaughnroyko.com/the-real-scoop-on-jquery-find-performance/", name: "Selectors and .find"}])
                 +genList("Web app links", [
+                    {href: "https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started", name: "MDN CSS tutorial"},
+                    {href: "http://www.w3schools.com/html/default.asp", name: "W3Schools HTML tutorial"},
+                    {href: "https://developer.mozilla.org/en-US/learn/html", name: "MDN HTML resources"},
+                    {href: "https://developer.mozilla.org/en-US/docs/DOM/DOM_Reference/Introduction", name: "The DOM"},
                     {href: "http://learnboost.github.io/stylus/", name: "Stylus Docs"},
                     {href: "http://jade-lang.com/api/", name: "Jade home and API guide"},
                     {href: "http://naltatis.github.io/jade-syntax-docs/#basics", name: "Jade documentation"},
@@ -138,9 +153,9 @@ body
                     br
                     br
 
-                //////////////////
-                // INTRODUCTION //
-                //////////////////
+                /////////////////////
+                // DEVELOPER GUIDE //
+                /////////////////////
 
                 #dev.page
                     h2 Developer guide
@@ -326,6 +341,149 @@ body
                             | Mark style rules with dubious cross-browser compatibility with 'CBC?'
                             | so they are easy to search for.
 
+                //////////////////////
+                // STARTER PROJECTS //
+                //////////////////////
+
+                #starter.page
+                    h2 Starter projects
+                    br
+                    h3 Languages
+                    | TAG is an html5/css/javascript application, so to get started, it's important to make sure
+                    | you feel comfortable with each of these languages. Part of this is to make sure you are comfortable
+                    | with the&nbsp;
+                    a(href="https://developer.mozilla.org/en-US/docs/DOM/DOM_Reference/Introduction", target="_blank") DOM
+                    | . To make javascript easier, we also use&nbsp;
+                    a(href="http://api.jquery.com/", target="_blank") jQuery
+                    | . You can take a look at the quick jQuery&nbsp;
+                    a(class='plink', id='plink-jquery') tutorial
+                    | &nbsp;to the left or surf the net to find one.
+                    br
+                    br
+                    .thumbnailContainer
+                        +genThumbnailImg({src: "images/html5.png", href: "https://developer.mozilla.org/en-US/learn/html"})
+                        +genThumbnailImg({src: "images/css.jpg", href: "https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started"})
+                        +genThumbnailImg({src: "images/javascript.jpg", href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript"})
+                        +genThumbnailImg({src: "images/jquery.png", href: "http://jquery.com/"})
+                        +genThumbnailImg({src: "images/jade.png", href: "http://jade-lang.com/api/"})
+                        +genThumbnailImg({src: "images/stylus.png", href: "http://learnboost.github.io/stylus/"})
+                    br
+                    br
+                    | We are using two additional mark-up languages to make our html and css more flexible and easier
+                    | to write, so learning these will be important (and hopefully enjoyable!).&nbsp;
+                    a(href="http://jade-lang.com/api/", target="_blank") Jade
+                    | &nbsp;is an indentation-based wrapper for html that has nice features such as variables and
+                    | mixins, which keep it&nbsp;
+                    a(href="http://en.wikipedia.org/wiki/Don't_repeat_yourself", target='_blank') DRY
+                    | .&nbsp;
+                    a(href="http://learnboost.github.io/stylus/", target="_blank") Stylus
+                    | &nbsp;does essentially the same thing for css. If you are comfortable with html and css, they
+                    | should not take long to learn.
+                    br
+                    br
+                    | There are some links to html, css, javascript, jade, and stylus tutorials/resources to the left,
+                    | but this is a small subset of what's out there, so find a tutorial that works for you. You can
+                    | also take a look at the lecture slides from&nbsp;
+                    a(href="http://cs.brown.edu/courses/cs132/lectures.html", target="_blank") cs132
+                    | &nbsp;(hopefully you're reading this at a time of year when notes exist on that page). You don't
+                    | need to be a wizard with these languages by the end of your project, but you should be able
+                    | to jump into the TAG codebase and feel relatively at-home. And always feel free to ask questions!
+                    | It might be helpful to take a look at the page on&nbsp;
+                    a(class='plink', id='plink-debugging') debugging
+                    | .
+                    br
+                    br
+                    h3 Project options
+                    | Email the team lead for the current menu of starter project options.
+                    br
+                    br
+                    br
+
+                ///////////////
+                // DEBUGGING //
+                ///////////////
+
+                #debugging.page
+                    h2 Debugging
+                    br
+                    h3 Using the inspector
+                    | Knowing how to debug in javascript is very helpful. The main tool at your disposal is the
+                    | inspector, which lets you explore the DOM, add breakpoints, and monitor network activity
+                    | generated by your site. Opening the inspector is slightly different on each browser (as is the
+                    | functionality provided), but usually right-clicking on the page and selecting something
+                    | sounding like "Inspect Element" will do it. We'll just talk about the Chrome inspector here,
+                    | but it's basically the same on most browsers.
+                    br
+                    br
+                    | Clicking on the "Elements" tab in the inspector will show a collapsable representation of the DOM.
+                    | If you hover over an element, it will be highlighted in the page itself (with its width and height
+                    | displayed), and its margin and padding will be shown in a different color. Clicking on the element,
+                    | you can see more information about it in the right pane of the inspector (e.g., style rules, event
+                    | handlers, etc...). If you want to experiment with the styling of the page, you can change any
+                    | of the rules or add new ones. Likewise, you can edit attributes of html elements. Here's an example:
+                    br
+                    br
+                    +genPageImg("images/inspectorElements.png")
+                    br
+                    br
+                    | Clicking on the "Sources" tab will let you open up a source file related to the page, such
+                    | as a javascript or css file. If you click on a number next to a line in a javascript file, a
+                    | breakpoint will be added at that line. The breakpoint will survive page refreshes. Again, the
+                    | right pane has a bunch of information about the file you're looking at.
+                    br
+                    br
+                    | Clicking on the "Console" tab will open a javascript console. Any errors in your js files will
+                    | be printed here, and if you want to add print lines to your code, you can use&nbsp;
+                    span console.log('hey hey hey!');
+                    | . Also, you can type out arbitrary javascript in the console. For example, if you want to check
+                    | if javascript strings have a&nbsp;
+                    span length
+                    | &nbsp;property, you can type out something like
+                    br
+                    br
+                    pre.prettyprint.
+                        var a = 'the quick brown fox is overrated'
+                        a.length
+                    br
+                    | If you want to do something more interesting, you can use the console to manipulate elements in
+                    | the DOM. For example, you can make Keanu Reeves celebrate (or not) Brown's upcoming 250th
+                    | birthday:
+                    br
+                    br
+                    +genPageImg("images/keanuBrown.png")
+                    br
+                    br
+                    | The console can be especially helpful in conjunction with breakpoints...
+                    br
+                    br
+                    h3 Breakpoints
+                    | There are two ways to set breakpoints. One, as mentioned above, is to use the "Sources" tab
+                    | in the inspector directly. The other is to insert a line in your code:
+                    br
+                    br
+                    pre.prettyprint.
+                        var a = 5;
+                        debugger;
+                        // some code below
+                    br
+                    | If the inspector is open when this code runs, you will hit a breakpoint here. The
+                    | console will have access to all variables that are in scope at this point in the code,
+                    | so if you went to the console and typed "a+1", you would get 6. It's time well spent to
+                    | play around with this kind of stuff.
+                    br
+                    br
+                    h3 Stepping through
+                    | When you're at a breakpoint, you can use the buttons that look like:
+                    br
+                    br
+                    +genPageImg("images/breakpointButtons.png")
+                    br
+                    br
+                    | to step through your code.
+                    br
+                    br
+                    br
+
                 /////////////////
                 // GRUNT NOTES //
                 /////////////////
@@ -497,6 +655,7 @@ body
                             | only that branch until it is merged back into the main branch.
                     br
                     br
+
                 ////////////////////
                 // PATH SMOOTHING //
                 ////////////////////

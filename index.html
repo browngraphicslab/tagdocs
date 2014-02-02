@@ -33,6 +33,8 @@
           <li><a id="li-dev" onclick="openPage('dev')" class="pageanch page-tab">Developer Guide</a></li>
           <li><a id="li-gitlab" onclick="openPage('gitlab')" class="pageanch page-tab">Git and GitLab</a></li>
           <li><a id="li-webapp" onclick="openPage('webapp')" class="pageanch page-tab">Web App Workflow</a></li><br>
+          <li><a id="li-starter" onclick="openPage('starter')" class="pageanch page-tab">Starter Projects</a></li>
+          <li><a id="li-debugging" onclick="openPage('debugging')" class="pageanch page-tab">Debugging</a></li>
           <li><a id="li-jade-workshop" onclick="openPage('jade-workshop')" class="pageanch page-tab">Jade Workshop</a></li>
           <li><a id="li-stylus-workshop" onclick="openPage('stylus-workshop')" class="pageanch page-tab">Stylus Workshop</a></li>
           <li><a id="li-grunt" onclick="openPage('grunt')" class="pageanch page-tab">Grunt Notes</a></li>
@@ -79,6 +81,10 @@
         </ul><br>
         <h2 class="linklist">Web app links</h2>
         <ul>
+          <li class="linklistitem"><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started" target="_blank" class="link">MDN CSS tutorial</a></li>
+          <li class="linklistitem"><a href="http://www.w3schools.com/html/default.asp" target="_blank" class="link">W3Schools HTML tutorial</a></li>
+          <li class="linklistitem"><a href="https://developer.mozilla.org/en-US/learn/html" target="_blank" class="link">MDN HTML resources</a></li>
+          <li class="linklistitem"><a href="https://developer.mozilla.org/en-US/docs/DOM/DOM_Reference/Introduction" target="_blank" class="link">The DOM</a></li>
           <li class="linklistitem"><a href="http://learnboost.github.io/stylus/" target="_blank" class="link">Stylus Docs</a></li>
           <li class="linklistitem"><a href="http://jade-lang.com/api/" target="_blank" class="link">Jade home and API guide</a></li>
           <li class="linklistitem"><a href="http://naltatis.github.io/jade-syntax-docs/#basics" target="_blank" class="link">Jade documentation</a></li>
@@ -105,9 +111,9 @@
           <h2>Welcome!</h2><br>Welcome to the Touch Art Gallery Docs, a list of TAG-related material and references.<br><br>If you are a developer getting ready to start working on TAG, take a look at the
           "Get set up" pages to the left.<br><br><br><img src="./images/splashScreen.jpg"><br><br><br><img src="./images/quiltTour.jpg"><br><br>
         </div>
-        <!--////////////////-->
-        <!-- INTRODUCTION //-->
-        <!--////////////////-->
+        <!--///////////////////-->
+        <!-- DEVELOPER GUIDE //-->
+        <!--///////////////////-->
         <div id="dev" class="page">
           <h2>Developer guide</h2><br>This page will cover how to get started developing for
           the web app, the Windows 8 app, and the server.<br><br>
@@ -199,6 +205,67 @@
               so they are easy to search for.
             </li>
           </ol>
+        </div>
+        <!--////////////////////-->
+        <!-- STARTER PROJECTS //-->
+        <!--////////////////////-->
+        <div id="starter" class="page">
+          <h2>Starter projects</h2><br>
+          <h3>Languages</h3>TAG is an html5/css/javascript application, so to get started, it's important to make sure
+          you feel comfortable with each of these languages. Part of this is to make sure you are comfortable
+          with the&nbsp;<a href="https://developer.mozilla.org/en-US/docs/DOM/DOM_Reference/Introduction" target="_blank">DOM</a>. To make javascript easier, we also use&nbsp;<a href="http://api.jquery.com/" target="_blank">jQuery</a>. You can take a look at the quick jQuery&nbsp;<a id="plink-jquery" class="plink">tutorial</a>&nbsp;to the left or surf the net to find one.<br><br>
+          <div class="thumbnailContainer">
+            <div class="innerTableContainer"><a href="https://developer.mozilla.org/en-US/learn/html" target="_blank"><img src="images/html5.png" alt="Sorry!" class="thumbnailImg"></a></div>
+            <div class="innerTableContainer"><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started" target="_blank"><img src="images/css.jpg" alt="Sorry!" class="thumbnailImg"></a></div>
+            <div class="innerTableContainer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"><img src="images/javascript.jpg" alt="Sorry!" class="thumbnailImg"></a></div>
+            <div class="innerTableContainer"><a href="http://jquery.com/" target="_blank"><img src="images/jquery.png" alt="Sorry!" class="thumbnailImg"></a></div>
+            <div class="innerTableContainer"><a href="http://jade-lang.com/api/" target="_blank"><img src="images/jade.png" alt="Sorry!" class="thumbnailImg"></a></div>
+            <div class="innerTableContainer"><a href="http://learnboost.github.io/stylus/" target="_blank"><img src="images/stylus.png" alt="Sorry!" class="thumbnailImg"></a></div>
+          </div><br><br>We are using two additional mark-up languages to make our html and css more flexible and easier
+          to write, so learning these will be important (and hopefully enjoyable!).&nbsp;<a href="http://jade-lang.com/api/" target="_blank">Jade</a>&nbsp;is an indentation-based wrapper for html that has nice features such as variables and
+          mixins, which keep it&nbsp;<a href="http://en.wikipedia.org/wiki/Don't_repeat_yourself" target="_blank">DRY</a>.&nbsp;<a href="http://learnboost.github.io/stylus/" target="_blank">Stylus</a>&nbsp;does essentially the same thing for css. If you are comfortable with html and css, they
+          should not take long to learn.<br><br>There are some links to html, css, javascript, jade, and stylus tutorials/resources to the left,
+          but this is a small subset of what's out there, so find a tutorial that works for you. You can
+          also take a look at the lecture slides from&nbsp;<a href="http://cs.brown.edu/courses/cs132/lectures.html" target="_blank">cs132</a>&nbsp;(hopefully you're reading this at a time of year when notes exist on that page). You don't
+          need to be a wizard with these languages by the end of your project, but you should be able
+          to jump into the TAG codebase and feel relatively at-home. And always feel free to ask questions!
+          It might be helpful to take a look at the page on&nbsp;<a id="plink-debugging" class="plink">debugging</a>.<br><br>
+          <h3>Project options</h3>Email the team lead for the current menu of starter project options.<br><br><br>
+        </div>
+        <!--/////////////-->
+        <!-- DEBUGGING //-->
+        <!--/////////////-->
+        <div id="debugging" class="page">
+          <h2>Debugging</h2><br>
+          <h3>Using the inspector</h3>Knowing how to debug in javascript is very helpful. The main tool at your disposal is the
+          inspector, which lets you explore the DOM, add breakpoints, and monitor network activity
+          generated by your site. Opening the inspector is slightly different on each browser (as is the
+          functionality provided), but usually right-clicking on the page and selecting something
+          sounding like "Inspect Element" will do it. We'll just talk about the Chrome inspector here,
+          but it's basically the same on most browsers.<br><br>Clicking on the "Elements" tab in the inspector will show a collapsable representation of the DOM.
+          If you hover over an element, it will be highlighted in the page itself (with its width and height
+          displayed), and its margin and padding will be shown in a different color. Clicking on the element,
+          you can see more information about it in the right pane of the inspector (e.g., style rules, event
+          handlers, etc...). If you want to experiment with the styling of the page, you can change any
+          of the rules or add new ones. Likewise, you can edit attributes of html elements. Here's an example:<br><br><a href="images/inspectorElements.png" target="_blank"><img src="images/inspectorElements.png" alt="Sorry, image failed to load!" class="pageImg"></a><br><br>Clicking on the "Sources" tab will let you open up a source file related to the page, such
+          as a javascript or css file. If you click on a number next to a line in a javascript file, a
+          breakpoint will be added at that line. The breakpoint will survive page refreshes. Again, the
+          right pane has a bunch of information about the file you're looking at.<br><br>Clicking on the "Console" tab will open a javascript console. Any errors in your js files will
+          be printed here, and if you want to add print lines to your code, you can use&nbsp;<span>console.log('hey hey hey!');</span>. Also, you can type out arbitrary javascript in the console. For example, if you want to check
+          if javascript strings have a&nbsp;<span>length</span>&nbsp;property, you can type out something like<br><br>
+          <pre class="prettyprint">var a = 'the quick brown fox is overrated'
+a.length</pre><br>If you want to do something more interesting, you can use the console to manipulate elements in
+          the DOM. For example, you can make Keanu Reeves celebrate (or not) Brown's upcoming 250th
+          birthday:<br><br><a href="images/keanuBrown.png" target="_blank"><img src="images/keanuBrown.png" alt="Sorry, image failed to load!" class="pageImg"></a><br><br>The console can be especially helpful in conjunction with breakpoints...<br><br>
+          <h3>Breakpoints</h3>There are two ways to set breakpoints. One, as mentioned above, is to use the "Sources" tab
+          in the inspector directly. The other is to insert a line in your code:<br><br>
+          <pre class="prettyprint">var a = 5;
+debugger;
+// some code below</pre><br>If the inspector is open when this code runs, you will hit a breakpoint here. The
+          console will have access to all variables that are in scope at this point in the code,
+          so if you went to the console and typed "a+1", you would get 6. It's time well spent to
+          play around with this kind of stuff.<br><br>
+          <h3>Stepping through</h3>When you're at a breakpoint, you can use the buttons that look like:<br><br><a href="images/breakpointButtons.png" target="_blank"><img src="images/breakpointButtons.png" alt="Sorry, image failed to load!" class="pageImg"></a><br><br>to step through your code.<br><br><br>
         </div>
         <!--///////////////-->
         <!-- GRUNT NOTES //-->

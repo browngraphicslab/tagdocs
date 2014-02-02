@@ -12,9 +12,6 @@ function load() {
 function initHandlers() {
 	$('.plink').on('click', function() {
 		openPage(this.id.split('-')[1]);
-		$('body').animate({
-			scrollTop: 0
-		}, 700);
 	});
 }
 
@@ -38,6 +35,9 @@ function openPage(id) {
 	var hex = randColor();
 	$("#li-"+id).css("color", hex);
 	correctHeights();
+	$('body').animate({
+		scrollTop: 0
+	}, 700);
 }
 
 function correctHeights() {
