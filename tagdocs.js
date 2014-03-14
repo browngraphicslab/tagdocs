@@ -13,6 +13,26 @@ function initHandlers() {
 	$('.plink').on('click', function() {
 		openPage(this.id.split('-')[1]);
 	});
+
+	// filter list of links on main page
+	$('#linkFilter').on('change', function() {
+		var val = this.value.toLowerCase(),
+			resources = $('.resource'),
+			i, tags, j, hit,
+			resource;
+		for(i=0;i<resources.length;i++) {
+			hit = false;
+			resource = $(resources[i]);
+			tags = (resource.attr('tags') || '').split(',');
+			for(j=0;j<tags.length;j++) {
+				if(val === 'all' || val === tags[j].trim().toLowerCase()) {
+					hit = true;
+					break;
+				}
+			}
+			resource.css('display', hit ? 'block' : 'none');
+		}
+	});
 }
 
 function randColor() {
@@ -27,12 +47,13 @@ function randHex() {
 	return (Math.floor(Math.random()*16)%16).toString(16);
 }
 
+// open one of the docs pages (i.e., not outside links)
 function openPage(id) {
 	$("#contentWrapper").css("height","auto");
 	$(".page").css("display", "none");
 	$("#"+id).css("display", "block");
 	$(".page-tab").css("color", "white");
-	var hex = randColor();
+	var hex = randColor(); // wooooohooooo
 	$("#li-"+id).css("color", hex);
 	correctHeights();
 	$('body').animate({
@@ -40,19 +61,19 @@ function openPage(id) {
 	}, 700);
 }
 
+// make sure the docs page is the correct height
 function correctHeights() {
-	var leftbarBottom = $("#leftbar").height() + $("#leftbar").offset().top;
-	var paddingTop = parseInt($("#leftbar").css("padding-top"), 10);
-	var currCWHeight = $("#contentWrapper").height();
-	var cwHeight = (currCWHeight < leftbarBottom + paddingTop) ? leftbarBottom + paddingTop : currCWHeight;
+	var leftbarBottom = $("#leftbar").height() + $("#leftbar").offset().top,
+		paddingTop = parseInt($("#leftbar").css("padding-top"), 10),
+		currCWHeight = $("#contentWrapper").height(),
+		cwHeight = (currCWHeight < leftbarBottom + paddingTop) ? leftbarBottom + paddingTop : currCWHeight;
 	$("#contentWrapper").css("height", cwHeight);
 }
 
-var viewers = [], i, viewer1, viewer2, viewer3;
-var files = ['dz_1'];//, 'dz2', 'dz3'];
-var cont;
-
+// seadragon viewer page
 function init() {
+	var viewer1, viewer2, viewer3, viewer4;
+
     viewer1 = new Seadragon.Viewer("container1");
     viewer1.openDzi('../bleveque/dz_1/dzc_output.xml');
     

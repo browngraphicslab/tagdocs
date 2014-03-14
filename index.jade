@@ -42,6 +42,22 @@ mixin genThumbnailImg(input)
         a(href=input.href, target="_blank")
             img(class="thumbnailImg", src=input.src, alt="Sorry!")
 
+mixin createLinkOld(input)
+    a.outsideLink(href=input.href, tags=input.tags)
+        .outsideLinkContainer
+            .outsideLinkTitle #{input.title}
+            .outsideLinkDescription #{input.description}
+
+mixin createLink(input)
+    a.resource(href=input.href, tags=input.tags)
+        .resourceTitleContainer
+            .resourceTitleInnerContainer
+                .resourceTitle #{input.title}
+        .resourceDescriptionContainer
+            .resourceDescriptionInnerContainer
+                .resourceDescription!= input.description.replace(/\n/g, '<br />')
+
+
 body
     div(id="back")
         div(id="contentWrapper")
@@ -73,6 +89,7 @@ body
                     +genPageTab("Jade Workshop", "jade-workshop")
                     +genPageTab("Stylus Workshop", "stylus-workshop")
                     +genPageTab("Grunt Notes", "grunt")
+                    +genPageTab("MAMP/WAMP", "mamp")
                     +genPageTab("JS Hint: Good Practices", "jshint-practices")
                     +genPageTab("JavaScript Workshop", "javascript-workshop")
                 br
@@ -87,6 +104,19 @@ body
                     
                 br
                 h1.linkhead Links
+                +genList("Web app links", [
+                    {href: "https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started", name: "MDN CSS tutorial"},
+                    {href: "http://www.w3schools.com/html/default.asp", name: "W3Schools HTML tutorial"},
+                    {href: "https://developer.mozilla.org/en-US/learn/html", name: "MDN HTML resources"},
+                    {href: "https://developer.mozilla.org/en-US/docs/DOM/DOM_Reference/Introduction", name: "The DOM"},
+                    {href: "http://learnboost.github.io/stylus/", name: "Stylus Docs"},
+                    {href: "http://jade-lang.com/api/", name: "Jade home and API guide"},
+                    {href: "http://naltatis.github.io/jade-syntax-docs/#basics", name: "Jade documentation"},
+                    {href: "http://cssdeck.com/labs/learning-the-jade-templating-engine-syntax", name: "Jade tutorial"},
+                    {href: "http://html5test.com/compare/feature/index.html", name: "HTML5 browser support"},
+                    {href: "http://necolas.github.io/normalize.css/", name: "normalize.css"},
+                    {href: "https://github.com/bower/bower", name: "Bower pkg management"},
+                    {href: "http://gruntjs.com/", name: "Grunt"}])
                 +genList("JS Fiddle Demos", [
                     {href: "http://jsfiddle.net/bleveque/EXuu5/", name: "Scope"},
                     {href: "http://jsfiddle.net/bleveque/5TAJg/", name: "Scope and Closures"},
@@ -107,19 +137,6 @@ body
                     {href: "http://www.w3schools.com/cssref/tryit.asp?filename=trycss3_text-overflow_hover", name: "Text overflow"},
                     {href: "http://css-tricks.com/box-sizing/", name: "Box sizing"},
                     {href: "http://vaughnroyko.com/the-real-scoop-on-jquery-find-performance/", name: "Selectors and .find"}])
-                +genList("Web app links", [
-                    {href: "https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started", name: "MDN CSS tutorial"},
-                    {href: "http://www.w3schools.com/html/default.asp", name: "W3Schools HTML tutorial"},
-                    {href: "https://developer.mozilla.org/en-US/learn/html", name: "MDN HTML resources"},
-                    {href: "https://developer.mozilla.org/en-US/docs/DOM/DOM_Reference/Introduction", name: "The DOM"},
-                    {href: "http://learnboost.github.io/stylus/", name: "Stylus Docs"},
-                    {href: "http://jade-lang.com/api/", name: "Jade home and API guide"},
-                    {href: "http://naltatis.github.io/jade-syntax-docs/#basics", name: "Jade documentation"},
-                    {href: "http://cssdeck.com/labs/learning-the-jade-templating-engine-syntax", name: "Jade tutorial"},
-                    {href: "http://html5test.com/compare/feature/index.html", name: "HTML5 browser support"},
-                    {href: "http://necolas.github.io/normalize.css/", name: "normalize.css"},
-                    {href: "https://github.com/bower/bower", name: "Bower pkg management"},
-                    {href: "http://gruntjs.com/", name: "Grunt"}])
                 +genList("Jade examples", [
                     // {href: "http://localhost:3000", name:"Ex. 1"},
                     {href: "./jade_examples/ardra/myweb.html", name: "Ex. 1"},
@@ -150,7 +167,90 @@ body
                     br
                     br
                     br
-                    img(src="./images/quiltTour.jpg")
+                    | Below are some outside links.
+                    br
+                    br
+                    | Filter
+                    select#linkFilter
+                        option All
+                        option HTML
+                        option CSS
+                        option JS
+                        option Workflow
+                    br
+                    br
+                    +createLink({
+                        href: 'http://jsfiddle.net/',
+                        title: 'JS Fiddle',
+                        description: 'Javascript sandbox for playing around with js, css, and html.',
+                        tags: 'HTML, CSS, JS'
+                    })
+                    +createLink({
+                        href: 'http://gruntjs.com/',
+                        title: 'Grunt',
+                        description: 'Homepage for the Grunt task runner. Part of the Node.js platform, makes writing Jade and Stylus more enjoyable.',
+                        tags: 'Workflow'
+                    })
+                    +createLink({
+                        href: 'http://necolas.github.io/normalize.css/',
+                        title: 'normalize.css',
+                        description: 'CSS file aiming to provide cross-browser compatibility. Something worth looking into at some point.',
+                        tags: 'CSS'
+                    })
+                    +createLink({
+                        href: 'http://html5test.com/compare/feature/index.html',
+                        title: 'HTML5 browser support',
+                        description: 'See which browsers support various html5 features.',
+                        tags: 'HTML'
+                    })
+                    +createLink({
+                        href: 'http://naltatis.github.io/jade-syntax-docs/#basics',
+                        title: 'Interactive Jade tutorial',
+                        description: 'Could be a good way to pick up jade.',
+                        tags: 'Jade'
+                    })
+                    +createLink({
+                        href: 'http://jade-lang.com/reference/',
+                        title: 'Jade documentation',
+                        description: 'Official jade documentation. The language reference is a good jade syntax resource. The API tab could be useful if we end up using the jade API.',
+                        tags: 'Jade'
+                    })
+                    +createLink({
+                        href: 'http://learnboost.github.io/stylus/',
+                        title: 'Stylus documentation',
+                        description: 'Official stylus documentation.',
+                        tags: 'Stylus'
+                    })
+                    +createLink({
+                        href: 'https://developer.mozilla.org/en-US/docs/DOM/DOM_Reference/Introduction',
+                        title: 'The DOM',
+                        description: 'A refresher on (or introduction to) the Document Object Model',
+                        tags: 'HTML, CSS, JS'
+                    })
+                    +createLink({
+                        href: 'https://developer.mozilla.org/en-US/learn/html',
+                        title: 'MDN HTML resources',
+                        description: 'Resources for learning or brushing up on HTML. Compiled by the Mozilla Developer Network',
+                        tags: 'HTML'
+                    })
+                    +createLink({
+                        href: 'http://www.w3schools.com/html/default.asp',
+                        title: 'W3Schools HTML tutorial',
+                        description: 'Has tutorials for vanilla html as well as what is new in html5.',
+                        tags: 'HTML'
+                    })
+                    +createLink({
+                        href: 'https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started',
+                        title: 'MDN CSS tutorial',
+                        description: 'An introduction to cascading style sheets by the Mozilla Developer Network.',
+                        tags: 'CSS'
+                    })
+                    +createLink({
+                        href: 'https://developers.google.com/speed/docs/best-practices/rendering',
+                        title: 'Optimizing browser rendering',
+                        description: 'Some helpful tips for optimizing browser rendering times, including what kind of css selectors to use.',
+                        tags: 'CSS, HTML'
+                    })
                     br
                     br
 

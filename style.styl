@@ -2,6 +2,7 @@ zero = 0px
 bodyFont = 16px
 demoLinkColor = #aaaaff
 orangeColor = #ff9614
+linkHeight = 65px
 images = './images/'
 
 // functions and mixins
@@ -29,7 +30,6 @@ sectionOffset(t)
 	margin-top t
 
 // styling
-
 *
     margin zero
     padding zero
@@ -87,6 +87,15 @@ body
 .descContainer
     margin-left 10%
     width 80%
+
+.filterButton
+    border-bottom 1px solid rgba(0,0,0,0)
+    color #ff7700
+    cursor pointer
+    display inline-block
+    font-size 20px
+    margin 0px 30px 0px 30px
+    text-align center
 
 #footnoteAdd
     sectionOffset(280px)
@@ -149,6 +158,29 @@ ol
 ol.nostyle
     list-style none
 
+.outsideLinkContainer
+    border 1px solid rgba(255,255,255,0.4)
+    border-radius 2px
+    display block
+    position relative
+    width 100%
+
+.outsideLinkDescription
+    color white
+    display inline-block
+    left 5%
+    margin-bottom 5px
+    position relative
+    top 5px
+    width 75%
+
+.outsideLinkTitle
+    color red
+    display inline-block
+    font-size 25px
+    position relative
+    width 20%
+
 .page
     display none
 
@@ -172,6 +204,55 @@ pre.prettyprint, code.prettyprint
     height 400px
     position
     width 800px
+
+.resource
+    border-radius 5px
+    display block
+    height (linkHeight+10)
+    margin 10px 0px 20px 0px
+    position relative
+    width 100%
+
+.resource:hover
+    background-color rgba(255, 255, 255, 0.05)
+
+.resourceDescription
+    color #eeeeee
+    max-height linkHeight
+    max-width 540px
+    top 5px
+
+.resourceDescriptionContainer
+    display table
+    height linkHeight
+    left 210px
+    position absolute
+    top 5px
+    width 540px
+
+.resourceDescriptionInnerContainer
+    display table-cell
+    vertical-align middle
+
+.resourceTitle
+    border-right 1px solid white
+    color #eeeeee
+    font-size 20px
+    max-width 190px
+    max-height linkHeight
+
+.resourceTitleContainer
+    display table
+    height linkHeight
+    left 5px
+    position absolute
+    top 5px
+    width 190px
+
+.resourceTitleInnerContainer
+    display table-cell
+    text-align center
+    vertical-align middle
 
 span
     color #dddddd

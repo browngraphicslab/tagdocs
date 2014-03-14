@@ -39,6 +39,7 @@
           <li><a id="li-jade-workshop" onclick="openPage('jade-workshop')" class="pageanch page-tab">Jade Workshop</a></li>
           <li><a id="li-stylus-workshop" onclick="openPage('stylus-workshop')" class="pageanch page-tab">Stylus Workshop</a></li>
           <li><a id="li-grunt" onclick="openPage('grunt')" class="pageanch page-tab">Grunt Notes</a></li>
+          <li><a id="li-mamp" onclick="openPage('mamp')" class="pageanch page-tab">MAMP/WAMP</a></li>
           <li><a id="li-jshint-practices" onclick="openPage('jshint-practices')" class="pageanch page-tab">JS Hint: Good Practices</a></li>
           <li><a id="li-javascript-workshop" onclick="openPage('javascript-workshop')" class="pageanch page-tab">JavaScript Workshop</a></li>
         </ul><br>
@@ -52,6 +53,21 @@
           <li><a id="li-seadragonTest" onclick="openPage('seadragonTest')" class="pageanch page-tab">Seadragon Viewers</a></li>
         </ul><br>
         <h1 class="linkhead">Links</h1>
+        <h2 class="linklist">Web app links</h2>
+        <ul>
+          <li class="linklistitem"><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started" target="_blank" class="link">MDN CSS tutorial</a></li>
+          <li class="linklistitem"><a href="http://www.w3schools.com/html/default.asp" target="_blank" class="link">W3Schools HTML tutorial</a></li>
+          <li class="linklistitem"><a href="https://developer.mozilla.org/en-US/learn/html" target="_blank" class="link">MDN HTML resources</a></li>
+          <li class="linklistitem"><a href="https://developer.mozilla.org/en-US/docs/DOM/DOM_Reference/Introduction" target="_blank" class="link">The DOM</a></li>
+          <li class="linklistitem"><a href="http://learnboost.github.io/stylus/" target="_blank" class="link">Stylus Docs</a></li>
+          <li class="linklistitem"><a href="http://jade-lang.com/api/" target="_blank" class="link">Jade home and API guide</a></li>
+          <li class="linklistitem"><a href="http://naltatis.github.io/jade-syntax-docs/#basics" target="_blank" class="link">Jade documentation</a></li>
+          <li class="linklistitem"><a href="http://cssdeck.com/labs/learning-the-jade-templating-engine-syntax" target="_blank" class="link">Jade tutorial</a></li>
+          <li class="linklistitem"><a href="http://html5test.com/compare/feature/index.html" target="_blank" class="link">HTML5 browser support</a></li>
+          <li class="linklistitem"><a href="http://necolas.github.io/normalize.css/" target="_blank" class="link">normalize.css</a></li>
+          <li class="linklistitem"><a href="https://github.com/bower/bower" target="_blank" class="link">Bower pkg management</a></li>
+          <li class="linklistitem"><a href="http://gruntjs.com/" target="_blank" class="link">Grunt</a></li>
+        </ul><br>
         <h2 class="linklist">JS Fiddle Demos</h2>
         <ul>
           <li class="linklistitem"><a href="http://jsfiddle.net/bleveque/EXuu5/" target="_blank" class="link">Scope</a></li>
@@ -80,21 +96,6 @@
           <li class="linklistitem"><a href="http://css-tricks.com/box-sizing/" target="_blank" class="link">Box sizing</a></li>
           <li class="linklistitem"><a href="http://vaughnroyko.com/the-real-scoop-on-jquery-find-performance/" target="_blank" class="link">Selectors and .find</a></li>
         </ul><br>
-        <h2 class="linklist">Web app links</h2>
-        <ul>
-          <li class="linklistitem"><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started" target="_blank" class="link">MDN CSS tutorial</a></li>
-          <li class="linklistitem"><a href="http://www.w3schools.com/html/default.asp" target="_blank" class="link">W3Schools HTML tutorial</a></li>
-          <li class="linklistitem"><a href="https://developer.mozilla.org/en-US/learn/html" target="_blank" class="link">MDN HTML resources</a></li>
-          <li class="linklistitem"><a href="https://developer.mozilla.org/en-US/docs/DOM/DOM_Reference/Introduction" target="_blank" class="link">The DOM</a></li>
-          <li class="linklistitem"><a href="http://learnboost.github.io/stylus/" target="_blank" class="link">Stylus Docs</a></li>
-          <li class="linklistitem"><a href="http://jade-lang.com/api/" target="_blank" class="link">Jade home and API guide</a></li>
-          <li class="linklistitem"><a href="http://naltatis.github.io/jade-syntax-docs/#basics" target="_blank" class="link">Jade documentation</a></li>
-          <li class="linklistitem"><a href="http://cssdeck.com/labs/learning-the-jade-templating-engine-syntax" target="_blank" class="link">Jade tutorial</a></li>
-          <li class="linklistitem"><a href="http://html5test.com/compare/feature/index.html" target="_blank" class="link">HTML5 browser support</a></li>
-          <li class="linklistitem"><a href="http://necolas.github.io/normalize.css/" target="_blank" class="link">normalize.css</a></li>
-          <li class="linklistitem"><a href="https://github.com/bower/bower" target="_blank" class="link">Bower pkg management</a></li>
-          <li class="linklistitem"><a href="http://gruntjs.com/" target="_blank" class="link">Grunt</a></li>
-        </ul><br>
         <h2 class="linklist">Jade examples</h2>
         <ul>
           <li class="linklistitem"><a href="./jade_examples/ardra/myweb.html" target="_blank" class="link">Ex. 1</a></li>
@@ -110,7 +111,134 @@
         <!--////////////////-->
         <div id="welcome" class="page">
           <h2>Welcome!</h2><br>Welcome to the Touch Art Gallery Docs, a list of TAG-related material and references.<br><br>If you are a developer getting ready to start working on TAG, take a look at the
-          "Get set up" pages to the left.<br><br><br><img src="./images/splashScreen.jpg"><br><br><br><img src="./images/quiltTour.jpg"><br><br>
+          "Get set up" pages to the left.<br><br><br><img src="./images/splashScreen.jpg"><br><br><br>Below are some outside links.<br><br>Filter
+          <select id="linkFilter">
+            <option>All</option>
+            <option>HTML</option>
+            <option>CSS</option>
+            <option>JS</option>
+            <option>Workflow</option>
+          </select><br><br><a href="http://jsfiddle.net/" tags="HTML, CSS, JS" class="resource">
+            <div class="resourceTitleContainer">
+              <div class="resourceTitleInnerContainer">
+                <div class="resourceTitle">JS Fiddle</div>
+              </div>
+            </div>
+            <div class="resourceDescriptionContainer">
+              <div class="resourceDescriptionInnerContainer">
+                <div class="resourceDescription">Javascript sandbox for playing around with js, css, and html.</div>
+              </div>
+            </div></a><a href="http://gruntjs.com/" tags="Workflow" class="resource">
+            <div class="resourceTitleContainer">
+              <div class="resourceTitleInnerContainer">
+                <div class="resourceTitle">Grunt</div>
+              </div>
+            </div>
+            <div class="resourceDescriptionContainer">
+              <div class="resourceDescriptionInnerContainer">
+                <div class="resourceDescription">Homepage for the Grunt task runner. Part of the Node.js platform, makes writing Jade and Stylus more enjoyable.</div>
+              </div>
+            </div></a><a href="http://necolas.github.io/normalize.css/" tags="CSS" class="resource">
+            <div class="resourceTitleContainer">
+              <div class="resourceTitleInnerContainer">
+                <div class="resourceTitle">normalize.css</div>
+              </div>
+            </div>
+            <div class="resourceDescriptionContainer">
+              <div class="resourceDescriptionInnerContainer">
+                <div class="resourceDescription">CSS file aiming to provide cross-browser compatibility. Something worth looking into at some point.</div>
+              </div>
+            </div></a><a href="http://html5test.com/compare/feature/index.html" tags="HTML" class="resource">
+            <div class="resourceTitleContainer">
+              <div class="resourceTitleInnerContainer">
+                <div class="resourceTitle">HTML5 browser support</div>
+              </div>
+            </div>
+            <div class="resourceDescriptionContainer">
+              <div class="resourceDescriptionInnerContainer">
+                <div class="resourceDescription">See which browsers support various html5 features.</div>
+              </div>
+            </div></a><a href="http://naltatis.github.io/jade-syntax-docs/#basics" tags="Jade" class="resource">
+            <div class="resourceTitleContainer">
+              <div class="resourceTitleInnerContainer">
+                <div class="resourceTitle">Interactive Jade tutorial</div>
+              </div>
+            </div>
+            <div class="resourceDescriptionContainer">
+              <div class="resourceDescriptionInnerContainer">
+                <div class="resourceDescription">Could be a good way to pick up jade.</div>
+              </div>
+            </div></a><a href="http://jade-lang.com/reference/" tags="Jade" class="resource">
+            <div class="resourceTitleContainer">
+              <div class="resourceTitleInnerContainer">
+                <div class="resourceTitle">Jade documentation</div>
+              </div>
+            </div>
+            <div class="resourceDescriptionContainer">
+              <div class="resourceDescriptionInnerContainer">
+                <div class="resourceDescription">Official jade documentation. The language reference is a good jade syntax resource. The API tab could be useful if we end up using the jade API.</div>
+              </div>
+            </div></a><a href="http://learnboost.github.io/stylus/" tags="Stylus" class="resource">
+            <div class="resourceTitleContainer">
+              <div class="resourceTitleInnerContainer">
+                <div class="resourceTitle">Stylus documentation</div>
+              </div>
+            </div>
+            <div class="resourceDescriptionContainer">
+              <div class="resourceDescriptionInnerContainer">
+                <div class="resourceDescription">Official stylus documentation.</div>
+              </div>
+            </div></a><a href="https://developer.mozilla.org/en-US/docs/DOM/DOM_Reference/Introduction" tags="HTML, CSS, JS" class="resource">
+            <div class="resourceTitleContainer">
+              <div class="resourceTitleInnerContainer">
+                <div class="resourceTitle">The DOM</div>
+              </div>
+            </div>
+            <div class="resourceDescriptionContainer">
+              <div class="resourceDescriptionInnerContainer">
+                <div class="resourceDescription">A refresher on (or introduction to) the Document Object Model</div>
+              </div>
+            </div></a><a href="https://developer.mozilla.org/en-US/learn/html" tags="HTML" class="resource">
+            <div class="resourceTitleContainer">
+              <div class="resourceTitleInnerContainer">
+                <div class="resourceTitle">MDN HTML resources</div>
+              </div>
+            </div>
+            <div class="resourceDescriptionContainer">
+              <div class="resourceDescriptionInnerContainer">
+                <div class="resourceDescription">Resources for learning or brushing up on HTML. Compiled by the Mozilla Developer Network</div>
+              </div>
+            </div></a><a href="http://www.w3schools.com/html/default.asp" tags="HTML" class="resource">
+            <div class="resourceTitleContainer">
+              <div class="resourceTitleInnerContainer">
+                <div class="resourceTitle">W3Schools HTML tutorial</div>
+              </div>
+            </div>
+            <div class="resourceDescriptionContainer">
+              <div class="resourceDescriptionInnerContainer">
+                <div class="resourceDescription">Has tutorials for vanilla html as well as what is new in html5.</div>
+              </div>
+            </div></a><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started" tags="CSS" class="resource">
+            <div class="resourceTitleContainer">
+              <div class="resourceTitleInnerContainer">
+                <div class="resourceTitle">MDN CSS tutorial</div>
+              </div>
+            </div>
+            <div class="resourceDescriptionContainer">
+              <div class="resourceDescriptionInnerContainer">
+                <div class="resourceDescription">An introduction to cascading style sheets by the Mozilla Developer Network.</div>
+              </div>
+            </div></a><a href="https://developers.google.com/speed/docs/best-practices/rendering" tags="CSS, HTML" class="resource">
+            <div class="resourceTitleContainer">
+              <div class="resourceTitleInnerContainer">
+                <div class="resourceTitle">Optimizing browser rendering</div>
+              </div>
+            </div>
+            <div class="resourceDescriptionContainer">
+              <div class="resourceDescriptionInnerContainer">
+                <div class="resourceDescription">Some helpful tips for optimizing browser rendering times, including what kind of css selectors to use.</div>
+              </div>
+            </div></a><br><br>
         </div>
         <!--///////////////////-->
         <!-- DEVELOPER GUIDE //-->
