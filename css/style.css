@@ -26,7 +26,7 @@ a.plink {
   margin-top: 20px;
 }
 body {
-  background: url("./images/pattern1.png");
+  background: url("../images/../images/pattern1.png");
   color: #fff;
 }
 #closeThreshDiv,

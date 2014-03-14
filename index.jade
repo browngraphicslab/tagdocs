@@ -1,17 +1,17 @@
 doctype html
 html
 head
-    link(rel="stylesheet", href="style.css")
-    script(src="jquery.js", charset="utf-8")
-    script(src="raphael-min.js", charset="utf-8")
+    link(rel="stylesheet", href="css/style.css")
+    script(src="js/jquery.js")
+    script(src="js/raphael-min.js")
     script(src="http://seadragon.com/ajax/0.8/seadragon-min.js")
     script(src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?lang=css&skin=sons-of-obsidian")
     script(src="http://popcornjs.org/code/dist/popcorn-complete.min.js")
-    script(src="popcorn.capture.js")
-    script(src="alphacss.js")
-    script(src="poptest.js")
-    script(src="pathsmoothing.js")
-    script(src="tagdocs.js")
+    script(src="js/popcorn.capture.js")
+    script(src="js/alphacss.js")
+    script(src="js/poptest.js")
+    script(src="js/pathsmoothing.js")
+    script(src="js/tagdocs.js")
     title.
         TAG Docs
       
@@ -80,7 +80,7 @@ body
                 h1.linkhead Get set up
                 ul
                     +genPageTab("Developer Guide", "dev")
-                    +genPageTab("Git and GitLab", "gitlab")
+                    +genPageTab("Git and GitHub", "github")
                     +genPageTab("Web App Workflow", "webapp")
                     br
                     +genPageTab("Starter Projects", "starter")
@@ -268,10 +268,10 @@ body
                     h3 Web app
                     | In the web app, we're using&nbsp;
                     a(href='http://en.wikipedia.org/wiki/Git_(software)') Git
-                    | &nbsp;for version control, and our code is hosted on GitLab, so
+                    | &nbsp;for version control, and our code is hosted on GitHub, so
                     | the first step for web app development is to get set up with Git.
                     | Check out the&nbsp;
-                    a(class='plink', id='plink-gitlab') Git and GitLab
+                    a(class='plink', id='plink-github') Git and GitHub
                     | &nbsp;page to the left.
                     br
                     br
@@ -413,18 +413,18 @@ body
                     br
                     br
                     h3 Workflow
-                    | The basic workflow is to first pull down the latest changes from GitLab (
+                    | The basic workflow is to first pull down the latest changes from GitHub (
                     span git pull
                     | &nbsp;-- if you have local changes, though, you will need to run&nbsp;
                     span git commit -am "commit message"
                     | &nbsp; or&nbsp;
                     span git stash
                     | &nbsp; before pulling; see the&nbsp;
-                    a(class='plink', id='plink-gitlab') GitLab page
+                    a(class='plink', id='plink-github') GitHub page
                     | &nbsp; for more information). Then you can set&nbsp;
                     span grunt watch
                     | &nbsp;running to watch for any changes. You can then edit away. Commit and pull often
-                    | to make sure your code is well-synced with what is in GitLab.
+                    | to make sure your code is well-synced with what is in GitHub.
                     br
                     br
                     br
@@ -690,29 +690,57 @@ body
                     | the Gruntfile to ensure that it is compiled.
 
                 /////////////////////
-                // GITLAB TUTORIAL //
+                // MAMP/WAMP/ANVIL //
                 /////////////////////
 
-                #gitlab.page
-                    h2 Git and GitLab tutorial
+                #mamp.page
+                    h2 MAMP, WAMP, and Anvil
+                    | The TAG web app makes AJAX requests, so it needs to be run on a web server. Fortunately,
+                    | there are ways to set up a local web server! These probably are not the only ones, but they work:
+                    br 
+                    br
+                    h3 WAMP (Windows, Apache, PHP, MySQL)
+                    | If you are using Windows, this is the one for you!&nbsp;
+                    a(href='http://www.wampserver.com/en/') Check it out
+                    | .
+                    br
+                    br
+                    h3 MAMP (Mac, Apache, PHP, MySQL)
+                    | This works on Macs.&nbsp;
+                    a(href='http://www.mamp.info/en/', target='_blank') Check out the free version
+                    | .
+                    br
+                    br
+                    h3 Anvil
+                    | Apparently this also works on Macs and is a lot nicer! The potential drawback is that if you're doing 
+                    | any other web development that involves mysql or php, Anvil won't work for that. But for our purposes
+                    | it is probably easier to use than MAMP.&nbsp;
+                    a(href='http://anvilformac.com/', target='_blank') Check it out
+                    | .
+
+                /////////////////////
+                // GITHUB TUTORIAL //
+                /////////////////////
+
+                #github.page
+                    h2 Git and GitHub tutorial
                     | A quick look at version control with Git for our web app workflow.
                     br
                     br
-                    h3 Why Git and GitLab?
+                    h3 Why Git and GitHub?
                     | Git is a fast and reliable version control system, and it is widely used, making it a
-                    | helpful thing to know. GitLab allows us to create free, private, shared repositories. Otherwise, it is essentially
-                    | the same as GitHub or Bitbucket for our purposes, though it does have a slightly slower web UI.
+                    | helpful thing to know. GitHub allows us to create free, private, shared repositories (since
+                    | we have an organizational account). It also has nice issue tracking and is the most
+                    | widely-used code hosting service.
                     br
                     br
-                    h3 Set up a GitLab account
+                    h3 Set up a GitHub account
                     ol
-                        li Go to <a target="_blank" href="http://gitlab.com/">gitlab.com</a>.
-                        li Click "Sign In," then "Sign up" to create an account
-                        li.
-                            You now have an account, but you still need to be added to the TAG project by an admin. Email the
-                            current team lead to be added.
-                        li.
-                            In order to pull from and push to gitlab, you'll need an ssh key. There's a tab in your Profile Settings called 'SSH Keys.' Go ahead and follow the instructions there to add a key.
+                        li Go to <a target="_blank" href="http://github.com/">github.com</a>.
+                        li Creating an account should be pretty straightforward.
+                        li Make sure you add your full name to your account. It can be difficult to map usernames to people...
+                        li Once you have an account, you'll still need to be added to the TAG team. Email the current team lead!
+                        li In order to pull from and push to github, you may need an ssh key. If so, there's probably documentation on github about it (and let the team lead know so this page can be updated to include instructions).
                     br
                     br
                     h3 Clone the repository
@@ -723,10 +751,10 @@ body
                             span $ git help
                             | &nbsp; to make sure Git is working (it should come up with a list of possible Git commands)
                         li If Git is working properly, run&nbsp;
-                            span $ git clone git@gitlab.com:browntag/tag.git
+                            span $ git clone https://github.com/browngraphicslab/tag.git
                             | &nbsp; to get your local copy. By default, it will clone into a directory called 'tag,' but you can change this
                             | by adding an argument to the command above, e.g.,&nbsp;
-                            span $ git clone https://gitlab.com/browntag/tag.git awesome_directory_name
+                            span $ git clone https://github.com/browngraphicslab/tag.git awesome_directory_name
                     br
                     br
                     h3 Make and commit some local changes
@@ -763,27 +791,50 @@ body
                     br
                     br
                     h3 Push your changes
-                    | After pulling and cleaning merge conflicts, you can push your code up to GitLab (so other people can pull it down)
+                    | After pulling and cleaning merge conflicts, you can push your code up to GitHub (so other people can pull it down)
                     | by running&nbsp;
                     ol
                         li This can be done by running&nbsp;
                             span $ git push
-                        li You can double-check that your push was succesful by looking at the list of commits in gitlab. 
+                        li You can double-check that your push was succesful by looking at the list of commits in GitHub. 
                     br
                     br
-                    h3 Summary
+                    h3 Basic summary
                     ol
                         li Create a new local clone with&nbsp;
-                            span $ git clone https://gitlab.com/browntag/tag.git
+                            span $ git clone https://github.com/browngraphicslab/tag.git
                         li Make some local changes
                         li Commit these changes with&nbsp;
                             span $ git commit -am "brief_commit_message"
                         li Pull in other people's changes with&nbsp;
                             span $ git pull
                             | . This is a good thing to do frequently as you work to make sure your local copy isn't too far out of sync with
-                            | the project on gitlab.
+                            | the project on GitHub.
                         li Push your changes with&nbsp;
                             span $ git push.
+                    br
+                    br
+                    h3 Branches 
+                    | If you are working on a semi-major feature (anything that will likely take longer than a day or two or that you are
+                    | working on with someone else), you should
+                    | make a branch for your changes. Branches let you keep changes for this feature in a separate, parallel git index,
+                    | so pulling from and pushing to the branch will not affect the "master" branch (the philosophy is that the master
+                    | branch should always have the latest working code and should not have any in-progress changes). You can create a
+                    | new branch by running the&nbsp;
+                    span $ git checkout -b &lt;branch_name&gt;
+                    | &nbsp;command. This will create a new branch and "check it out." To switch to a branch, for example back to the master
+                    | branch, you can run&nbsp;
+                    span $ git checkout &lt;branch_name&gt;
+                    | . When you pull and push now, you'll want to specify the branch name:
+                    br
+                    br
+                    span $ git push origin &lt;branch_name&gt;
+                    br
+                    span $ git pull origin &lt;branch_name&gt;
+                    br
+                    br
+                    | When development of the feature is complete and tested/reviewed, you can merge it back into the master branch and all
+                    | will be well.
                     br
                     br
                     h3 Notes
@@ -793,7 +844,7 @@ body
                             | you are cleaning your current working directory by sequstering all changes since the last commit. To do this, you
                             | can run&nbsp;
                             span $ git stash
-                            | &nbsp;Then when you pull, Git only has to merge against your last commit. 
+                            | &nbsp;Then when you pull, git only has to merge against your last commit. 
                             | To re-apply your changes (which might cause merge conflicts the will need to be resolved), run&nbsp;
                             span $ git stash apply.
                         li For the moment, we will be working mostly on different files (as we factor css/html). Later, it may be helpful to create
@@ -866,7 +917,7 @@ body
                             br
                             button(type="button", onclick="addNewEffect()") add
                     video(controls, id="stormtrooper", width="200px")
-                        source(src="stormtrooper.mp4")
+                        source(src="files/stormtrooper.mp4")
                     #thumbnail
                         button(type="button", onclick="captureThumbnail()") Capture thumbnail
                         br
@@ -878,7 +929,7 @@ body
                 ///////////////////
                 
                 #redmine.page
-                    h2 Redmine Issue Tracker
+                    h2 Redmine Issue Tracker (NOT USED ANYMORE!!!! DEPRECATED!!!!)
                     | Getting started and best practices
                     br
                     br
@@ -937,6 +988,10 @@ body
                 
                 #alphacss.page
                     h2 Alphabetize your CSS/Stylus
+                    br
+                    | Note: This is not a very robust alphabetizer, but it works in the very specific use case described below :).
+                    | If you want to make it better, please do!
+                    br
                     br
                     #widgetContainer
                         textarea#textarea(placeholder=" enter css here...")
@@ -1205,18 +1260,7 @@ body
                         li Clean up code
                         li Repeat
                     br
-                    h3 Keeping track of validation in Redmine
-                    | Let's keep track of which files have been validated and when:
-                    ol
-                        li Log into the&nbsp;
-                            a(href="http://tagissuetracker.cs.brown.edu:3000", target="_blank") issue tracker
-                        li Open up the "JS Hint Validation" subproject
-                        li Find the file you've validated in the issue tracker (set the status to "any")
-                        li= 'If the file is not there, create a new issue with title "<file_name>" and status "ongoing"'
-                        li Mark yourself as the assignee
-                        li.
-                            Put the date in the "notes" section (the date will probably be recorded anyway, but if you happened to
-                            be the last reviewer, nothing will have changed and a note won't be logged with the right date)
+                    br
             
                 /////////////////////////
                 // JAVASCRIPT WORKSHOP //
@@ -1237,7 +1281,7 @@ body
                                        and <span>arguments</span>. The value of <span>this</span> depends on the way the function is
                                        invoked. The value of <span>arguments</span> is an array-like object containing the full list
                                        of arguments passed to the function (array-like because it is an object with integer property
-                                       names, but it doesn't inherit from Array.prototype). This is helpful because Javascript doesn't
+                                       names, but it does not inherit from Array.prototype). This is helpful because Javascript doesn't
                                        enforce anything about numbers of arguments passed to functions; you can pass as many or as few
                                        as you want, and <span>arguments</span> keeps track of them all.
                                     br
