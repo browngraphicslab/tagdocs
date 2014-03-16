@@ -318,7 +318,9 @@ body
                     br
                     br
                     h3 Server development
-                    | Stay tuned! Let the team lead know if you need this information now...
+                    | Jess Fu put together&nbsp;
+                    a(href='ServerDocs/GettingStarted.txt', target='_blank') some notes
+                    | &nbsp;on getting set up for server development.
                     br
                     br
 
@@ -702,7 +704,23 @@ body
                     h3 WAMP (Windows, Apache, PHP, MySQL)
                     | If you are using Windows, this is the one for you!&nbsp;
                     a(href='http://www.wampserver.com/en/') Check it out
-                    | .
+                    | . You can follow Xiaoyi's instructions below to set up WAMP:
+                    br
+                    br
+                    | After you download WAMP, left click the little "W"
+                    | icon and go to Apache. Under Apache, go to "directory" and click "add Alias". There will be a shell-like
+                    | window popping up and asking for the alias you want to create. Type the alias and hit enter. Then it will
+                    | ask for the address of the directory you want this alias to point to (this will be the path to your TAG
+                    | local checkout). Hit Enter when you are done and the alias you just created will appear in the Apache
+                    | directory list. To access your local copy of TAG, open the browser and navigate to localhost. At the bottom
+                    | of the page you can find the alias you have created and click it to go to your TAG directory. If you want to
+                    | change the path an alias is pointing to, go to the apache directory list and choose the alias. Click edit.
+                    | It will pop up a txt file, where you can find the path and modify it. Also, to make the computers in the lab
+                    | clean and organized, please don't pull a new checkout directly in random folders. I have cleaned the computer
+                    | behind the PPI and move all the webapp checkout into Documents/WEBAPP and all Win8 checkout to Documents/WIN8APP.
+                    | I also created an WAMP alias called WEBAPP pointing to WEBAPP folder. Thus, if you pull a new checkout under WEBAPP/yourname,
+                    | you don't need to create a new alias. I will clean up the other computers some time this weekend. So if you don't
+                    | find your git checkout, don't panic and go to Document/Webapp.
                     br
                     br
                     h3 MAMP (Mac, Apache, PHP, MySQL)

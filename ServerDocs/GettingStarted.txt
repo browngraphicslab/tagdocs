@@ -6,7 +6,7 @@ As a developer, you should first set up the right tools to develop the TAG Serve
 Install the following in this order:
 
 1. Microsoft SQL Server 2008: http://www.microsoft.com/en-us/download/details.aspx?id=20610
-When asked for a user account to run SQL Server 2008, please refer to this: http://stackoverflow.com/questions/63749/what-user-account-would-you-recommend-running-the-sql-server-express-2008-servic and make the best judgment according to your system capabilities (I’m running it as Local Service and it’s working fine).
+When asked for a user account to run SQL Server 2008, please refer to this: http://stackoverflow.com/questions/63749/what-user-account-would-you-recommend-running-the-sql-server-express-2008-servic and make the best judgment according to your system capabilities (I'm running it as Local Service and it's working fine).
 
 You can choose to implement SQLExpress instances with Windows Authentication and/or SQL Server Authentication (which adds another layer of security with a specified login/password).
 
@@ -41,7 +41,7 @@ Configure a SQLExpress Instance
 
 Open the SQL Server Configuration Manager and after opening SQL Server Services in the left panel, you should be able to see the different SQL server services currently enabled. SQL Server (SQLEXPRESS) and SQL Server Browser should both be running while the SQL Server Agent remains stopped. You can change the states of these services by right clicking. If starting/stopping a service is disabled for the services you should have running, right click and open up properties. Under the service tab, set the start mode to automatic.
 
-Now that you have SQL server set up, open Microsoft SQL Server Management Studio. If it’s your first time opening this application, it will prompt you to connect to a server. If not, you can connect to a server by selecting “Connect to Object Explorer” under the Files tab. 
+Now that you have SQL server set up, open Microsoft SQL Server Management Studio. If it's your first time opening this application, it will prompt you to connect to a server. If not, you can connect to a server by selecting "Connect to Object Explorer" under the Files tab. 
 Please choose the following parameters:
 Server type: Database Engine
 Server name: <user>\SQLEXPRESS
@@ -60,7 +60,7 @@ Starting session
 User set to: TAG
 Serving 18 doquments, and 0 linqs.
 beginning listening loop...
-The first message should be “Failed to connect to server <user>\.” So don’t worry about that.
+The first message should be "Failed to connect to server <user>\." So don’t worry about that.
 
 Now you have a complete TAG server running on your machine!
 
