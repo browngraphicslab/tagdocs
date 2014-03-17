@@ -78,13 +78,13 @@ function init() {
     viewer1.openDzi('seadragon_images/dz_1/dzc_output.xml');
     
     viewer2 = new Seadragon.Viewer("container2");
-    viewer2.openDzi('seadragon_images/bleveque/dz_2/dzc_output.xml');
+    viewer2.openDzi('seadragon_images/dz_2/dzc_output.xml');
     
     viewer3 = new Seadragon.Viewer("container3");
-    viewer3.openDzi('seadragon_images/bleveque/dz_3/dzc_output.xml');
+    viewer3.openDzi('seadragon_images/dz_3/dzc_output.xml');
 
     viewer4 = new Seadragon.Viewer("container4");
-    viewer4.openDzi('seadragon_images/bleveque/dz_4/dzc_output.xml');
+    viewer4.openDzi('seadragon_images/dz_4/dzc_output.xml');
 }
 
 Seadragon.Utils.addEvent(window, "load", init);
