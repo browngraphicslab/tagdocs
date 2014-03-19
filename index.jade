@@ -23,6 +23,7 @@ mixin genPageTab(title, id)
     li: a.pageanch(id="li-"+id, class="page-tab", onclick="openPage('"+id+"')") #{title}
   
 mixin genList(title, info)
+    - info.sort(function(a,b){return a.name.toLowerCase() < b.name.toLowerCase() ? -1 : 1;});
     h2.linklist #{title}
     ul
         for pair in info
@@ -79,27 +80,27 @@ body
             div(id="leftbar")
                 h1.linkhead Get set up
                 ul
+                    +genPageTab("Debugging", "debugging")
                     +genPageTab("Developer Guide", "dev")
                     +genPageTab("Git and GitHub", "github")
-                    +genPageTab("Web App Workflow", "webapp")
-                    br
-                    +genPageTab("Starter Projects", "starter")
-                    +genPageTab("Debugging", "debugging")
-                    +genPageTab("Testing", "testing")
-                    +genPageTab("Jade Workshop", "jade-workshop")
-                    +genPageTab("Stylus Workshop", "stylus-workshop")
                     +genPageTab("Grunt Notes", "grunt")
-                    +genPageTab("MAMP/WAMP", "mamp")
-                    +genPageTab("JS Hint: Good Practices", "jshint-practices")
+                    +genPageTab("Jade Workshop", "jade-workshop")
                     +genPageTab("JavaScript Workshop", "javascript-workshop")
+                    +genPageTab("JS Hint: Good Practices", "jshint-practices")
+                    +genPageTab("MAMP/WAMP", "mamp")
+                    +genPageTab("Starter Projects", "starter")
+                    +genPageTab("Stylus Workshop", "stylus-workshop")
+                    +genPageTab("Testing", "testing")
+                    +genPageTab("Web App Workflow", "webapp")
+                    +genPageTab("YUIDoc", "yuidoc")
                 br
                 h1.linkhead Misc
                 ul
-                    +genPageTab("Jade/Stylus Factoring", "factoring")
+                    +genPageTab("CSS Alphabetizer", "alphacss")
                     +genPageTab("Ink Path Smoothing","pathsmoothing")
+                    +genPageTab("Jade/Stylus Factoring", "factoring")
                     +genPageTab("Popcorn Test", "popcorn")
                     +genPageTab("Redmine Overview", "redmine")
-                    +genPageTab("CSS Alphabetizer", "alphacss")
                     +genPageTab("Seadragon Viewers", "seadragonTest")
                     
                 br
@@ -126,7 +127,6 @@ body
                     {href: "http://www.jslint.com/", name: "JSLint"},
                     {href: "http://www.dirtymarkup.com/", name: "Dirty Markup"},
                     {href: "http://jsperf.com/", name: "JSPerf"},
-                    {href: "http://tagissuetracker.cs.brown.edu:3000/", name: "TAG issue tracker"},
                     {href: "http://www.oldversion.com/", name: "Old browser versions"},
                     {href: "http://modern.ie/en-us", name: "Old IE versions"}])
                 +genList("Stuff.js", [
@@ -735,6 +735,86 @@ body
                     | it is probably easier to use than MAMP.&nbsp;
                     a(href='http://anvilformac.com/', target='_blank') Check it out
                     | .
+
+                ////////////
+                // YUIDoc //
+                ////////////
+
+                #yuidoc.page
+                    h2 YUIDoc
+                    | YUIDoc is a documentation generation system built by Yahoo! See the documentation&nbsp;
+                    a(href='http://browngraphicslab.github.io/tag/yuidocs/', target='_blank') here
+                    | .
+                    br
+                    br
+                    h3 Why?
+                    | The TAG codebase can get pretty messy when our focus is hitting a deadline, so we need some
+                    | standards for writing documentation. YUIDoc takes comments in our source files and compiles html
+                    | documents that provide an easy way to access this documentation.
+                    br
+                    br
+                    h3 Why YUIDoc?
+                    | Of the javascript documentation generators listed&nbsp;
+                    a(href='http://www.lsauer.com/2013/05/javascript-documentation-generator.html', target='_blank') here
+                    | , YUIDoc seemed to have a good combination of ease-of-use, compatibility with our current development
+                    | practices, and acceptable UI:
+                    br
+                    br
+                    ol
+                        li
+                            | Ease of use: the comment syntax is pretty simple (see&nbsp;
+                            a(href='http://code.tutsplus.com/tutorials/documenting-javascript-with-yuidoc--net-25324', target='_blank') here
+                            | ), and recompiling the html files can be done by typing&nbsp;
+                            span $ yuidoc .
+                            | &nbsp; in the top-level directory (add the <span>-q</span> flag to suppress output)
+                        li
+                            | Compatibility: YUIDoc can be easily installed as a node module (
+                            span $ npm install yuidocjs
+                            | )
+                        li
+                            | UI: the interface of the generated html files isn't anything to write home about, but it gets
+                            | the job done. YUIDoc presents the relevant information in an easy-to-navigate way, which is
+                            | what's important when it comes to documentation
+                    br
+                    h3 Conventions 
+                    ol
+                        li
+                            | When you write a new function, document it with a <span>@method</span> tag (not all functions
+                            | may be methods in the OO sense, but we can conflate the terms for our purposes). Document
+                            | all parameters and return values with the <span>@param</span> and <span>@return</span> tags.
+                            | Also provide types for these values. For example:
+                            br
+                            br
+                            pre.prettyprint.
+                                /**
+                                 * Returns a notice message given a certain connectivity error.
+                                 * @method getNoticeText
+                                 * @param {String} error       the error type
+                                 * @return {String}            an error message to be displayed
+                                 */
+                                function getNoticeText(error) {
+                            br
+                            br
+                        li
+                            | Top-level constructors such as <span>LADS.Layout.Artmode</span> should be documented with a
+                            | <span>@class</span> tag. Also add the <span>@constructor</span>
+                            | tag to this comment and document any parameters as above. For example:
+                            br
+                            br
+                            pre.prettyprint.
+                                /**
+                                 * The artwork viewer, which contains a sidebar with tools
+                                 * and thumbnails as well as a central area for the deepzoom image.
+                                 * @class LADS.Layout.Artmode
+                                 * @constructor
+                                 * @param {Object} prevInfo      contains information about returning
+                                 *                                 to the previous page
+                                 * @param {Object} options       information about current artwork and
+                                 *                                 whether we're in splitscreen mode
+                                 * @param {Doq} exhibition       the exhibition we came from (if any)
+                                 */
+                                LADS.Layout.Artmode = function (prevInfo, options, exhibition) {
+                        
 
                 /////////////////////
                 // GITHUB TUTORIAL //
