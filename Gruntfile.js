@@ -16,12 +16,13 @@ module.exports = function(grunt) {
 					pretty: true
 				},
 				files: {
-					'index.html': 'index.jade'
+					'index.html': 'index.jade',
+					'workshops.html': 'workshops.jade'
 				}
 			}
 		},
 		watch: {
-			files: ['index.jade', 'css/style.styl'],
+			files: ['index.jade', 'workshops.jade', 'css/style.styl'],
 			tasks: ['stylus', 'jade']
 		}
 	});

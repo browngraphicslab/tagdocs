@@ -1366,69 +1366,183 @@ body
                 
                 #javascript-workshop.page
                     h2 Javascript coding practices workshop
-                    | Adapted from Javascript: The Good Parts by Douglas Crockford
+                    | Adapted from <i>Javascript: The Good Parts</i> by Douglas Crockford
+                    br
+                    br
+                    div(style="width:100%;text-align:center;font-size:14px;")
+                        img(src='images/thegoodparts.jpg', width='400px')
+                        br
+                        | There are a few good parts
+                    br
+                    | Below are a few notes about different aspects of Javascript. If there's a topic you'd like to hear more about,
+                    | let the current team lead know, and he/she can update accordingly.
+                    br
+                    br
+                    | To test out some of the discussions below, it's helpful to use both the browser inspector and a test file
+                    | (so you can add breakpoints)
                     br
                     br
                     ul
                         li
-                            h3 Functions (p.26)
+                            h3 Functions (p.26 of <i>JGP</i>)
                             div.full-text
                                 ol
-                                    li.
-                                       Functions have two additional parameters besides those explicitly passed: <span>this</span>
-                                       and <span>arguments</span>. The value of <span>this</span> depends on the way the function is
-                                       invoked. The value of <span>arguments</span> is an array-like object containing the full list
-                                       of arguments passed to the function (array-like because it is an object with integer property
-                                       names, but it does not inherit from Array.prototype). This is helpful because Javascript doesn't
-                                       enforce anything about numbers of arguments passed to functions; you can pass as many or as few
-                                       as you want, and <span>arguments</span> keeps track of them all.
-                                    br
+                                    li
+                                       | Functions have two additional parameters besides those explicitly passed: <span>this</span>
+                                       | and <span>arguments</span>. The value of <span>this</span> depends on the way the function is
+                                       | invoked. The value of <span>arguments</span> is an array-like object containing the full list
+                                       | of arguments passed to the function (array-like because it is an object with integer property
+                                       | names, but it does not inherit from Array.prototype). This is helpful because Javascript doesn't
+                                       | enforce anything about numbers of arguments passed to functions; you can pass as many or as few
+                                       | as you want, and <span>arguments</span> keeps track of them all.
+                                       br
+                                       br
+                                       pre.prettyprint.
+                                            function myFunc() {
+                                                // call myFunc(1,2,3,4,5), inspect this and arguments
+                                                debugger;
+                                            }
+                                        br
                                     br
                                     li
                                         | Ways of invoking functions:
                                         ol
-                                            li As properties of objects. In this case, <span>this</span> is bound to the object.
-                                            li.
-                                                Normal function invocation. In this case, <span>this</span> is bound to the global object,
-                                                regardless of whether our function is an inner function (in which case we would expect
-                                                <span>this</span> to be bound to the <span>this</span> of the outer function). To get
-                                                around this, create a variable like <span>that=this</span> before entering
-                                                the inner function, since <span>that</span> will be visible as a normal variable.
-                                            li.
-                                                As a constructor (i.e. with <span>new</span>). In this case, a new object will be
-                                                constructed, and <span>this</span> will be bound to the object. REMEMBER if you use
-                                                constructors at all, they must be called with the <span>new</span> operator, since otherwise,
-                                                <span>this</span> will be bound to the global object and you could end up overwriting
-                                                global information!</li>
-                                            li.
-                                                The last way we can choose the value of <span>this</span> is by invoking the function with
-                                                <span>Function.prototype.apply</span>, which takes <span>this</span> to bind as its
-                                                first argument.
+                                            li
+                                                | As properties of objects. In this case, <span>this</span> is bound to the object. For example:
+                                                br
+                                                br
+                                                pre.prettyprint.
+                                                    var testObj = {
+                                                        propertyFunc: function() {
+                                                            debugger; // this will refer to testObj
+                                                        }
+                                                    };
+                                                br
+                                            li
+                                                | Normal function invocation. In this case, <span>this</span> is bound to the global object,
+                                                | regardless of whether our function is an inner function (in which case we would expect
+                                                | <span>this</span> to be bound to the <span>this</span> of the outer function).
+                                                br
+                                                br
+                                                pre.prettyprint.
+                                                    var testObj2 = {
+                                                        propertyFunc: function() {
+                                                            innerFunction(arguments); // call inner function
+
+                                                            function innerFunction() {
+                                                                debugger; // inspect this here (is 'window' rather than testObj2)
+                                                            }
+                                                        }
+                                                    };
+                                                br
+                                                | To get around this, create a variable like <span>that=this</span> before entering
+                                                | the inner function, since <span>that</span> will be visible as a normal variable:
+                                                br
+                                                br
+                                                pre.prettyprint.
+                                                    var testObj3 = {
+                                                        propertyFunc: function() {
+                                                            var that = this;
+                                                            innerFunction(arguments); // call inner function
+
+                                                            function innerFunction() {
+                                                                console.log(that);
+                                                                debugger; // inspect *that* here (is testObj2)
+                                                            }
+                                                        }
+                                                    };
+                                                br
+                                                | Note that the name <span>that</span> is completely arbitrary. Could be <span>samuelLJackson=this</span>.
+                                                br
+                                                br
+                                            li
+                                                | As a constructor (i.e. with <span>new</span>). In this case, a new object will be
+                                                | constructed, and <span>this</span> will be bound to the object. REMEMBER if you use
+                                                | constructors at all, they must be called with the <span>new</span> operator, since otherwise,
+                                                | <span>this</span> will be bound to the global object and you could end up overwriting
+                                                | global information!</li>
+                                                br
+                                                br
+                                                pre.prettyprint.
+                                                    function TestConstructor(val) {
+                                                        this.val = val;
+                                                        debugger; // this refers to the object being constructed
+                                                    }
+                                                br
+                                                br
+                                            li
+                                                | The last way we can invoke a function is by calling
+                                                | <span>Function.prototype.apply</span>, which is called as a method of the function. It
+                                                | takes the desired value of <span>this</span>
+                                                | as its first argument and all other arguments of the function are given in an array in the
+                                                | second argument. For example, the following is equivalent to calling the <span>myFunc</span>
+                                                | function with the arguments <span>1,2,3,4,5</span> and <span>this</span> set to
+                                                | <span>{testProp: 5}</span>:
+                                                br
+                                                br
+                                                pre.prettyprint.
+                                                    myFunc.apply({
+                                                        testProp: 5
+                                                    }, [1,2,3,4,5]);
+                                                br
                                         br
                                         br
                         li
                             h3 Function scope (p.36)
                             div.full-text
                                 ol
-                                    li.
-                                        In Javascript, variables are in scope throughout the entire function in which they are declared. This
-                                        can be confusing if, for example, you expect a variable just to be in scope in a loop. For
-                                        this reason, it is safest to declare all variables at the top of each function. This will make it
-                                        easier to spot scope-related bugs. Note that inner functions have access to the variables of their
-                                        outer functions, but not vice versa.
+                                    li
+                                        | In Javascript, variables are in scope throughout the entire function in which they are declared. This
+                                        | can be confusing if, for example, you expect a variable just to be in scope in a loop. For
+                                        | this reason, it is safest to declare all variables at the top of each function. This will make it
+                                        | easier to spot scope-related bugs. Note that inner functions have access to the variables of their
+                                        | outer functions, but not vice versa.
+                                        br
+                                        br
+                                        pre.prettyprint.
+                                            function scopeTest() {
+                                                var bigScope = 1;
+
+                                                for(var i=0;i<5;i++) {
+                                                    var j = 2;
+                                                    console.log(i);
+                                                }
+                                                console.log(i+j); // i and j are still in scope
+                                                innerFunction();
+
+                                                function innerFunction() {
+                                                    var innerScope = 2;
+                                                    console.log(bigScope); // bigScope is still in scope in inner functions
+                                                    console.log(i+j);      // so are i and j
+                                                    debugger;
+                                                }
+
+                                                console.log(innerScope); // bad, crashes
+                                            }
+                                        br
                                         
                                     li
                                         | It is often nice for inner functions to have access to variables from their outer functions, but it can
                                         | cause some weirdness. Consider
-                                        | a list of buttons (e.g. the buttons for showing hotspots on an artwork). In creating the click
+                                        | a list of buttons. In creating the click
                                         | handlers for these buttons, the first inclination might be to do something like
                                         br
                                         br
                                         pre.prettyprint.
-                                            for(i=0; i&lt;buttons.length; i+=1) {
-                                                $(buttons[i]).on('click', function() {
-                                                    open(hotspot[i]);
-                                                });
+                                            function handlersInLoop() {
+                                                var i,
+                                                    button,
+                                                    buttons = [];
+
+                                                for(i=0;i<5;i++) {
+                                                    button = $(document.createElement('button')).text("Button #"+i);
+                                                    buttons.push(button);
+                                                    $('#contentWrapper').append(button);
+
+                                                    button.on('click', function() {
+                                                        alert('you just clicked button #'+i); // always 5 upon clicking
+                                                    });
+                                                }
                                             }
                                         br
                                         | However, the variable <span>i</span> used in the click handlers is the same reference as that used
@@ -1442,70 +1556,292 @@ body
                                         | A safer way to do this is to call a helper function which takes the index&nbsp;
                                         span i
                                         | &nbsp;and returns
-                                        | a function that opens hotspot <span>i</span>. Since the helper function is not declared within
-                                        | the scope of the for loop and we pass in <span>i</span> by value (as a Number), it will not see
-                                        | changes to <span>i</span>.
-                                        | <a href="http://jsfiddle.net/bleveque/EXuu5/" target="_blank">Demo</a>. We can
-                                        | achieve the same effect by using closure:
-                                        | <a href="http://jsfiddle.net/bleveque/5TAJg/" target="_blank">Demo</a>. Note that JSHint
-                                        | complains in this case, though...
+                                        | a function that handles the click on button <span>i</span>. For example:
+                                        br
+                                        br
+                                        pre.prettyprint.
+                                            function fixedHandlersInLoop() {
+                                                var i,
+                                                    button,
+                                                    buttons = [];
+
+                                                for(i=0;i<5;i++) {
+                                                    button = $(document.createElement('button')).text("Button #"+i);
+                                                    buttons.push(button);
+                                                    $('#contentWrapper').append(button);
+
+                                                    button.on('click', buttonClickHandler(i));
+                                                }
+
+                                                function buttonClickHandler(j) {
+                                                    return function() { // note: helper function *returns* the handler
+                                                        alert('you just clicked button #'+j); // the value of j is correct now
+                                                    }
+                                                }
+                                            }
+                                        br
+                                        | We can achieve the same effect in a slightly different way below:
+                                        br
+                                        br
+                                        pre.prettyprint.
+                                            function fixedHandlersInLoopClosure() {
+                                                var i,
+                                                    button,
+                                                    buttons = [];
+
+                                                for(i=0;i<5;i++) {
+                                                    button = $(document.createElement('button')).text("Button #"+i);
+                                                    buttons.push(button);
+                                                    $('#contentWrapper').append(button);
+
+                                                    (function(j) { // create a closure around the creation of the handler
+                                                        button.on('click', function() {
+                                                            alert('you just clicked button #'+j); // the value of j is correct
+                                                        });
+                                                    })(i);
+                                                }
+                                            }
+                                        br
+                                        | We're essentially doing the same thing here as with the helper function; we're creating
+                                        | an inner function and calling it immediately. Note that the variable <span>button</span>
+                                        | is still in scope in this inner function. The property that inner functions have access
+                                        | to the context in which they are created is called "closure."
                                 br
                         br
                         li
-                            h3 Closure
+                            h3 Asynchronous functions
                             div.full-text
                                 ol
-                                    li.
-                                        Closure is the property that inner functions have access to the current context at the time
-                                        of their creation, so inner functions can outlive the functions they are contained within. (p.37).
+                                    li
+                                        | Most basic javascript instructions execute synchronously, meaning that you can expect
+                                        | the instruction to complete before the next instruction is executed. This is usually fine,
+                                        | but suppose you want to make a request for an artwork in TAG. Who knows when the server
+                                        | will respond, so if you wait synchronoulsy for a response, you would lock up TAG's UI. A better
+                                        | approach is to make this call asynchonous. The basic idea here is that you accompany your call
+                                        | with a "callback" function that will get executed when the call completes. A (slightly abridged)
+                                        | example from the TAG codebase is the following (from LADS.Layout.NewCatalog.js):
+                                        br
+                                        br
+                                        pre.prettyprint.
+                                            LADS.Worktop.Database.getArtworksIn(e.Identifier, getArtworksHelper, null, null);
+
+                                            function getArtworksHelper(artworks) {
+                                                .
+                                                .
+                                                .
+                                        br
+                                        | Here, the function <span>getArtworksHelper</span> is provided as a callback function for
+                                        | <span>LADS.Worktop.Database.getArtworksIn</span>. This means that when the list of
+                                        | relevant artworks is obtained from the server, <span>getArtworksHelper</span> will
+                                        | be called, and the list of artworks will be passed in as its argument.
+                                        br
+                                        br
+                                    li
+                                        | Sometimes the results of an asynchronous function are necessary for the execution of any
+                                        | subsequent code. In this case, the subsequent code should go in the callback function, since
+                                        | this is this only place where it will be guaranteed to get called after the asynchronous
+                                        | function returns. This can lead to some gnarly callback nesting if the subsequent code also
+                                        | makes asynchronous calls. There are some attempts to make asynchronous calls nicer, like &nbsp;
+                                        a(href="http://joseoncode.com/2011/09/26/a-walkthrough-jquery-deferred-and-promise/",target="_blank") jQuery.Deferred
+                                        | &nbsp;but we haven't made much use of them (does someone want to give a talk on this??).
+                                        br
+                                        br
+                                    li
+                                        | An asynchronous pattern that shows up here and there in TAG is the async queue. Basically, it allows you
+                                        | to add functions to be executed asynchronously to a queue, and when the browser is free, it will perform
+                                        | those functions. This is handy for adding lots of DOM elements, for example, since these elements can
+                                        | be added during browser downtime, and it will still be possible to interact with the interface. The following
+                                        | code from LADS.Layout.NewCatalog.js draws artwork tiles using an async queue:
+                                        br
+                                        br
+                                        pre.prettyprint.
+                                            loadQueue.add(drawArtworkTile(works[k].artwork, tag, onSearch, k+i, w, h));
+                                            .
+                                            .
+                                            function drawArtworkTile(currentWork, tag, onSearch, i, w, h) {
+                                                return function () { // note: drawArtworkTile returns the func to be exec-ed
+                                                    var main = $(document.createElement('div'));
+                                                    main.addClass("tile");
+                                                    .
+                                                    .
+                                        br
                         br
                         li
-                            h3 Asynchronous patterns
+                            h3 Classes and inheritance
                             div.full-text
                                 ol
-                                    li.
-                                        Queues: can push to-be-executed asynchronous calls into a queue. They will be executed in the
-                                        order they were pushed.
-                                    li.
-                                        JQuery promises: keep track of whether an asynchronous call has completed
-                                        (<a href="http://api.jquery.com/promise/" target="_blank">http://api.jquery.com/promise/</a>).
-                                        Allows for intuitive chaining of function calls.
-                        br
-                        li
-                            h3 Inheritance
-                            div.full-text
-                                ol
-                                    li.
-                                        The book mentions a few methods to go about inheritance. One is a technique that more closely
-                                        resembles class-based inheritance, where constructor functions are defined and objects are
-                                        new-ed (p.47): <a href="http://jsfiddle.net/bleveque/QSv2J/" target="_blank">Demo</a>.
-                                        In this case, we just add properties to <span>this</span> within the constructor (recall that
-                                        <span>this</span> is bound to the new object when we use <span>new</span>).
-                                        The problem with this method is that there is no way to create private variables. Everything created
-                                        is just an object which is completely readable/writable. There's a way to set these properties, using
-                                        Javascript's 
-                                        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty" target="_blank">defineProperties</a>
-                                        method, but this is a bit roundabout.
-                                    li.
-                                        Another way to create 'classes,' which we have been using in a lot of the tour authoring code,
-                                        is by using the 'functional' method. The basic idea is to define a function which
-                                        will create and build up an object and then return it. We can pass in parameters which give context,
-                                        (i.e. <span>spec</span>, which contains everything necessary to build up the object,
-                                        and <span>my</span>, which holds important private information for inheritance).
+                                    li
+                                        | The first thing to note about inheritance in javascript is the prototype chain. The "prototype" of an object
+                                        | is an object from which it inherits properties. When attempting to access the property of an object, javascript
+                                        | first looks for the property within the object itself. If it doesn't find the property, it looks in the object's
+                                        | prototype. If it still can't find it, it looks in the prototype's prototype, etc. For example, all objects in
+                                        | javascript inherit properties from the standard <span>Object.prototype</span>, so adding a property to
+                                        | this general object will make it available to all objects:
+                                        br
+                                        br
+                                        pre.prettyprint.
+                                            function explorePrototype() {
+                                                var a = 5;
+                                                Object.prototype.greeting = "hello"; // add to generic Object.prototype
+                                                var b = [1,2,3];
+                                                console.log("a says '"+a.greeting+"' and b says '"+b.greeting+"'"); // "hello"
+                                                Array.prototype.greeting = "I'm an array";
+                                                console.log("b now says '"+b.greeting+"'"); // "I'm an array"
+                                                debugger;
+                                            }
+                                        br
+                                        | Since <span>Array.prototype</span> is closer to <span>b</span> in the prototype chain, javascript will
+                                        | encounter the value of <span>Array.prototype.greeting</span> before that of <span>Object.prototype.greeting</span>.
+                                        br
+                                        br
+                                    li
+                                        | The book (<i>JGP</i>) mentions a few methods for going about inheritance. One is a technique that more closely
+                                        | resembles class-based inheritance, where constructor functions are defined and objects are
+                                        | new-ed (p.47). In this case, we just add properties to <span>this</span> within the constructor (recall that
+                                        | <span>this</span> is bound to the new object when we use <span>new</span>):
+                                        br
+                                        br
+                                        pre.prettyprint.
+                                            function Polygon(nSides) {
+                                                this.getNSides = function() {
+                                                    return nSides
+                                                }
+                                            }
+
+                                            function Triangle(angles) {
+                                                this.isRight = function() {
+                                                    return angles.indexOf(90) >= 0;
+                                                }
+                                            }
+                                            Triangle.prototype = new Polygon(3);
+
+                                            function newObject() {
+                                                var quad = new Polygon(4);
+                                                var triangle = new Triangle([30, 60, 90]);
+                                                debugger;
+                                            }
+                                        br
+                                        | Note that we set the prototype of Triangle to be a new Polygon with three sides, so all the
+                                        | properties of a Polygon will be accessible to Triangles via the prototype chain. One problem
+                                        | with this approach is that if we forget to use the <span>new</span> keyword when creating
+                                        | objects, javascript won't know to use the new object as <span>this</span>, so the global
+                                        | object will be used instead, and you can end up overwriting global data.
+                                        br
+                                        br
+                                    li
+                                        | Another way to create 'classes,' which we use a fair amount in TAG,
+                                        | is to use the 'functional' method. The basic idea is to define a function that
+                                        | will create an object, augment it with properties, and then return it. The return
+                                        | value of this function will then be an object with the desired properties. For example,
+                                        | <span>LADS.Layout.NewCatalog</span> is essentially a constructor function in the above
+                                        | sense:
+                                        br
+                                        br
+                                        pre.prettyprint.
+                                            LADS.Layout.NewCatalog = function (....) {
+                                                .
+                                                .
+                                                var that = {
+                                                    getRoot: getRoot,
+                                                    loadExhibit: loadExhibit
+                                                };
+                                                .
+                                                .
+                                                return that;
+                                                .
+                                                .
+                                        br
+                                        | There's not too much exciting getting returned here, but the <span>getRoot</span> method
+                                        | is used to retrieve the root of the collections view page, which is then used to
+                                        | insert the page into the DOM. An instance of this 'class' is used in
+                                        | <span>LADS.Layout.StartPage.js</span>:
+                                        br
+                                        br
+                                        pre.prettyprint.
+                                            var newCatalog = LADS.Layout.NewCatalog();
+                                            ...
+                                            LADS.Util.UI.slidePageLeft(newCatalog.getRoot());
+                                        br
+                                        | Before writing these notes, the first line above actually read:
+                                        br
+                                        br
+                                        pre.prettyprint.
+                                            var newCatalog = new LADS.Layout.NewCatalog();
+                                        br
+                                        | But this use of <span>new</span> wasn't necessary!
+                                        br
+                                        br
+                                        | Inheritance can be implemented by augmenting the value of the object to be returned
+                                        | (in the above case, called <span>that</span>, but the name is arbitrary) with the
+                                        | return value of the desired superclass. For example:
+                                        br
+                                        br
+                                        pre.prettyprint.
+                                            // superclass
+                                            function superhero(name) {
+                                                var that = {}; // could be called anything
+
+                                                that.name = name; // add a property
+
+                                                function hasCape() {
+                                                    return true; // of course
+                                                }
+                                                that.hasCape = hasCape; // make this method "public"
+
+                                                function hasSidekick() {
+                                                    return (name.indexOf("man") >= 0 || name.indexOf("woman") >= 0);
+                                                }
+                                                that.hasSidekick = hasSidekick; // another method
+
+                                                return that; // return our superhero object
+                                            }
+
+                                            // subclass
+                                            function batman() {
+                                                var that = superhero("batman"); // "inheritance"
+
+                                                var butler = "Alfred";
+
+                                                that.doYouHaveABatCave = function() {
+                                                    return "duh";
+                                                }
+
+                                                that.doYouHaveAButler = function() {
+                                                    return "I have a badass butler named "+butler;
+                                                }
+
+                                                return that;
+                                            }
+
+                                            function testFunctionalInheritance() {
+                                                var b = batman();
+                                                console.log("hey, do you have a butler? " + b.doYouHaveAButler());
+                                                console.log("hey, is it true that you have a sidekick? " + b.hasSidekick());
+                                                debugger;
+                                            }
+                                        br
+                                        | Note that this approach provides pretty solid analogues for the notion of public and
+                                        | private variables and methods. Variables used within the "constructor" function that
+                                        | get added to the object to be returned can be thought of as public, while those that
+                                        | are not returned can be thought of as private.
+
+
                         br
                         li
                             h3 Miscellaneous recommendations/tidbits
                             div.full-text
                                 ol
                                     li.
-                                        Declare variables at the top of functions (you might as well,
-                                        and it helps makes errors more obvious)</li>
+                                        Declare variables at the top of functions. You might as well,
+                                        it helps makes errors more obvious, and it makes code way more readable.
                                     li.
                                         Always use blocks/curly braces when possible (avoids a lot of hard-to-spot errors)
                                     li.
                                         Always use semicolons (otherwise, javascript tries to 'figure it out' and can fail)
-                                    li.
-                                        Use JSLint
+                                    li
+                                        | Use&nbsp;
+                                        a(class='plink', id='plink-jshint-practices') JSHint
+                                        | &nbsp;to check your js
                                     li.
                                         Don't add extra commas at the end of array or object literals
                                     li.
@@ -1515,7 +1851,7 @@ body
                                     li.
                                         In Javascript, there aren't <span>int</span> or <span>float</span> types, just Numbers, which are stored
                                         as floating point values (meaning, for example, that integer division is a non-issue).
-                                        The return types of <span>parseInt</span> and <span>parseFloat</span> are then the same.</li>
+                                        For example, the return types of <span>parseInt</span> and <span>parseFloat</span> are the same.</li>
                                     li.
                                         Use the <span>isNaN(number)</span> function to check if a value is <span>NaN</span>. The comparison
                                         <span>NaN === NaN</span> returns false...

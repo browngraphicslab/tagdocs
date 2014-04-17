@@ -11,7 +11,9 @@ function load() {
 
 function initHandlers() {
 	$('.plink').on('click', function() {
-		openPage(this.id.split('-')[1]);
+		var pieces = this.id.split('-');
+		pieces.splice(0,1);
+		openPage(pieces.join('-'));
 	});
 
 	// filter list of links on main page
