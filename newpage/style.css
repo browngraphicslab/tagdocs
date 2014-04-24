@@ -1,0 +1,216 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+@font-face {
+  font-family: sourceSansPro;
+  src: url("./source-sans-pro/SourceSansPro-Light.otf");
+  font-weight: light;
+  font-style: normal;
+}
+@font-face {
+  font-family: sourceSansPro;
+  src: url("./source-sans-pro/SourceSansPro-LightIt.otf");
+  font-weight: light;
+  font-style: italic;
+}
+@font-face {
+  font-family: sourceSansPro;
+  src: url("./source-sans-pro/SourceSansPro-It.otf");
+  font-weight: bold;
+  font-style: italic;
+}
+a:link,
+a:visited {
+  text-decoration: none;
+  font-family: sourceSansPro;
+  font-weight: light;
+  font-style: italic;
+  opacity: 0.85;
+  color: #fff;
+  padding: 1px;
+}
+a:hover,
+a:active {
+  text-decoration: none;
+  color: #321925;
+}
+header {
+  font-family: sourceSansPro;
+  font-style: light;
+  color: #321925;
+  font-size: 35px;
+  padding-top: 130px;
+}
+div.menu {
+  background-image: url("./pictures/header2.jpg");
+  left: 0px;
+  top: 0px;
+  position: fixed;
+  background-size: cover;
+  width: 100%;
+  height: 80px;
+  padding: 1px;
+  margin: 0;
+  z-index: 2;
+}
+.menu ul {
+  top: -50%;
+}
+.menu li a:link,
+.menu li a:visited {
+  color: #fff;
+}
+.menu li a:hover,
+.menu li a:active {
+  color: #321925;
+}
+img {
+  padding: 10px 2px 5px;
+  margin: 0 auto;
+  display: block;
+}
+ul {
+  position: relative;
+  font-family: sourceSansPro;
+  font-weight: light;
+  font-style: italic;
+  list-style-type: none;
+  top: -45%;
+  left: 45%;
+  font-size: 18px;
+}
+li {
+  display: inline;
+  padding: 20px;
+}
+div.links {
+  top: -60px;
+  position: relative;
+  font-weight: bold;
+  font-style: italic;
+  left: -200px;
+}
+div.links a:link,
+a:visited {
+  color: #321925;
+  padding: 1px;
+}
+div.links a:hover,
+a:active {
+  color: #fff;
+}
+.links ul {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 450px;
+  width: 150px;
+}
+.links li {
+  width: 200px;
+  height: 5px;
+  text-align: left;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 20px 10px;
+}
+div.logo img {
+  float: left;
+  position: relative;
+  padding: 0;
+  left: 10px;
+  top: 12px;
+  margin-right: 35px;
+  margin-left: 10px;
+}
+div.tag {
+  font-family: sourceSansPro;
+  font-weight: light;
+  padding-top: 3px;
+  font-size: 53px;
+  margin-right: 20px;
+}
+.tag a:link,
+.tag a:visited {
+  color: #fff;
+  font-style: normal;
+}
+div.background {
+  background-image: url("./pictures/inverted.jpg");
+  position: fixed;
+  background-size: auto;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+}
+div.text {
+  position: relative;
+  left: 50%;
+  top: 2px;
+}
+div.allPages {
+  height: 300%;
+  width: 350px;
+  margin-left: 20px;
+  position: fixed;
+  top: 0;
+  left: 62%;
+}
+div.linkContain {
+  width: 100%;
+  height: 31%;
+  position: relative;
+  padding-top: 50px;
+}
+div.title {
+  font-family: sourceSansPro;
+  font-style: light;
+  font-size: 60px;
+  color: #321925;
+  top: 70px;
+  left: 64%;
+}
+div.container {
+  position: relative;
+  top: 22px;
+  float: left;
+  width: 500px;
+  margin-left: 133px;
+  background-color: #fff;
+  padding: 0px 70px 100px;
+  opacity: 0.8;
+  bottom: 0px;
+}
+.container p {
+  font-family: sourceSansPro;
+  font-style: light;
+  word-wrap: break-word;
+  text-align: justify;
+}
+.container p:last-child {
+  padding-bottom: 60px;
+}
+.container ol {
+  font-family: sourceSansPro;
+  font-style: light;
+  list-style-type: decimal;
+}
+.container li {
+  display: block;
+}
+.container a:link {
+  padding: 0px;
+}
+.container a:hover {
+  color: #321925;
+  opacity: 0.5;
+}
+.visible {
+  margin: 0;
+}
+hr {
+  margin-top: 70px;
+}
