@@ -1,19 +1,24 @@
 $(document).ready(init);
 
 function init() {
-	thisArgumentsTest(1,2,3,4,5);
+	/* FUNCTIONS */
+	// thisArgumentsTest(1,2,3,4,5);
 	// testObj.propertyFunc(1,2,3,4,5);
 	// testObj2.propertyFunc(1,2,3,4,5);
 	// testObj3.propertyFunc(1,2,3,4,5);
 	// var t = new TestConstructor(10);
 	// thisArgumentsTest.apply({ testProp: 5 }, [1,2,3,4,5]);
+
+	/* SCOPE */
 	// scopeTest();
 	// handlersInLoop();
 	// fixedHandlersInLoop();
 	// fixedHandlersInLoopClosure();
+
+	/* INHERITANCE */
 	// explorePrototype();
 	// newObject();
-	// testFunctionalInheritance();
+	testFunctionalInheritance();
 }
 
 /********************************\
@@ -22,6 +27,7 @@ function init() {
 
 /* TEST FUNC 1 */
 function thisArgumentsTest() {
+	"use strict";
     // put in a breakpoint, call myFunc(1,2,3,4,5), inspect this and arguments
     debugger;
     console.log(this);
@@ -71,21 +77,26 @@ function TestConstructor(val) {
 
 function scopeTest() {
 	var bigScope = 1;
+	var obj = {val: 1};
 
 	for(var i=0;i<5;i++) {
 		var j = 2;
 		console.log(i);
 	}
 	console.log(i+j); // i and j are still in scope
-	innerFunction();
+	innerFunction(i,j, obj);
 
-	function innerFunction() {
+	function innerFunction(i,j,O) {
+		i=100000;
+		O.val = 1000000;
 		var innerScope = 2;
 		console.log(bigScope); // bigScope is still in scope in inner functions
 		console.log(i+j);      // so are i and j
 		debugger;
 	}
 
+	console.log(i);
+	console.log(O.val);
 	console.log(innerScope); // bad, crashes
 }
 
