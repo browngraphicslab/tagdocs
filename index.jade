@@ -408,6 +408,25 @@ body
                             | but it makes code much more readable.
                             br
                             br
+                        li
+                            | It is generally good practice to make sure that semicolons and commas are in the right 
+                            | place when working in javascript. Javascript is generally a lenient language which 
+                            | excuses common syntax errors but in some cases (ie when strict javascript is used) 
+                            | these are not overlooked.
+                            br
+                            br
+                            pre.prettyprint.
+                                var overlay = $(document.createElement('div'));
+                                overlay.css({
+                                    'position': 'fixed',
+                                    'width': '100%',
+                                    'display': 'block',
+                                })
+                            br
+                            | Make sure to remember to take out the extra comma and end your statements with 
+                            | semicolons.
+                            br
+                            br
 
                 /////////////////////
                 // DEVELOPER GUIDE //
