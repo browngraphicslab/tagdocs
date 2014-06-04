@@ -80,6 +80,7 @@ body
             div(id="leftbar")
                 h1.linkhead Get set up
                 ul
+                    +genPageTab("Code Standards", "codestandards")
                     +genPageTab("Debugging", "debugging")
                     +genPageTab("Developer Guide", "dev")
                     +genPageTab("Git and GitHub", "github")
@@ -136,7 +137,8 @@ body
                 +genList("CSS tips", [
                     {href: "http://www.w3schools.com/cssref/tryit.asp?filename=trycss3_text-overflow_hover", name: "Text overflow"},
                     {href: "http://css-tricks.com/box-sizing/", name: "Box sizing"},
-                    {href: "http://vaughnroyko.com/the-real-scoop-on-jquery-find-performance/", name: "Selectors and .find"}])
+                    {href: "http://vaughnroyko.com/the-real-scoop-on-jquery-find-performance/", name: "Selectors and .find"},
+                    {href: "http://jsfiddle.net/k6ShD/4/", name: "Vertical Centering"}])
                 +genList("Jade examples", [
                     // {href: "http://localhost:3000", name:"Ex. 1"},
                     {href: "./jade_examples/ardra/myweb.html", name: "Ex. 1"},
@@ -253,6 +255,159 @@ body
                     })
                     br
                     br
+
+                ////////////////////
+                // CODE STANDARDS //
+                ////////////////////
+                #codestandards.page
+                    h2 Code Standards
+                    br
+                    | This page will cover some basic standards for code quality in TAG. The codebase is a couple years old
+                    | now, and it will get unmanageable if we don't clean up past code and commit clean code.
+                    br
+                    br
+                    h3 Design
+                    | Designing code well for TAG requires a solid knowledge of various parts of the codebase; this is one of
+                    | the reasons why people start their TAG careers fixing smaller bugs here and there. If you are developing
+                    | a larger feature, make sure you know the parts of the codebase that your changes will affect. Before you
+                    | start coding, sit down and write out what you want to implement and what all the moving pieces are.
+                    br
+                    br
+                    | Basic design notes:
+                    br
+                    br
+                    ol
+                        li
+                            | If you are making changes that require restructuring or adding code in a significant way,
+                            | sit down with a couple people (including the team lead) to make sure you're approach is solid.
+                            | At the very least, type up your notes and post them on the github issue so others can review.
+                        li
+                            | Be nice to your teammates: don't commit code that fixes your issue but will create headaches down
+                            | the road.
+                        li
+                            | Keep things DRY: if the code you're developing in response to a specific issue is in fact
+                            | a solution to a general problem (e.g., centering an image within a div), add it to
+                            | LADS.Util.js so it can be reused.
+                    br
+                    br
+                    h3 Style
+                    | "Variety is the spice of life" is a nice adage, except when it comes to style in a large
+                    | codebase. When you write new code, put yourself in the shoes of a new TAG developer.
+                    | There is plenty to get used to without adding "decipher four coding styles within the same function"
+                    | to the list. As such, try to follow these basic principles:
+                    br
+                    br
+                    ol
+                        li
+                            | Declare variables at the top of the outermost function in which they are used. For example,
+                            br
+                            br
+                            pre.prettyprint.
+                                function doUselessThing() {
+                                    var a = 5
+                                        i,
+                                        j;
+
+                                    for(i=0; i<10; i++) {
+                                        j = i + a;
+                                        a = j;
+                                    }
+
+                                    return a;
+                                }
+                            br
+                            | rather than
+                            br
+                            br
+                            pre.prettyprint.
+                                function doUselessThing() {
+                                    var a = 5;
+
+                                    for(var i=0; i<10; i++) {
+                                        var j = i + a;
+                                        a = j;
+                                    }
+
+                                    return a;
+                                }
+                            br
+                            | Related: see the javascript workshop notes on function scoping.
+                            br
+                            br
+                        li
+                            | Javascript doesn't require curly braces around one-line conditional or iteration blocks,
+                            | but USE CURLY BRACES anyway. This helps readability and avoids potential errors down the road.
+                            | For a real-world example of why this might be an issue, Apple had a&nbsp;
+                            a(href='http://nakedsecurity.sophos.com/2014/02/24/anatomy-of-a-goto-fail-apples-ssl-bug-explained-plus-an-unofficial-patch/') security flaw
+                            | &nbsp;that could have been avoided if curly braces were used.
+                            br
+                            br
+                            | For example:
+                            br
+                            br
+                            pre.prettyprint.
+                                for(i=0; i<10; i++) {
+                                    doSomething(i);
+                                }
+                            br
+                            | rather than
+                            br
+                            br
+                            pre.prettyprint.
+                                for(i=0; i<10; i++)
+                                    doSomething(i);
+
+                                // or
+
+                                for(i=0; i<10; i++) doSomething(i);
+                            br
+                            br
+                        li
+                            | Use consistent, 4-space indentation. Trying to read something like this:
+                            br
+                            br
+                            pre.prettyprint.
+                                for(i=0; i<10; i++) {
+                                    if(i===4) {
+                                        return;
+                                        }
+                                   doSomething(i);
+                                    doSomethingElse({
+                                    prop1: 'val1'
+                                    });
+                                }
+                            br
+                            | is terrible. Do not push code that has poor indentation
+                            br
+                            br
+                        li
+                            | Use === rather than ==. See the javascript workshop notes for the difference.
+                            | If you are in a situation where == is actually correct (e.g., you want to check
+                            | if a value is either 4 or '4'), you can probably do the same thing using a couple
+                            | ===s.
+                            br
+                            br
+                        li
+                            | Instead of checking things like
+                            br
+                            br
+                            pre.prettyprint.
+                                if(val === undefined)
+
+                                // or
+
+                                if(val === null)
+                            br
+                            | just check
+                            br
+                            br
+                            pre.prettyprint.
+                                if(!val)
+                            br
+                            | This is kind of an exception to the previous rule, since it checks for all falsy values,
+                            | but it makes code much more readable.
+                            br
+                            br
 
                 /////////////////////
                 // DEVELOPER GUIDE //
