@@ -4,6 +4,10 @@ Here is another comprehensive guide to setting up a tag server from the client�
 
 As a developer, you should first set up the right tools to develop the TAG Server. 
 Install the following in this order:
+*Some of these installations may seem incompatible with your system but make sure they are installed anyways.
+**When on the installation screen please select the option "New SQL Server stand-alone installation or add features to an existing installation" 
+instead of the option to upgrade sql server.
+***Make sure to download all of the features available.
 
 1. Microsoft SQL Server 2008: http://www.microsoft.com/en-us/download/details.aspx?id=20610
 When asked for a user account to run SQL Server 2008, please refer to this: http://stackoverflow.com/questions/63749/what-user-account-would-you-recommend-running-the-sql-server-express-2008-servic and make the best judgment according to your system capabilities (I'm running it as Local Service and it's working fine).
@@ -14,7 +18,7 @@ You can choose to implement SQLExpress instances with Windows Authentication and
 
 2. SQL Server Shared Management Objects: http://www.microsoft.com/en-us/download/details.aspx?id=30440
 -depending on your system, install shared management objects
-	SharedManagementObjects_amd64.msi
+SharedManagementObjects_amd64.msi
 SharedManagementObjects_ia64.msi
 SharedManagementObjects_x86.msi
 
@@ -36,6 +40,9 @@ Here’s a copy of the TAG Server installation: http://cs.brown.edu/research/ptc
 6. If you’re working with the TAG server while on Brown’s network, install Fiddler2 (Build for .Net2): http://www.telerik.com/download/fiddler
 -Also install the EnableLoopback Utility if you’re running both the server and a copy of TAG on the same computer for easy testing: https://www.telerik.com/docs/default-source/fiddler/EnableLoopbackUtility.exe
 Follow the instructions for each installation and make sure to install every package/service offered by the installer. 
+
+7. Restart your computer. If you encounter the error: The remote procedure call failed.[0x800706be] in the SQL Server 
+Configuration Manager, please download SQL 2008 R2 SP1: http://www.microsoft.com/en-us/download/details.aspx?id=26727 
 
 Configure a SQLExpress Instance
 
