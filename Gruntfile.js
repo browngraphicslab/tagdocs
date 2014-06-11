@@ -6,7 +6,7 @@ module.exports = function(grunt) {
 					compress: false
 				},
 				files: {
-					'css/style.css': 'css/style.styl'
+					'style.css': 'style.styl'
 				}
 			}
 		},
@@ -16,13 +16,13 @@ module.exports = function(grunt) {
 					pretty: true
 				},
 				files: {
-					'index.html': 'index.jade',
-					'workshops.html': 'workshops.jade'
+					'index.html': 'index.jade'
 				}
 			}
 		},
+		
 		watch: {
-			files: ['index.jade', 'workshops.jade', 'css/style.styl'],
+			files: ['*.jade', '*.styl'],
 			tasks: ['stylus', 'jade']
 		}
 	});

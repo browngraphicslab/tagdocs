@@ -1,6 +1,15 @@
+// variables
+menuHeight = 80px
+contentWidth = 500px
+contentLRPadding = 70px
+contentLMargin = 133px
+inlineCodeColor = #590532
+
+a
+ cursor pointer
+
 a:link, a:visited
  text-decoration none
- font-family sourceSansPro
  font-weight light
  font-style italic
  opacity 0.85
@@ -12,12 +21,12 @@ a:hover, a:active
  color #321925
 
 body
+ font-family sourceSansPro
  margin 0
  padding 0
  height 100%
 
 .container p
- font-family sourceSansPro
  font-style light
  word-wrap break-word
  text-align justify
@@ -26,27 +35,25 @@ body
  padding-bottom 60px
 
 .container ol
- font-family sourceSansPro
  font-style light
  list-style-type decimal
 
 .container li
- display block
+ display list-item
 
 .container a:link
  padding 0px
 
 .container a:hover
  color #321925
- opacity 0.5 
+ opacity 0.5
 
 div.allPages
- height 300%
- width 350px
+ width 400px
  margin-left 20px
  position fixed
- top 0
- left 62%
+ top menuHeight
+ left (contentWidth + contentLMargin + 2*contentLRPadding)
 
 div.background
  background-image url('./pictures/inverted.jpg') 
@@ -61,10 +68,10 @@ div.container
  position relative
  top 22px
  float left
- width 500px
- margin-left 133px
+ width contentWidth
+ margin-left contentLMargin
  background-color white
- padding 0px 70px 100px
+ padding 0px contentLRPadding 100px
  opacity 0.8
  bottom 0px
 
@@ -73,7 +80,6 @@ div.linkContain
  width 100%
  height 31%
  position relative
- padding-top 50px
 
 div.links 
  top -60px
@@ -105,13 +111,12 @@ div.menu
  position fixed 
  background-size cover
  width 100%
- height 80px
+ height menuHeight
  padding 1px
  margin 0
  z-index 2
 
 div.tag
- font-family sourceSansPro
  font-weight light
  padding-top 3px
  font-size 53px
@@ -123,7 +128,6 @@ div.text
  top 2px
 
 div.title
- font-family sourceSansPro
  font-style light
  font-size 60px
  color #321925
@@ -149,7 +153,6 @@ div.title
  font-style italic 
 
 header
- font-family sourceSansPro
  font-style light
  color #321925
  font-size 35px 
@@ -162,6 +165,11 @@ img
  padding 10px 2px 5px
  margin 0 auto
  display block
+
+.innerTableContainer
+ display table-cell
+ text-align center
+ vertical-align middle
 
 li
  display inline 
@@ -191,16 +199,35 @@ li
 .menu li a:hover, .menu li a:active
  color #321925
 
+.pageImg
+ border 2px solid rgba(20,150,255,0.5)
+ margin-left 20px
+ padding 5px
+ width 90%
+
+pre.prettyprint, code.prettyprint
+ border-radius 8px
+ padding-bottom 5px
+ padding-left 5px
+ padding-top 5px
+
 span
- color #590532
+ color inlineCodeColor
 
 .tag a:link, .tag a:visited
  color white
  font-style normal
 
-ul
+.thumbnailContainer
+ display table
+
+.thumbnailImg
+ display inline-block
+ margin-left 20px
+ width 110px
+
+ul.sections
  position relative
- font-family sourceSansPro
  font-weight light
  font-style italic
  list-style-type none
