@@ -51,7 +51,7 @@ div.allPages {
   left: 773px;
 }
 div.background {
-  background-image: url("./pictures/inverted.jpg");
+  background-image: url("./images/inverted.jpg");
   position: fixed;
   background-size: auto;
   left: 0px;
@@ -102,7 +102,7 @@ div.logo img {
   margin-left: 10px;
 }
 div.menu {
-  background-image: url("./pictures/header2.jpg");
+  background-image: url("./images/header2.jpg");
   left: 0px;
   top: 0px;
   position: fixed;
