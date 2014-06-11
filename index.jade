@@ -28,6 +28,14 @@ html
             a(href=input.href, target="_blank")
                 img(class="thumbnailImg", src=input.src, alt="Sorry!")
 
+    mixin displayServer(input)
+        .serverName #{input.name}
+        .serverAddress #{input.ip}
+        .status
+        .pingMessage pinging...
+        br
+        br
+
 
     body
         .background
@@ -53,6 +61,22 @@ html
             p Welcome to the Touch Art Gallery Docs, a list of TAG-related material and references.
             p If you are a developer getting ready to start working on TAG, take a look at "setting up."
             img(width="500", height="300", src="./images/splashScreen.jpg")
+
+            // ------------------------------- TAG SERVERS ------------------------------------- //
+            +sectionHeader("TAG Servers", "header_tagservers")
+            #tagservers
+                +displayServer({
+                    name: 'TAG demo server',
+                    ip: 'browntagserver.com',
+                })
+                +displayServer({
+                    name: 'TAG test server',
+                    ip: 'tagtestserver.cloudapp.net'
+                })
+                +displayServer({
+                    name: 'Seattle Art Museum',
+                    ip: 'tag.seattleartmuseum.org'
+                })
             
             hr#hr_setup
 
