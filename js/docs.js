@@ -1,16 +1,15 @@
 $(document).ready(function(){
 
-    var separators = [
-            $('#header_start'),
-            $('#hr_setup'),
-            $('#hr_dev'),
-            $('#hr_links')
-        ],
-        pingDivs;
+    var pingDivs,
+        separators = $('[id^="nav_hr_"]'); // matches elements with id starting "nav_hr_"
 
     init();
 
     function init() {
+        var i;
+        for(i=0; i<separators.length; i++) {
+            separators[i] = $(separators[i]);
+        }
         initHandlers();
         pingDivs = $('.pingMessage');
         pingServers();
@@ -36,8 +35,8 @@ $(document).ready(function(){
             for(i=separators.length-1; i>=0; i--) {
                 if(separators[i].offset().top < scrollBottom - 400) {
                     $('.linkContain').css('display', 'none');
-                    $('#nav_' + separators[i].attr('id').split('_')[1]).css({
-                        display: 'inline-block',
+                    $('#nav_' + separators[i].attr('id').split('_')[2]).css({
+                        display: 'inline', // setting this to inline-block fails with youtube embedding? WHAT?
                         height:  $(window).height() - $('#menu').height() - 20,
                         'overflow-y': 'scroll',
                         'overflow-x': 'hidden'

@@ -51,7 +51,7 @@ div.allPages {
   left: 773px;
 }
 div.background {
-  background-image: url("./images/inverted.jpg");
+  background-image: url("../images/inverted.jpg");
   position: fixed;
   background-size: auto;
   left: 0px;
@@ -81,7 +81,7 @@ div.links {
   position: relative;
   font-weight: bold;
   font-style: italic;
-  left: -200px;
+  left: 0px;
 }
 div.links a:link,
 a:visited {
@@ -102,7 +102,7 @@ div.logo img {
   margin-left: 10px;
 }
 div.menu {
-  background-image: url("./images/header2.jpg");
+  background-image: url("../images/header2.jpg");
   left: 0px;
   top: 0px;
   position: fixed;
@@ -133,19 +133,19 @@ div.title {
 }
 @font-face {
   font-family: sourceSansPro;
-  src: url("./source-sans-pro/SourceSansPro-Light.otf");
+  src: url("../source-sans-pro/SourceSansPro-Light.otf");
   font-weight: light;
   font-style: normal;
 }
 @font-face {
   font-family: sourceSansPro;
-  src: url("./source-sans-pro/SourceSansPro-LightIt.otf");
+  src: url("../source-sans-pro/SourceSansPro-LightIt.otf");
   font-weight: light;
   font-style: italic;
 }
 @font-face {
   font-family: sourceSansPro;
-  src: url("./source-sans-pro/SourceSansPro-It.otf");
+  src: url("../source-sans-pro/SourceSansPro-It.otf");
   font-weight: bold;
   font-style: italic;
 }
@@ -157,6 +157,10 @@ header {
 }
 hr {
   margin-top: 70px;
+}
+.iframeContainer {
+  width: 500px;
+  height: 304px;
 }
 img {
   padding: 10px 2px 5px;
@@ -249,13 +253,15 @@ span {
   margin-left: 20px;
   width: 110px;
 }
+ul#navbar {
+  left: 45%;
+}
 ul.sections {
   position: relative;
   font-weight: light;
   font-style: italic;
   list-style-type: none;
-  top: -45%;
-  left: 45%;
+  top: -38%;
   font-size: 18px;
 }
 .visible {

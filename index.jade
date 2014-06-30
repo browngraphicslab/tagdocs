@@ -1,10 +1,10 @@
 doctype 5
 html
     head
-        link(rel='stylesheet', href='style.css')
-        script(src='jquery-1.11.0.js')
+        link(rel='stylesheet', href='css/style.css')
+        script(src='js/jquery-1.11.0.js')
         script(src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?lang=css&skin=sons-of-obsidian")
-        script(src='docs.js')
+        script(src='js/docs.js')
 
     title TAG Docs
 
@@ -45,19 +45,19 @@ html
             .logo
                 img(width='110', height='54', src='./images/2.jpg')
             .tag
-                a(id='tagTitle', href='#header_start') TAG Docs
-            ul.sections
+                a(id='tagTitle', href='#nav_hr_start') TAG Docs
+            ul.sections#navbar
                 li
-                    a.separator_link#link_setup(dest='#hr_setup') SETTING UP
+                    a.separator_link#link_setup(dest='#nav_hr_setup') SETTING UP
                 li
-                    a.separator_link#link_dev(dest='#hr_dev') DEVELOPMENT
+                    a.separator_link#link_dev(dest='#nav_hr_dev') DEVELOPMENT
                 li
-                    a.separator_link#link_links(dest='#hr_links') LINKS
+                    a.separator_link#link_links(dest='#nav_hr_links') LINKS
 
         // content
         .container
             // --------------------------------- WELCOME PAGE --------------------------------- //
-            +sectionHeader("Welcome!", "header_start")
+            +sectionHeader("Welcome!", "nav_hr_start")
             p Welcome to the Touch Art Gallery Docs, a list of TAG-related material and references.
             p If you are a developer getting ready to start working on TAG, take a look at "setting up."
             img(width="500", height="300", src="./images/splashScreen.jpg")
@@ -78,7 +78,7 @@ html
                     ip: 'tag.seattleartmuseum.org'
                 })
             
-            hr#hr_setup
+            hr#nav_hr_setup
 
             // --------------------------------- DEVELOPER GUIDE --------------------------------- //
             +sectionHeader("Developer Guide", "header_developer")
@@ -500,7 +500,7 @@ html
                     | Mark style rules with dubious cross-browser compatibility with 'CBC?'
                     | so they are easy to search for.
 
-            hr#hr_dev
+            hr#nav_hr_dev
 
             // --------------------------------- CODE STANDARDS --------------------------------- //
             +sectionHeader("Code Standards", "header_codestandards")
@@ -1453,7 +1453,7 @@ html
             a(href='files/testing.pdf') very helpful document
             | &nbsp;on testing. Check it out!
 
-            hr#hr_links
+            hr#nav_hr_links
 
             // --------------------------------- CSS TIPS --------------------------------- //
             +sectionHeader("CSS Tips", "header_csstips")

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="style.css">
-    <script src="jquery-1.11.0.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery-1.11.0.js"></script>
     <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?lang=css&amp;skin=sons-of-obsidian"></script>
-    <script src="docs.js"></script>
+    <script src="js/docs.js"></script>
   </head>
   <title>TAG Docs</title>
   <body>
@@ -12,17 +12,17 @@
     <!-- navigation-->
     <div class="menu">
       <div class="logo"><img width="110" height="54" src="./images/2.jpg"></div>
-      <div class="tag"><a id="tagTitle" href="#header_start">TAG Docs</a></div>
-      <ul class="sections">
-        <li><a id="link_setup" dest="#hr_setup" class="separator_link">SETTING UP</a></li>
-        <li><a id="link_dev" dest="#hr_dev" class="separator_link">DEVELOPMENT</a></li>
-        <li><a id="link_links" dest="#hr_links" class="separator_link">LINKS</a></li>
+      <div class="tag"><a id="tagTitle" href="#nav_hr_start">TAG Docs</a></div>
+      <ul id="navbar" class="sections">
+        <li><a id="link_setup" dest="#nav_hr_setup" class="separator_link">SETTING UP</a></li>
+        <li><a id="link_dev" dest="#nav_hr_dev" class="separator_link">DEVELOPMENT</a></li>
+        <li><a id="link_links" dest="#nav_hr_links" class="separator_link">LINKS</a></li>
       </ul>
     </div>
     <!-- content-->
     <div class="container">
       <!-- --------------------------------- WELCOME PAGE --------------------------------- //-->
-        <header id="header_start">Welcome!</header>
+        <header id="nav_hr_start">Welcome!</header>
       <p>Welcome to the Touch Art Gallery Docs, a list of TAG-related material and references.</p>
       <p>If you are a developer getting ready to start working on TAG, take a look at "setting up."</p><img width="500" height="300" src="./images/splashScreen.jpg">
       <!-- ------------------------------- TAG SERVERS ------------------------------------- //-->
@@ -41,7 +41,7 @@
           <div class="status"></div>
           <div class="pingMessage">pinging...</div><br><br>
       </div>
-      <hr id="hr_setup">
+      <hr id="nav_hr_setup">
       <!-- --------------------------------- DEVELOPER GUIDE --------------------------------- //-->
         <header id="header_developer">Developer Guide</header>This page will cover how to get started developing for
       the web app, the Windows 8 app, and the server.<br><br>
@@ -277,7 +277,7 @@
           so they are easy to search for.
         </li>
       </ol>
-      <hr id="hr_dev">
+      <hr id="nav_hr_dev">
       <!-- --------------------------------- CODE STANDARDS --------------------------------- //-->
         <header id="header_codestandards">Code Standards</header>
       <p>
@@ -1014,7 +1014,7 @@ pre.prettyprint, code.prettyprint // ooooh meta
       </ol>
       <!-- -------------------------------- TESTING NOTES -------------------------------- //-->
         <header id="header_testing">Testing Notes</header>Jess Herron put together a&nbsp;<a href="files/testing.pdf">very helpful document</a>&nbsp;on testing. Check it out!
-      <hr id="hr_links">
+      <hr id="nav_hr_links">
       <!-- --------------------------------- CSS TIPS --------------------------------- //-->
         <header id="header_csstips">CSS Tips</header>
         <p><a href="http://www.w3schools.com/cssref/tryit.asp?filename=trycss3_text-overflow_hover" target="_blank">Text overflow</a></p>
