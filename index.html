@@ -60,8 +60,14 @@
       After grunt-cli is installed, you can run &nbsp;<span>$ npm install</span>. There is a file called package.json in the top-level TAG directory that tells npm which
       modules to install, so you should now have everything you need. Again, you might need to
       run this as admin/root.<br><br>To get accustomed to the structure of and normal workflow for the web app, take a look at the&nbsp;<a id="plink-webapp" class="plink">relevant page</a>&nbsp;to the left.<br><br>
-      <h3>Windows 8 app</h3>Stay tuned! Let the team lead know if you need this information now...<br><br>
-      <h3>Server development</h3>Jess Fu put together&nbsp;<a href="files/serverDocs.txt" target="_blank">some notes</a>&nbsp;on getting set up for server development.
+      <h3>Windows 8 app</h3>If you are working on a Windows 8.1 machine and you're developping the Win8 app in visual studio,
+      you may come across an error when you try to run the TAG code stating that something is wrong with 
+      Bing maps. Because Win8.1 is not backwards compatible with Win8, you will need to uninstall the current 
+      Bing maps SDK in Visual Studio under the TOOLS tab and in "Extensions and Updates". Next, download 
+      the Bing maps SDK for Windows 8 from Microsoft, add a .zip extension and extract the Bing.Maps.Xaml.vsix
+      file. Click to install the extracted file and finally, you should be able to run your Win8 code on 
+      your Win8.1 machine.<br><br>Stay tuned! More information is coming. Let the team lead know if you need this information now...<br><br>
+      <h3>Server development</h3>Jess Fu put together&nbsp;<a href="files/serverDocs.txt" target="_blank">some notes</a>&nbsp;on getting set up for server development and more information about&nbsp;<a href="files/serverProtocol.pdf" target="_blank">TAG server protocols</a>&nbsp;handled in the code based.
       <!-- --------------------------------- GIT AND GITHUB --------------------------------- //            -->
         <header id="header_git">Git and Github</header>A quick look at version control with Git for our web app workflow.
       <h3>Why Git and GitHub?</h3>Git is a fast and reliable version control system, and it is widely used, making it a

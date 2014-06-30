@@ -80,3 +80,4 @@ If you want to test a TAG instance running on a different machine with a server 
 
 Yay! You have configured everything and you’re ready to work with the server code! :D
 
+Note: If your server repo contains video conversion features, make sure to download the ffmpeg files (https://drive.google.com/file/d/0BwIEjbiZc70tMWxvVEFCT3AxVTA/edit?usp=sharing) and more them to TagServerRepo/Images/
