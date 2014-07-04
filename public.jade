@@ -126,11 +126,32 @@ html
             br
             | General tutorial for using TAG and authoring basic settings, artworks, and exhibitions
 
+            // ------------------------------ TOUR AUTHORING TUTORIAL --------------------------- //
             +sectionHeader("Tour Authoring Tutorial", "header_tourauthoringtutorial")
             .iframeContainer
                 iframe(style="width:500px; height:304px;", src="https://www.youtube.com/embed/JozMHAWq0TA", frameborder="0", allowfullscreen)
             br
             | Tutorial focusing on how to create interactive tours within TAG's Tour Authoring mode.
+
+            // ----------------------------- EXPORT/EMBEDDING TOURS TUTORIAL -------------------- //
+            +sectionHeader("Dedicated Tour Embeddings", "header_tourembeddingtutorial")
+            | A normal TAG embedding will start on the collections page, however it is also possible to
+            | configure TAG to run only a specific tour. TAG will then load to the tour player and it will be impossible
+            | to navigate away from the tour. This can be useful if you want to direct viewers to a particular narrative.
+            br
+            br
+            | To achieve this setup, you can use the "tourId" option in the TAG web app API. When this parameter is
+            | specified, TAG will interpret its value as the identifier of the tour you wish to load. To obtain this
+            | identifier, you will need access to the authoring mode on the TAG server hosting the tour. Once you have
+            | logged into the authoring mode, navigate to the "Tours" tab in the main authoring interface and find the
+            | tour you would like to embed. The identifier of the tour will be listed at the bottom of the right column.
+            br
+            br
+            | Alternatively, if you would like the HTML for a basic embedding of your tour, click on the "Edit Tour"
+            | button beneath the preview window (still in the main authoring interface), click on "Options" in the top bar 
+            | of the tour authoring interface, and click "Embed Tour." You can copy the resulting HTML to a file in the
+            | top-most "TAG" directory of your web app source code, and you should be all set. To support moving this file to another
+            | directory, simply change the "path" API parameter to be the relative path from your file to the "TAG" directory.
 
             hr#nav_hr_features
 
@@ -182,6 +203,7 @@ html
                             ul.sections
                                 +sectionLink('General Tutorial',   'header_generaltutorial')
                                 +sectionLink('Authoring Tutorial', 'header_tourauthoringtutorial')
+                                +sectionLink('Tour Embeddings', 'header_tourembeddingtutorial')
                 .linkContain#nav_features
                     .title
                         p Planned Features
