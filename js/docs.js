@@ -24,6 +24,13 @@ $(document).ready(function(){
                 scrollTop: target.offset().top
             }, 700);
         });
+
+        $('.toc_link').on('click', function() {
+            var target = $($(this).attr('dest'));
+            $('body').animate({
+                scrollTop: target.offset().top - $('.menu').height() - 20
+            }, 700);
+        });
         
         // auto-change side navigation when section visible
         $(window).on('scroll', function() {

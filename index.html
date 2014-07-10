@@ -69,93 +69,281 @@
       your Win8.1 machine.<br><br>Stay tuned! More information is coming. Let the team lead know if you need this information now...<br><br>
       <h3>Server development</h3>Jess Fu put together some notes on&nbsp;<a href="files/Installing your own TAG Server.pdf" target="_blank">setting up sql software</a>,&nbsp;<a href="files/Working with the Server Code Base.pdf" target="_blank">working with the code base&nbsp;</a>and&nbsp;<a href="files/serverProtocols.pdf" target="_blank">relevant TAG server protocols</a>.&nbsp;
       <!-- --------------------------------- GIT AND GITHUB --------------------------------- //            -->
-        <header id="header_git">Git and Github</header>A quick look at version control with Git for our web app workflow.
-      <h3>Why Git and GitHub?</h3>Git is a fast and reliable version control system, and it is widely used, making it a
+        <header id="header_git">Git and Github</header>A quick look at version control with git for our web app workflow.
+      <h3>Table of contents</h3><a dest="#gitwhy" class="toc_link">Why git and github?</a><br><a dest="#githubaccount" class="toc_link">Set up a github account</a><br><a dest="#gitclone" class="toc_link">Clone the repository</a><br><a dest="#gitcommit" class="toc_link">Make and commit some local changes</a><br><a dest="#gitpull" class="toc_link">Pull in other people's changes</a><br><a dest="#gitpush" class="toc_link">Push your changes</a><br><a dest="#gitbasicusesummary" class="toc_link">Basic use summary</a><br><a dest="#gitHEAD" class="toc_link">The HEAD symbol</a><br><a dest="#gitbranches" class="toc_link">Branches</a><br><a dest="#gitcheckout" class="toc_link">Checkout</a><br><a dest="#gitrebase" class="toc_link">Rebasing</a><br><a dest="#gitmisc" class="toc_link">Some miscellaneous notes</a><br><br>
+      <h3 id="gitwhy">Why Git and GitHub?</h3>Git is a fast and reliable version control system, and it is widely used, making it a
       helpful thing to know. GitHub allows us to create free, private, shared repositories (since
-      we have an organizational account). It also has nice issue tracking and is the most
+      we have an organizational account). It also has pretty nice issue tracking and is the most
       widely-used code hosting service.
-      <h3>Set up a GitHub account</h3>
+      <h3 id="githubaccount">Set up a GitHub account</h3>
       <ol>
         <li>Go to <a target="_blank" href="http://github.com/">github.com</a>.</li>
         <li>Creating an account should be pretty straightforward.</li>
         <li>Make sure you add your full name to your account. It can be difficult to figure out who owns a username like "codehawk723."</li>
         <li>Once you have an account, you'll still need to be added to the TAG team. Email the current team lead!</li>
-        <li>In order to pull from and push to github, you may need an ssh key. If so, there's probably documentation on github about it.</li>
-      </ol>
-      <h3>Clone the repository</h3>The next step is to get a local version of the TAG webapp code, so you can develop on your machine. Win8 not necessary!
-      <ol>
-        <li>Install Git on your machine. If you have any trouble with this, let the current team lead know.</li>
-        <li>Run&nbsp;<span>$ git help</span>&nbsp; to make sure Git is working (it should come up with a list of possible Git commands)</li>
-        <li>If Git is working properly, run&nbsp;<span>$ git clone https://github.com/browngraphicslab/tag.git</span>&nbsp; to get your local copy. By default, it will clone into a directory called 'tag,' but you can change this
-          by adding an argument to the command above, e.g.,&nbsp;<span>$ git clone https://github.com/browngraphicslab/tag.git awesome_directory_name</span>
+        <li>Once you've been added, you can take a look at the graphics lab projects <a target="_blank" href="http://github.com/browngraphicslab">here</a>.</li>
+        <li>
+          In order to pull from and push to github, you may need an ssh key. If so, there's probably
+          documentation on github about it. If you need to do this and find it non-straightforward, work
+          with the team lead to add documentation for it here!
         </li>
       </ol>
-      <h3>Make and commit some local changes</h3>Now that you have a local clone, you can start developing. Change directory into the cloned repository and make some
-      changes to a file (preferably something useful!).
+      <h3 id="gitclone">Clone the repository</h3>The next step is to get a local version of the TAG webapp code, so you can develop on your machine.
       <ol>
-        <li>Now, if you type&nbsp;<span>$ git status</span>&nbsp; this will show you a list of modified files (that is, modified since the last time you committed code)
-          as well as some other useful information about the state of your local copy versus the state of the last commit.
+        <li><a target="blank" href="http://git-scm.com/downloads">Install Git</a> on your machine. If you have any trouble with this, let the current team lead know</li>
+        <li>Run&nbsp;<br>
+          <pre class="prettyprint lang-sh">$ git help</pre>to make sure Git is working (it should come up with a list of possible Git commands)
         </li>
-        <li>To commit code to your local clone, type&nbsp;<span>$ git commit -am "your_commit_message_here"</span>&nbsp; Here, we have combined a few actions in a convenient shorthand. To break it down a bit, 'git commit' on its
-          own will commit any changes that have been added to the list of files ready for commit, and it will bring up a
-          prompt asking for a commit message. Adding the flag '-a' adds all modified/deleted files to the list before
-          committing, and adding the '-m' flag allows you to type your commit message on the same line, which is handy.
+        <li>If Git is working properly, run&nbsp;<br>
+          <pre class="prettyprint lang-sh">$ git clone https://github.com/browngraphicslab/tag.git</pre>to get your local copy of the web app repo. Likewise, you can replace "tag.git"
+          above with "win8tag.git" to get a clone of the Windows 8 app repo. By default, a repo will
+          clone into a directory with the same name (e.g., a directory called 'tag' for the web app
+          repo), but you can change this by adding an argument to the command above, e.g.,&nbsp;<br>
+          <pre class="prettyprint lang-sh">$ git clone https://.../tag.git awesome_directory_name</pre>It might look something like this in the terminal:<br><br>
+            <div class="captionedImgContainer"><a href="images/git/gitclone.png" target="_blank"><img src="images/git/gitclone.png" alt="Sorry, image failed to load!" class="pageImg"></a>
+              <div class="captionedImgCaption">git clone</div>
+            </div>
         </li>
-      </ol>
-      <h3>Pull in other people's changes        </h3>Now your code has been committed to your local clone. Before making your changes accessible to the rest of the group,
-      you will need to pull in changes made by other people.
+      </ol>tl;dr git clone = "I want that code on my computer"
+      <h3 id="gitcommit">Make and commit some local changes</h3>Git is based around the idea of "commiting" code when you have made some tested changes.
+      Committing code is like reaching a checkpoint; if something
+      terrible happens down the road, you can always return to a past commit, and everything will be okay.
+      A "commit" is essentially a collection of changes since the last checkpoint.<br><br>Now that you have a local clone, you can start developing.
+      Change directory into the cloned repository and make some
+      changes to a file (here we are changing TAG/js/tagInk.js).
       <ol>
-        <li>This can be done by running&nbsp;<span>$ git pull</span>&nbsp; This will bring in the latest changes and try to merge them with the code in your working directory. This can
-          sometimes cause merge conflicts, which will appear in the output in the terminal (usually as "CONFLICT" in all caps
-          along with the name of the file in which the conflict occurred).
+        <li>Now, with your changes in place, if you type&nbsp;<br>
+          <pre class="prettyprint lang-sh">$ git status</pre>you will see a list of modified files (that is, modified since the last time you committed code)
+          as well as some other useful information about the state of your local copy versus the state of
+          the last commit:<br><br>
+            <div class="captionedImgContainer"><a href="images/git/gitstatusafterchanges.png" target="_blank"><img src="images/git/gitstatusafterchanges.png" alt="Sorry, image failed to load!" class="pageImg"></a>
+              <div class="captionedImgCaption">git status after changes to tagInk.js</div>
+            </div><br><br>Running "git status" is kind of a git analogue to running "ls" when you
+          change directory -- it can be useful to get your bearings when you enter your repo.
         </li>
         <li>
-          To fix a merge conflict, enter the relevant file
-          and locate any lines delimited by ">>>>>>>>" and "<<<<<<<<". In between these will be a line "========"
-          separating two sections in the code. These are the sections that Git was unsuccessful in merging; you will need to
-          decide which of the two you would like to keep and which you would like to delete. After you have cleared all
-          conflicts by deleting the unnecessary sections (as well as the lines beginning with ">>>", "<<<", and "==="), you
-          can re-commit your code.
+          Note that the changes to tagInk.js are in the list of those "not staged for commit." If we want our
+          changes to be included in the next commit, we will need to add/stage them. This can be done by running<br>
+          <pre class="prettyprint lang-sh">$ git add TAG/js/tagInk.js</pre>If we now run git status, we'll see that tagInk.js is staged for commit, meaning
+          that it will be included in our next commit:<br><br>
+            <div class="captionedImgContainer"><a href="images/git/gitstatusafteradding.png" target="_blank"><img src="images/git/gitstatusafteradding.png" alt="Sorry, image failed to load!" class="pageImg"></a>
+              <div class="captionedImgCaption">git status after tagInk.js has been added</div>
+            </div><br><br>Note that if we were making changes to a file that hadn't been committed before, we would first need
+          to add it to the git index (i.e.,
+          the collection of files git cares about) before it could be committed. We can also do this by running
+          git add:<br><br>
+            <div class="captionedImgContainer"><a href="images/git/addingnewfile.png" target="_blank"><img src="images/git/addingnewfile.png" alt="Sorry, image failed to load!" class="pageImg"></a>
+              <div class="captionedImgCaption">adding a new file to the git index</div>
+            </div>
         </li>
-      </ol>
-      <h3>Push your changes</h3>After pulling and cleaning merge conflicts, you can push your code up to GitHub (so other people can pull it down)
-      by running&nbsp;
+        <li>To create a commit from your local changes (i.e., to commit your changes staged for commit), type<br>
+          <pre class="prettyprint lang-sh">$ git commit</pre>The next step will be to document your changes. This is done via a short commit message. If you're
+          using the Mac terminal or Git Bash (on Windows), you might be prompted to do this using a friendly
+          text editor called vim. The vim commands to accomplish this simple task are&nbsp;<a href="https://twitter.com/iamdevloper/status/435555976687923200" target="_blank">notoriously unfriendly</a>, so they're listed in the caption below for convenience:<br><br>
+            <div class="captionedImgContainer"><a href="images/git/vimcommitmessage.png" target="_blank"><img src="images/git/vimcommitmessage.png" alt="Sorry, image failed to load!" class="pageImg"></a>
+              <div class="captionedImgCaption">i, &lt;type commit message&gt;, esc, :wq, enter</div>
+            </div><br><br>Short explanation: vim is a modal text editor, so keys have different meanings depending on whether
+          you are in "INSERT" mode. In INSERT mode, you can actually edit the document. In non-INSERT mode, keys are
+          used to navigate quickly around the document. If you are fluent in vim, this would probably be nice. If not,
+          you pretty much need to read a&nbsp;<a href="http://vim.rtorr.com/" target="_blank">vim reference</a>&nbsp;before doing anything. Including exiting. With this in mind:
+          <ol>
+            <li>The "i" command enters INSERT mode (see the bottom of the terminal for "INSERT")</li>
+            <li>You can then type your commit message</li>
+            <li>Typing "esc" leaves INSERT mode</li>
+            <li>Typing ":wq" and "enter" runs the ":wq" command in non-INSERT mode, which saves and quits ("w" is for "write"/"save")</li>
+          </ol><br><br>The result of running git commit and typing the commit message will look something like this:<br><br>
+            <div class="captionedImgContainer"><a href="images/git/commitandmessage.png" target="_blank"><img src="images/git/commitandmessage.png" alt="Sorry, image failed to load!" class="pageImg"></a>
+              <div class="captionedImgCaption">output of git commit and git status</div>
+            </div><br><br>Our "working directory" is now clean, since we've committed all of our changes.
+        </li>
+        <li>
+          It is a bit cumbersome to go through the process of adding changes, running git commit, and wrestling with vim
+          every time we want to commit. Fortunately, there are some flags you can pass to git commit to improve this
+          workflow. Running<br>
+          <pre class="prettyprint lang-sh">$ git commit -am "a short commit message"</pre>will accomplish these three steps in one. The "-a" flag adds all changes not currently staged for commit before
+          committing (note: it does not add new/untracked files to the git index). The "-m" flag tells git that the
+          subsequent string ("a short commit message") should be the commit message. Woohoo!<br><br>
+            <div class="captionedImgContainer"><a href="images/git/gitcommitshortcut.png" target="_blank"><img src="images/git/gitcommitshortcut.png" alt="Sorry, image failed to load!" class="pageImg"></a>
+              <div class="captionedImgCaption">git commit shortcut (-am)</div>
+            </div>
+        </li>
+      </ol>tl;dr git commit = "checkpoint!"
+      <h3 id="gitpull">Pull in other people's changes</h3>Now your code has been committed to your local clone, and you want to update github to reflect
+      your changes. Before doing so, remember that other folks may have updated the shared repository
+      since you last synced with github. It's YOUR responsibility to make sure your code is compatible with
+      the code currently on github. This can be done by "pulling" the most recent code down from github:<br>
+      <pre class="prettyprint lang-sh">$ git pull origin master</pre>Here, "origin" refers to the source of our pull (by default, "origin" is the remote repository from
+      which you cloned) and "master" refers to the branch we are pulling (we will go over branches below).
+      It is always a good idea to specify the remote and branch names; you might as well, and it makes it
+      clear what is going on.<br><br>There are a few things that can happen when you pull:
       <ol>
-        <li>This can be done by running&nbsp;<span>$ git push</span></li>
-        <li>You can double-check that your push was succesful by looking at the list of commits in GitHub. </li>
-      </ol>
-      <h3>Basic summary</h3>
+        <li>You might already be up to date:<br><br>
+            <div class="captionedImgContainer"><a href="images/git/cleanpull.png" target="_blank"><img src="images/git/cleanpull.png" alt="Sorry, image failed to load!" class="pageImg"></a>
+              <div class="captionedImgCaption">a clean pull</div>
+            </div><br><br>In this case, you can go ahead and push (see below) without further testing, since nobody has
+          updated github since you last pulled or cloned.
+        </li>
+        <li>Git successfully merges some files into your local copy:<br><br>
+            <div class="captionedImgContainer"><a href="images/git/automergepull.png" target="_blank"><img src="images/git/automergepull.png" alt="Sorry, image failed to load!" class="pageImg"></a>
+              <div class="captionedImgCaption">git successfully auto-merges</div>
+            </div><br><br>In this case, someone else updated/"pushed to" github since your last pull. Git then tries to
+          merge their changes into your local clone, and in this case, it succeeded in doing so. You may
+          be prompted to enter a commit message if git needed to merge files (merging creates a new commit,
+          as described below):<br><br>
+            <div class="captionedImgContainer"><a href="images/git/pullcommitmessage.png" target="_blank"><img src="images/git/pullcommitmessage.png" alt="Sorry, image failed to load!" class="pageImg"></a>
+              <div class="captionedImgCaption">pull commit message</div>
+            </div><br><br>Note that it provides a default commit message, so you can just enter ":wq" in this case. In this case,
+          ALWAYS TEST your changes again before pushing, since your changes may be incompatible with
+          someone else's despite a successful pull (for example, someone might have deleted a function that you
+          call in your changes).
+        </li>
+        <li>
+          Git isn't able to merge all files successfully, likely because you edited sections of a file
+          that someone else also edited. This is known as having "merge conflicts." For example, say your code
+          looks like:<br><br>
+            <div class="captionedImgContainer"><a href="images/git/yourconflictingcode.png" target="_blank"><img src="images/git/yourconflictingcode.png" alt="Sorry, image failed to load!" class="pageImg"></a>
+              <div class="captionedImgCaption">your code</div>
+            </div><br><br>and Mr. E's code looks like:<br><br>
+            <div class="captionedImgContainer"><a href="images/git/theirconflictingcode.png" target="_blank"><img src="images/git/theirconflictingcode.png" alt="Sorry, image failed to load!" class="pageImg"></a>
+              <div class="captionedImgCaption">Mr. E's conflicting code</div>
+            </div><br><br>Mr. E sure is devious! If Mr. E then commits and pushes, and you subsequently pull, git will try to
+          merge Mr. E's code into yours, which will cause a conflict:<br><br>
+            <div class="captionedImgContainer"><a href="images/git/conflictpull.png" target="_blank"><img src="images/git/conflictpull.png" alt="Sorry, image failed to load!" class="pageImg"></a>
+              <div class="captionedImgCaption">merge conflict</div>
+            </div><br><br>As indicated by the terminal output, you'll need to fix this conflict manually and then commit to finish
+          the merge. Fortunately, git tells you exactly where it failed to merge. Part of this is in the terminal
+          output: it tells you that a CONFLICT appeared in TAG/js/tagInk.js. Once we open TAG/js/tagInk, we see:<br><br>
+            <div class="captionedImgContainer"><a href="images/git/conflictincode.png" target="_blank"><img src="images/git/conflictincode.png" alt="Sorry, image failed to load!" class="pageImg"></a>
+              <div class="captionedImgCaption">git presents a merge conflict</div>
+            </div>In this case, git shows us the lines it failed to merge, surrounded by "<<<<<<<", "=======", and ">>>>>>>".
+          The top section, starting with "<<<<<<< HEAD", our local version is given. In the bottom section, starting
+          with "========" and ending with ">>>>>>> &lt;commit_number&gt;", the version from github is given. To fix
+          the conflict, we just need to pick which of these versions we would like to keep (or mix and match) and then
+          delete the other (along with the ">>>>", "====", and "<<<<" symbols).<br><br>After fixing the conflict, running git status will show something like:<br><br>
+            <div class="captionedImgContainer"><a href="images/git/unmergedpaths.png" target="_blank"><img src="images/git/unmergedpaths.png" alt="Sorry, image failed to load!" class="pageImg"></a>
+              <div class="captionedImgCaption">git status showing unmerged paths</div>
+            </div><br><br>To finish up the commit, first run<br>
+          <pre class="prettyprint lang-sh">$ git add TAG/js/tagInk.js</pre><br>Running git status now will show something like:<br><br>
+            <div class="captionedImgContainer"><a href="images/git/fixedbutstillmerging.png" target="_blank"><img src="images/git/fixedbutstillmerging.png" alt="Sorry, image failed to load!" class="pageImg"></a>
+              <div class="captionedImgCaption">conflicts fixed, still merging</div>
+            </div><br><br>As indicated in the terminal output, you can finish up the commit by running<br>
+          <pre class="prettyprint lang-sh">$ git commit -m "fixed merge conflicts"</pre>You should now have a clean working directory, and pulling again will show that
+          you are up to date. As above, make sure to test before pushing.
+        </li>
+      </ol>tl;dr git pull = "I recognize that your changes matter, too"
+      <h3 id="gitpush">Push your changes</h3>After pulling and cleaning merge conflicts (and only then!), you can push your code up to github
+      (so other people can pull it down). You can push by running<br>
+      <pre class="prettyprint lang-sh">$ git push origin master</pre>As with pulling, it's useful here to specify the remote and branch name to avoid any
+      ambiguity. The git push output will look something like:<br><br>
+        <div class="captionedImgContainer"><a href="images/git/gitpush.png" target="_blank"><img src="images/git/gitpush.png" alt="Sorry, image failed to load!" class="pageImg"></a>
+          <div class="captionedImgCaption">git push</div>
+        </div><br><br>and you can double-check that your push was succesful by looking at the list of commits in github.
+      <h3 id="gitbasicusesummary">Basic use summary</h3>Here is a summary of basic use (no branches; just committing, pulling, and pushing):
       <ol>
-        <li>Create a new local clone with&nbsp;<span>$ git clone https://github.com/browngraphicslab/tag.git</span></li>
+        <li>Create a new local clone with<br>
+          <pre class="prettyprint lang-sh">$ git clone https://github.com/browngraphicslab/tag.git</pre>
+        </li>
         <li>Make some local changes</li>
-        <li>Commit these changes with&nbsp;<span>$ git commit -am "brief_commit_message"</span></li>
-        <li>Pull in other people's changes with&nbsp;<span>$ git pull origin master</span>. This is a good thing to do frequently as you work to make sure your local copy isn't too far out of sync with
-          the project on GitHub.
+        <li>Commit these changes with<br>
+          <pre class="prettyprint lang-sh">$ git commit -am "brief_commit_message"</pre>
         </li>
-        <li>Push your changes with&nbsp;<span>$ git push origin master.</span></li>
-      </ol>
-      <h3>Branches </h3>If you are working on a semi-major feature (anything that will likely take longer than a day or two or that you are
+        <li>Pull in other people's changes with&nbsp;<br>
+          <pre class="prettyprint lang-sh">$ git pull origin master</pre>This is a good thing to do frequently as you work to make sure your local copy isn't too far out of sync with
+          the project on github.
+        </li>
+        <li>Push your changes with<br>
+          <pre class="prettyprint lang-sh">$ git push origin master.</pre>Always pull and test (if pulling was non-trivial) before pushing.
+        </li>
+      </ol>Now we'll check out git branches!
+      <h3 id="gitHEAD">The HEAD symbol</h3>Before discussing branches, it's helpful to know a bit about the HEAD symbol. We saw this briefly above when
+      looking at merge conflicts; git labels your local version with "HEAD" and the remote version with a commit
+      number. HEAD just points to the commit (directly or indirectly) that is active in your working directory.<br><br>The current reference in the HEAD symbol is stored in the file .git/HEAD:<br><br>
+        <div class="captionedImgContainer"><a href="images/git/gitHEADvalue.png" target="_blank"><img src="images/git/gitHEADvalue.png" alt="Sorry, image failed to load!" class="pageImg"></a>
+          <div class="captionedImgCaption">looking at HEAD via .git directory</div>
+        </div>
+      <h3 id="gitbranches">Branches </h3>If you are working on a semi-major feature (anything that will likely take longer than a day or two or that you are
       working on with someone else), you should
-      make a branch for your changes. Branches let you keep changes for this feature in a separate, parallel git index,
-      so pulling from and pushing to the branch will not affect the "master" branch (the philosophy is that the master
-      branch should always have the latest working code and should not have any in-progress changes). You can create a
-      new branch by running the&nbsp;<span>$ git checkout -b &lt;branch_name&gt;</span>&nbsp;command. This will create a new branch and "check it out." To switch to a branch, for example back to the master
-      branch, you can run&nbsp;<span>$ git checkout &lt;branch_name&gt;</span>. When you pull and push now, you'll want to specify the branch name:<br><br><span>$ git push origin &lt;branch_name&gt;</span><br><span>$ git pull origin &lt;branch_name&gt;</span><br><br>When development of the feature is complete and tested/reviewed, you can merge it back into the master branch and all
-      will be well.
-      <h3>Notes</h3>
+      make a branch for your changes. Branches let you keep changes for this feature in a separate, parallel path
+      of development, so pulling from and pushing to the branch will not affect the "master" branch. This is handy
+      for sharing code under active development, since the master branch should really only contain "finished code."<br><br>You can create a new branch by running the<br>
+      <pre class="prettyprint lang-sh">$ git branch &lt;branch_name&gt;</pre>command. You can think of a branch as an entire collection of commits parallel to the master branch, but it may
+      also be helpful to think of it in terms of the "branch head," which is just a reference to a commit (the most recent
+      on the branch) with a name like "master" or "authoring." When we create a new branch, we are essentially creating a
+      new branch head that points to whatever is pointed to by HEAD.<br><br>By creating our new branch, we now have two branch heads (that of our original branch and that of the new branch)
+      that point to the same commit*. That means that the next commits on each branch will share a parent, so our
+      development path essentially forks.<br><br>The values of the branch heads are stored in .git/refs/heads:<br><br>
+        <div class="captionedImgContainer"><a href="images/git/gitbranchheads.png" target="_blank"><img src="images/git/gitbranchheads.png" alt="Sorry, image failed to load!" class="pageImg"></a>
+          <div class="captionedImgCaption">can see that the value of the master head matches the last commit</div>
+        </div>
+      <h3 id="gitcheckout">Checkout</h3>To switch branches, a couple things (internally) need to happen. The version of your files in the current
+      working directory needs to be updated to match the branch head, and the HEAD symbol needs to be updated to
+      point to the new branch head. The following command takes care of this:<br>
+      <pre class="prettyprint lang-sh">$ git checkout &lt;branch_name&gt;</pre>Given that &lt;branch_name&gt; is just a reference to a commit (recall when we looked at the values in
+      .git/refs/heads above), it would make sense if we could also switch to a specified (probably previous)
+      commit this way. And we can!<br>
+      <pre class="prettyprint lang-sh">$ git checkout &lt;commit_number&gt;</pre>If you checkout a commit this way, it's called "detaching" the HEAD, since it now points to a commit directly rather
+      than indirectly through a branch head, and there's no longer a permanent reference (e.g., a branch head) to where
+      HEAD is pointing. It's fine to make changes in your current working directory now,
+      since committing will essentially branch off from wherever HEAD now points (except a branch head has not been set
+      up to track these changes). Unless a permanent reference is set up for the detached HEAD, any changes made on this new development path
+      will be lost whenever you switch the HEAD to another commit or branch; git will clean it up, since nothing
+      references it.<br><br>* from above, in the branch section -- that assumes that HEAD currently refers to a branch head and is not detached.
+      <h3 id="gitmerge">Merging </h3>Merging occurs when you want to combine the changes in two different development paths. The term "merging"
+      usually comes up when talking about merging two separate branches, but merging happens when
+      we pull from github to update our local version of a branch, too; the<br>
+      <pre class="prettyprint lang-sh">$ git pull origin branch_name</pre>command is shorthand for<br>
+      <pre class="prettyprint lang-sh">$ git fetch origin branch_name
+$ git merge branch_name</pre>(which gets the most recent reference for the branch head "branch_name" and merges that commit into our current working
+      directory). The process of merging two branches will then seem very similar to standard pulling.<br><br>To merge our changes on a feature branch (branch1) into the master branch, we can use the following procedure (assuming
+      we start on the master branch with a clean working directory):
       <ol>
-        <li>As mentioned above, PULL OFTEN to ensure that your code is in sync</li>
+        <li>Update the master:<br>
+          <pre class="prettyprint lang-sh">$ git pull origin master</pre>
+        </li>
+        <li>Checkout branch1:<br>
+          <pre class="prettyprint lang-sh">$ git checkout branch1</pre>
+        </li>
+        <li>Make sure the working directory is clean. Commit if not:<br>
+          <pre class="prettyprint lang-sh">$ git status  # see if clean, if not:
+$ git commit -am "commit message"</pre>
+        </li>
+        <li>Run git merge<br>
+          <pre class="prettyprint lang-sh">$ git merge master</pre>then fix any merge conflicts (see the&nbsp;<a dest="#gitpull" class="toc_link">git pull section</a>&nbsp;above)
+        </li>
+        <li>Push branch to github (might as well have the most recent on github, though not necessary)</li>
+        <li>Checkout master:<br>
+          <pre class="prettyprint lang-sh">$ git checkout master</pre>
+        </li>
+        <li>Merge branch1 into master:<br>
+          <pre class="prettyprint lang-sh">$ git merge branch1</pre>Fix any merge conflicts, commit, pull, and push.
+        </li>
+      </ol>Note that we could also just run "git merge branch1" from the master branch
+      <h3 id="gitrebase">Rebasing</h3>Rebasing, similar to merging, is a way to combine changes on two branches. Whereas merging usually
+      works by performing a three-way merge (it merges the two branch heads and the most recent common
+      ancestor of the two in order to create a new commit), rebasing attempts to effectively move up the
+      point at which the two branches diverged, so the feature branch is "rebased" on top of the most recent
+      commit on the master branch. Rebasing a feature branch (branch1) on the most recent master commit
+      can be done by running<br>
+      <pre class="prettyprint lang-sh">$ git checkout branch1
+$ git rebase master</pre>Why might this be useful? For one thing, it creates a cleaner git history, since by rebasing, we're
+      rewriting history to be linear rather than di/convergent. This can make it easier to look through past
+      issues. For another, you might be partial to rebasing and then merging rather than merging and then merging
+      to incorporate a feature branch's changes into the master.<br><br>The&nbsp;<a href="http://git-scm.com/book/en/Git-Branching-Rebasing" target="_blank">git book's discussion </a>&nbsp;of merging and rebasing has a nice summary of the differences between the two:<br><br>"Rebasing replays changes from one line of work onto another in the order they were introduced,
+      whereas merging takes the endpoints and merges them together."
+      <h3 id="gitmisc">Some miscellaneous notes</h3>
+      <ol>
+        <li>PULL OFTEN to ensure that your code is in sync</li>
+        <li>This is a thing:&nbsp;<a href="http://gitx.frim.nl/" target="_blank">GitX</a>. Supposedly it's a good merging tool for Macs, but I've never used it. Someone want
+          to try it out? There's probably a good one for Windows, too!
+        </li>
         <li>
           If you don't want to create a new commit each time you pull, you can instead "stash" your changes. Stashing means that
           you are cleaning your current working directory by sequstering all changes since the last commit. To do this, you
-          can run&nbsp;<span>$ git stash</span>&nbsp;Then when you pull, git only has to merge against your last commit. 
-          To re-apply your changes (which might cause merge conflicts the will need to be resolved), run&nbsp;<span>$ git stash apply.</span>
-        </li>
-        <li>
-          For the moment, we will be working mostly on different files (as we factor css/html). Later, it may be helpful to create
-          separate branches for development of different features; if multiple people are working on the same feature, they
-          can create a branch of the the main repository dedicated to that feature. Any commits and pushes will affect
-          only that branch until it is merged back into the main branch.
+          can run<br>
+          <pre class="prettyprint lang-sh">$ git stash</pre>Then when you pull, git only has to merge against your last commit. 
+          To re-apply your changes (which might cause merge conflicts the will need to be resolved), run<br>
+          <pre class="prettyprint lang-sh">$ git stash apply.
+</pre>
         </li>
       </ol>
       <!-- --------------------------------- GRUNT NOTES --------------------------------- //-->
