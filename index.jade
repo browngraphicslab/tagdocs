@@ -15,9 +15,12 @@ html
         p
             a(href=url, target="_blank") #{name}
 
-    mixin sectionLink(name, dest)
-        li
+    mixin sectionLink(name, dest, nolist)
+        if nolist
             a.separator_link(dest="#"+dest) #{name}
+        else
+            li
+                a.separator_link(dest="#"+dest) #{name}
 
     mixin tocLink(name, dest, nobreak)
         a.toc_link(dest="#"+dest) #{name}
@@ -102,7 +105,7 @@ html
             | &nbsp;for version control, and our code is hosted on GitHub, so
             | the first step for web app development is to get set up with Git.
             | Check out the&nbsp;
-            a(class='plink', id='plink-github') Git and GitHub
+            +sectionLink('Git and GitHub', 'header_git', true)
             | &nbsp;page to the left.
             br
             br
@@ -128,20 +131,24 @@ html
             br
             | To install Jade, Stylus, Grunt, and any other Node modules we happen to be using,
             | navigate to the directory containing your clone of the TAG repository. You will first
-            | want to install the grunt command line interface using&nbsp;
-            span $ npm install -g grunt-cli
-            | . This lets you run the grunt command from your terminal. If it complains about permissions,
+            | want to install the grunt command line interface using
+            br
+            pre.prettyprint.lang-sh.
+                $ npm install -g grunt-cli
+            | This lets you run the grunt command from your terminal. If it complains about permissions,
             | you may need to run the install command as administrator on Windows or using sudo on Macs.
-            | After grunt-cli is installed, you can run &nbsp;
-            span $ npm install
+            | After grunt-cli is installed, you can run
+            br
+            pre.prettyprint.lang-sh.
+                $ npm install
             | . There is a file called package.json in the top-level TAG directory that tells npm which
             | modules to install, so you should now have everything you need. Again, you might need to
             | run this as admin/root.
             br
             br
             | To get accustomed to the structure of and normal workflow for the web app, take a look at the&nbsp;
-            a(class='plink', id='plink-webapp') relevant page
-            | &nbsp;to the left.
+            +sectionLink('relevant', 'header_webappworkflow', true) web app workflow section
+            | .
             br
             br
             h3 Windows 8 app
@@ -493,6 +500,11 @@ html
             br
             | and you can double-check that your push was succesful by looking at the list of commits in github.
 
+            br
+            br
+
+            | tl;dr git push = "this code is awesome and tested...take a look!"
+
             h3#gitbasicusesummary Basic use summary
             | Here is a summary of basic use (no branches; just committing, pulling, and pushing):
             ol
@@ -566,7 +578,6 @@ html
                     src: "images/git/gitbranchheads.png",
                     caption: "can see that the value of the master head matches the last commit"
                 })
-            
 
             h3#gitcheckout Checkout
             | To switch branches, a couple things (internally) need to happen. The version of your files in the current
@@ -712,33 +723,44 @@ html
                 li Compiling stylus files in LADS/css into LADS/css/TAG.css (nice to have only one css file to include)
                 li Concatenating javascript files into LADS/TAG.js (so users only need to include one js file)
                 li
-                    | When we ship, we'll run &nbsp;
-                    span $ grunt uglify
-                    | &nbsp;, which minifies TAG.js into TAG-min.js. Minificaiton is done by replacing variable names
+                    | When we ship, we'll run
+                    br
+                    pre.prettyprint.lang-sh.
+                        $ grunt uglify
+                    | which minifies TAG.js into TAG-min.js. Minificaiton is done by replacing variable names
                     | with mostly one-letter names and removing most whitespace. The resulting file is much
                     | smaller, which is better for performance.
             h3 Running Grunt
             | There are three basic ways of using Grunt:
             ol
-                li Running&nbsp;
-                    span $ grunt
-                    | &nbsp;runs the default Grunt tasks (as listed in the Gruntfile -- see below) once.
-                li Running &nbsp;
-                    span $ grunt watch
-                    | &nbsp;creates a job that watches for any saves in the files listed in the Gruntfile. For
-                    | example, if you run&nbsp;
-                    span grunt watch
-                    | &nbsp;and then save a Jade file, grunt will be run once, and the
+                li Running
+                    br
+                    pre.prettyprint.lang-sh.
+                        $ grunt
+                    | runs the default Grunt tasks (as listed in the Gruntfile -- see below) once.
+                li Running
+                    br
+                    pre.prettyprint.lang-sh.
+                        $ grunt watch
+                    | creates a job that watches for any saves in the files listed in the Gruntfile. For
+                    | example, if you run "grunt watch"
+                    | and then save a Jade file, grunt will be run once, and the
                     | Jade file (along with everything else) will be compiled.
-                li Running &nbsp;
-                    span $ grunt &lt;module name&gt;
-                    | &nbsp;will run the Grunt task for just that module. For example, running&nbsp;
-                    span grunt stylus
-                    | &nbsp;will only compile stylus files.
+                li Running
+                    br
+                    pre.prettyprint.lang-sh.
+                        $ grunt &lt;module name&gt;
+                    | will run the Grunt task for just that module. For example, running
+                    br
+                    pre.prettyprint.lang-sh.
+                        $ grunt stylus
+                    | will only compile stylus files.
             h3 Gruntfile.js
             | The Gruntfile.js file in the top-level directory of TAG controls the tasks that Grunt performs.
-            | By default, only the 'default' tasks are run. The list of these tasks can be found in the line&nbsp;
-            span grunt.registerTask('default', ['jade', 'stylus', 'concat']);
+            | By default, only the 'default' tasks are run. The list of these tasks can be found in the line
+            br
+            pre.prettyprint.
+                grunt.registerTask('default', ['jade', 'stylus', 'concat']);
             | If you want to add a new Jade or Stylus file to TAG, make sure to add it to the corresponding parts of
             | the Gruntfile to ensure that it is compiled.
 
@@ -820,9 +842,7 @@ html
             a(href="https://developer.mozilla.org/en-US/docs/DOM/DOM_Reference/Introduction", target="_blank") DOM
             | . To make javascript easier, we also use&nbsp;
             a(href="http://api.jquery.com/", target="_blank") jQuery
-            | . You can take a look at the quick jQuery&nbsp;
-            a(class='plink', id='plink-jquery') tutorial
-            | &nbsp;to the left or surf the net to find one.
+            | . You can surf the net to find a good jQuery tutorial.
             br
             br
             .thumbnailContainer
@@ -856,7 +876,7 @@ html
             | need to be a wizard with these languages by the end of your project, but you should be able
             | to jump into the TAG codebase and feel relatively at-home. And always feel free to ask questions!
             | It might be helpful to take a look at the page on&nbsp;
-            a(class='plink', id='plink-debugging') debugging
+            +sectionLink('debugging', 'header_debugging', true)
             | .
             br
             br
@@ -865,12 +885,14 @@ html
             | The first thing you'll want to do is&nbsp;
             a(href="http://nodejs.org/", target="_blank") install node.js
             | . Jade and Stylus both fall under the node.js platform, so there are nice node utilities
-            | for working with them. Next, you can run&nbsp;
-            span $ npm install -g grunt-cli
-            | &nbsp; from the command prompt or terminal (it may ask for administrative permissions, so
+            | for working with them. Next, you can run
+            br
+            pre.prettyprint.lang-sh.
+                $ npm install -g grunt-cli
+            | from the command prompt or terminal (it may ask for administrative permissions, so
             | you might need to use an administrator command prompt on Windows or run using sudo on Macs).
             | This will let you run a handy tool called&nbsp;
-            a(class='plink', id='plink-grunt') Grunt
+            +sectionLink('Grunt', 'header_grunt', true)
             | &nbsp;from the command line, which will take care of compiling jade and stylus for you.
             br
             br
@@ -879,18 +901,24 @@ html
             | . Go ahead and download and unzip it. Navigate to the directory. You'll see that it contains
             | a .jade file, a .styl file, a package.json file, and a Gruntfile.js file. The package.json 
             | file tells node which node packages should be installed for this project (in this case, jade,
-            | stylus, and a couple utilities). Running&nbsp;
-            span $ npm install
-            | &nbsp;should give you all the necessary packages. Again, you might need admin permissions.
+            | stylus, and a couple utilities). Running
+            br
+            pre.prettyprint.lang-sh.
+                $ npm install
+            | should give you all the necessary packages. Again, you might need admin permissions.
             | The Gruntfile has instructions for how to compile your jade
-            | and stylus files. Running&nbsp;
-            span $ grunt
+            | and stylus files. Running
+            br
+            pre.prettyprint.lang-sh.
+                $ grunt
             | &nbsp;should now compile .html and .css files from your .jade and .styl files. It is the html
             | and css files that the browser will use to render your page, so every time you make changes to
             | your jade and styl sources, you should recompile. Fortunately, there is a grunt tool for making
-            | this less tedious. If you run&nbsp;
-            span $ grunt watch
-            | , grunt will wait for any changes in your files and compile when necessary.
+            | this less tedious. If you run
+            br
+            pre.prettyprint.lang-sh.
+                $ grunt watch
+            | grunt will wait for any changes in your files and compile when necessary.
             br
             br
             h3 Project options
@@ -903,12 +931,14 @@ html
             | Take a look at the top-level directory of your TAG clone. There's a directory called
             | LADS, which has basically all of our code, and there are a couple files called
             | package.json and Gruntfile.js. As mentioned in the&nbsp;
-            a(class='plink', id='plink-dev') developer guide
-            | , package.json contains a list of TAG's Node.js dependencies, so running&nbsp;
-            span $ npm install
-            | &nbsp;in the top-level directory will install the appropriate Node modules. The Gruntfile
+            +sectionLink('developer guide', 'header_developer', true)
+            | , package.json contains a list of TAG's Node.js dependencies, so running
+            br
+            pre.prettyprint.lang-sh.
+                $ npm install
+            | in the top-level directory will install the appropriate Node modules. The Gruntfile
             | contains instructions for 'building' the web app, in some sense. Take a look&nbsp;
-            a(class='plink', id='plink-grunt') here
+            +sectionLink('here', 'header_grunt', true)
             | &nbsp;for more information.
             | In the LADS directory, the main attractions are the html, css, and js subdirectories.
             | The first two are pretty self-explanatory, but to find relevant javascript files is
@@ -918,18 +948,26 @@ html
             | js/LADS/util/LADS.Util.js, which has a lot of general utility funtions (used by multiple
             | other files).
             h3 Workflow
-            | The basic workflow is to first pull down the latest changes from GitHub (
-            span git pull
-            | &nbsp;-- if you have local changes, though, you will need to run&nbsp;
-            span git commit -am "commit message"
-            | &nbsp; or&nbsp;
-            span git stash
-            | &nbsp; before pulling; see the&nbsp;
-            a(class='plink', id='plink-github') GitHub page
-            | &nbsp; for more information). Then you can set&nbsp;
-            span grunt watch
-            | &nbsp;running to watch for any changes. You can then edit away. Commit and pull often
-            | to make sure your code is well-synced with what is in GitHub.
+            | The basic workflow is to first pull down the latest changes from github with
+            br
+            pre.prettyprint.lang-sh.
+                $ span git pull
+            | If you have local changes, though, you will need to first run
+            br
+            pre.prettyprint.lang-sh.
+                $ git commit -am "commit message"
+            | or
+            br
+            pre.prettyprint.lang-sh.
+                $ span git stash
+            | before pulling. See the&nbsp;
+            +sectionLink('github section', 'header_git', true)
+            | &nbsp;for more information). Then you can run
+            br
+            pre.prettyprint.lang-sh.
+                $ span grunt watch
+            | to watch for any changes. You can then edit away. Commit and pull often
+            | to make sure your code is well-synced with what is in github.
             h3 CONVENTIONS
             | Let's try to create a sane codebase. Our current codebase is insane, and this is our
             | chance to fix it. So let's adopt some simple conventions:
@@ -1094,18 +1132,16 @@ html
             br
             br
             | Clicking on the "Console" tab will open a javascript console. Any errors in your js files will
-            | be printed here, and if you want to add print lines to your code, you can use&nbsp;
-            span console.log('hey hey hey!');
-            | . Also, you can type out arbitrary javascript in the console. For example, if you want to check
-            | if javascript strings have a&nbsp;
-            span length
-            | &nbsp;property, you can type out something like
+            | be printed here, and if you want to add print lines to your code, you can use
             br
+            pre.prettyprint.
+                console.log('hey hey hey!');
+            | Also, you can type out arbitrary javascript in the console. For example, if you want to check
+            | if javascript strings have a "length" property, you can type out something like
             br
             pre.prettyprint.
                 var a = 'the quick brown fox is overrated'
                 a.length
-            br
             | If you want to do something more interesting, you can use the console to manipulate elements in
             | the DOM. For example, you can make Keanu Reeves celebrate (or not) Brown's upcoming 250th
             | birthday:
@@ -1167,13 +1203,16 @@ html
                 li
                     | Ease of use: the comment syntax is pretty simple (see&nbsp;
                     a(href='http://code.tutsplus.com/tutorials/documenting-javascript-with-yuidoc--net-25324', target='_blank') here
-                    | ), and recompiling the html files can be done by typing&nbsp;
-                    span $ yuidoc .
-                    | &nbsp; in the top-level directory (add the <span>-q</span> flag to suppress output)
+                    | ), and recompiling the html files can be done by typing
+                    br
+                    pre.prettyprint.lang-sh.
+                        $ yuidoc .
+                    | in the top-level directory (add the "-q" flag to suppress output)
                 li
-                    | Compatibility: YUIDoc can be easily installed as a node module (
-                    span $ npm install yuidocjs
-                    | )
+                    | Compatibility: YUIDoc can be easily installed as a node module with
+                    br
+                    pre.prettyprint.lang-sh.
+                        $ npm install yuidocjs
                 li
                     | UI: the interface of the generated html files isn't anything to write home about, but it gets
                     | the job done. YUIDoc presents the relevant information in an easy-to-navigate way, which is
@@ -1182,9 +1221,9 @@ html
             h3 Conventions 
             ol
                 li
-                    | When you write a new function, document it with a <span>@method</span> tag (not all functions
+                    | When you write a new function, document it with a "@method" tag (not all functions
                     | may be methods in the OO sense, but we can conflate the terms for our purposes). Document
-                    | all parameters and return values with the <span>@param</span> and <span>@return</span> tags.
+                    | all parameters and return values with the "@param" and "@return" tags.
                     | Also provide types for these values. For example:
                     br
                     pre.prettyprint.
@@ -1197,8 +1236,8 @@ html
                          */
                         function getNoticeText(error) {
                 li
-                    | Top-level constructors such as <span>LADS.Layout.Artmode</span> should be documented with a
-                    | <span>@class</span> tag. Also add the <span>@constructor</span>
+                    | Top-level constructors such as LADS.Layout.Artmode should be documented with a
+                    | "@class" tag. Also add the "@constructor"
                     | tag to this comment and document any parameters as above. For example:
                     br
                     pre.prettyprint.
@@ -1244,7 +1283,11 @@ html
             | have been 'created' in the .jade file rather than via javascript.
             | In terms of styling, the initial styling rules for every element in the page
             | should go in your .styl file (even if this element is created dynamically! it still has
-            | a class or an id). If you see <span>someJqueryObject.css({...})</span>, slash it and put those
+            | a class or an id). If you see
+            br
+            pre.prettyprint.
+                someJqueryObject.css({...})
+            | slash it and put those
             | rules in your stylesheet. The exception is if the call to .css is in some sort of handler
             | that changes the existing style rules for the element...
 
@@ -1279,29 +1322,35 @@ html
                     templating side of Jade.
             h3 Installing Jade
             ol
-                li Run&nbsp;
-                    span $ npm install jade --global
+                li Run
+                    br
+                    pre.prettyprint.lang-sh.
+                        $ npm install jade
             h3 To start
             ol
-                li.
-                    The easiest way to start using Jade is to look at an existing html file and convert it. Normal
-                    html is valid Jade (as long as there are no unexpected indents; just un-indent everything to
-                    start if need be), so you can work through a file and easily test as you go. You'll want to save
-                    the html file as a .jade file so you can distinguish it from the html file Jade will produce.
-                    To run Jade on a .jade file (i.e. to compile it to an html file), just run
-                    <br /><br />
-                    <span>$ jade file_name.jade</span>
-                    <br /><br />
-                    This will produce an html file (file_name.html). You can tack on <span>--pretty</span> if you want
-                    to be able to read the resulting html file easily.
-                    <br />
-                    <br />
-                    You can take a look at the source for this page <a href="index.jade" target="_blank">here</a>.
+                li
+                    | The easiest way to start using Jade is to look at an existing html file and convert it. Normal
+                    | html is valid Jade (as long as there are no unexpected indents; just un-indent everything to
+                    | start if need be), so you can work through a file and easily test as you go. You'll want to save
+                    | the html file as a .jade file so you can distinguish it from the html file Jade will produce.
+                    | To run Jade on a .jade file (i.e. to compile it to an html file), just run
+                    br
+                    pre.prettyprint.lang-sh.
+                        $ jade file_name.jade
+                    | This will produce an html file (file_name.html). You can tack on "--pretty" if you want
+                    | to be able to read the resulting html file easily.
+                    br
+                    br
+                    | You can take a look at the source for this page&nbsp;
+                    a(href="index.jade", target="_blank") here
+                    | .
+
             h3 Documentation
             | Jade has pretty good documentation. The language reference can be found&nbsp;
             a(href="http://jade-lang.com/", target="_blank") here
-            | &nbsp;and the Jade github page with further documentation can be found&nbsp;
-            a(href="https://github.com/visionmedia/jade", target="_blank") here.
+            | , and the Jade github page with further documentation can be found&nbsp;
+            a(href="https://github.com/visionmedia/jade", target="_blank") here
+            | .
 
             // -------------------------------- JS WORKSHOP ------------------------------------- //
             +sectionHeader("Javascript Workshop", "header_javascript")
@@ -1746,21 +1795,21 @@ html
                         Always use semicolons (otherwise, javascript tries to 'figure it out' and can fail)
                     li
                         | Use&nbsp;
-                        a(class='plink', id='plink-jshint-practices') JSHint
+                        +sectionLink('JSHint', 'header_jshint', true)
                         | &nbsp;to check your js
-                    li.
-                        Don't add extra commas at the end of array or object literals
-                    li.
-                        Be careful with for..in loops
-                    li.
-                        Keep in mind that arrays are 'special' objects; they can have methods/non-integer properties...
-                    li.
-                        In Javascript, there aren't <span>int</span> or <span>float</span> types, just Numbers, which are stored
-                        as floating point values (meaning, for example, that integer division is a non-issue).
-                        For example, the return types of <span>parseInt</span> and <span>parseFloat</span> are the same.</li>
-                    li.
-                        Use the <span>isNaN(number)</span> function to check if a value is <span>NaN</span>. The comparison
-                        <span>NaN === NaN</span> returns false...
+                    li
+                        | Don't add extra commas at the end of array or object literals
+                    li
+                        | Be careful with for..in loops
+                    li
+                        | Keep in mind that arrays are 'special' objects; they can have methods/non-integer properties...
+                    li
+                        | In Javascript, there aren't <span>int</span> or <span>float</span> types, just Numbers, which are stored
+                        | as floating point values (meaning, for example, that integer division is a non-issue).
+                        | For example, the return types of <span>parseInt</span> and <span>parseFloat</span> are the same.</li>
+                    li
+                        | Use the <span>isNaN(number)</span> function to check if a value is <span>NaN</span>. The comparison
+                        | <span>NaN === NaN</span> returns false...
             
             h3 Falsy values (all other values are truthy)
             div.full-text
@@ -1806,15 +1855,21 @@ html
                     a(href="http://nodejs.org/", target="_blank") install node.js
                     | &nbsp;first)
                 li
-                    | Run&nbsp;
-                    span= '$ npm install jshint --global'
-                    | . This will install JS Hint globally.
+                    | Run
+                    br
+                    pre.prettyprint.lang-sh.
+                        $ npm install jshint
+
             h3 Using JS Hint on a file
             ol
-                li Change directory to where the file resides. E.g.,&nbsp;
-                    span= '$ cd Documents/<your_folder>/LADS/js/LADS/tourauthoring'
-                li Run using the <span>jshint</span> command. E.g.,&nbsp;
-                    span= '$ jshint LADS.TourAuthoring.Viewer.js'
+                li Change directory to where the file resides. E.g.,
+                br
+                pre.prettyprint.lang-sh.
+                    $ cd Documents/&lt;your_folder&gt;/LADS/js/LADS/tourauthoring
+                li Run using the "jshint" command. E.g.,
+                br
+                pre.prettyprint.lang-sh.
+                    $ jshint LADS.TourAuthoring.Viewer.js
                 li Clean up code
                 li Repeat
 

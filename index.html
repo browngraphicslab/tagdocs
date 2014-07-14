@@ -47,7 +47,7 @@
       the web app, the Windows 8 app, and the server.<br><br>
       <h3>Web app</h3>In the web app, we're using&nbsp;<a href="http://en.wikipedia.org/wiki/Git_(software)">Git</a>&nbsp;for version control, and our code is hosted on GitHub, so
       the first step for web app development is to get set up with Git.
-      Check out the&nbsp;<a id="plink-github" class="plink">Git and GitHub</a>&nbsp;page to the left.<br><br>Now that Git is set up, you'll need to install some Node.js modules, which
+      Check out the&nbsp;<a dest="#header_git" class="separator_link">Git and GitHub</a>&nbsp;page to the left.<br><br>Now that Git is set up, you'll need to install some Node.js modules, which
       requires first installing&nbsp;<a href="http://nodejs.org/">Node.js</a>. As mentioned on its website, Node is a platform that provides lots of
       utilities that facilitate web app creation. We're using a small subset of Node's
       functionality. In particular, we use&nbsp;<a href="http://jade-lang.com/">Jade</a>&nbsp;(for writing cleaner and more flexible
@@ -55,11 +55,13 @@
       familiar with Jade and Stylus, you can take a look at the workshops to the left or
       at other online documentation and tutorials (under the 'Web app links' heading to the left).<br><br>To install Jade, Stylus, Grunt, and any other Node modules we happen to be using,
       navigate to the directory containing your clone of the TAG repository. You will first
-      want to install the grunt command line interface using&nbsp;<span>$ npm install -g grunt-cli</span>. This lets you run the grunt command from your terminal. If it complains about permissions,
+      want to install the grunt command line interface using<br>
+      <pre class="prettyprint lang-sh">$ npm install -g grunt-cli</pre>This lets you run the grunt command from your terminal. If it complains about permissions,
       you may need to run the install command as administrator on Windows or using sudo on Macs.
-      After grunt-cli is installed, you can run &nbsp;<span>$ npm install</span>. There is a file called package.json in the top-level TAG directory that tells npm which
+      After grunt-cli is installed, you can run<br>
+      <pre class="prettyprint lang-sh">$ npm install</pre>. There is a file called package.json in the top-level TAG directory that tells npm which
       modules to install, so you should now have everything you need. Again, you might need to
-      run this as admin/root.<br><br>To get accustomed to the structure of and normal workflow for the web app, take a look at the&nbsp;<a id="plink-webapp" class="plink">relevant page</a>&nbsp;to the left.<br><br>
+      run this as admin/root.<br><br>To get accustomed to the structure of and normal workflow for the web app, take a look at the&nbsp;<a dest="#header_webappworkflow" class="separator_link">relevant</a>.<br><br>
       <h3>Windows 8 app</h3>If you are working on a Windows 8.1 machine and you're developping the Win8 app in visual studio,
       you may come across an error when you try to run the TAG code stating that something is wrong with 
       Bing maps. Because Win8.1 is not backwards compatible with Win8, you will need to uninstall the current 
@@ -237,7 +239,7 @@
       ambiguity. The git push output will look something like:<br><br>
         <div class="captionedImgContainer"><a href="images/git/gitpush.png" target="_blank"><img src="images/git/gitpush.png" alt="Sorry, image failed to load!" class="pageImg"></a>
           <div class="captionedImgCaption">git push</div>
-        </div><br><br>and you can double-check that your push was succesful by looking at the list of commits in github.
+        </div><br><br>and you can double-check that your push was succesful by looking at the list of commits in github.<br><br>tl;dr git push = "this code is awesome and tested...take a look!"
       <h3 id="gitbasicusesummary">Basic use summary</h3>Here is a summary of basic use (no branches; just committing, pulling, and pushing):
       <ol>
         <li>Create a new local clone with<br>
@@ -356,22 +358,31 @@ $ git rebase master</pre>Why might this be useful? For one thing, it creates a c
         <li>Compiling all jade files in the LADS/html directory into corresponding html files</li>
         <li>Compiling stylus files in LADS/css into LADS/css/TAG.css (nice to have only one css file to include)</li>
         <li>Concatenating javascript files into LADS/TAG.js (so users only need to include one js file)</li>
-        <li>When we ship, we'll run &nbsp;<span>$ grunt uglify</span>&nbsp;, which minifies TAG.js into TAG-min.js. Minificaiton is done by replacing variable names
+        <li>When we ship, we'll run<br>
+          <pre class="prettyprint lang-sh">$ grunt uglify</pre>which minifies TAG.js into TAG-min.js. Minificaiton is done by replacing variable names
           with mostly one-letter names and removing most whitespace. The resulting file is much
           smaller, which is better for performance.
         </li>
       </ol>
       <h3>Running Grunt</h3>There are three basic ways of using Grunt:
       <ol>
-        <li>Running&nbsp;<span>$ grunt</span>&nbsp;runs the default Grunt tasks (as listed in the Gruntfile -- see below) once.</li>
-        <li>Running &nbsp;<span>$ grunt watch</span>&nbsp;creates a job that watches for any saves in the files listed in the Gruntfile. For
-          example, if you run&nbsp;<span>grunt watch</span>&nbsp;and then save a Jade file, grunt will be run once, and the
+        <li>Running<br>
+          <pre class="prettyprint lang-sh">$ grunt</pre>runs the default Grunt tasks (as listed in the Gruntfile -- see below) once.
+        </li>
+        <li>Running<br>
+          <pre class="prettyprint lang-sh">$ grunt watch</pre>creates a job that watches for any saves in the files listed in the Gruntfile. For
+          example, if you run "grunt watch"
+          and then save a Jade file, grunt will be run once, and the
           Jade file (along with everything else) will be compiled.
         </li>
-        <li>Running &nbsp;<span>$ grunt &lt;module name&gt;</span>&nbsp;will run the Grunt task for just that module. For example, running&nbsp;<span>grunt stylus</span>&nbsp;will only compile stylus files.</li>
+        <li>Running<br>
+          <pre class="prettyprint lang-sh">$ grunt &lt;module name&gt;</pre>will run the Grunt task for just that module. For example, running<br>
+          <pre class="prettyprint lang-sh">$ grunt stylus</pre>will only compile stylus files.
+        </li>
       </ol>
       <h3>Gruntfile.js</h3>The Gruntfile.js file in the top-level directory of TAG controls the tasks that Grunt performs.
-      By default, only the 'default' tasks are run. The list of these tasks can be found in the line&nbsp;<span>grunt.registerTask('default', ['jade', 'stylus', 'concat']);</span>If you want to add a new Jade or Stylus file to TAG, make sure to add it to the corresponding parts of
+      By default, only the 'default' tasks are run. The list of these tasks can be found in the line<br>
+      <pre class="prettyprint">grunt.registerTask('default', ['jade', 'stylus', 'concat']);</pre>If you want to add a new Jade or Stylus file to TAG, make sure to add it to the corresponding parts of
       the Gruntfile to ensure that it is compiled.
       <!-- --------------------------------- LOCAL WEB SERVERS --------------------------------- //-->
         <header id="header_webservers">Local Web Servers</header>The TAG web app makes AJAX requests, so it needs to be run on a web server. Fortunately,
@@ -409,7 +420,7 @@ $ git rebase master</pre>Why might this be useful? For one thing, it creates a c
         <header id="header_starter">Starter Projects</header>
       <h3>Languages</h3>TAG is an html5/css/javascript application, so to get started, it's important to make sure
       you feel comfortable with each of these languages. Part of this is to make sure you are comfortable
-      with the&nbsp;<a href="https://developer.mozilla.org/en-US/docs/DOM/DOM_Reference/Introduction" target="_blank">DOM</a>. To make javascript easier, we also use&nbsp;<a href="http://api.jquery.com/" target="_blank">jQuery</a>. You can take a look at the quick jQuery&nbsp;<a id="plink-jquery" class="plink">tutorial</a>&nbsp;to the left or surf the net to find one.<br><br>
+      with the&nbsp;<a href="https://developer.mozilla.org/en-US/docs/DOM/DOM_Reference/Introduction" target="_blank">DOM</a>. To make javascript easier, we also use&nbsp;<a href="http://api.jquery.com/" target="_blank">jQuery</a>. You can surf the net to find a good jQuery tutorial.<br><br>
       <div class="thumbnailContainer">
           <div class="innerTableContainer"><a href="https://developer.mozilla.org/en-US/learn/html" target="_blank"><img src="images/html5.png" alt="Sorry!" class="thumbnailImg"></a></div>
           <div class="innerTableContainer"><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started" target="_blank"><img src="images/css.jpg" alt="Sorry!" class="thumbnailImg"></a></div>
@@ -427,26 +438,31 @@ $ git rebase master</pre>Why might this be useful? For one thing, it creates a c
       also take a look at the lecture slides from&nbsp;<a href="http://cs.brown.edu/courses/cs132/lectures.html" target="_blank">cs132</a>&nbsp;(hopefully you're reading this at a time of year when notes exist on that page). You don't
       need to be a wizard with these languages by the end of your project, but you should be able
       to jump into the TAG codebase and feel relatively at-home. And always feel free to ask questions!
-      It might be helpful to take a look at the page on&nbsp;<a id="plink-debugging" class="plink">debugging</a>.<br><br><br>
+      It might be helpful to take a look at the page on&nbsp;<a dest="#header_debugging" class="separator_link">debugging</a>.<br><br><br>
       <h3>Getting set up with Jade and Stylus for a starter project</h3>The first thing you'll want to do is&nbsp;<a href="http://nodejs.org/" target="_blank">install node.js</a>. Jade and Stylus both fall under the node.js platform, so there are nice node utilities
-      for working with them. Next, you can run&nbsp;<span>$ npm install -g grunt-cli</span>&nbsp; from the command prompt or terminal (it may ask for administrative permissions, so
+      for working with them. Next, you can run<br>
+      <pre class="prettyprint lang-sh">$ npm install -g grunt-cli</pre>from the command prompt or terminal (it may ask for administrative permissions, so
       you might need to use an administrator command prompt on Windows or run using sudo on Macs).
-      This will let you run a handy tool called&nbsp;<a id="plink-grunt" class="plink">Grunt</a>&nbsp;from the command line, which will take care of compiling jade and stylus for you.<br><br>There's a basic starter project template&nbsp;<a href="files/starter.zip">here</a>. Go ahead and download and unzip it. Navigate to the directory. You'll see that it contains
+      This will let you run a handy tool called&nbsp;<a dest="#header_grunt" class="separator_link">Grunt</a>&nbsp;from the command line, which will take care of compiling jade and stylus for you.<br><br>There's a basic starter project template&nbsp;<a href="files/starter.zip">here</a>. Go ahead and download and unzip it. Navigate to the directory. You'll see that it contains
       a .jade file, a .styl file, a package.json file, and a Gruntfile.js file. The package.json 
       file tells node which node packages should be installed for this project (in this case, jade,
-      stylus, and a couple utilities). Running&nbsp;<span>$ npm install</span>&nbsp;should give you all the necessary packages. Again, you might need admin permissions.
+      stylus, and a couple utilities). Running<br>
+      <pre class="prettyprint lang-sh">$ npm install</pre>should give you all the necessary packages. Again, you might need admin permissions.
       The Gruntfile has instructions for how to compile your jade
-      and stylus files. Running&nbsp;<span>$ grunt</span>&nbsp;should now compile .html and .css files from your .jade and .styl files. It is the html
+      and stylus files. Running<br>
+      <pre class="prettyprint lang-sh">$ grunt</pre>&nbsp;should now compile .html and .css files from your .jade and .styl files. It is the html
       and css files that the browser will use to render your page, so every time you make changes to
       your jade and styl sources, you should recompile. Fortunately, there is a grunt tool for making
-      this less tedious. If you run&nbsp;<span>$ grunt watch</span>, grunt will wait for any changes in your files and compile when necessary.<br><br>
+      this less tedious. If you run<br>
+      <pre class="prettyprint lang-sh">$ grunt watch</pre>grunt will wait for any changes in your files and compile when necessary.<br><br>
       <h3>Project options</h3>Email the team lead for the current menu of starter project options.
       <!-- -------------------------------- WEB APP WORKFLOW ----------------------------------- //-->
         <header id="header_webappworkflow">Web App Workflow</header>A general overview of working with the web app. Also, some coding conventions.
       <h3>Structure of the web app</h3>Take a look at the top-level directory of your TAG clone. There's a directory called
       LADS, which has basically all of our code, and there are a couple files called
-      package.json and Gruntfile.js. As mentioned in the&nbsp;<a id="plink-dev" class="plink">developer guide</a>, package.json contains a list of TAG's Node.js dependencies, so running&nbsp;<span>$ npm install</span>&nbsp;in the top-level directory will install the appropriate Node modules. The Gruntfile
-      contains instructions for 'building' the web app, in some sense. Take a look&nbsp;<a id="plink-grunt" class="plink">here</a>&nbsp;for more information.
+      package.json and Gruntfile.js. As mentioned in the&nbsp;<a dest="#header_developer" class="separator_link">developer guide</a>, package.json contains a list of TAG's Node.js dependencies, so running<br>
+      <pre class="prettyprint lang-sh">$ npm install</pre>in the top-level directory will install the appropriate Node modules. The Gruntfile
+      contains instructions for 'building' the web app, in some sense. Take a look&nbsp;<a dest="#header_grunt" class="separator_link">here</a>&nbsp;for more information.
       In the LADS directory, the main attractions are the html, css, and js subdirectories.
       The first two are pretty self-explanatory, but to find relevant javascript files is
       slightly more difficult. Most javascript files related to kiosk mode (the TAG interface
@@ -454,8 +470,12 @@ $ git rebase master</pre>Why might this be useful? For one thing, it creates a c
       page's js file is js/LADS/layout/LADS.Layout.NewCatalog.js. Another important file is
       js/LADS/util/LADS.Util.js, which has a lot of general utility funtions (used by multiple
       other files).
-      <h3>Workflow</h3>The basic workflow is to first pull down the latest changes from GitHub (<span>git pull</span>&nbsp;-- if you have local changes, though, you will need to run&nbsp;<span>git commit -am "commit message"</span>&nbsp; or&nbsp;<span>git stash</span>&nbsp; before pulling; see the&nbsp;<a id="plink-github" class="plink">GitHub page</a>&nbsp; for more information). Then you can set&nbsp;<span>grunt watch</span>&nbsp;running to watch for any changes. You can then edit away. Commit and pull often
-      to make sure your code is well-synced with what is in GitHub.
+      <h3>Workflow</h3>The basic workflow is to first pull down the latest changes from github with<br>
+      <pre class="prettyprint lang-sh">$ span git pull</pre>If you have local changes, though, you will need to first run<br>
+      <pre class="prettyprint lang-sh">$ git commit -am "commit message"</pre>or<br>
+      <pre class="prettyprint lang-sh">$ span git stash</pre>before pulling. See the&nbsp;<a dest="#header_git" class="separator_link">github section</a>&nbsp;for more information). Then you can run<br>
+      <pre class="prettyprint lang-sh">$ span grunt watch</pre>to watch for any changes. You can then edit away. Commit and pull often
+      to make sure your code is well-synced with what is in github.
       <h3>CONVENTIONS</h3>Let's try to create a sane codebase. Our current codebase is insane, and this is our
       chance to fix it. So let's adopt some simple conventions:
       <ol>
@@ -584,10 +604,11 @@ if(val === null)</pre>just check<br>
       as a javascript or css file. If you click on a number next to a line in a javascript file, a
       breakpoint will be added at that line. The breakpoint will survive page refreshes. Again, the
       right pane has a bunch of information about the file you're looking at.<br><br>Clicking on the "Console" tab will open a javascript console. Any errors in your js files will
-      be printed here, and if you want to add print lines to your code, you can use&nbsp;<span>console.log('hey hey hey!');</span>. Also, you can type out arbitrary javascript in the console. For example, if you want to check
-      if javascript strings have a&nbsp;<span>length</span>&nbsp;property, you can type out something like<br><br>
+      be printed here, and if you want to add print lines to your code, you can use<br>
+      <pre class="prettyprint">console.log('hey hey hey!');</pre>Also, you can type out arbitrary javascript in the console. For example, if you want to check
+      if javascript strings have a "length" property, you can type out something like<br>
       <pre class="prettyprint">var a = 'the quick brown fox is overrated'
-a.length</pre><br>If you want to do something more interesting, you can use the console to manipulate elements in
+a.length</pre>If you want to do something more interesting, you can use the console to manipulate elements in
       the DOM. For example, you can make Keanu Reeves celebrate (or not) Brown's upcoming 250th
       birthday:<br><br><a href="images/keanuBrown.png" target="_blank"><img src="images/keanuBrown.png" alt="Sorry, image failed to load!" class="pageImg"></a><br><br>The console can be especially helpful in conjunction with breakpoints...<br><br>
       <h3>Breakpoints</h3>There are two ways to set breakpoints. One, as mentioned above, is to use the "Sources" tab
@@ -611,8 +632,12 @@ debugger;
       <h3>Why YUIDoc?</h3>Of the javascript documentation generators listed&nbsp;<a href="http://www.lsauer.com/2013/05/javascript-documentation-generator.html" target="_blank">here</a>, YUIDoc seemed to have a good combination of ease-of-use, compatibility with our current development
       practices, and acceptable UI:
       <ol>
-        <li>Ease of use: the comment syntax is pretty simple (see&nbsp;<a href="http://code.tutsplus.com/tutorials/documenting-javascript-with-yuidoc--net-25324" target="_blank">here</a>), and recompiling the html files can be done by typing&nbsp;<span>$ yuidoc .</span>&nbsp; in the top-level directory (add the <span>-q</span> flag to suppress output)</li>
-        <li>Compatibility: YUIDoc can be easily installed as a node module (<span>$ npm install yuidocjs</span>)</li>
+        <li>Ease of use: the comment syntax is pretty simple (see&nbsp;<a href="http://code.tutsplus.com/tutorials/documenting-javascript-with-yuidoc--net-25324" target="_blank">here</a>), and recompiling the html files can be done by typing<br>
+          <pre class="prettyprint lang-sh">$ yuidoc .</pre>in the top-level directory (add the "-q" flag to suppress output)
+        </li>
+        <li>Compatibility: YUIDoc can be easily installed as a node module with<br>
+          <pre class="prettyprint lang-sh">$ npm install yuidocjs</pre>
+        </li>
         <li>
           UI: the interface of the generated html files isn't anything to write home about, but it gets
           the job done. YUIDoc presents the relevant information in an easy-to-navigate way, which is
@@ -622,9 +647,9 @@ debugger;
       <h3>Conventions </h3>
       <ol>
         <li>
-          When you write a new function, document it with a <span>@method</span> tag (not all functions
+          When you write a new function, document it with a "@method" tag (not all functions
           may be methods in the OO sense, but we can conflate the terms for our purposes). Document
-          all parameters and return values with the <span>@param</span> and <span>@return</span> tags.
+          all parameters and return values with the "@param" and "@return" tags.
           Also provide types for these values. For example:<br>
           <pre class="prettyprint">/**
  * Returns a notice message given a certain
@@ -636,8 +661,8 @@ debugger;
 function getNoticeText(error) {</pre>
         </li>
         <li>
-          Top-level constructors such as <span>LADS.Layout.Artmode</span> should be documented with a
-          <span>@class</span> tag. Also add the <span>@constructor</span>
+          Top-level constructors such as LADS.Layout.Artmode should be documented with a
+          "@class" tag. Also add the "@constructor"
           tag to this comment and document any parameters as above. For example:<br>
           <pre class="prettyprint">/**
  * The artwork viewer, which contains a sidebar
@@ -676,7 +701,8 @@ LADS.Layout.Artmode =
       have been 'created' in the .jade file rather than via javascript.
       In terms of styling, the initial styling rules for every element in the page
       should go in your .styl file (even if this element is created dynamically! it still has
-      a class or an id). If you see <span>someJqueryObject.css({...})</span>, slash it and put those
+      a class or an id). If you see<br>
+      <pre class="prettyprint">someJqueryObject.css({...})</pre>slash it and put those
       rules in your stylesheet. The exception is if the call to .css is in some sort of handler
       that changes the existing style rules for the element...
       <h3>The root</h3>Since we're no longer creating the root of a page by calling document.createElement, we
@@ -709,7 +735,9 @@ LADS.Layout.Artmode =
       </ol>
       <h3>Installing Jade</h3>
       <ol>
-        <li>Run&nbsp;<span>$ npm install jade --global</span></li>
+        <li>Run<br>
+          <pre class="prettyprint lang-sh">$ npm install jade</pre>
+        </li>
       </ol>
       <h3>To start</h3>
       <ol>
@@ -718,18 +746,12 @@ LADS.Layout.Artmode =
           html is valid Jade (as long as there are no unexpected indents; just un-indent everything to
           start if need be), so you can work through a file and easily test as you go. You'll want to save
           the html file as a .jade file so you can distinguish it from the html file Jade will produce.
-          To run Jade on a .jade file (i.e. to compile it to an html file), just run
-          <br /><br />
-          <span>$ jade file_name.jade</span>
-          <br /><br />
-          This will produce an html file (file_name.html). You can tack on <span>--pretty</span> if you want
-          to be able to read the resulting html file easily.
-          <br />
-          <br />
-          You can take a look at the source for this page <a href="index.jade" target="_blank">here</a>.
+          To run Jade on a .jade file (i.e. to compile it to an html file), just run<br>
+          <pre class="prettyprint lang-sh">$ jade file_name.jade</pre>This will produce an html file (file_name.html). You can tack on "--pretty" if you want
+          to be able to read the resulting html file easily.<br><br>You can take a look at the source for this page&nbsp;<a href="index.jade" target="_blank">here</a>.
         </li>
       </ol>
-      <h3>Documentation</h3>Jade has pretty good documentation. The language reference can be found&nbsp;<a href="http://jade-lang.com/" target="_blank">here</a>&nbsp;and the Jade github page with further documentation can be found&nbsp;<a href="https://github.com/visionmedia/jade" target="_blank">here.</a>
+      <h3>Documentation</h3>Jade has pretty good documentation. The language reference can be found&nbsp;<a href="http://jade-lang.com/" target="_blank">here</a>, and the Jade github page with further documentation can be found&nbsp;<a href="https://github.com/visionmedia/jade" target="_blank">here</a>.
       <!-- -------------------------------- JS WORKSHOP ------------------------------------- //-->
         <header id="header_javascript">Javascript Workshop</header>Adapted from <i>Javascript: The Good Parts</i>, by Douglas Crockford
       <div style="width:100%;text-align:center;font-size:14px;"><img src="images/thegoodparts.jpg" width="400px">There are a few good parts</div>Below are a few notes about different aspects of Javascript. If there's a topic you'd like to hear more about,
@@ -1096,7 +1118,8 @@ function testFunctionalInheritance() {
           </li>
           <li>Always use blocks/curly braces when possible (avoids a lot of hard-to-spot errors)</li>
           <li>Always use semicolons (otherwise, javascript tries to 'figure it out' and can fail)</li>
-          <li>Use&nbsp;<a id="plink-jshint-practices" class="plink">JSHint</a>&nbsp;to check your js</li>
+          <li>Use&nbsp;<a dest="#header_jshint" class="separator_link">JSHint</a>&nbsp;to check your js
+          </li>
           <li>Don't add extra commas at the end of array or object literals</li>
           <li>Be careful with for..in loops</li>
           <li>Keep in mind that arrays are 'special' objects; they can have methods/non-integer properties...</li>
@@ -1108,7 +1131,6 @@ function testFunctionalInheritance() {
           <li>
             Use the <span>isNaN(number)</span> function to check if a value is <span>NaN</span>. The comparison
             <span>NaN === NaN</span> returns false...
-            
           </li>
         </ol>
       </div>
@@ -1138,12 +1160,17 @@ function testFunctionalInheritance() {
       <h3>Installing JS Hint</h3>
       <ol>
         <li>Open up the terminal or node.js command prompt (if not available,&nbsp;<a href="http://nodejs.org/" target="_blank">install node.js</a>&nbsp;first)</li>
-        <li>Run&nbsp;<span>$ npm install jshint --global</span>. This will install JS Hint globally.</li>
+        <li>Run<br>
+          <pre class="prettyprint lang-sh">$ npm install jshint
+</pre>
+        </li>
       </ol>
       <h3>Using JS Hint on a file</h3>
       <ol>
-        <li>Change directory to where the file resides. E.g.,&nbsp;<span>$ cd Documents/&lt;your_folder&gt;/LADS/js/LADS/tourauthoring</span></li>
-        <li>Run using the <span>jshint</span> command. E.g.,&nbsp;<span>$ jshint LADS.TourAuthoring.Viewer.js</span></li>
+        <li>Change directory to where the file resides. E.g.,</li><br>
+        <pre class="prettyprint lang-sh">$ cd Documents/&lt;your_folder&gt;/LADS/js/LADS/tourauthoring</pre>
+        <li>Run using the "jshint" command. E.g.,</li><br>
+        <pre class="prettyprint lang-sh">$ jshint LADS.TourAuthoring.Viewer.js</pre>
         <li>Clean up code</li>
         <li>Repeat</li>
       </ol>
