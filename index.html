@@ -72,7 +72,7 @@
       <h3>Server development</h3>Jess Fu put together some notes on&nbsp;<a href="files/Installing your own TAG Server.pdf" target="_blank">setting up sql software</a>,&nbsp;<a href="files/Working with the Server Code Base.pdf" target="_blank">working with the code base&nbsp;</a>and&nbsp;<a href="files/serverProtocols.pdf" target="_blank">relevant TAG server protocols</a>.&nbsp;
       <!-- --------------------------------- GIT AND GITHUB --------------------------------- //            -->
         <header id="header_git">Git and Github</header>A quick look at version control with git for our web app workflow.
-      <h3>Table of contents</h3><a dest="#gitwhy" class="toc_link">Why git and github?</a><br><a dest="#githubaccount" class="toc_link">Set up a github account</a><br><a dest="#gitclone" class="toc_link">Clone the repository</a><br><a dest="#gitcommit" class="toc_link">Make and commit some local changes</a><br><a dest="#gitpull" class="toc_link">Pull in other people's changes</a><br><a dest="#gitpush" class="toc_link">Push your changes</a><br><a dest="#gitbasicusesummary" class="toc_link">Basic use summary</a><br><a dest="#gitHEAD" class="toc_link">The HEAD symbol</a><br><a dest="#gitbranches" class="toc_link">Branches</a><br><a dest="#gitcheckout" class="toc_link">Checkout</a><br><a dest="#gitrebase" class="toc_link">Rebasing</a><br><a dest="#gitmisc" class="toc_link">Some miscellaneous notes</a><br><br>
+      <h3>Table of contents</h3><a dest="#gitwhy" class="toc_link">Why git and github?</a><br><a dest="#githubaccount" class="toc_link">Set up a github account</a><br><a dest="#gitclone" class="toc_link">Clone the repository</a><br><a dest="#gitcommit" class="toc_link">Make and commit some local changes</a><br><a dest="#gitpull" class="toc_link">Pull in other people's changes</a><br><a dest="#gitpush" class="toc_link">Push your changes</a><br><a dest="#gitbasicusesummary" class="toc_link">Basic use summary</a><br><a dest="#gitHEAD" class="toc_link">The HEAD symbol</a><br><a dest="#gitbranches" class="toc_link">Branches</a><br><a dest="#gitcheckout" class="toc_link">Checkout</a><br><a dest="#gitrebase" class="toc_link">Rebasing</a><br><a dest="#gitsubmodule" class="toc_link">Submodules</a><br><a dest="#gitmisc" class="toc_link">Some miscellaneous notes</a><br><br>
       <h3 id="gitwhy">Why Git and GitHub?</h3>Git is a fast and reliable version control system, and it is widely used, making it a
       helpful thing to know. GitHub allows us to create free, private, shared repositories (since
       we have an organizational account). It also has pretty nice issue tracking and is the most
@@ -332,7 +332,78 @@ $ git rebase master</pre>Why might this be useful? For one thing, it creates a c
       issues. For another, you might be partial to rebasing and then merging rather than merging and then merging
       to incorporate a feature branch's changes into the master.<br><br>The&nbsp;<a href="http://git-scm.com/book/en/Git-Branching-Rebasing" target="_blank">git book's discussion </a>&nbsp;of merging and rebasing has a nice summary of the differences between the two:<br><br>"Rebasing replays changes from one line of work onto another in the order they were introduced,
       whereas merging takes the endpoints and merges them together."
-      <h3 id="gitmisc">Some miscellaneous notes</h3>
+      <h3 id="gitsubmodule">Git submodules</h3>
+      <h4>Overview</h4>The win8 and web apps share a good deal of code (both are javascript-based apps, and they are intended
+      to look essentially identical), so this code is factored out into the TAG-Core repository, which is
+      included in both projects. This inclusion is done via a nice git facility called a "submodule."<br><br>The idea is that both the web and win8 repositories (the "app repos") have a reference to the TAG-Core
+      repository (the "core repo") at a
+      specific path. In the case of the web app, this path is simply "tagcore," and in the win8 app, it is
+      "LADS/tagcore." As far as the app repos are concerned, this is a reference only; they only
+      know that the core repo should be included at that path, but the respective "tagcore" entry is just 
+      a commit number saying which commit in the core repo should be included.<br><br>It's important to remember that the app and core repos are really separate, and they are only connected
+      by a reference existing in the app repos. This means that when you are working on code in the tagcore
+      entry in the web app repo, you really aren't editing the web app repo. When you pull and push inside
+      tagcore, you're pulling from and pushing to the TAG-Core repo. The only thing that you're affecting in
+      the web app repo is the reference; as you create new commits in the core repo, the commit number in the
+      reference will change, but that's it.<br><br>
+      <h4>Details</h4>Stepping back a bit, the submodule reference was initially created via a call to<br>
+      <pre class="prettyprint lang-sh">$ git submodule add http://github.com/br...b/TAG-Core.git tagcore</pre>(in the case of the web app -- replace "tagcore" with "LADS/tagcore" for the win8 app). The
+      "submodule add" command sets up an entry for tagcore in a new file called .gitmodules:<br><br>
+        <div class="captionedImgContainer"><a href="images/git/gitmodules.png" target="_blank"><img src="images/git/gitmodules.png" alt="Sorry, image failed to load!" class="pageImg"></a>
+          <div class="captionedImgCaption">after running 'git submodule add' to add the tagcore submodule</div>
+        </div><br><br>The screenshot also shows a new entry called "tagcore" -- this is the entry where our submodule
+      code can be pulled down. If we take a look at the first commit to the web app repo that included
+      the tagcore submodule, we can see what the "tagcore" entry really is:<br><br>
+        <div class="captionedImgContainer"><a href="images/git/firstcorecommit.png" target="_blank"><img src="images/git/firstcorecommit.png" alt="Sorry, image failed to load!" class="pageImg"></a>
+          <div class="captionedImgCaption">first commit to web repo including the tagcore submodule</div>
+        </div><br><br>It's just a one-line reference. This means that when you
+      clone an app repo, the core repo will look empty:<br><br>
+        <div class="captionedImgContainer"><a href="images/git/gitsubmoduleclone.png" target="_blank"><img src="images/git/gitsubmoduleclone.png" alt="Sorry, image failed to load!" class="pageImg"></a>
+          <div class="captionedImgCaption">after cloning the web app repo, tagcore looks like an empty directory</div>
+        </div><br><br>since you haven't yet done anything to access the code pointed to by the one-line tagcore reference.<br><br>To grab the code, you'll first need to make sure that your local clone knows about the tagcore submodule.
+      There is an entry in the .gitmodules file, but for this to apply to your local clone (i.e., to show up in
+      the .git/config file), you need to run<br>
+      <pre class="prettyprint lang-sh">$ git submodule init</pre>If you now look at .git/config, you'll see an entry for the tagcore submodule:<br><br>
+        <div class="captionedImgContainer"><a href="images/git/gitsubmoduleinit.png" target="_blank"><img src="images/git/gitsubmoduleinit.png" alt="Sorry, image failed to load!" class="pageImg"></a>
+          <div class="captionedImgCaption">after running 'git submodule init'</div>
+        </div><br><br>Now you can pull down the code from the commit listed in the tagcore reference by running <br>
+      <pre class="prettyprint lang-sh">$ git submodule update</pre>The terminal output for this command will look a lot like the output for "git clone" -- it's
+      essentially the same thing, since you're cloning the submodule repo:<br><br>
+        <div class="captionedImgContainer"><a href="images/git/gitsubmoduleupdate.png" target="_blank"><img src="images/git/gitsubmoduleupdate.png" alt="Sorry, image failed to load!" class="pageImg"></a>
+          <div class="captionedImgCaption">after running 'git submodule update' -- files, hooray!</div>
+        </div><br><br>You should now have a complete clone of TAG-Core in the tagcore entry. Remember again
+      that your app repo and core repo are different. You can think of cd-ing into 
+      tagcore as entering a different repo.<br><br>Now, go ahead and cd into tagcore. If you run "git branch," you may be unsettled to find that
+      running "git submodule update" has left you with a&nbsp;<a dest="#gitHEAD" class="toc_link">detached HEAD</a>:<br><br>
+        <div class="captionedImgContainer"><a href="images/git/updatedetachedhead.png" target="_blank"><img src="images/git/updatedetachedhead.png" alt="Sorry, image failed to load!" class="pageImg"></a>
+          <div class="captionedImgCaption">detached HEAD after running 'git submodule update'</div>
+        </div><br><br>This seems annoying, but the reference to the TAG-Core in the app repo is just a commit number, so
+      when you run update, git just updates the tagcore submodule to that commit rather than to a branch.
+      This means that you will likely want to checkout the master branch (or a feature branch) before
+      making any changes to tagcore:<br><br>
+        <div class="captionedImgContainer"><a href="images/git/submodulecheckoutmaster.png" target="_blank"><img src="images/git/submodulecheckoutmaster.png" alt="Sorry, image failed to load!" class="pageImg"></a>
+          <div class="captionedImgCaption">checking out master after running 'git submodule update'</div>
+        </div><br><br>Now you can make changes to tagcore! Woohoo!<br><br>After the initial setup above, you're pretty much home free. At this point, you have a fully functioning
+      clone of the core repo; it happens to be inside of a clone of the app repo, but while inside tagcore you
+      can pull and push to TAG-Core as you wish. One way to get used to the interaction between the app repo
+      and the core submodule is to make some changes in each and run git status. In this case, we've added
+      new files to each:<br><br>
+        <div class="captionedImgContainer"><a href="images/git/separaterepoexample.png" target="_blank"><img src="images/git/separaterepoexample.png" alt="Sorry, image failed to load!" class="pageImg"></a>
+          <div class="captionedImgCaption">adding files outside and inside tagcore, then running git status</div>
+        </div><br><br>In the example above, we start outside of tagcore in the web app repo and add a file called
+      "app_repo_testfile." We then cd into tagcore and create a file called "core_repo_testfile."
+      Running "git status" inside tagcore only shows the new file in tagcore. Likewise, when we
+      cd out of tagcore and run git status, we only see the new file in the web app repo as well as
+      a generic note that content has changed in tagcore. This note just alerts us that committing in
+      tagcore will update the reference in the outer app repo.<br><br>
+      <h4>A few submodule reminders</h4>
+      <ol>
+        <li>The app and core repositories are separate</li>
+        <li>This means that they can be on different branches without a problem</li>
+        <li>When you first clone the web or win8 repo, you'll have to submodule init and submodule update</li>
+        <li>You can run git status often to make sure you know exactly what's going on</li>
+      </ol><br><br>
+      <h3 id="gitmisc">Some miscellaneous git notes</h3>
       <ol>
         <li>PULL OFTEN to ensure that your code is in sync</li>
         <li>This is a thing:&nbsp;<a href="http://gitx.frim.nl/" target="_blank">GitX</a>. Supposedly it's a good merging tool for Macs, but I've never used it. Someone want
