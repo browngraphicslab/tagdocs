@@ -145,6 +145,10 @@ div.title {
   font-weight: bold;
   font-style: italic;
 }
+h2 {
+  font-style: light;
+  padding-top: 100px;
+}
 header {
   font-style: light;
   color: #321925;

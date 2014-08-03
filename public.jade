@@ -12,6 +12,9 @@ html
     mixin sectionHeader(name, dest)
         header(id=dest) #{name}
 
+    mixin FAQHeader(name, dest)
+        h2(id=dest) #{name}
+
     mixin link(name, url)
         p
             a(href=url, target="_blank") #{name}
@@ -56,7 +59,7 @@ html
                 li
                     a.separator_link#link_setup(dest='#nav_hr_setup') SETTING UP
                 li
-                    a.separator_link#link_dev(dest='#nav_hr_tutorials') TUTORIALS
+                    a.separator_link#link_dev(dest='#nav_hr_tutorials') FAQS
                 li
                     a.separator_link#link_links(dest='#nav_hr_features') PLANNED FEATURES
 
@@ -121,55 +124,211 @@ html
             +sectionHeader("Web Application Setup", "header_webappsetup")
             | The&nbsp;
             a(href="http://cs.brown.edu/research/ptc/tag/webapp.html", target="_blank") TAG web application
-            | &nbsp;is available as a can be embedded in an existing site using the instructions below.
+            | &nbsp;is available for download and can be embedded in an existing site using the instructions below.
 
             ol
-                li a
+                li
+                    | Download the source&nbsp;
+                    a(href='') here
+                li
+                    | Uncompress the downloaded .zip file. This may happen automatically after you download and
+                    | click on the file, or you may need to right-click on the file in the finder or file explorer
+                li
+                    | Move the resulting TAG directory to the desired location within your site, say
+                    | "webroot/a/b/TAG"
+                li
+                    | Make sure the TAG directory and its contents have the proper permissions. Directories
+                    | should be world-executable (e.g., "chmod 755"), and files should be world-readable (e.g., "chmod 644").
+                li
+                    | In your site (webroot/site.html), include the TAG/TAG-min.js script:
+                    br
+                    pre.prettyprint.lang-html.
+                        &lt;script src='./a/b/TAG/TAG-min.js'&gt;&lt;/script&gt;
+                li
+                    | Also in your site, set up a div in which you would like to embed TAG. As an example, you can
+                    | take a look at TAG/demo.html, which sets up a div with id "tagContainer":
+                    br
+                    pre.prettyprint.lang-html.
+                        &lt;div id='tagContainer'
+                             style='margin-left:100px;margin-top:50px;'&gt;
+                        &lt;/div&gt;
+                li
+                    | You can now use the "TAG" function in your site. As an example, you can take a look at TAG/demo.html.
+                    | A snippet from this file is below for reference:
+                    br
+                    pre.prettyprint.lang-html.
+                        &lt;script src='TAG-min.js'&gt;&lt;/script&gt;
+                        &lt;script&gt;
+                            window.onload = load;
 
-            | The TAG web app source code is available for download&nbsp;
-            a(href="http://cs.brown.edu/research/ptc/tag/webapp.html") here
-            | . It is designed to be embedded in an existing site with minimal interference to the
-            | rest of the page. Instructions for use can be found at the link above.
+                            function load() {
+                                
+                                TAG({
+                                    path: '',
+                                    containerId: 'tagContainer',
+                                    serverIp: 'browntagserver.com',
+                                    width: '1000px',
+                                    height: '500px'
+                                });
+
+                            }
+                        &lt;/script&gt;
+
+            | The TAG web app is designed to be embedded in your site with minimal interference to the
+            | rest of the page.
+            br
+            br
+            | You can customize your TAG web app embedding with the following options, which can be
+            | specified in the call to TAG as above:
+            br
+            br
+            h4 path (default = "")
+            | The relative path to the TAG directory from your site. For example, following the setup in the
+            | instructions above, where TAG resides in the webroot/a/b directory and the site resides at
+            | webroot/site.html, you should specify:
+            pre.prettyprint.
+                path: 'a/b/TAG'
+            br
+            h4 containerId (default = "tagContainer")
+            | The ID of the div in which you would like to embed TAG. For example, above, we explicitly specify:
+            pre.prettyprint.
+                containerId: 'tagContainer'
+            br
+            h4 serverIp (default = "browntagserver.com")
+            | The ip address of the TAG server to which you would like your embedding to connect. The default is
+            | the TAG demo content server. To connect to the Seattle Art Museum's server, for example, you could
+            | specify:
+            pre.prettyprint.
+                serverIp: 'tag.seattleartmusem.org'
+            br
+            h4 width (default = width of containing div or "740px")
+            | The desired width of the TAG embedding in pixels. It defaults to the width of the containing
+            | div (if specified) or "740px" if the containing div doesn't have a specified width. Note that
+            | TAG will always have a 16:9 aspect ratio no matter the specified dimensions; it will fill as
+            | much space as possible under the aspect ratio, height, and width constraints. Example:
+            pre.prettyprint.
+                width: "1000px"
+            br
+            h4 height (default = height of containing div or "460px")
+            | The desired height of the TAG embedding in pixels. It defaults to the height of the containing
+            | div (if specified) or "460px" if the containing div doesn't have a specified height. Note that
+            | TAG will always have a 16:9 aspect ratio no matter the specified dimensions; it will fill as
+            | much space as possible under the aspect ratio, height, and width constraints. Example:
+            pre.prettyprint.
+                height: "500px"
+            br
+            h4 hiddenCollections (default = [])
+            | An array of IDs for collections you would like to hide in this embedding. This may be helpful
+            | if you have several collections published on a server but only one or two of them are relevant
+            | to a particular site. The IDs can be obtained by navigating to the collections tab in the authoring
+            | mode; an ID is listed at the bottom of the right-most column when your collection is selected.
+            | Example:
+            pre.prettyprint.
+                hiddenCollections: [
+                    'e53b2104-7a2b-432e-81c8-31a14f00f9ce'
+                ] // hides "Getty Museum Collection" on TAG demo server
+            br
+            h4 idleDuration (default = 0)
+            | If specified and non-zero, this controls the length of a timer (in milliseconds) that will reset
+            | TAG to the collections page if no meaningful interaction has been detected. Example:
+            pre.prettyprint.
+                idleDuration: 120000 // two minutes
+            br
+            h4 interpretURLParams (default = true)
+            | If true, TAG users can effectively link to certain pages in your embedding by supplying some
+            | extra query parameters in your site's URL. This is enabled by default. Example:
+            pre.prettyprint.
+                interpretURLParams: false // disable linking
+            br
+            h4 urlToLoad (default = '')
+            | If specified, TAG will parse this URL as if it were given as the URL of your page and
+            | the interpretURLParams option were set to true. This allows you to start TAG to a specific
+            | page (e.g., the tour player with a particular tour playing) by default when users visit
+            | your site with its normal URL. You can obtain one of these URLs by clicking on one of several
+            | "link" buttons throughout the web app. Specifying this option overrides an interpretURLParams=false
+            | value. Example:
+            pre.prettyprint.
+                urlToLoad: 'http://localhost:8888/tag2/TAG/embeddingDemo.html \
+                             #tagpagename=tour&tagguid=3a4e3a92-3048-48b8-88a2- \
+                             b22b821766ff&tagonlytour=false&tagserver= \
+                             browntagserver.com'
 
             // -------------------------------- TAG SERVER SETUP ---------------------------------- //
             +sectionHeader("TAG Server Setup", "header_serversetup")
-            | Some stuff about server setup
+            | Please stay tuned for installation instructions and a more thorough TAG server discussion.
+            br
+            br
+            | Here is a link to the current version of the TAG server application:&nbsp
+            a(href="http://cs.brown.edu/research/ptc/tag/tagsetup.exe") server installer
+            | .
 
             hr#nav_hr_tutorials
 
             // ------------------------------- KIOSK TUTORIAL ----------------------------------- //
-            +sectionHeader("General Tutorial", "header_generaltutorial")
-            .iframeContainer
-                iframe(style="width:500px; height:304px;", src="https://www.youtube.com/embed/NPJiTTKHu-E", frameborder="0", allowfullscreen)
-            br
-            | General tutorial for using TAG and authoring basic settings, artworks, and exhibitions
+            //- +sectionHeader("General Tutorial", "header_generaltutorial")
+            //- .iframeContainer
+            //-     iframe(style="width:500px; height:304px;", src="https://www.youtube.com/embed/NPJiTTKHu-E", frameborder="0", allowfullscreen)
+            //- br
+            //- | General tutorial for using TAG and authoring basic settings, artworks, and exhibitions. This is also
+            //- | available (along with some FAQs)&nbsp;
+            //- a(href="http://cs.brown.edu/research/ptc/tag/tutorial.html", target="_blank") here
+            //- | .
 
             // ------------------------------ TOUR AUTHORING TUTORIAL --------------------------- //
-            +sectionHeader("Tour Authoring Tutorial", "header_tourauthoringtutorial")
-            .iframeContainer
-                iframe(style="width:500px; height:304px;", src="https://www.youtube.com/embed/JozMHAWq0TA", frameborder="0", allowfullscreen)
-            br
-            | Tutorial focusing on how to create interactive tours within TAG's Tour Authoring mode.
+            //- +sectionHeader("Tour Authoring Tutorial", "header_tourauthoringtutorial")
+            //- .iframeContainer
+            //-     iframe(style="width:500px; height:304px;", src="https://www.youtube.com/embed/JozMHAWq0TA", frameborder="0", allowfullscreen)
+            //- br
+            //- | Tutorial focusing on how to create interactive tours within TAG's Tour Authoring mode.
 
-            // ----------------------------- EXPORT/EMBEDDING TOURS TUTORIAL -------------------- //
-            +sectionHeader("Dedicated Tour Embeddings", "header_tourembeddingtutorial")
-            | A normal TAG embedding will start on the "splash screen," however it is also possible to
-            | configure TAG to run only a specific tour. TAG will then load to the tour player and it will be impossible
-            | to navigate away from the tour. This can be useful if you want to direct viewers to a particular narrative.
+
+            +FAQHeader("Authoring: How do I add artworks to a collection?", "header_faqcreatingcollections")
+            | Tap on the "Collections" tab on the left column, select your collection in the middle column, and in the
+            | right column below the preview window, you'll see a button that says "Manage Collection." You can tap on
+            | this to choose artworks to include in the collection. If your collection has not yet been created, the "New"
+            | button at the top of the middle column will create a new collection.
+
+            +FAQHeader("Authoring: How do I add associated media?", "header_faqaddingassocmedia")
+            | First, navigate to the "Associated Media" tab in the authoring mode. You can import new associated
+            | media (images, audio clips, or videos) by tapping on the "Import" button at the top of the middle column.
+            | When your media have been imported, you can tap on the "Associate to Artworks" button to associate a particular
+            | image/audio/video. Associations can also be managed from within the "artwork editor," which can be accessed
+            | by navigating to the "Artworks" tab, selecting the desired artwork, and tapping "Enter Artwork Editor." Once
+            | in the artwork editor, the "Add/Remove Media" button will allow you to pick from all available media, and clicking
+            | on a media thumbnail below the "Add/Remove" button will allow you to edit specific media.
+
+            +FAQHeader("Some of the videos on my server are not playing in all browsers. What can I do?", "header_faqvideocompatibility")
+            | We are working on providing a server-side video converter, which should fix cross-browser compatibility
+            | issues for any videos imported after this feature is in place. In the meantime, we recommend using TX264,
+            | a free H264 converter which will help optimize your files for web playback while also converting your video
+            | to a streaming-friendly MP4 file. Just run your video file through TX264 first and then upload as usual via
+            | TAG.
             br
             br
-            | To achieve this setup, you can use the "tourId" option in the TAG web app API. When this parameter is
-            | specified, TAG will interpret its value as the identifier of the tour you wish to load. To obtain this
-            | identifier, you will need access to the authoring mode on the TAG server hosting the tour. Once you have
-            | logged into the authoring mode, navigate to the "Tours" tab in the main authoring interface and find the
-            | tour you would like to embed. The identifier of the tour will be listed at the bottom of the right column.
+            | TX264 is available&nbsp;
+            a(href="http://sourceforge.net/projects/tx264/", target="_blank") here
+            | .
             br
             br
-            | Alternatively, if you would like the HTML for a basic embedding of your tour, click on the "Edit Tour"
-            | button beneath the preview window (still in the main authoring interface), click on "Options" in the top bar 
-            | of the tour authoring interface, and click "Embed Tour." You can copy the resulting HTML to a file in the
-            | top-most "TAG" directory of your web app source code, and you should be all set. To support moving this file to another
-            | directory, simply change the "path" API parameter to be the relative path from your file to the "TAG" directory.
+            | To run TX264 with the proper settings, you can use the .pdo file&nbsp;
+            a(href="http://cs.brown.edu/research/ptc/tag/tx264Settings.pdo") here
+            | , which contains a standard
+            | configuration for web MP4s. After extracting TX264, place the .pdo file into the PreDefs directory
+            | inside the TX264 directory and start TX264. From the drop-down menu labeled "Pre-defined", select
+            | the "standard mp4 format tag" option, and click the arrow button next to the menu to apply the settings.
+            | To fix quality issues you can increase the video bitrate option to 3000-6000 (higher is better but will
+            | result in a larger file). 
+
+            | If you would prefer not to re-upload your video into TAG, you can run this conversion on the machine
+            | running your server. To find the relevant video file on your server, search in the TAGServerRepo/Images
+            | directory. You can then replace the existing file with the converted version.
+
+            +FAQHeader("Tour authoring: How does Multi-Select work?", "header_faqmultiselect")
+            | Tap the "Multi-Select" button above the track titles. Once it is highlighted, you can select multiple
+            | green/gray display boxes from as many different tracks as you want. Then you can start moving them
+            | or changing their start and end points, and they will all move in synch. They may stop moving because
+            | of other display boxes in the way. To manipulate keyframes, you will have to deselect the multi-selected
+            | displays by tapping outside a display.
 
             hr#nav_hr_features
 
@@ -216,12 +375,13 @@ html
                                 +sectionLink('TAG Server Setup',   'header_serversetup')
                 .linkContain#nav_tutorials
                     .title
-                        p Tutorials
+                        p FAQs
                         .links
                             ul.sections
-                                +sectionLink('General Tutorial',   'header_generaltutorial')
-                                +sectionLink('Authoring Tutorial', 'header_tourauthoringtutorial')
-                                +sectionLink('Tour Embeddings', 'header_tourembeddingtutorial')
+                                +sectionLink('Creating Collections', 'header_faqcreatingcollections')
+                                +sectionLink('Associating Media', 'header_faqaddingassocmedia')
+                                +sectionLink('Video Compatibility', 'header_faqvideocompatibility')
+                                +sectionLink('Multi-Select', 'header_faqmultiselect')
                 .linkContain#nav_features
                     .title
                         p Planned Features
