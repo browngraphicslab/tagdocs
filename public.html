@@ -63,21 +63,21 @@
       <!-- -------------------------------- WEB APP SETUP ------------------------------------ //-->
         <header id="header_webappsetup">Web Application Setup</header>The&nbsp;<a href="http://cs.brown.edu/research/ptc/tag/webapp.html" target="_blank">TAG web application</a>&nbsp;is available for download and can be embedded in an existing site using the instructions below.
       <ol>
-        <li>Download the source&nbsp;<a href="">here</a></li>
+        <li>Download the source&nbsp;<a href="files/TAG_WebApp.zip">here</a></li>
         <li>
           Uncompress the downloaded .zip file. This may happen automatically after you download and
           click on the file, or you may need to right-click on the file in the finder or file explorer
         </li>
         <li>
           Move the resulting TAG directory to the desired location within your site, say
-          "webroot/a/b/TAG"
+          "webroot/a/b/TAG_WebApp"
         </li>
         <li>
           Make sure the TAG directory and its contents have the proper permissions. Directories
           should be world-executable (e.g., "chmod 755"), and files should be world-readable (e.g., "chmod 644").
         </li>
-        <li>In your site (webroot/site.html), include the TAG/TAG-min.js script:<br>
-          <pre class="prettyprint lang-html">&lt;script src='./a/b/TAG/TAG-min.js'&gt;&lt;/script&gt;</pre>
+        <li>In your site (webroot/site.html), include the TAG/TAG-embed.js script:<br>
+          <pre class="prettyprint lang-html">&lt;script src='./a/b/TAG/TAG-embed.js'&gt;&lt;/script&gt;</pre>
         </li>
         <li>
           Also in your site, set up a div in which you would like to embed TAG. As an example, you can
@@ -89,7 +89,7 @@
         <li>
           You can now use the "TAG" function in your site. As an example, you can take a look at TAG/demo.html.
           A snippet from this file is below for reference:<br>
-          <pre class="prettyprint lang-html">&lt;script src='TAG-min.js'&gt;&lt;/script&gt;
+          <pre class="prettyprint lang-html">&lt;script src='TAG-embed.js'&gt;&lt;/script&gt;
 &lt;script&gt;
     window.onload = load;
     
@@ -113,7 +113,7 @@
       <h4>path (default = "")</h4>The relative path to the TAG directory from your site. For example, following the setup in the
       instructions above, where TAG resides in the webroot/a/b directory and the site resides at
       webroot/site.html, you should specify:
-      <pre class="prettyprint">path: 'a/b/TAG'</pre><br>
+      <pre class="prettyprint">path: 'a/b/TAG_WebApp'</pre><br>
       <h4>containerId (default = "tagContainer")</h4>The ID of the div in which you would like to embed TAG. For example, above, we explicitly specify:
       <pre class="prettyprint">containerId: 'tagContainer'</pre><br>
       <h4>serverIp (default = "browntagserver.com")</h4>The ip address of the TAG server to which you would like your embedding to connect. The default is
