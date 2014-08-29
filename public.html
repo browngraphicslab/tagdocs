@@ -184,11 +184,28 @@
       If you would prefer not to re-upload your video into TAG, you can run this conversion on the machine
       running your server. To find the relevant video file on your server, search in the TAGServerRepo/Images
       directory. You can then replace the existing file with the converted version.
+		<h2 id="header_faqmultiselect">Authoring: An uploaded audio file does not play. What can I do?</h2>As above, make sure that the format and encoding of your audio file 
+	  are appropriate for Internet Explorer. Try using an audio converter to convert your file to .mp3 format. Even if your video is already a .mp3 file, it may have been 
+	  encoded incorrectly. Using an audio converter should correct the encoding and allow you to upload and play your audio file properly. You can use a free audio converter 
+	  provided in the <a href="http://www.mirovideoconverter.com/" target="_blank">Miro Video Converter</a>.
+		<h2 id="header_faqmultiselect">Authoring: I am trying to upload an image, but it seems too large for the uploading tool. What can I do?</h2>
+	  The uploading tool in TAG converts incoming images to the Microsoft Deep Zoom format and then stores them in the C:\TAGServerRepo directory on whichever 
+	  computer is running your instance of the TAG Server. If an image will not upload directly through TAG, you can recreate this process using Microsoft's Deep Zoom 
+	  Composer application, which can be downloaed free of charge <a href="http://www.microsoft.com/en-us/download/details.aspx?id=24819" target="_blank">here</a>. After 
+	  downloading Deep Zoom Composer, you can open it, create a new "project," and import the artwork you would like to bring into TAG. After you fix the composition to your 
+	  liking and export the image, it will be exported to the directory listed in the right pane of the Composer application. Once you locate the output files in the 
+	  "GeneratedImages" directory (there will be four entries -- dzc_output_files, dzc_output.xml, scene.xml, and SparseImageSceneGraph.xml -- representing the Deep Zoom image), 
+	  copy them into C:\TAGServerRepo (you can create a subdirectory for your image). Now, you will want to use the paths to these files and directories to point TAG to your 
+	  artwork. This can be done by first importing a "dummy" artwork into TAG, then using the "Document Manager" button in the TAG Server GUI. If you right-click on the dummy 
+	  artwork listed in the Document Manager, you will be given options to edit metadata about the artwork, including the path TAG uses to locate it. You can insert the paths 
+	  to your artwork here.
         <h2 id="header_faqmultiselect">Tour authoring: How does Multi-Select work?</h2>Tap the "Multi-Select" button above the track titles. Once it is highlighted, you can select multiple
       green/gray display boxes from as many different tracks as you want. Then you can start moving them
       or changing their start and end points, and they will all move in synch. They may stop moving because
       of other display boxes in the way. To manipulate keyframes, you will have to deselect the multi-selected
       displays by tapping outside a display.
+		
+	  
       <hr id="nav_hr_features">
       <!-- ---------------------------- FEATURES ------------------------- //--><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       <!-- side navigation links-->
